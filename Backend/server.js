@@ -5,6 +5,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
+const cors = require("cors");
 
 //Middleware
 app.use("/", (req, res, next) => {
