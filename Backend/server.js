@@ -3,14 +3,16 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const router = require("./Routes/Volunteers/VolunteerRoutes");
+const VolunteerModel = require("./Model/Volunteers/VolunteerModels");
 
 const app = express();
 const cors = require("cors");
 
 //Middleware
-app.use("/", (req, res, next) => {
-    res.send("It is Working");
-})
+app.use(express.json());
+app.use(cors());
+app.use("/users", router);
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
