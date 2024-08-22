@@ -35,7 +35,7 @@ const Volunteer_Schema = new Schema({
         type: String,
         required: true
     },
-    legal_eligibility: {
+    experience: {
         type: String,
         required: true
     },
