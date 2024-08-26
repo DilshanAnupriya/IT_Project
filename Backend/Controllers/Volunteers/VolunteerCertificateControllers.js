@@ -70,6 +70,7 @@ const UpdateDetails = async (req, res, next) => {
 
     try {
         certificate = await Certificate.findByIdAndUpdate(id, { title: title, v_name: v_name, issue_date: issue_date, time_period: time_period });
+        await certificate.save();
     } catch (error) {
         console.log(error);
     }

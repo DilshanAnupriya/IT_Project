@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const router = require("./Routes/Volunteers/VolunteerRoutes");
 const task = require("./Routes/Volunteers/VolunteerTaskRouts");
 const certificate = require("./Routes/Volunteers/VolunteerCertificateRoutes");
-
+const schedule = require("./Routes/Volunteers/VolunteerScheduleRoutes");
 
 
 const app = express();
@@ -19,6 +19,7 @@ app.use(cors());
 app.use("/users", router);
 app.use("/task", task);
 app.use("/certificate", certificate);
+app.use("/schedule", schedule);
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
