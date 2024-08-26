@@ -22,7 +22,7 @@ const getDetails = async (req, res, next) => {
 //add task
 
 const CreateCertificate = async (req, res, next) => {
-    const { title, v_name, issue_date, time_period } = rq.body
+    const { title, v_name, issue_date, time_period } = req.body
 
     let certificate;
 
@@ -66,7 +66,7 @@ const getById = async (req, res, next) => {
 const UpdateDetails = async (req, res, next) => {
     let id = req.params.id;
     let certificate;
-    const { title, v_name, issue_date, time_period } = rq.body
+    const { title, v_name, issue_date, time_period } = req.body
 
     try {
         certificate = await Certificate.findByIdAndUpdate(id, { title: title, v_name: v_name, issue_date: issue_date, time_period: time_period });
