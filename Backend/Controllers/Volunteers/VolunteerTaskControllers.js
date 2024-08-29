@@ -15,7 +15,7 @@ const getAllTask = async (req, res, next) => {
 
     //not found
     if (!task) {
-        return res.status(400).json({ massage: "unable to find" })
+        return res.status(404).json({ massage: "unable to find" })
     }
 
     //display task
@@ -39,7 +39,7 @@ const CreateTask = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to create" });
     }
     return res.status(200).json({ task });
-}
+};
 
 //get by id
 const getByIId = async (req, res, next) => {
@@ -56,7 +56,7 @@ const getByIId = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to find" });
     }
     return res.status(200).json({ task });
-}
+};
 
 //update task
 const UpdateTask = async (req, res, next) => {
@@ -76,8 +76,8 @@ const UpdateTask = async (req, res, next) => {
     if (!task) {
         return res.status(404).json({ massage: "unable to update" });
     }
-    return res.status(404).json({ task });
-}
+    return res.status(200).json({ task });
+};
 
 //delete task
 const DeleteTask = async (req, res, next) => {
@@ -94,7 +94,7 @@ const DeleteTask = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to delete" });
     }
     return res.status(200).json({ task });
-}
+};
 
 //export
 exports.getAllTask = getAllTask

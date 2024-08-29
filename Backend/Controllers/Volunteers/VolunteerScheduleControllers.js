@@ -17,7 +17,7 @@ const DisplaySchedule = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to find" });
     }
     return res.status(200).json({ schedule });
-}
+};
 
 
 //create
@@ -38,7 +38,7 @@ const CreateSchedule = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to create" });
     }
     return res.status(200).json({ schedule });
-}
+};
 
 //get by id
 const GetId = async (req, res, next) => {
@@ -54,7 +54,7 @@ const GetId = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to find" });
     }
     return res.status(200).json({ schedule });
-}
+};
 
 
 //update 
@@ -73,7 +73,7 @@ const UpdateSchedule = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to update" });
     }
     return res.status(200).json({ schedule });
-}
+};
 
 //delete
 const DeleteSchedule = async (req, res, next) => {
@@ -89,7 +89,7 @@ const DeleteSchedule = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to delete" });
     }
     return res.status(200).json({ schedule });
-}
+};
 
 exports.CreateSchedule = CreateSchedule
 exports.DisplaySchedule = DisplaySchedule

@@ -18,7 +18,7 @@ const Certificate_Schema = new Schema({
         type: String,
         required: true
     }
-})
+});
 module.exports = mongoose.model(
     "VolunteerCertificateModels",//file name
     Certificate_Schema //function name

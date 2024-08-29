@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //insert model
-const Volunteer = require("../../Model/Volunteers/VolunteerModels")
+const Volunteer = require("../../Model/Volunteers/VolunteerModels");
 
 
 //insert controller

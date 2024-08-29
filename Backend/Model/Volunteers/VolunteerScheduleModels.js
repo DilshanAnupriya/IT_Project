@@ -15,7 +15,7 @@ const ScheduleSchema = Schema({
         type: String,
         required: true
     }
-})
+});
 
 module.exports = mongoose.model(
     "VolunteerScheduleModels", //file name

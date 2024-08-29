@@ -2,7 +2,7 @@ const express = require("express");
 const schedule = express.Router();
 
 //insert model
-const Schedule = require("../../Model/Volunteers/VolunteerScheduleModels")
+const Schedule = require("../../Model/Volunteers/VolunteerScheduleModels");
 
 
 //insert controller

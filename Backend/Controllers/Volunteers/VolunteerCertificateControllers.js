@@ -17,7 +17,7 @@ const getDetails = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to display" });
     }
     return res.status(200).json({ certificate });
-}
+};
 
 //add task
 
@@ -38,7 +38,7 @@ const CreateCertificate = async (req, res, next) => {
     }
 
     return res.status(200).json({ certificate });
-}
+};
 
 
 
@@ -59,7 +59,7 @@ const getById = async (req, res, next) => {
     }
 
     return res.status(200).json({ certificate });
-}
+};
 
 
 // update details 
@@ -80,7 +80,7 @@ const UpdateDetails = async (req, res, next) => {
 
     return res.status(200).json({ certificate });
 
-}
+};
 
 // delete 
 
@@ -99,7 +99,7 @@ const DeleteDetails = async (req, res, next) => {
 
     return res.status(200).json({ certificate });
 
-}
+};
 
 exports.getDetails = getDetails
 exports.CreateCertificate = CreateCertificate

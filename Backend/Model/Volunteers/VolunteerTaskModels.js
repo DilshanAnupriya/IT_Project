@@ -23,7 +23,7 @@ const VolunteerTask_Schema = Schema({
         required: true
     }
 
-})
+});
 
 module.exports = mongoose.model(
     "VolunteerTaskModels", //file name

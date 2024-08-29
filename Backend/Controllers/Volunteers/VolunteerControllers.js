@@ -47,7 +47,7 @@ const CreateVolunteers = async (req, res, next) => {
 
 
 
-}
+};
 
 
 //get by Id
@@ -66,7 +66,7 @@ const getByIId = async (req, res, next) => {
     }
 
     return res.status(200).json({ volunteer });
-}
+};
 
 
 //Update 
@@ -87,7 +87,7 @@ const UpdateVolunteer = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to update" });
     }
     return res.status(200).json({ volunteers });
-}
+};
 
 
 //delete 
@@ -106,7 +106,7 @@ const DeleteVolunteer = async (req, res, next) => {
     }
 
     return res.status(200).json({ volunteer });
-}
+};
 
 exports.getAllVolunteers = getAllVolunteers;
 exports.CreateVolunteers = CreateVolunteers;
