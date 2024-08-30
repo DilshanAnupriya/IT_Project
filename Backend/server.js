@@ -36,6 +36,18 @@ app.use("/Availability", Availability);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 //medpatient 
 app.use("/patient", patient)
 
