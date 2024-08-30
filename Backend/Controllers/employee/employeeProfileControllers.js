@@ -14,11 +14,11 @@ const getAllProfile = async (req, res, next) => {
 
     //not found 
     if(!emp){
-        return res.status(404).jason({ massage: "unable to display" })
+        return res.status(404).json({ massage: "unable to display" })
     }
 
     //display profile
-    return res.ststus(200).jason({ emp });
+    return res.status(200).json({ emp });
 }
 
 
@@ -38,11 +38,11 @@ const createProfile = async (req, res, next) => {
 
     //not found 
     if(!emp){
-        return res.status(404).jason({ massage: "unable to Create" })
+        return res.status(404).json({ massage: "unable to Create" })
     }
 
     //create profile
-    return res.ststus(200).jason({ emp });
+    return res.status(200).json({ emp });
 }
 
 
@@ -60,11 +60,11 @@ const getIdByProfile = async (req, res, next) => {
 
     //not found 
     if(!emp){
-        return res.status(404).jason({ massage: "unable to find" })
+        return res.status(404).json({ massage: "unable to find" })
     }
 
     //find profile by id
-    return res.ststus(200).jason({ emp });
+    return res.status(200).json({ emp });
 }
 
 
@@ -86,11 +86,11 @@ const updateProfile = async (req, res, next) => {
 
     //not found 
     if(!emp){
-        return res.status(404).jason({ massage: "unable to update" })
+        return res.status(404).json({ massage: "unable to update" })
     }
 
     //update profile
-    return res.ststus(200).jason({ emp });
+    return res.status(200).json({ emp });
 }
 
 
@@ -108,11 +108,11 @@ const deleteProfile = async (req, res, next) => {
 
     //not found 
     if(!emp){
-        return res.status(404).jason({ massage: "unable to find" })
+        return res.status(404).json({ massage: "unable to find" })
     }
 
     //find profile by id
-    return res.ststus(200).jason({ emp });
+    return res.status(200).json({ emp });
 }
 
 //export
