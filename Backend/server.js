@@ -12,6 +12,9 @@ const schedule = require("./Routes/Volunteers/VolunteerScheduleRoutes");
 const profile = require("./Routes/employee/employeeProfileRoutes");
 const Availability = require("./Routes/employee/empAvailabilityRoutes");
 
+//Med patient
+const patient = require("./Routes/MedicalOfficer/PatientRoutes");
+
 
 const app = express();
 const cors = require("cors");
@@ -29,6 +32,9 @@ app.use("/schedule", schedule);
 //emp profile
 app.use("/employees", profile);
 app.use("/Availability", Availability);
+
+//medpatient 
+app.use("/patient", patient)
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
