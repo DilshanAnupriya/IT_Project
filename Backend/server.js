@@ -8,7 +8,7 @@ const task = require("./Routes/Volunteers/VolunteerTaskRouts");
 const certificate = require("./Routes/Volunteers/VolunteerCertificateRoutes");
 const schedule = require("./Routes/Volunteers/VolunteerScheduleRoutes");
 
- //emp profile
+//emp profile
 const profile = require("./Routes/employee/employeeProfileRoutes");
 const Availability = require("./Routes/employee/empAvailabilityRoutes");
 
@@ -32,6 +32,9 @@ app.use("/schedule", schedule);
 //emp profile
 app.use("/employees", profile);
 app.use("/Availability", Availability);
+
+
+
 
 //medpatient 
 app.use("/patient", patient)
