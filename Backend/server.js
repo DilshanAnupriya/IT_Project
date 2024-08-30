@@ -10,6 +10,7 @@ const schedule = require("./Routes/Volunteers/VolunteerScheduleRoutes");
 
  //emp profile
 const profile = require("./Routes/employee/employeeProfileRoutes");
+const Availability = require("./Routes/employee/empAvailabilityRoutes");
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/schedule", schedule);
 
 //emp profile
 app.use("/employees", profile);
+app.use("/Availability", Availability);
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
