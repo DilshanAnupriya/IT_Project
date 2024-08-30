@@ -1,52 +1,84 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../../Pages/Css/ComponentsCss/Navbar/Navbar.css";
 import Logo from "../../Assets/logo.png";
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+
   return (
     <div>
-      <nav className="navbar">
-        <div className="navbar-logo">
-          <img src={Logo} alt="Care Zone Logo" className="logo" />
-          <span>Care Zone</span>
+      <nav>
+        <div className="pic">
+          <img src={Logo} className="img" alt="logo" />
+          <Link to="/" className="logo">Care Zone</Link>
         </div>
-        <div className={`hamburger ${isMenuOpen ? "is-active" : ""}`} onClick={toggleMenu}>
-          <div></div>
-          <div></div>
-          <div></div>
+
+        <div className="navigation">
+          <ul className="menu">
+            <i className="fa-solid fa-xmark close-btn"></i>
+            <li className="menu-item"><Link to="/">Home</Link></li>
+            <li className="menu-item">
+              <Link className="sub-btn" to="/"
+              >Features <i className="fas fa-angle-down"></i
+              ></Link>
+              <ul className="sub-menu">
+                <li className="sub-item"><Link to="/">Mobility Support</Link></li>
+                <li className="sub-item"><Link to="/">Appointment</Link></li>
+                <li className="sub-item"><Link to="/">Care plans</Link></li>
+                <li className="sub-item"><Link to="/">Donation</Link></li>
+
+              </ul>
+            </li>
+            <li className="menu-item">
+              <Link className="sub-btn" to="/"
+              >Services <i className="fas fa-angle-down"></i
+              ></Link>
+              <ul className="sub-menu subtow">
+                <li className="sub-item more">
+                  <Link to="/">Sub Item 01</Link>
+                  <ul className="more-menu">
+                    <li className="more-item"><Link to="/">More Item 01</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                  </ul>
+                </li>
+                <li className="sub-item more">
+                  <Link to="/">Sub Item 02</Link>
+                  <ul className="more-menu">
+                    <li className="more-item"><Link to="/">More Item 01</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                  </ul>
+                </li>
+                <li className="sub-item more">
+                  <Link to="/">Sub Item 03</Link>
+                  <ul className="more-menu">
+                    <li className="more-item"><Link to="/">More Item 01</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                  </ul>
+                </li>
+                <li className="sub-item more"> <Link to="/">Volunteering</Link> </li>
+                <li className="sub-item more">
+                  <Link className="more-btn" to="/" >More Items </Link>
+                  <ul className="more-menu">
+                    <li className="more-item"><Link to="/">More Item 01</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/">More Item 02</Link></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li className="menu-item"><Link to="/">Contact</Link></li>
+            <li className="menu-item"><button>Login</button></li>
+          </ul>
         </div>
-        <ul className={`navbar-links ${isMenuOpen ? "show" : ""}`}>
-          <li><Link to="/">Home</Link></li>
-          <li>
-            <Link to="/volunteer">Features</Link>
-            <ul className="dropdown">
-              <li><Link to="/volunteer/option1">Option 1</Link></li>
-              <li><Link to="/volunteer/option2">Option 2</Link></li>
-              <li><Link to="/volunteer/option2">Option 2</Link></li>
-              <li><Link to="/volunteer/option2">Option 2</Link></li>
-            </ul>
-          </li>
-          <li>
-            <Link >Services</Link>
-            <ul className="dropdown">
-              <li><Link to="/contact/email">Email</Link></li>
-              <li><Link to="/contact/phone">Volunteer</Link> </li>
-              <li><Link to="/contact/phone">Phone</Link></li>
-              <li><Link to="/contact/phone">Phone</Link></li>
-            </ul>
-          </li>
-          <li><Link to="/about">Contact Us</Link></li>
-          <li><Link to="/about">About Us</Link></li>
-        </ul>
-        <div className="login-button">
-          <button>Login</button>
-        </div>
+        <i className="fa-solid fa-bars menu-btn"></i>
       </nav>
     </div>
   );
