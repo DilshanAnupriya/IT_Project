@@ -8,10 +8,13 @@ const task = require("./Routes/Volunteers/VolunteerTaskRouts");
 const certificate = require("./Routes/Volunteers/VolunteerCertificateRoutes");
 const schedule = require("./Routes/Volunteers/VolunteerScheduleRoutes");
 
- //emp profile
+//emp profile
 const profile = require("./Routes/employee/employeeProfileRoutes");
 const Availability = require("./Routes/employee/empAvailabilityRoutes");
 const Requests = require("./Routes/employee/empRequestRoutes");
+
+//Med patient
+const patient = require("./Routes/MedicalOfficer/PatientRoutes");
 
 
 const app = express();
@@ -31,7 +34,13 @@ app.use("/schedule", schedule);
 app.use("/employees", profile);
 app.use("/Availability", Availability);
 app.use("/requests", Requests);
-    
+
+
+
+//medpatient 
+app.use("/patient", patient)
+
+
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
     .then(() => {
