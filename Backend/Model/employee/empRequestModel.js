@@ -1,21 +1,8 @@
-
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Volunteer_Schema = new Schema({
-    first_name: {
-        type: String,
-        required: true
-    },
-    last_name: {
-        type: String,
-        required: true
-    },
-    date_of_birth: {
-        type: Date,
-        required: true
-    },
-    gender: {
+const empRequest_Schema = Schema({
+    name: {
         type: String,
         required: true
     },
@@ -23,15 +10,19 @@ const Volunteer_Schema = new Schema({
         type: String,
         required: true
     },
-    duration: {
+    Phone_no: {
+        type: Number,
+        required: true
+    },
+    gender: {
         type: String,
         required: true
     },
-    skills: {
+    address: {
         type: String,
         required: true
     },
-    type_of_work: {
+    edu_qualifications: {
         type: String,
         required: true
     },
@@ -39,26 +30,25 @@ const Volunteer_Schema = new Schema({
         type: String,
         required: true
     },
-    days: {
+    years_experience: {
         type: String,
         required: true
     },
-    time: {
+    computer_performance: {
         type: String,
-        required: true,
+        required: true
+    },
+    english_level: {
+        type: String,
+        required: true
     },
     description: {
         type: String,
-        required: true
-    },
-    date: {
-        type: Date,
         required: true
     }
 });
 
 module.exports = mongoose.model(
-    "VolunteerModels",//file name
-    Volunteer_Schema //function name
+    "empRequestModel", //file name
+    empRequest_Schema //function name
 )
-

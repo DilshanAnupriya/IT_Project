@@ -24,12 +24,12 @@ const getAllTask = async (req, res, next) => {
 };
 //add task
 const CreateTask = async (req, res, next) => {
-    const { task_name, description, location, duration, special_instruction } = req.body;
+    const { task_name, description, location, duration, special_instruction, assign_to } = req.body;
 
     let task;
 
     try {
-        task = new Task({ task_name, description, location, duration, special_instruction });
+        task = new Task({ task_name, description, location, duration, special_instruction, assign_to });
         await task.save();
     } catch (error) {
         console.log(error);
@@ -62,11 +62,11 @@ const getByIId = async (req, res, next) => {
 const UpdateTask = async (req, res, next) => {
     let id = req.params.id;
     let task;
-    const { task_name, description, location, duration, special_instruction } = req.body;
+    const { task_name, description, location, duration, special_instruction, assign_to } = req.body;
 
     try {
         task = await Task.findByIdAndUpdate(id,
-            { task_name: task_name, description: description, location: location, duration: duration, special_instruction: special_instruction }
+            { task_name: task_name, description: description, location: location, duration: duration, special_instruction: special_instruction, assign_to: assign_to }
         );
         task = await task.save();
     } catch (error) {
