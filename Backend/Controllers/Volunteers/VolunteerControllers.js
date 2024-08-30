@@ -27,12 +27,12 @@ const getAllVolunteers = async (req, res, next) => {
 const CreateVolunteers = async (req, res, next) => {
 
 
-    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description } = req.body;
+    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date } = req.body;
 
     let volunteers;
 
     try {
-        volunteers = new Volunteer({ first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description });
+        volunteers = new Volunteer({ first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date });
         await volunteers.save();
     } catch (error) {
         console.log(error)
@@ -72,12 +72,12 @@ const getByIId = async (req, res, next) => {
 //Update 
 const UpdateVolunteer = async (req, res, next) => {
     const id = req.params.id
-    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description } = req.body;
+    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date } = req.body;
     let volunteers;
 
     try {
         volunteers = await Volunteer.findByIdAndUpdate(id,
-            { first_name: first_name, last_name: last_name, date_of_birth: date_of_birth, gender: gender, email: email, duration: duration, skills: skills, type_of_work: type_of_work, experience: experience, days: days, time: time, description: description });
+            { first_name: first_name, last_name: last_name, date_of_birth: date_of_birth, gender: gender, email: email, duration: duration, skills: skills, type_of_work: type_of_work, experience: experience, days: days, time: time, description: description, date: date });
         volunteers = await volunteers.save();
     } catch (error) {
         console.log(error);
