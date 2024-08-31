@@ -15,7 +15,7 @@ const Requests = require("./Routes/employee/empRequestRoutes");
 
 //Med patient
 const patient = require("./Routes/MedicalOfficer/PatientRoutes");
-
+const medtask = require("./Routes/MedicalOfficer/MedTaskRoutes");
 
 const app = express();
 const cors = require("cors");
@@ -38,7 +38,8 @@ app.use("/requests", Requests);
 
 
 //medpatient 
-app.use("/patient", patient)
+app.use("/patient", patient);
+app.use("/medtask", medtask);
 
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
