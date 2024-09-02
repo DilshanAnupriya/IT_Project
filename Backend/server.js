@@ -17,6 +17,10 @@ const Requests = require("./Routes/employee/empRequestRoutes");
 const patient = require("./Routes/MedicalOfficer/PatientRoutes");
 const medtask = require("./Routes/MedicalOfficer/MedTaskRoutes");
 
+const Breakfast = require("./Routes/MedicalOfficer/BreakfastRoute");
+const Lunch = require("./Routes/MedicalOfficer/LunchRoute");
+const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
+
 const app = express();
 const cors = require("cors");
 
@@ -40,6 +44,11 @@ app.use("/requests", Requests);
 //medpatient 
 app.use("/patient", patient);
 app.use("/medtask", medtask);
+
+app.use("/Breakfast", Breakfast);
+app.use("/Lunch", Lunch);
+app.use("/Dinner", Dinner);
+
 
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
