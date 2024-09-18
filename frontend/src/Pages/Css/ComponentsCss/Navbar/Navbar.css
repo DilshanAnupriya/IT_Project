@@ -5,6 +5,7 @@
      padding: 0;
      box-sizing: border-box;
      font-family: poppins;
+     
 }
 Nav {
      z-index: 999;
@@ -73,7 +74,7 @@ Nav .navigation .menu {
      font-size: 1em;
      text-decoration: none;
      margin: 18px;
-     padding: 25px 0;
+     padding: 15px 0;
 }
 .menu-item > a:hover {
      color: #6B75FE;
