@@ -5,6 +5,7 @@ import Footer from "../../Components/Footer/Footer"
 import p3 from "../../Assets/Volunteers/p3.png"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { Link } from "react-scroll";
 
 function VolunteerRegistration() {
 
@@ -16,11 +17,11 @@ function VolunteerRegistration() {
         gender: "Male", // add default value
         email: "",
         duration: "",
-        skills: "Male",
-        type_of_work: "Male",
+        skills: "Technical Skills",
+        type_of_work: "Companionship",
         experience: "No", // add default value
         days: "Wd", // add default value
-        time: "Male", // add default value
+        time: "Morning", // add default value
         description: "",
         date: "",
         mobile: "",
@@ -113,15 +114,20 @@ function VolunteerRegistration() {
 
 
     return (
-        <div>
+        <div className='all'>
             <Nav />
-            <div className='c1'>
-                <img src={p3} alt='photo' />
+            <div className='c1' id="section1">
+                <img src={p3} alt='landing picture' />
                 <div className='sub-c'>
-                    <h2></h2>
+                    <h3>"Make a Difference: Register to Volunteer with Our Elderly Care System"</h3>
+                    <p>Join our team of dedicated volunteers and make a positive impact on the lives
+                        of <br />seniors in our community. Your time and skills can bring joy,
+                        companionship and<br /> support those who need it most and your contribution can make a real difference.</p>
+
+                    <Link to="section2" offset={-100}><button>Click Here</button></Link>
                 </div>
             </div>
-            <div className='container'>
+            <div className='container' id='section2'>
                 <header>Registration</header>
 
                 <form action='#' onSubmit={handleSubmit}>
@@ -193,14 +199,22 @@ function VolunteerRegistration() {
                             <div className='fields'>
                                 <div className='input-field'>
                                     <label>Duration</label>
-                                    <input type='text' onChange={handleChange} placeholder='Enter Your duration' value={input.duration} name='duration' required />
+                                    <input type='text' onChange={handleChange} placeholder='1-Month' value={input.duration} name='duration' required />
                                 </div>
 
                                 <div className='input-field'>
                                     <label>Preferred Type of Work</label>
-                                    <select id="gen" name="type_of_work" onChange={handleChange} value={input.type_of_work}>
-                                        <option value="Male" >Male</option>
-                                        <option value="female">Female</option>
+                                    <select id="work" name="type_of_work" onChange={handleChange} value={input.type_of_work}>
+                                        <option value=" Companionship"> Companionship</option>
+                                        <option value="Assistance with Daily Living">Assistance with Daily Living</option>
+                                        <option value="Event and Activity Organization">Event and Activity Organization</option>
+                                        <option value="Transportation">Transportation</option>
+                                        <option value="Transportation">Transportation</option>
+                                        <option value="Specialized Support">Specialized Support</option>
+                                        <option value="Pet Therapy">Pet Therapy</option>
+                                        <option value="Spiritual Care">Spiritual Care</option>
+                                        <option value="Hospice Volunteering">Hospice Volunteering</option>
+                                        <option value="Intergenerational Programs">Intergenerational Programs</option>
                                     </select>
                                 </div>
 
@@ -222,16 +236,22 @@ function VolunteerRegistration() {
 
                                 <div className='input-field'>
                                     <label>Available Times</label>
-                                    <select id="gen" name="time" onChange={handleChange} value={input.time}>
-                                        <option value="Male">Male</option>
-                                        <option value="female">Female</option>
+                                    <select id="time" name="time" onChange={handleChange} value={input.time}>
+                                        <option value="Morning">Morning ( 8:00 AM - 12:00 PM)</option>
+                                        <option value="Afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                                        <option value="Evening">Evening ( 4:00 PM - 8:00 PM)</option>
+                                        <option value="Night">Night ( 8:00 PM - 12:00 AM or overnight shifts for 24-hour care facilities)</option>
                                     </select>
                                 </div>
                                 <div className='input-field'>
                                     <label>Skills</label>
-                                    <select id="gen" name="skills" onChange={handleChange} value={input.skills}>
-                                        <option value="Male">Male</option>
-                                        <option value="female">Female</option>
+                                    <select id="skills" name="skills" onChange={handleChange} value={input.skills}>
+                                        <option value=" Technical Skills"> Technical Skills</option>
+                                        <option value="Specialized Skills">Specialized Skills</option>
+                                        <option value="Soft Skills">ESoft Skills</option>
+                                        <option value="nursing">nursing</option>
+                                        <option value="other">other</option>
+
                                     </select>
                                 </div>
 

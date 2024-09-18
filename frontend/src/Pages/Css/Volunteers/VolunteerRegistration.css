@@ -3,10 +3,17 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    
+}
+html{
+    scroll-behavior: smooth;
+}
+.all{
+    scroll-behavior: smooth;
 }
 
 body{
-    background-color: #DFF3FD;
+    background-color: #ffffff;
     display: flex;
     
 
@@ -15,15 +22,35 @@ body{
     margin-top: 50px;
     width:100%;
     background-color: #fff5ed;
-    height: 410px;
+    height: 730px;
 }
 .c1 img{
     padding-top: 107px;
     margin-left: 190px;
     width: 75%;;
 }
+.sub-c{
+    margin-left: 400px;
+}
+.sub-c p{
+    margin-left: 10px;
+}
+.sub-c button{
+    border: solid 3px #6B75FE;
+    padding: 10px 35px;
+    border-radius: 3px;
+    margin-left: 255px;
+    margin-top: 40px;
+    color: #ffffff;
+    background-color: #6B75FE;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+.sub-c button:hover{
+   opacity: 1;
+}
 .container{
-    margin-top: 320px;
+    margin-top: 120px;
     margin-left: 175px;
     position: relative;
     max-width: 1100px;
