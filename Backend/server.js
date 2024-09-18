@@ -39,7 +39,7 @@ app.use("/employees", profile);
 app.use("/Availability", Availability);
 app.use("/requests", Requests);
 
-<<<<<<< Updated upstream
+
 
 
 //medpatient 
@@ -53,8 +53,7 @@ app.use("/Dinner", Dinner);
 
 
 
-=======
->>>>>>> Stashed changes
+
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
     .then(() => {
