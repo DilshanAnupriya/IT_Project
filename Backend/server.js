@@ -8,6 +8,7 @@ const task = require("./Routes/Volunteers/VolunteerTaskRouts");
 const certificate = require("./Routes/Volunteers/VolunteerCertificateRoutes");
 const schedule = require("./Routes/Volunteers/VolunteerScheduleRoutes");
 
+
 //emp profile
 const profile = require("./Routes/employee/employeeProfileRoutes");
 const Availability = require("./Routes/employee/empAvailabilityRoutes");
@@ -20,6 +21,10 @@ const medtask = require("./Routes/MedicalOfficer/MedTaskRoutes");
 const Breakfast = require("./Routes/MedicalOfficer/BreakfastRoute");
 const Lunch = require("./Routes/MedicalOfficer/LunchRoute");
 const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
+
+//careplan
+const care = require("./Routes/careplan/careRoutes");
+
 
 const app = express();
 const cors = require("cors");
@@ -39,7 +44,7 @@ app.use("/employees", profile);
 app.use("/Availability", Availability);
 app.use("/requests", Requests);
 
-<<<<<<< Updated upstream
+
 
 
 //medpatient 
@@ -50,10 +55,11 @@ app.use("/Breakfast", Breakfast);
 app.use("/Lunch", Lunch);
 app.use("/Dinner", Dinner);
 
+//careplan
+app.use("/careplan", care);
 
 
-=======
->>>>>>> Stashed changes
+
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
     .then(() => {
