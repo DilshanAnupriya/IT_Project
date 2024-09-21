@@ -12,7 +12,6 @@ import c1 from "../../Assets/Volunteers/c1.jpeg"
 import c2 from "../../Assets/Volunteers/c2.jpg"
 import c3 from "../../Assets/Volunteers/c3.jpg"
 import c4 from "../../Assets/Volunteers/c4.jpg"
-import ph3 from "../../Assets/Volunteers/ph3.jpg"
 import c5 from "../../Assets/Volunteers/c5.jpeg"
 import c6 from "../../Assets/Volunteers/c6.jpg"
 import c8 from "../../Assets/Volunteers/c8.jpg"
@@ -23,14 +22,9 @@ import c14 from "../../Assets/Volunteers/c14.jpg"
 import c15 from "../../Assets/Volunteers/c15.jpg"
 import c28 from "../../Assets/Volunteers/28.jpg"
 import c27 from "../../Assets/Volunteers/c27.jpg"
-
 import c26 from "../../Assets/Volunteers/c26.jpg"
 import c16 from "../../Assets/Volunteers/c16.jpg"
 import c30 from "../../Assets/Volunteers/c30.jpeg"
-import c20 from "../../Assets/Volunteers/c20.avif"
-
-
-
 import { Link } from 'react-router-dom'
 
 
