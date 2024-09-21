@@ -54,7 +54,20 @@ const Volunteer_Schema = new Schema({
     date: {
         type: Date,
         required: true
+    },
+    mobile: {
+        type: Number,
+        required: true
+    },
+    emobile: {
+        type: Number,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
     }
+
 });
 
 module.exports = mongoose.model(

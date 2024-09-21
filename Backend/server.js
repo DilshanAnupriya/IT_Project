@@ -17,7 +17,7 @@ const Requests = require("./Routes/employee/empRequestRoutes");
 //Med patient
 const patient = require("./Routes/MedicalOfficer/PatientRoutes");
 const medtask = require("./Routes/MedicalOfficer/MedTaskRoutes");
-
+const medreport = require("./Routes/MedicalOfficer/MedreportRoutes");
 const Breakfast = require("./Routes/MedicalOfficer/BreakfastRoute");
 const Lunch = require("./Routes/MedicalOfficer/LunchRoute");
 const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
@@ -50,6 +50,7 @@ app.use("/requests", Requests);
 //medpatient 
 app.use("/patient", patient);
 app.use("/medtask", medtask);
+app.use("/medreport", medreport);
 
 app.use("/Breakfast", Breakfast);
 app.use("/Lunch", Lunch);
@@ -57,6 +58,7 @@ app.use("/Dinner", Dinner);
 
 //careplan
 app.use("/careplan", care);
+
 
 
 

@@ -7,8 +7,10 @@ import Footer from '../../Components/Footer/Footer'
 function Home() {
     return (
         <div>
+
             <Nav />
             <Footer />
+
         </div>
     )
 }
