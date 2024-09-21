@@ -8,6 +8,7 @@ const task = require("./Routes/Volunteers/VolunteerTaskRouts");
 const certificate = require("./Routes/Volunteers/VolunteerCertificateRoutes");
 const schedule = require("./Routes/Volunteers/VolunteerScheduleRoutes");
 
+
 //emp profile
 const profile = require("./Routes/employee/employeeProfileRoutes");
 const Availability = require("./Routes/employee/empAvailabilityRoutes");
@@ -20,6 +21,10 @@ const medreport = require("./Routes/MedicalOfficer/MedreportRoutes");
 const Breakfast = require("./Routes/MedicalOfficer/BreakfastRoute");
 const Lunch = require("./Routes/MedicalOfficer/LunchRoute");
 const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
+
+//careplan
+const care = require("./Routes/careplan/careRoutes");
+
 
 const app = express();
 const cors = require("cors");
@@ -50,6 +55,9 @@ app.use("/medreport", medreport);
 app.use("/Breakfast", Breakfast);
 app.use("/Lunch", Lunch);
 app.use("/Dinner", Dinner);
+
+//careplan
+app.use("/careplan", care);
 
 
 
