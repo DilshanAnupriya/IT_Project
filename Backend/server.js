@@ -21,6 +21,8 @@ const Breakfast = require("./Routes/MedicalOfficer/BreakfastRoute");
 const Lunch = require("./Routes/MedicalOfficer/LunchRoute");
 const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
 
+const user = require("./Routes/user/userRoutes");
+
 const app = express();
 const cors = require("cors");
 
@@ -50,6 +52,9 @@ app.use("/medreport", medreport);
 app.use("/Breakfast", Breakfast);
 app.use("/Lunch", Lunch);
 app.use("/Dinner", Dinner);
+
+//User
+app.use("/User", user);
 
 
 
