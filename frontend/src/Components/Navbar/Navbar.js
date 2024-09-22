@@ -19,9 +19,7 @@ function Navbar() {
             <i className="fa-solid fa-xmark close-btn"></i>
             <li className="menu-item"><Link to="/mainhome">Home</Link></li>
             <li className="menu-item">
-              <Link className="sub-btn" to="/"
-              >Features <i className="fas fa-angle-down"></i
-              ></Link>
+              <Link className="sub-btn" to="/">Features <i className="fas fa-angle-down"></i></Link>
               <ul className="sub-menu">
                 <li className="sub-item"><Link to="/">Mobility Support</Link></li>
                 <li className="sub-item"><Link to="/">Appointment</Link></li>
@@ -31,9 +29,7 @@ function Navbar() {
               </ul>
             </li>
             <li className="menu-item">
-              <Link className="sub-btn" to="/"
-              >Services <i className="fas fa-angle-down"></i
-              ></Link>
+              <Link className="sub-btn" to="/">Services <i className="fas fa-angle-down"></i></Link>
               <ul className="sub-menu subtow">
                 <li className="sub-item more">
                   <Link to="/">Sub Item 01</Link>
@@ -66,7 +62,7 @@ function Navbar() {
                 <li className="sub-item more">
                   <Link className="more-btn" to="/" >More Items </Link>
                   <ul className="more-menu">
-                    <li className="more-item"><Link to="/vol-reg">More Item 01</Link></li>
+                    <li className="more-item"><Link to="">More Item 01</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
@@ -81,7 +77,8 @@ function Navbar() {
         <i className="fa-solid fa-bars menu-btn"></i>
       </nav>
     </div>
-  );
+
+  )
 }
 
 export default Navbar;
