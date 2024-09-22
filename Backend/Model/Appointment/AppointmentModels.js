@@ -5,6 +5,10 @@ const appointmentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    date: {
+        type: Date,
+        required: true
+    },
     gmail: {
         type: String,
         required: true

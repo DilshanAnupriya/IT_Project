@@ -41,6 +41,9 @@ const update = async (req, res) => {
         if (req.body.name) {
             appointment.name = req.body.name;
         }
+        if (req.body.date) {
+            appointment.date = req.body.date;
+        }    
         if (req.body.gmail) {
             appointment.gmail = req.body.gmail;
         }
