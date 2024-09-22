@@ -10,7 +10,7 @@ const empRequest_Schema = Schema({
         type: String,
         required: true
     },
-    Phone_no: {
+    phone_no: {
         type: Number,
         required: true
     },
@@ -30,19 +30,19 @@ const empRequest_Schema = Schema({
         type: String,
         required: true
     },
-    years_experience: {
+    yearsOfQualification: {
         type: String,
         required: true
     },
-    computer_performance: {
+    computerLiteracy: {
         type: String,
         required: true
     },
-    english_level: {
+    englishSkills: {
         type: String,
         required: true
     },
-    description: {
+    reference: {
         type: String,
         required: true
     }

@@ -24,13 +24,13 @@ const getAllRequests = async (req, res, next) => {
 
 //add Requests
 const createRequests = async (req, res, next) => {
-    const {name, email, Phone_no, gender, address, edu_qualifications, experience, years_experience, computer_performance, english_level, description} = req.body;
+    const {name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference} = req.body;
 
     let requ;
 
     //create Requests
     try {
-        requ = new Requests({ name, email, Phone_no, gender, address, edu_qualifications, experience, years_experience, computer_performance, english_level, description });
+        requ = new Requests({ name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference });
         await requ.save(); 
     } catch (error) {
         console.log(error);
@@ -72,12 +72,12 @@ const getIdByRequests = async (req, res, next) => {
 const updateRequests = async (req, res, next) => {
     let id = req.params.id;
     let requ;
-    const {name, email, Phone_no, gender, address, edu_qualifications, experience, years_experience, computer_performance, english_level, description} = req.body;
+    const {name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference} = req.body;
 
     //update Requests
     try {
         requ = await Requests.findByIdAndUpdate(id, 
-            { name: name, email: email, Phone_no: Phone_no, gender: gender, address: address, edu_qualifications: edu_qualifications, experience: experience, years_experience: years_experience, computer_performance: computer_performance, english_level: english_level, description: description }
+            { name: name, email: email, phone_no: phone_no, gender: gender, address: address, edu_qualifications: edu_qualifications, experience: experience, yearsOfQualification: yearsOfQualification, computerLiteracy: computerLiteracy, englishSkills: englishSkills, reference: reference }
         );
         requ = await requ.save(); 
     } catch (error) {
