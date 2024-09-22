@@ -28,8 +28,15 @@ const Breakfast = require("./Routes/MedicalOfficer/BreakfastRoute");
 const Lunch = require("./Routes/MedicalOfficer/LunchRoute");
 const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
 
+
+
+
+const app = express();
+
 //careplan
 const care = require("./Routes/careplan/careRoutes");
+
+const user = require("./Routes/user/userRoutes");
 const cors = require("cors");
 
 
@@ -73,10 +80,11 @@ app.use("/Dinner", Dinner);
 //careplan
 app.use("/careplan", care);
 app.use("/appointments", appointmentRoutes); // Appointment routes (corrected path here)
-
+app.use("/User", user);
 //accounts
 app.use("/funds",fun);
 app.use("/salary",sal);
+
 
 
 // Define the routes
