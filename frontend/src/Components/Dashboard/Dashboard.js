@@ -68,27 +68,6 @@ function Dashboard() {
 
             </ul>
         </div>
-
- 
-        <div className="main">
-            <div className="topbar">
-                <div className="toggle">
-                   <i className="fa fa-bars fa-1x" aria-hidden="true"></i>
-
-                </div>
-
-                <div className="search">
-                    <label>
-                        <input type="text" placeholder="Search here"/>
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-
-                <div className="user">
-                    <img src="" alt=""/>
-                </div>
-            </div>
-        </div>
         </div>
         </div>
     )
