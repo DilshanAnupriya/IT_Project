@@ -47,7 +47,7 @@ const fun = require("./Routes/Account/fundRoutes");
 const sal = require("./Routes/Account/salaryRoutes");
 
 
-const app = express();
+
 
 // Middleware
 app.use(express.json());
