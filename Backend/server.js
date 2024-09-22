@@ -32,6 +32,7 @@ const care = require("./Routes/careplan/careRoutes");
 
 //account
 const fun = require("./Routes/Account/fundRoutes");
+const sal = require("./Routes/Account/salaryRoutes");
 
 const app = express();
 const cors = require("cors");
@@ -68,6 +69,7 @@ app.use("/careplan", care);
 
 //accounts
 app.use("/funds",fun);
+app.use("/salary",sal);
 
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
