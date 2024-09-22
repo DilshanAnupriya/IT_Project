@@ -26,6 +26,13 @@ const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
 const care = require("./Routes/careplan/careRoutes");
 
 
+
+
+
+
+//account
+const fun = require("./Routes/Account/fundRoutes");
+
 const app = express();
 const cors = require("cors");
 
@@ -59,7 +66,8 @@ app.use("/Dinner", Dinner);
 //careplan
 app.use("/careplan", care);
 
-
+//accounts
+app.use("/funds",fun);
 
 
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
