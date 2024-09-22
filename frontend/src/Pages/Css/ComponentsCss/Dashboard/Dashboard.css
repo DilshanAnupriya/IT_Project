@@ -1,38 +1,59 @@
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.navigation {
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+.navigation2 {
     position: fixed;
     width: 300px;
     height: 100%;
-    background: rgb(255, 255, 255);
-    border-left: 10px solid rgb(255, 255, 255);
+    background: #9BA4BF;
+    border-left: 10px solid#9BA4BF;
     transition: 0.5s;
     overflow: hidden;
   }
   .logo img{
     margin-left: 10px;
     margin-top: 10px;
-    width: 50px;
+    width: 70px;
     border-radius: 10px;
   }
-  .navigation.active {
+  .navigation2.active {
     width: 80px;
   }
   
-  .navigation ul {
+  .navigation2 ul {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
   }
-  .navigation .title5{
-    margin-left: 30px;
-    margin-top: 15px;
-    font-weight: 500;
+  .navigation2 .title5{
+    margin-left: 15px;
+    margin-top: 22px;
+    font-weight: 800;
     font-style: bold;
-    font-size: 24px;
+    font-size: 32px;
+  }
+  .navigation2 .title{
+    margin-top: -40px;
+    margin-left: 29px;
   }
 
-  .navigation ul li {
+  .navigation2 ul li {
     position: relative;
     width: 100%;
     list-style: none;
@@ -40,21 +61,21 @@
     border-bottom-left-radius: 30px;
   }
   
-  .navigation ul li:hover,
-  .navigation ul li.hovered {
+  .navigation2 ul li:hover,
+  .navigation2 ul li.hovered {
     background-color: rgb(147, 115, 209);
   }
   
-  .navigation ul li:nth-child(1) {
+  .navigation2 ul li:nth-child(1) {
     margin-bottom: 120px;
     pointer-events: none;
   }
   
-  .navigation ul li:nth-child(5){
+  .navigation2 ul li:nth-child(5){
     margin-top: 280px;
   }
   
-  .navigation ul li a {
+  .navigation2 ul li a {
     position: relative;
     display: block;
     width: 100%;
@@ -64,7 +85,7 @@
   }
   
   
-  .navigation ul li a .icon {
+  .navigation2 ul li a .icon {
     position: relative;
     display: block;
     min-width: 60px;
@@ -72,11 +93,11 @@
     line-height: 75px;
     text-align: center;
   }
-  .navigation ul li a .icon ion-icon {
+  .navigation2 ul li a .icon ion-icon {
     font-size: 1.75rem;
   }
   
-  .navigation ul li a .title {
+  .navigation2 ul li a .title {
     position: relative;
     display: block;
     padding: 0 10px;
