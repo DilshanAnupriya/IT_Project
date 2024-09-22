@@ -31,7 +31,7 @@ const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
 
 
 
-const app = express();
+
 
 //careplan
 const care = require("./Routes/careplan/careRoutes");
