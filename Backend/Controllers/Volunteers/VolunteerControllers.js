@@ -27,12 +27,12 @@ const getAllVolunteers = async (req, res, next) => {
 const CreateVolunteers = async (req, res, next) => {
 
 
-    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description } = req.body;
+    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date, mobile, emobile, address } = req.body;
 
     let volunteers;
 
     try {
-        volunteers = new Volunteer({ first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description });
+        volunteers = new Volunteer({ first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date, mobile, emobile, address });
         await volunteers.save();
     } catch (error) {
         console.log(error)
@@ -47,7 +47,7 @@ const CreateVolunteers = async (req, res, next) => {
 
 
 
-}
+};
 
 
 //get by Id
@@ -66,18 +66,18 @@ const getByIId = async ( ) => {
     }
 
     return res.status(200).json({ volunteer });
-}
+};
 
 
 //Update 
 const UpdateVolunteer = async (req, res, next) => {
     const id = req.params.id
-    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description } = req.body;
+    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date, mobile, emobile, address } = req.body;
     let volunteers;
 
     try {
         volunteers = await Volunteer.findByIdAndUpdate(id,
-            { first_name: first_name, last_name: last_name, date_of_birth: date_of_birth, gender: gender, email: email, duration: duration, skills: skills, type_of_work: type_of_work, experience: experience, days: days, time: time, description: description });
+            { first_name: first_name, last_name: last_name, date_of_birth: date_of_birth, gender: gender, email: email, duration: duration, skills: skills, type_of_work: type_of_work, experience: experience, days: days, time: time, description: description, date: date, mobile: mobile, emobile: emobile, address: address });
         volunteers = await volunteers.save();
     } catch (error) {
         console.log(error);
@@ -87,7 +87,7 @@ const UpdateVolunteer = async (req, res, next) => {
         return res.status(404).json({ massage: "unable to update" });
     }
     return res.status(200).json({ volunteers });
-}
+};
 
 
 //delete 
@@ -106,7 +106,7 @@ const DeleteVolunteer = async (req, res, next) => {
     }
 
     return res.status(200).json({ volunteer });
-}
+};
 
 exports.getAllVolunteers = getAllVolunteers;
 exports.CreateVolunteers = CreateVolunteers;

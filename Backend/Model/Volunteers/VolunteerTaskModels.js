@@ -21,9 +21,14 @@ const VolunteerTask_Schema = Schema({
     special_instruction: {
         type: String,
         required: true
+    },
+    assign_to: {
+        type: String,
+        required: true
     }
 
-})
+
+});
 
 module.exports = mongoose.model(
     "VolunteerTaskModels", //file name
