@@ -1,0 +1,94 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 120px auto;  
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.header-box {
+    background-color: #6B75FE;  
+    border-radius: 8px 8px 0 0;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.header-box h2 {
+    color: white;
+    font-size: 22px;
+    margin: 0;
+}
+
+.fields {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    width: 48%;  
+    margin-bottom: 15px;
+}
+
+.input-field label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-field input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Change input border on hover/focus */
+.input-field input:focus {
+    border-color: #6B75FE;
+}
+
+/* Submit Button Styling */
+.subBtn {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 0;
+    background-color: #6B75FE;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.subBtn:hover {
+    background-color: #4070ff;
+}
+
+@media (max-width: 768px) {
+    .fields {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-field {
+        width: 100%; 
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+

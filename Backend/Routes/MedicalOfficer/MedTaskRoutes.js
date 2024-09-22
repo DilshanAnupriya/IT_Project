@@ -1,6 +1,7 @@
 const express = require("express");
 const MTasksd = express.Router();
 
+const Tasks = require("../../Model/MedicalOfficer/MedTaskModel");
 
 //Insert Task Controller
 const MedTaskController = require('../../Controllers/MedicalOfficer/MedTaskControllers');

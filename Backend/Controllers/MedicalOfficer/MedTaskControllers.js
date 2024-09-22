@@ -23,12 +23,12 @@ const getAllMedTasks = async (req, res, next) => {
 //data insert
 const addMedTasks = async( req, res, next) =>{
 
-    const {Pat_number,Elder_pname,Treatments,Taskdate,Status} =req.body;
+    const {Elder_pname,Treatments,Taskdate,Status} =req.body;
 
     let mtask;
 
     try{
-        mtask = new MTasksd({Pat_number,Elder_pname,Treatments,Taskdate,Status});
+        mtask = new MTasksd({Elder_pname,Treatments,Taskdate,Status});
         await mtask.save();
     }catch(err){
         console.log(err);
@@ -68,12 +68,12 @@ const getIdByMedTask = async (req, res, next) => {
 const updateMedicalTasks = async (req, res, next) => {
     let id = req.params.id;
     let mtask;
-    const {Pat_number,Elder_pname,Treatments,Taskdate,Status} = req.body;
+    const {Elder_pname,Treatments,Taskdate,Status} = req.body;
 
     //update tasks
     try {
         mtask = await MTasksd.findByIdAndUpdate(id, 
-            { Pat_number : Pat_number,Elder_pname :Elder_pname,Treatments :Treatments,Taskdate :Taskdate,Status :Status}
+            {Elder_pname :Elder_pname,Treatments :Treatments,Taskdate :Taskdate,Status :Status}
         );
         mtask = await mtask.save(); //tasks
     } catch (error) {
