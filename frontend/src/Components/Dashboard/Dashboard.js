@@ -10,7 +10,7 @@ function Dashboard() {
     return (
         <div>
               <div className="container11">
-        <div className="navigation">
+        <div className="navigation2">
             <ul>
                 <li>
                     <Link to="">
