@@ -5,16 +5,16 @@ import Dash from "../../Components/Dashboard/Dashboard"
 
 
 
+
 function Home() {
     
 
 
     return (
         <div >
-           <Nav/>
-           <Footer/>
+           
         </div>
                 
-                )
+   )
 }
  export default Home
