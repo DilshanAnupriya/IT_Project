@@ -1,0 +1,137 @@
+.our-medical-services {
+    padding: 50px 0;
+  }
+  
+  .our-medical-services .container5 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: auto;
+  }
+  
+  .our-medical-services .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: -65px;
+    color: #000000;
+  }
+  
+  .our-medical-services .section-title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 70px;
+    
+  }
+  
+  .our-medical-services .section-title p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  .our-medical-services .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 100px;
+  }
+  
+  .our-medical-services .service-item {
+    border: 1px solid #ddd;
+    margin-bottom: 80px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .our-medical-services .service-item .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .our-medical-services .service-item .icon img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+  }
+  
+  .our-medical-services .service-item h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .our-medical-services .service-item p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  .our-medical-services .meet-our-team {
+    background-color: #f8f8f8;
+    padding: 50px ;
+  }
+  
+  .our-medical-services .meet-our-team .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 80px;
+  }
+
+  .our-medical-services .meet-our-team .container44 {
+    width: 1500px;
+    margin: 0 auto;
+    padding: 0 15px;
+    margin-bottom: -50px;
+    height: 1500px;
+    background-color: #3d5ec3;
+  }
+  
+  .our-medical-services .meet-our-team .team-member {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .our-medical-services .meet-our-team .team-member img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .our-medical-services .meet-our-team .team-member h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  
+  .our-medical-services .meet-our-team .team-member p {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+@media (max-width: 768px) {
+    .our-medical-services .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .our-medical-services .team-grid {
+      grid-template-columns: 1fr;
+    }
+ }
+  .newN{
+    margin-bottom: 100px;
+}
+
+.newf{
+    margin-top: 0px;
+    width: 1550px;
+}
+
