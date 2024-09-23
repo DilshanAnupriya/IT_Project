@@ -123,6 +123,8 @@ form .fields .input-field{
     margin-top: 10px;
     width: 1020px;
     height: 150px;
+    border: 1px solid black;
+    border-radius: 6px;
 }
 .input-field input:is(:focus, :valid){
     box-shadow: 0 3px 6px rgba(0,0,0,0,13);

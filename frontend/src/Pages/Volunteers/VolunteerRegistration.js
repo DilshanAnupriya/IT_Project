@@ -116,12 +116,12 @@ function VolunteerRegistration() {
     return (
         <div className='all'>
             <Nav />
-          
-            <div className='container' id='section2'>
+
+            <div className='container30' id='section2'>
                 <header>Registration</header>
 
                 <form action='#' onSubmit={handleSubmit}>
-                    <div ref={form1} className='form first'>
+                    <div ref={form1} className='form first30'>
                         <div className='details personal'>
                             <span className='title'>Personal Details</span>
 
@@ -245,9 +245,9 @@ function VolunteerRegistration() {
                                     </select>
                                 </div>
 
-                                <div className='input-field'>
+                                <div className='input-fieldA'>
                                     <label>Why Do You Want To Volunteer?</label>
-                                    <textarea name='description' onChange={handleChange} value={input.description} placeholder='Enter your description' ></textarea>
+                                    <textarea className='area' name='description' onChange={handleChange} value={input.description} placeholder='Enter your description' ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -261,8 +261,10 @@ function VolunteerRegistration() {
                 </form>
             </div>
 
+            <div className='ft'>
+                <Footer />
+            </div>
 
-            
 
         </div>
     )
