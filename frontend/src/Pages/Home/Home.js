@@ -1,7 +1,8 @@
 import React from 'react'
 import Nav from "../../Components/Navbar/Navbar"
 import Footer from '../../Components/Footer/Footer'
-import Dash from "../../Components/Dashboard/Dashboard"
+
+import UpdateIneligible from '../../Pages/Update_ineligible/Updateineligible'
 
 
 
@@ -11,8 +12,9 @@ function Home() {
 
     return (
         <div >
-           <Nav/>
-           <Footer/>
+          
+          <UpdateIneligible/>
+
         </div>
                 
                 )
