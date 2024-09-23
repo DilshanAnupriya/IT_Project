@@ -44,7 +44,7 @@ function VolunteerRegistration() {
     }
 
     const sendRequest = async () => {
-        await axios.post("http://localhost:8000/users/add", {
+        await axios.post("http://localhost:3000/users/add", {
 
             first_name: String(input.first_name),
             last_name: String(input.last_name),

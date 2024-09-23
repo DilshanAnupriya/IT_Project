@@ -4,7 +4,7 @@ import Dash from "../../Components/Dashboard/Dashboard";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const URL = "http://localhost:8000/users/";
+const URL = "http://localhost:3000/users/";
 
 const fetchHandler = async () => {
     const data = await axios.get(URL).then((res) => res.data);
