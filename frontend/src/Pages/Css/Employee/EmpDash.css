@@ -1,0 +1,128 @@
+/* Modal Background */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.modal-background35 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Container */
+.modal-container35 {
+    background-color: white;
+    width: 800px; /* Increased width to fit form fields */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    max-width: 90%; /* Added max-width to prevent overflow */
+    margin: 40px auto;
+}
+
+/* Form Elements */
+.modal-container35 form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-container35 h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-group35 {
+    margin-bottom: 15px;
+    flex-basis: 45%; /* Added flex-basis to divide form fields into two columns */
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #555;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Add focus effect for input fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+    border-color: #4caf50; /* Green focus border */
+    outline: none;
+}
+
+/* Error Messages */
+.error35 {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Submit Button */
+.submit-btn35 {
+    background-color: #4caf50; /* Green button */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Close Button */
+.close-btn35 {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #ff4d4d; /* Red close button */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    background-color: #ff1a1a;
+}
+
+/* Added CSS Grid to divide form fields into two columns */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}

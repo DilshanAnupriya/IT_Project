@@ -3,8 +3,8 @@
     position: fixed;
     width: 300px;
     height: 100%;
-    background: rgb(255, 255, 255);
-    border-left: 10px solid rgb(255, 255, 255);
+    background: #9BA4BF;
+    border-left: 10px solid #9BA4BF;
     transition: 0.5s;
     overflow: hidden;
   }
