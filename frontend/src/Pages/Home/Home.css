@@ -1,0 +1,148 @@
+.d1{
+    width: 100%;
+}
+.d1 img{
+    width: 100%;
+}
+.s1 {
+    position: absolute;
+    margin-top: -700px;
+    margin-left: 100px;
+    color: white;
+    background: transparent ;
+    
+}
+.s1 h1{
+    font-size: 48px;
+}
+.d2{
+    margin-top: 500px;
+    margin-left: 100px;
+    display: flex;
+    gap: 50px;
+
+}
+.d2 .dis{
+    width: 40%;
+
+}
+.d2 img{
+    width: 600px;
+    height: 600px;
+}
+.d2 .dis .p1{
+    margin-top: 20px;
+}
+.d2 .dis .p2{
+    margin-top: 30px;
+}
+.dflex{
+    display: flex;
+    gap: 120px;
+    height: 120px;
+    margin-top: 40px;
+
+
+}
+.s2{
+    width: 200px;
+    background-color: aqua;
+    padding: 30px;
+    border-radius: 10px;
+}
+.dis button{
+    margin-top: 75px;
+    padding: 15px 35px;
+    border-radius: 10px;
+    color: black;
+    border: 3px solid black;
+    background-color: white;
+}
+
+.container90{
+    background:white;
+    padding:15px 9%;
+    padding-bottom: 100px;
+    margin-left: -10px;
+    margin-top: 300px;
+    background-color: #6B75FE;
+    padding-top: 150px;
+   
+}
+
+.container90 .heading90{
+    text-align: center;
+    padding-bottom: 15px;
+    color:#000000;
+    font-size: 50px;
+}
+
+.container90 .box-container90{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap:50px;
+    margin-top: 100px;
+    
+}
+
+.container90 .box-container90 .box90{
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    padding:30px 20px;
+    width: 360px;
+    height: 400px;
+    animation: show 0.5s linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+.container90 .box-container90 .box90 img{
+    height: 180px;
+}
+
+.container90 .box-container90 .box90 h3{
+    color:#444;
+    font-size: 22px;
+    padding:10px 0;
+}
+
+.container90 .box-container90 .box90 p{
+    color:#777;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.container90 .box-container90 .box90 .btn{
+    margin-top: 10px;
+    display: inline-block;
+    background:#333;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+}
+
+.container90 .box-container90 .box90 .btn:hover{
+    letter-spacing: 1px;
+    background-color: #6B75FE;
+    color: #fff;
+}
+
+.container90 .box-container90 .box90:hover{
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transform: scale(1.03);
+   
+}
+/*========font colors =====*/
+.content-6 span{
+    background: linear-gradient(to bottom, #696c96, #6B75FE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container90 span {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
