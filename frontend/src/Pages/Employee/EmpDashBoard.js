@@ -23,9 +23,29 @@ function EmpDashBoard() {
 
     return (
         <div>
-            <div className='dashboard36'>
+            <div className='dashboard70'>
                 <Dash />
             </div>
+            
+            <section className="count-panel">
+    <div className="count-box">
+        <h2>Care Givers</h2>
+        <p>Number of Care givers: 16</p>
+    </div>
+    <div className="count-box">
+        <h2>Doctors</h2>
+        <p>Number of Doctors: 9</p>
+    </div>
+    <div className="count-box">
+        <h2>Nurses</h2>
+        <p>Number of Nurses: 12</p>
+    </div>
+    <div className="count-box">
+        <h2>Other</h2>
+        <p>Number of Other Staff: 7</p>
+    </div>
+</section>
+
             <main className="table36" id="customers_table">
                 <section className="table__header36">
                     <h1>Employee Details</h1>
@@ -33,6 +53,8 @@ function EmpDashBoard() {
                         <input type="search" placeholder="Search Data..." />
                         <img src={Searchpng} alt="" />
                     </div>
+                    
+                    <button className='add36'>Add Employee</button>
                 </section>
                 <section className="table__body36">
                     <table>
