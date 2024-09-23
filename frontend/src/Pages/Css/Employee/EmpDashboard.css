@@ -8,8 +8,8 @@ body {
 
 .dashboard70 {
     position: absolute;
-    margin-top: -100px ;
-    margin-left: -20px;
+    margin-top: -100px;
+    margin-left: -70px;
 }
 
 .main-container {
@@ -27,9 +27,11 @@ body {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Add horizontal scrolling for the table body */
+/* Add vertical and horizontal scrolling for the table body */
 .table__body36 {
     padding: 20px;
+    max-height: 400px; /* Set a max height for the table to create vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: auto; /* Allow horizontal scrolling */
 }
 
@@ -165,8 +167,6 @@ body {
     font-size: 22px;
     color: #f7f7f7;
 }
-
-
 
 .count-box p {
     font-size: 16px;
