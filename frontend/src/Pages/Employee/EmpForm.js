@@ -121,11 +121,11 @@ function EmployeeForm() {
     return (
         <div className='all'>
             <Nav />
-            <div className='container'>
+            <div className='container37'>
                 <header>Job Application</header>
                 <form onSubmit={handleSubmit}>
-                    <div className='fields'>
-                        <div className='input-field'>
+                    <div className='fields37'>
+                        <div className='input-field37'>
                             <label>Name (First and Last)</label>
                             <input 
                                 type='text' 
@@ -137,7 +137,7 @@ function EmployeeForm() {
                             />
                             {errors.name && <span className="error">{errors.name}</span>}
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Email Address</label>
                             <input 
                                 type='email' 
@@ -149,7 +149,7 @@ function EmployeeForm() {
                             />
                             {errors.email && <span className="error">{errors.email}</span>}
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Phone Number</label>
                             <input 
                                 type='tel' 
@@ -161,14 +161,14 @@ function EmployeeForm() {
                             />
                             {errors.phone_no && <span className="error">{errors.phone_no}</span>}
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Gender</label>
                             <select name="gender" onChange={handleChange} value={input.gender}>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Address</label>
                             <input 
                                 type='text' 
@@ -180,7 +180,7 @@ function EmployeeForm() {
                             />
                             {errors.address && <span className="error">{errors.address}</span>}
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Education Qualification</label>
                             <select name="edu_qualifications" onChange={handleChange} value={input.edu_qualifications}>
                                 <option value="High School">High School</option>
@@ -189,21 +189,21 @@ function EmployeeForm() {
                                 <option value="Postgraduate">Postgraduate</option>
                             </select>
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Computer Literacy</label>
                             <select name="computerLiteracy" onChange={handleChange} value={input.computerLiteracy}>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Do you have experience in a similar role?</label>
                             <select name="experience" onChange={handleChange} value={input.experience}>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Years of Qualification</label>
                             <select name="yearsOfQualification" onChange={handleChange} value={input.yearsOfQualification}>
                                 <option value="0-2">0-2 Years</option>
@@ -211,7 +211,7 @@ function EmployeeForm() {
                                 <option value="5+">5+ Years</option>
                             </select>
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>English Speaking Skills</label>
                             <select name="englishSkills" onChange={handleChange} value={input.englishSkills}>
                                 <option value="Good">Good</option>
@@ -219,7 +219,7 @@ function EmployeeForm() {
                                 <option value="Basic">Basic</option>
                             </select>
                         </div>
-                        <div className='input-field'>
+                        <div className='input-field37'>
                             <label>Reference</label>
                             <input 
                                 type='text' 
@@ -232,11 +232,11 @@ function EmployeeForm() {
                             {errors.reference && <span className="error">{errors.reference}</span>}
                         </div>
                     </div>
-                    <div className="button-container">
-                    <button className='subBtn'>Submit</button> {/* Updated button class */}</div>
+                    <div className="button-container37">
+                    <button className='subBtn37'>Submit</button> {/* Updated button class */}</div>
                 </form>
             </div>
-            <div className='newf'><Footer /></div>
+            <div className='newf37'><Footer /></div>
         </div>
     );
 }

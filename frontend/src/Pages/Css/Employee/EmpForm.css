@@ -14,7 +14,7 @@ body {
     display: flex;
 }
 
-.container {
+.container37 {
     margin-top: 120px;
     margin-left: 175px;
     position: relative;
@@ -27,13 +27,13 @@ body {
     height: auto;
 }
 
-.container header {
+.container37 header {
     font-size: 26px;
     font-weight: 600;
     color: #333;
 }
 
-.container header::before {
+.container37 header::before {
     content: "";
     position: absolute;
     left: 0;
@@ -45,14 +45,15 @@ body {
     background-color: #4070fa;
 }
 
-.container form {
+
+.container37 form {
     position: relative;
     margin-top: 29px;
     min-height: 490px;
     background-color: #fff;
 }
 
-.container form .fields {
+.container37 form .fields37 {
     margin-top: 15px;
     display: flex;
     align-items: center;
@@ -60,20 +61,20 @@ body {
     flex-wrap: wrap;
 }
 
-form .fields .input-field {
+form .fields37 .input-field37 {
     display: flex;
     width: 290px;
     flex-direction: column;
     margin: 10px;
 }
 
-.input-field label {
+.input-field37 label {
     font-size: 15px;
     font-weight: 500;
     color: #2e2e2e;
 }
 
-.input-field input, .input-field select {
+.input-field37 input, .input-field37 select {
     outline: none;
     font-size: 14px;
     font-weight: 400;
@@ -85,33 +86,33 @@ form .fields .input-field {
     margin: 8px 0;
 }
 
-.input-field select {
+.input-field37 select {
     cursor: pointer;
 }
 
-.input-field input:is(:focus, :valid), .input-field select:is(:focus, :valid) {
+.input-field37 input:is(:focus, :valid), .input-field37 select:is(:focus, :valid) {
     box-shadow: 0 3px 6px rgba(0,0,0,0.13);
 }
 
-.input-field input[type="date"] {
+.input-field37 input[type="date"] {
     color: #707070;
 }
 
-.input-field input[type="date"]:valid {
+.input-field37 input[type="date"]:valid {
     color: #707070;
 }
 
-.input-field input:hover, .input-field select:hover {
+.input-field37 input:hover, .input-field select:hover {
     border-color: #6B75FE;
 }
 
-.button-container {
+.button-container37 {
     display: flex;
     justify-content: center; /* Horizontally centers the button */
     margin-top: 20px; /* Optional: Adds some space above the button */
 }
 
-.container form .subBtn {
+.container37 form .subBtn37 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,11 +133,11 @@ form button:hover {
     background-color: #4070ff;
 }
 
-.newN {
+.newN37 {
     margin-bottom: 80px;
 }
 
-.newf {
+.newf37 {
     margin-top: 180px;
     width: 1550px;
 }
