@@ -4,7 +4,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.modal-background35 {
+.modal-background33 {
     position: fixed;
     top: 0;
     left: 0;
@@ -18,7 +18,7 @@ html {
 }
 
 /* Modal Container */
-.modal-container35 {
+.modal-container33 {
     background-color: white;
     width: 800px; /* Increased width to fit form fields */
     padding: 30px;
@@ -30,19 +30,19 @@ html {
 }
 
 /* Form Elements */
-.modal-container35 form {
+.modal-container33 form {
     display: flex;
     flex-direction: column;
 }
 
-.modal-container35 h2 {
+.modal-container33 h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
 }
 
-.form-group35 {
+.form-group33 {
     margin-bottom: 15px;
     flex-basis: 45%; /* Added flex-basis to divide form fields into two columns */
 }
@@ -74,7 +74,7 @@ input[type="date"]:focus {
 }
 
 /* Error Messages */
-.error35 {
+.error33 {
     color: red;
     font-size: 13px;
     margin-top: 5px;
@@ -82,7 +82,7 @@ input[type="date"]:focus {
 }
 
 /* Submit Button */
-.submit-btn35 {
+.submit-btn33 {
     background-color: #4caf50; /* Green button */
     color: white;
     padding: 10px;
@@ -98,7 +98,7 @@ input[type="date"]:focus {
 }
 
 /* Close Button */
-.close-btn35 {
+.close-btn33 {
     position: absolute;
     top: 15px;
     right: 15px;

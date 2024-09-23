@@ -99,12 +99,12 @@ function EmpDash() {
     };
 
     return (
-        <div className="modal-background35">
-            <div className="modal-container35">
+        <div className="modal-background33">
+            <div className="modal-container33">
                 <form onSubmit={handleSubmit}>
                     <h2>Add Employee Schedule</h2>
                     <div className="grid-container">
-                        <div className="form-group35">
+                        <div className="form-group33">
                             <label>Employee Name</label>
                             <input 
                                 type="text" 
@@ -113,9 +113,9 @@ function EmpDash() {
                                 onChange={handleChange} 
                                 required 
                             />
-                            {errors.emp_name && <p className="error35">{errors.emp_name}</p>}
+                            {errors.emp_name && <p className="error33">{errors.emp_name}</p>}
                         </div>
-                        <div className="form-group35">
+                        <div className="form-group33">
                             <label>Schedule Date</label>
                             <input 
                                 type="date" 
@@ -124,9 +124,9 @@ function EmpDash() {
                                 onChange={handleChange} 
                                 required 
                             />
-                            {errors.schedule_date && <p className="error35">{errors.schedule_date}</p>}
+                            {errors.schedule_date && <p className="error33">{errors.schedule_date}</p>}
                         </div>
-                        <div className="form-group35">
+                        <div className="form-group33">
                             <label>Schedule Start Time</label>
                             <input 
                                 type="text" 
@@ -135,9 +135,9 @@ function EmpDash() {
                                 onChange={handleChange} 
                                 required 
                             />
-                            {errors.schedule_start_time && <p className="error35">{errors.schedule_start_time}</p>}
+                            {errors.schedule_start_time && <p className="error33">{errors.schedule_start_time}</p>}
                         </div>
-                        <div className="form-group35">
+                        <div className="form-group33">
                             <label>Schedule End Time</label>
                             <input 
                                 type="text" 
@@ -146,12 +146,12 @@ function EmpDash() {
                                 onChange={handleChange} 
                                 required 
                             />
-                            {errors.schedule_end_time && <p className="error35">{errors.schedule_end_time}</p>}
+                            {errors.schedule_end_time && <p className="error33">{errors.schedule_end_time}</p>}
                         </div>
                     </div>
-                    <button type="submit" className="submit-btn35">Submit</button>
+                    <button type="submit" className="submit-btn33">Submit</button>
                 </form>
-                <button className="close-btn35" onClick={onClose}>X</button>
+                <button className="close-btn33" onClick={onClose}>X</button>
             </div>
         </div>
     );
