@@ -18,11 +18,18 @@ const SalaryAllocation = () => {
                     <h3>Salary Eligible list</h3>
                     <form>
                         <select>
-                            <option value="type">Type</option>
+                            <option value="Employees">Employees</option>
+                            <option value="Volunteers">Volunteers</option>
+                            <option value="Doctors">Doctors</option>
+                            <option value="Other staff">Other staff</option>
                         </select>
                         <select>
+                            <option value="5%">5%+</option>
                             <option value="10%">10%+</option>
+                            <option value="15%">15%+</option>
+                            <option value="20%">20%</option>
                         </select>
+                        
                     </form>
                     <table>
                         <thead>
