@@ -47,7 +47,7 @@ html {
     flex-basis: 45%; /* Added flex-basis to divide form fields into two columns */
 }
 
-label {
+.form-group35 label {
     font-size: 16px;
     margin-bottom: 5px;
     color: #555;
