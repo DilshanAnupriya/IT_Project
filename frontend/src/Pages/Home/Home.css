@@ -3,20 +3,46 @@
 }
 .d1 img{
     width: 100%;
+    margin-top: 70px;
 }
 .s1 {
     position: absolute;
-    margin-top: -700px;
+    margin-top: -650px;
     margin-left: 100px;
-    color: white;
+    color: rgb(44, 41, 41);
     background: transparent ;
+    background-color: linear-gradient(135deg,rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(90px);
+    -webkit-backdrop-filter: blur(50px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    width: 400px;
+    height: 370px;
+    text-align: center;
     
 }
 .s1 h1{
-    font-size: 48px;
+    margin-top: 20px;
+    font-size: 42px;
+    padding-top: 10px;
+}
+.s1 p{
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+.s1 span{
+    color: rgb(44, 41, 41);
+}
+.s1 button{
+    margin-top: 30px;
+    padding: 10px 25px;
+    border-radius: 6px;
+    background-color: #6B75FE;
+    color: white;
 }
 .d2{
-    margin-top: 500px;
+    margin-top: 400px;
     margin-left: 100px;
     display: flex;
     gap: 50px;
@@ -24,11 +50,15 @@
 }
 .d2 .dis{
     width: 40%;
+    animation: appear5 15s linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 
 }
 .d2 img{
-    width: 600px;
+    width: 700px;
     height: 600px;
+    margin-top: -0px;
 }
 .d2 .dis .p1{
     margin-top: 20px;
@@ -38,42 +68,62 @@
 }
 .dflex{
     display: flex;
-    gap: 120px;
+    gap: 20px;
     height: 120px;
     margin-top: 40px;
 
 
 }
 .s2{
-    width: 200px;
-    background-color: aqua;
+    width: 300px;
+    height: 150px;
+    background-color: #D9D9D9;
     padding: 30px;
     border-radius: 10px;
 }
+.s2:hover{
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transform: scale(1.01);
+}
+.s2 h1{
+    color: #6B75FE;
+}
+@keyframes appear5{
+    from{
+        opacity: 0;
+        transform: translateY(-50px);
+    }to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
 .dis button{
     margin-top: 75px;
-    padding: 15px 35px;
+    padding: 12px 20px;
     border-radius: 10px;
-    color: black;
-    border: 3px solid black;
-    background-color: white;
+    color: #6B75FE;
+    border: 2px solid #6B75FE;
+    background-color: #ffffff;
 }
-
+.dis button:hover{
+    color: #ffffff;
+    background-color: #6B75FE;
+}
 .container90{
     background:white;
     padding:15px 9%;
     padding-bottom: 100px;
     margin-left: -10px;
-    margin-top: 300px;
+    margin-top: 160px;
     background-color: #6B75FE;
-    padding-top: 150px;
+    padding-top: 100px;
    
 }
 
 .container90 .heading90{
     text-align: center;
     padding-bottom: 15px;
-    color:#000000;
+    color:#ffffff;
     font-size: 50px;
 }
 
@@ -92,7 +142,7 @@
     text-align: center;
     padding:30px 20px;
     width: 360px;
-    height: 400px;
+    height: 500px;
     animation: show 0.5s linear;
     animation-timeline: view();
     animation-range: entry 0% cover 40%;
@@ -145,4 +195,62 @@
     background: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.care{
+    display: flex;
+    margin-left: 110px;
+    gap: 10px;
+}
+.care img{
+    width: 45%;
+    border-radius: 6px;
+}
+.care .care1{
+    background-color: #DFF3FD;
+    margin-top: 68px;
+    padding-left: 20px;
+    padding-top: 20px;
+    border-radius: 20px;
+    animation: slide1 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+
+}
+.care .care1 h1{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.care .care1 p{
+    margin-top: 30px;
+    padding-right: 90px;
+}
+.care .care1 span{
+    color: #0B447E;
+}
+.dis span{
+    color: #0B447E;
+}
+.care .care1 button{
+  margin-top: 20px;
+  padding: 5px 20px;
+  border: 2px solid #6B75FE;
+  color: #6B75FE;
+  background-color:#DFF3FD;
+  border-radius: 10px;
+}
+.care .care1 button:hover{
+    background-color: #6B75FE;
+    color: white;
+}
+.ft0{
+    margin-top: 50px;
+}
+@keyframes slide1{
+    from{
+        opacity: 0;
+        transform: translateX(200px);
+    }to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
