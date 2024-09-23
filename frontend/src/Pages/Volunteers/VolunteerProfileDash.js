@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import "../Css/Volunteers/VolunteerProfileDash.css"
 import Dash from "../../Components/Dashboard/Dashboard"
  import axios from "axios"
-
+ import { Link } from "react-router-dom";
 
 
 const URL ="http://localhost:3000/users/"
@@ -91,7 +91,7 @@ function VolunteerProfileDash() {
                                 <td>for job</td>
                                 <td> 
                                     <div className='action'>
-                                    <button>up</button>
+                                    <Link to="/volunteer_pd_update"><button>up</button></Link>
                                     <button className='del'>del</button>
                                     </div>
                                 </td>
