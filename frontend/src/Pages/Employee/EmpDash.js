@@ -126,7 +126,7 @@ function EmpDash() {
             email: String(input.email),
             qualifications: String(input.qualifications),
             bank_details: String(input.bank_details),
-            joined_date: String(input.joined_date),
+            joined_date: Date(input.joined_date),
         }).then(res => res.data);
     };
 
