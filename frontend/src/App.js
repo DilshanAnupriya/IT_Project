@@ -4,6 +4,11 @@ import './App.css';
 import Home from "./Pages/Home/Home";
 import Vol from "./Pages/Volunteers/VolunteerRegistration";
 import Volunteer from "./Pages/Volunteers/VolunteerHome";
+
+
+
+
+import EmpDashForm from "./Pages/Employee/EmpDash";
 function App() {
   return (
     <div>
@@ -15,6 +20,7 @@ function App() {
           <Route path='/vol-reg' element={<Vol />} />
           <Route path='/volunteer' element={<Volunteer />} />
 
+          <Route path='/EmpDashForm' element={<EmpDashForm />} />
         </Routes>
       </React.Fragment>
     </div>
