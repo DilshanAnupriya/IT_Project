@@ -3,7 +3,6 @@ import Nav from "../../Components/Navbar/Navbar"
 import Footer from '../../Components/Footer/Footer'
 
 
-
 function Home() {
     return (
         <div>

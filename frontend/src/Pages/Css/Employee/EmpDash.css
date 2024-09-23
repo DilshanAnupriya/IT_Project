@@ -93,7 +93,7 @@ input[type="date"]:focus {
     transition: background-color 0.3s ease-in-out;
 }
 
-.submit-btn:hover {
+.submit-btn35:hover {
     background-color: #45a049;
 }
 
@@ -116,12 +116,12 @@ input[type="date"]:focus {
     transition: background-color 0.3s ease-in-out;
 }
 
-.close-btn:hover {
+.close-btn35:hover {
     background-color: #ff1a1a;
 }
 
 /* Added CSS Grid to divide form fields into two columns */
-.grid-container {
+.grid-container35 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;

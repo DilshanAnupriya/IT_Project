@@ -140,7 +140,7 @@ function EmpDash() {
             <div className="modal-container35">
                 <form onSubmit={handleSubmit}>
                     <h2>Add Employee</h2>
-                    <div className="grid-container">
+                    <div className="grid-container35">
                         <div className="form-group35">
                             <label>First Name</label>
                             <input 
