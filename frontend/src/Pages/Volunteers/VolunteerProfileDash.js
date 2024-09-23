@@ -32,23 +32,14 @@ function VolunteerProfileDash() {
                         <input type="search" placeholder="Search Data..." />
                         <img src="images/search.png" alt="" />
                     </div>
-                    <div className="export__file">
-                        <label htmlFor="export-file" className="export__file-btn" title="Export File">+</label>
-                        <input type="checkbox" id="export-file" />
-                        <div className="export__file-options">
-                            <label>Export As </label>
-                            <label htmlFor="export-file" id="toPDF">PDF <img src="images/pdf.png" alt="" /></label>
-                            <label htmlFor="export-file" id="toJSON">JSON <img src="images/json.png" alt="" /></label>
-                            <label htmlFor="export-file" id="toCSV">CSV <img src="images/csv.png" alt="" /></label>
-                            <label htmlFor="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
-                        </div>
-                    </div>
+                    <button className='create'>+</button>
+
                 </section>
                 <section className="table__body">
                     <table>
                         <thead>
                             <tr>
-                                <th>Id</th>
+
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Date of Birth</th>
@@ -70,7 +61,7 @@ function VolunteerProfileDash() {
                         <tbody>
                             {users.map((user) => (
                                 <tr key={user._id}>
-                                    <td>{user._id}</td>
+
                                     <td>{user.first_name}</td>
                                     <td>{user.last_name}</td>
                                     <td>{new Date(user.date_of_birth).toLocaleDateString()}</td>
@@ -88,8 +79,8 @@ function VolunteerProfileDash() {
                                     <td>{user.description}</td>
                                     <td>
                                         <div className='action'>
-                                            <Link to="/volunteer_pd_update"><button>up</button></Link>
-                                            <button className='del'>del</button>
+                                            <Link to="/volunteer_pd_update"><button className='up'>Edit</button></Link>
+                                            <Link to=""><button className='del'>Delete</button></Link>
                                         </div>
                                     </td>
                                 </tr>
