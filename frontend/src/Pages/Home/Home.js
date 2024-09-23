@@ -3,7 +3,7 @@ import Nav from "../../Components/Navbar/Navbar"
 import Footer from '../../Components/Footer/Footer'
 import Dash from "../../Components/Dashboard/Dashboard"
 import "../Home/Home.css"
-import pic from "../../Assets/d4.jpg"
+import pic from "../../Assets/dd11.jpg"
 import { Link } from 'react-router-dom'
 function Home() {
 
@@ -98,8 +98,8 @@ function Home() {
                 </div>
             </div>
             <div className='ft0'>
-                <Footer/>
-                </div>
+                <Footer />
+            </div>
 
 
 
