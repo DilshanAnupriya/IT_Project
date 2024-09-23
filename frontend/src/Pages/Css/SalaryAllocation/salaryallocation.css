@@ -1,0 +1,116 @@
+/* General container70 styling */
+.container70 {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+.container70 h1{
+    margin-top: 100px;
+}
+/* Title styling */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Report section */
+.report-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+/* Salary Eligible List */
+.salary-eligible, .salary-history, .ineligible-list {
+    width: 48%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form select {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+table td {
+    background-color: #fff;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Ineligible List */
+.ineligible-list {
+    margin-top: 40px;
+}
+
+.ineligible-list table td {
+    padding: 12px;
+}
+
+.ineligible-list button {
+    background-color: #FF5722;
+}
+
+.ineligible-list button:hover {
+    background-color: #E64A19;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .report-section {
+        flex-direction: column;
+    }
+
+    .salary-eligible, .salary-history {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
