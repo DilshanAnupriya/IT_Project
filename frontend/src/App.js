@@ -18,7 +18,11 @@ import EmpDashForm from "./Pages/Employee/EmpDash";
 import Vol_pd from "./Pages/Volunteers/VolunteerProfileDash"
 import Vol_update from "./Pages/Volunteers/VolunteerPdUpdate"
 
+import empAvalForm from "./Pages/Employee/EmpAvalForm"
+
+
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
+
 
 
 
@@ -37,6 +41,10 @@ function App() {
           <Route path= '/empForm' element={<EmpForm />}/>
 
           <Route path='/volunteer_pd' element={<Vol_pd />} />
+
+          <Route path='/volunteer_pd_update' element={<Vol_update />} />
+          <Route path='/empAvalForm' element={<empAvalForm />} />
+
           <Route path='/volunteer_pd_update/:id' element={<Vol_update />} />
           <Route path='/vol_dash_register' element={<Vol_dash_reg />} />
 
@@ -45,6 +53,7 @@ function App() {
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
 
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
+
 
         </Routes>
       </React.Fragment>
