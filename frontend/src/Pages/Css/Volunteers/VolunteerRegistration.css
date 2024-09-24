@@ -89,6 +89,7 @@ body{
 form .fields .input-field{
     display: flex;
     width: 290px;
+    
     flex-direction: column;
     margin: 10px;
 }
@@ -184,4 +185,8 @@ select{
 }
 .input-field input:hover{
     border-color: #6B75FE;
+}
+.input-field p{
+    color: red;
+    font-size: 11px;
 }

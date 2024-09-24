@@ -51,7 +51,7 @@ const CreateVolunteers = async (req, res, next) => {
 
 
 //get by Id
-const getByIId = async ( ) => {
+const getByIId = async (req, res) => {
     const id = req.params.id;
     let volunteer;
 

@@ -1,0 +1,101 @@
+.container200 {
+    width: 100%;
+    max-width: 800px;
+    margin: 120px 320px;  
+    padding: 70px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.header-box200 {
+    background-color: #6B75FE;  
+    border-radius: 8px 8px 0 0;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.header-box200 h2 {
+    color: white;
+    font-size: 22px;
+    margin: 0;
+}
+
+.fields200 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input-field200 {
+    display: flex;
+    flex-direction: column;
+    width: 48%;  
+    margin-bottom: 15px;
+}
+
+.input-field200 label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-field200, select input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Change input border on hover/focus */
+.input-field200 input:focus {
+    border-color: #6B75FE;
+}
+
+/* Submit Button Styling */
+.subBtn200 {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 0;
+    background-color: #6B75FE;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.subBtn200:hover {
+    background-color: #4070ff;
+}
+
+@media (max-width: 768px) { /*responsiveness */
+    .fields200 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-field200 {
+        width: 100%; 
+    }
+
+    .container200 {
+        padding: 20px;
+    }
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+
