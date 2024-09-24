@@ -8,11 +8,13 @@ import pic1 from "../../Assets/d4.jpg"
 import { Link } from 'react-router-dom'
 import ss from "../../Assets/ss2.jpg"
 
-
-
 function Home() {
 
     return (
+
+        <div>
+           
+
         <div >
 
             <Nav />
@@ -121,6 +123,7 @@ function Home() {
             <div className='ft0'>
                 <Footer />
             </div>
+
 
 
 
