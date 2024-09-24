@@ -69,7 +69,7 @@ function Home() {
                                     <img src="" alt="" />
                                     <h3>Volunteering</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="#" class="btn">View </Link>
+                                    <Link to="/volunteer" class="btn">View </Link>
                                 </div>
 
                                 <div class="box90">
