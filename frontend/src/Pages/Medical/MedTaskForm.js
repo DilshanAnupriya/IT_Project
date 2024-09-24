@@ -27,7 +27,7 @@ function TaskForm() {
         validateInput(e.target.name, e.target.value);
     };
 
-    const validateInput = (name, value) => {
+    const validateInput = (name, value) => { //validate
         let error = "";
         switch (name) {
             case "Elder_pname":
