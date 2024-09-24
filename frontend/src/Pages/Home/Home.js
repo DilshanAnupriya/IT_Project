@@ -11,6 +11,8 @@ function Home() {
 
 
 
+function Home() {
+  
     return (
         <div >
             <Nav />
