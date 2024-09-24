@@ -9,7 +9,14 @@ function TaskForm() {
         Elder_pname: "",
         Taskdate: "",
         Treatments: "",
-        Status: "Done", // No default value
+        Status: "",
+    });
+
+    const [errors, setErrors] = useState({
+        Elder_pname: "",
+        Taskdate: "",
+        Treatments: "",
+        Status: "",
     });
 
     const handleChange = (e) => {
@@ -17,13 +24,54 @@ function TaskForm() {
             ...prevState,
             [e.target.name]: e.target.value,
         }));
+        validateInput(e.target.name, e.target.value);
+    };
+
+    const validateInput = (name, value) => {
+        let error = "";
+        switch (name) {
+            case "Elder_pname":
+                if (!value) {
+                    error = "please enter a elder name";
+                }
+                break;
+            case "Treatments":
+                if (!value) {
+                    error = "Please input a treatment";
+                }
+                break;
+            case "Taskdate":
+                if (!value) {
+                    error = "Please select a date";
+                }
+                break;
+            case "Status":
+                if (!value) {
+                    error = "Please select a status";
+                }
+                break;
+            default:
+                break;
+        }
+        setErrors((prevState) => ({
+            ...prevState,
+            [name]: error,
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(input);
-        sendRequest().then(() => history('/medtask'));
-    }
+
+        // Perform a final validation check before submission
+        const isValid = Object.keys(input).every((key) => {
+            validateInput(key, input[key]);
+            return !errors[key];
+        });
+
+        if (isValid) {
+            sendRequest().then(() => history('/medtask'));
+        }
+    };
 
     const sendRequest = async () => {
         try {
@@ -43,13 +91,13 @@ function TaskForm() {
 
     return (
         <div className='all'>
-            <div className='container'>
-                <div className = "header-box">
-                <h2>Task Form</h2>
+            <div className='container200'>
+                <div className="header-box200">
+                    <h2>Task Form</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <div className='fields'>
-                        <div className='input-field'>
+                    <div className='fields200'>
+                        <div className='input-field200'>
                             <label>Elder Name</label>
                             <input
                                 type='text'
@@ -59,9 +107,10 @@ function TaskForm() {
                                 value={input.Elder_pname}
                                 required
                             />
+                            {errors.Elder_pname && <span className="error">{errors.Elder_pname}</span>}
                         </div>
 
-                        <div className='input-field'>
+                        <div className='input-field200'>
                             <label>Date for Treatment</label>
                             <input
                                 type='date'
@@ -71,9 +120,10 @@ function TaskForm() {
                                 value={input.Taskdate}
                                 required
                             />
+                            {errors.Taskdate && <span className="error">{errors.Taskdate}</span>}
                         </div>
 
-                        <div className='input-field'>
+                        <div className='input-field200'>
                             <label>Treatment</label>
                             <input
                                 type='text'
@@ -83,9 +133,10 @@ function TaskForm() {
                                 value={input.Treatments}
                                 required
                             />
+                            {errors.Treatments && <span className="error">{errors.Treatments}</span>}
                         </div>
 
-                        <div className='input-field'>
+                        <div className='input-field200'>
                             <label>Status</label>
                             <select
                                 name="Status"
@@ -93,15 +144,16 @@ function TaskForm() {
                                 value={input.Status}
                                 required
                             >
-                                <option value="" disabled>Select Status</option> {/* No default value */}
+                                <option value="" disabled>Select Status</option>
                                 <option value="Done">Done</option>
                                 <option value="Incomplete">Incomplete</option>
                                 <option value="Immediate">Immediate</option>
                             </select>
+                            {errors.Status && <span className="error">{errors.Status}</span>}
                         </div>
                     </div>
 
-                    <button className='subBtn' type='submit'>Submit</button>
+                    <button className='subBtn200' type='submit'>Submit</button>
                 </form>
             </div>
         </div>
