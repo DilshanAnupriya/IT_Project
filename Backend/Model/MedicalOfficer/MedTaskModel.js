@@ -5,10 +5,7 @@ const Schema = mongoose.Schema;
 const MedTask_Schema = new Schema({
 
     
-    Pat_number:{
-        type:String, //data type
-        required:true, //validate
-    },
+    
     Elder_pname:{
         type:String,
         required:true,
