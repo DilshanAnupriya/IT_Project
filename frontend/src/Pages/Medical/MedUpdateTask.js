@@ -1,89 +1,69 @@
-import React, { useState } from 'react';
-import "../../Pages/Css/Medical/TaskForm.css";
-import axios from "axios";
+import React, { useEffect, useRef, useState } from 'react';
+import Footer from "../../Components/Footer/Footer"
+import Nav from "../../Components/Navbar/Navbar"
+import "../Css/Medical/TaskForm.css"
+import axios from 'axios'
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-function TaskForm() {
-    const history = useNavigate();
+function MedUpdate() {
+
+    //update part
+
+    const { id } = useParams(); // Get the care plan ID from the URL
+    const navigate = useNavigate(); // Initialize the useNavigate hook
     const [input, setInputs] = useState({
         Elder_pname: "",
         Taskdate: "",
         Treatments: "",
         Status: "",
+    
     });
 
-    const [errors, setErrors] = useState({
-        Elder_pname: "",
-        Taskdate: "",
-        Treatments: "",
-        Status: "",
-    });
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [loading, setLoading] = useState(true);
 
+    // Fetch the existing data
+    useEffect(() => {
+        const fetchCareplan = async () => {
+          try {
+            console.log(`Fetching data for ID: ${id}`);
+            const response = await axios.get(`http://localhost:3000/medtask/${id}`);
+            console.log(`Received response:`, response.data);
+            setInputs(response.data.mtask);
+            setLoading(false);
+          } catch (error) {
+            console.error(`Error fetching data:`, error);
+            setErrorMessage('Failed to fetchData. Please try again.');
+            setLoading(false);
+          }
+        };
+        fetchCareplan();
+      }, [id]);
+    // Handle form field changes
     const handleChange = (e) => {
-        setInputs((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }));
-        validateInput(e.target.name, e.target.value);
-    };
-
-    const validateInput = (name, value) => { //validate fields
-        let error = "";
-        switch (name) {
-            case "Elder_pname":
-                if (!value) {
-                    error = "please enter a elder name";
-                }
-                break;
-            case "Treatments":
-                if (!value) {
-                    error = "Please input a treatment";
-                }
-                break;
-            
-            case "Status":
-                if (!value) {
-                    error = "Please select a status";
-                }
-                break;
-            default:
-                break;
-        }
-
-        
-        setErrors((prevState) => ({
-            ...prevState,
-            [name]: error,
-        }));
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Perform a final validation check before submission
-        const isValid = Object.keys(input).every((key) => {
-            validateInput(key, input[key]);
-            return !errors[key];
+        setInputs({
+            ...input,
+            [e.target.name]: e.target.value
         });
-
-        if (isValid) {
-            sendRequest().then(() => history('/medtask'));
-        }
     };
 
-    const sendRequest = async () => {
+    // Handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/medtask/add", {
-                Elder_pname: String(input.Elder_pname),
-                Taskdate: new Date(input.Taskdate),
-                Treatments: String(input.Treatments),
-                Status: String(input.Status),
-            });
-            console.log(response.data); // Check the response data
+            await axios.put(`http://localhost:3000/medtask/update/${id}`, input);
+            setSuccessMessage('Data updated successfully!');
+            setErrorMessage('');
+
+            // Navigate back to the View Care Plans page after a short delay
+            setTimeout(() => {
+                navigate('/med_dd');
+            }, 1500); // 1.5 seconds delay to show the success message
         } catch (error) {
-            console.error(error); // Catch any errors
-        } finally {
-            history('/mainhome'); // Navigate to /mainhome regardless of the outcome
+            setErrorMessage('Failed to update careplan. Please try again.');
+            setSuccessMessage('');
         }
     };
 
@@ -105,7 +85,6 @@ function TaskForm() {
                                 value={input.Elder_pname}
                                 required
                             />
-                            {errors.Elder_pname && <span className="error">{errors.Elder_pname}</span>}
                         </div>
 
                         <div className='input-field200'>
@@ -120,7 +99,6 @@ function TaskForm() {
         min={new Date().toISOString().split("T")[0]} // Set the minimum date to today
         required
     />
-    {errors.Taskdate && <span className="error">{errors.Taskdate}</span>}
 </div>
 
                         <div className='input-field200'>
@@ -133,7 +111,6 @@ function TaskForm() {
                                 value={input.Treatments}
                                 required
                             />
-                            {errors.Treatments && <span className="error">{errors.Treatments}</span>}
                         </div>
 
                         <div className='input-field200'>
@@ -149,7 +126,6 @@ function TaskForm() {
                                 <option value="Incomplete">Incomplete</option>
                                 <option value="Immediate">Immediate</option>
                             </select>
-                            {errors.Status && <span className="error">{errors.Status}</span>}
                         </div>
                     </div>
 
@@ -160,5 +136,4 @@ function TaskForm() {
     );
 }
 
-export default TaskForm;
-
+export default MedUpdate

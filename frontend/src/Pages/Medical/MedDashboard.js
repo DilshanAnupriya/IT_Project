@@ -99,7 +99,7 @@ function MedicalDash() {
                                         <td>{task.Treatments}</td>
                                         <td>{task.Status}</td>
                                         <td className="action-buttons">
-                                            <button className="edit-btn">✏️</button>
+                                            <Link to='/MedtaskF'><button className="edit-btn">✏️</button></Link>
                                             <button className="delete-btn" onClick={() => deleteTask(task._id)}>🗑️</button>
                                         </td>
                                     </tr>

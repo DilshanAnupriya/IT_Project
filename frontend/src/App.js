@@ -25,7 +25,7 @@ import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 
 import Med_Dash from "./Pages/Medical/MedDashboard"
 import MedTaskForm from "./Pages/Medical/MedTaskForm"
-
+import Med_update from "./Pages/Medical/MedUpdateTask"
 
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
 
 
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
-
+          <Route path='/Med_update' element={<Med_update />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
           <Route path='/Med' element={<Med_Dash />} />
           <Route path ='/MedtaskF' element={<MedTaskForm />} />
