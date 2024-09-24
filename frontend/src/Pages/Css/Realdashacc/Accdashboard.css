@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #3b82f6;
+    width: 80px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.sidebar .user-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar .menu li {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.header input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.header .profile {
+    display: flex;
+    align-items: center;
+}
+
+.header .profile img {
+    border-radius: 50%;
+    width: 40px;
+    margin-left: 10px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-gap: 20px;
+}
+
+.financial-reports, .bank-updates, .alerts, .payments, .it-support {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.financial-reports table, .bank-updates table, .payments table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.financial-reports table th, .bank-updates table th, .payments table th {
+    text-align: left;
+    padding: 10px;
+    background-color: #3b82f6;
+    color: white;
+}
+
+.financial-reports table td, .bank-updates table td, .payments table td {
+    padding: 10px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.bank-chart {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.account-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.account-actions button {
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-actions button:hover {
+    background-color: #2563eb;
+}
+
+.alerts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.alerts ul li {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.it-support textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.it-support button {
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
