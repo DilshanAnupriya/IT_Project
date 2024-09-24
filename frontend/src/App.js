@@ -22,7 +22,7 @@ import empAvalForm from "./Pages/Employee/EmpAvalForm"
 
 
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
-
+import Mform from "./Pages/Medical/Meduserreq"
 import Med_Dash from "./Pages/Medical/MedDashboard"
 import MedTaskForm from "./Pages/Medical/MedTaskForm"
 import Med_update from "./Pages/Medical/MedUpdateTask"
@@ -38,7 +38,7 @@ function App() {
           <Route path='/mainHome' element={<Home />} />
           <Route path='/vol-reg' element={<Vol />} />
           <Route path='/volunteer' element={<Volunteer />} />
-
+          <Route path='/Mform' element={<Mform />} />
           <Route path= '/empForm' element={<EmpForm />}/>
 
           <Route path='/volunteer_pd' element={<Vol_pd />} />
