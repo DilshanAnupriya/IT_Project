@@ -6,6 +6,7 @@ import Vol from "./Pages/Volunteers/VolunteerRegistration";
 import Volunteer from "./Pages/Volunteers/VolunteerHome";
 import Vol_pd from "./Pages/Volunteers/VolunteerProfileDash"
 import Vol_update from "./Pages/Volunteers/VolunteerPdUpdate"
+import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ function App() {
           <Route path='/volunteer_pd' element={<Vol_pd />} />
           <Route path='/volunteer_pd_update' element={<Vol_update />} />
 
+          <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
         </Routes>
       </React.Fragment>
     </div>
