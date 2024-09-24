@@ -27,7 +27,7 @@ const createRequests = async (req, res, next) => {
 
     const {name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference} = req.body;
 
-    const { name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference } = req.body;
+
 
 
     let requ;
@@ -82,12 +82,6 @@ const updateRequests = async (req, res, next) => {
     let requ;
 
     const {name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference} = req.body;
-
-    //update Requests
-    try {
-        requ = await Requests.findByIdAndUpdate(id, 
-
-    const { name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference } = req.body;
 
     //update Requests
     try {
