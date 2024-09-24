@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-import Nav from "../../Components/Navbar/Navbar"
 import "../../Pages/Css/Volunteers/VolunteerRegistration.css"
 import Footer from "../../Components/Footer/Footer"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-function VolunteerRegistration() {
+
+function Volunteer_dash_reg() {
     const history = useNavigate();
     const [input, setInputs] = useState({
         first_name: "",
@@ -76,13 +76,12 @@ function VolunteerRegistration() {
         }
 
         if (name === "date") {
-            const selectedDate = new Date(value);
-            const today = new Date();
-            if (selectedDate > today) {
-                errorMessages[name] = "You cannot select a future date.";
-            } else if (selectedDate < today) {
-                errorMessages[name] = "You cannot select a past date.";
-            } else if (selectedDate == today) {
+            const selectedDate = new Date(value).setHours(0, 0, 0, 0);
+            const today = new Date().setHours(0, 0, 0, 0);
+
+            if (selectedDate !== today) {
+                errorMessages[name] = "You can only select the present date.";
+            } else {
                 delete errorMessages[name];
             }
         }
@@ -101,7 +100,7 @@ function VolunteerRegistration() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
-            sendRequest().then(() => history('/mainHome'));
+            sendRequest().then(() => history('/volunteer_pd'));
         } else {
             alert("Please fix the validation errors.");
         }
@@ -168,9 +167,10 @@ function VolunteerRegistration() {
         preBtn.current.addEventListener('click', handlePrevious);
     }, []);
 
+
     return (
         <div className='all'>
-            <Nav />
+
             <div className='container30' id='section2'>
                 <header>Registration</header>
                 <form action='#' onSubmit={handleSubmit}>
@@ -301,7 +301,7 @@ function VolunteerRegistration() {
             </div>
             <Footer />
         </div>
-    );
+    )
 }
 
-export default VolunteerRegistration;
+export default Volunteer_dash_reg

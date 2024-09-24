@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav>
+      <nav >
         <div className="pic">
           <img src={Logo} className="img" alt="logo" />
           <Link to="/" className="logo">Care Zone</Link>
@@ -34,7 +34,7 @@ function Navbar() {
                 <li className="sub-item more">
                   <Link to="/">Sub Item 01</Link>
                   <ul className="more-menu">
-                    <li className="more-item"><Link to="/">More Item 01</Link></li>
+                    <li className="more-item"><Link to="/volunteer_pd">More Item 01</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
@@ -70,7 +70,7 @@ function Navbar() {
                 </li>
               </ul>
             </li>
-            <li className="menu-item"><Link to="/">Contact</Link></li>
+            <li className="menu-item"><Link to="/volunteer_pd">Contact</Link></li>
             <li className="menu-item"><button>Login</button></li>
           </ul>
         </div>

@@ -1,24 +1,28 @@
-import React, { useRef, useState } from 'react';
-import Nav from "../../Components/Navbar/Navbar"
-import "../../Pages/Css/Volunteers/VolunteerRegistration.css"
+import React, { useEffect, useRef, useState } from 'react';
 import Footer from "../../Components/Footer/Footer"
+import Nav from "../../Components/Navbar/Navbar"
+import "../Css/Volunteers/VolunteerPdUpdate.css"
+import axios from 'axios'
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+function VolunteerPdUpdate() {
 
-function VolunteerRegistration() {
-    const history = useNavigate();
+    //update part
+
+    const { id } = useParams(); // Get the care plan ID from the URL
+    const navigate = useNavigate(); // Initialize the useNavigate hook
     const [input, setInputs] = useState({
         first_name: "",
         last_name: "",
         date_of_birth: "",
-        gender: "Male",
+        gender: "",
         email: "",
         duration: "",
-        skills: "Technical Skills",
-        type_of_work: "Companionship",
-        experience: "No",
-        days: "Wd",
-        time: "Morning",
+        skills: "",
+        type_of_work: "",
+        experience: "",
+        days: "",
+        time: "",
         description: "",
         date: "",
         mobile: "",
@@ -26,115 +30,61 @@ function VolunteerRegistration() {
         address: "",
     });
 
-    const [errors, setErrors] = useState({});
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [loading, setLoading] = useState(true);
 
+    // Fetch the existing care plan data
+    useEffect(() => {
+        const fetchCareplan = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/users/${id}`);
+                setInputs(response.data.volunteer);
+                setLoading(false);
+            } catch (error) {
+                setErrorMessage('Failed to fetch care plan. Please try again.');
+                setLoading(false);
+            }
+        };
+        fetchCareplan();
+    }, [id]);
+
+    // Handle form field changes
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setInputs((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-
-        validateField(name, value);
+        setInputs({
+            ...input,
+            [e.target.name]: e.target.value
+        });
     };
 
-    const validateField = (name, value) => {
-        let errorMessages = { ...errors };
-
-        if (name === "first_name" || name === "last_name") {
-            if (!/^[a-zA-Z]{3,20}$/.test(value)) {
-                errorMessages[name] = "Name must be 3-20 characters long and cannot contain numbers or special characters.";
-            } else {
-                delete errorMessages[name];
-            }
-        }
-
-        if (name === "date_of_birth") {
-            const age = new Date().getFullYear() - new Date(value).getFullYear();
-            if (age < 18) {
-                errorMessages[name] = "You must be at least 18 years old.";
-            } else {
-                delete errorMessages[name];
-            }
-        }
-
-        if (name === "email") {
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailPattern.test(value)) {
-                errorMessages[name] = "Please enter a valid email address.";
-            } else {
-                delete errorMessages[name];
-            }
-        }
-
-        if (name === "duration") {
-            if (/[*&^%$#@!()]/.test(value)) {
-                errorMessages[name] = "Duration cannot contain special characters.";
-            } else {
-                delete errorMessages[name];
-            }
-        }
-
-        if (name === "date") {
-            const selectedDate = new Date(value);
-            const today = new Date();
-            if (selectedDate > today) {
-                errorMessages[name] = "You cannot select a future date.";
-            } else if (selectedDate < today) {
-                errorMessages[name] = "You cannot select a past date.";
-            } else if (selectedDate == today) {
-                delete errorMessages[name];
-            }
-        }
-
-        if (name === "mobile" || name === "emobile") {
-            if (!/^[0-9]{10}$/.test(value)) {
-                errorMessages[name] = "Please enter a valid 10-digit mobile number.";
-            } else {
-                delete errorMessages[name];
-            }
-        }
-
-        setErrors(errorMessages);
-    };
-
-    const handleSubmit = (e) => {
+    // Handle form submission
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (Object.keys(errors).length === 0) {
-            sendRequest().then(() => history('/mainHome'));
-        } else {
-            alert("Please fix the validation errors.");
+        try {
+            await axios.put(`http://localhost:3000/users/update/${id}`, input);
+            setSuccessMessage('Careplan updated successfully!');
+            setErrorMessage('');
+
+            // Navigate back to the View Care Plans page after a short delay
+            setTimeout(() => {
+                navigate('/volunteer_pd');
+            }, 1500); // 1.5 seconds delay to show the success message
+        } catch (error) {
+            setErrorMessage('Failed to update careplan. Please try again.');
+            setSuccessMessage('');
         }
     };
 
-    const sendRequest = async () => {
-        await axios.post("http://localhost:3000/users/add", {
-            first_name: String(input.first_name),
-            last_name: String(input.last_name),
-            date_of_birth: new Date(input.date_of_birth),
-            gender: String(input.gender),
-            email: String(input.email),
-            duration: String(input.duration),
-            skills: String(input.skills),
-            type_of_work: String(input.type_of_work),
-            experience: String(input.experience),
-            days: String(input.days),
-            time: String(input.time),
-            description: String(input.description),
-            date: new Date(input.date),
-            mobile: Number(input.mobile),
-            emobile: Number(input.emobile),
-            address: String(input.address),
-        }).then(res => res.data);
-    };
 
+    //navigation between next pre
     const form1 = useRef(null);
     const form2 = useRef(null);
     const nextBtn = useRef(null);
     const preBtn = useRef(null);
     const [isForm1Filled, setIsForm1Filled] = useState(false);
 
-    const handleNext = () => {
+    const handleNext = (e) => {
+        e.preventDefault(); // Add this line to prevent the form from submitting
         const form1Inputs = form1.current.querySelectorAll('input, select, textarea');
         let isForm1Valid = true;
 
@@ -151,11 +101,12 @@ function VolunteerRegistration() {
             form2.current.style.opacity = 1;
             form2.current.style.pointerEvents = 'auto';
         } else {
-            alert('Please fill out all required fields in the form.');
+            alert('Please fill out all required fields in the  form.');
         }
     };
 
-    const handlePrevious = () => {
+    const handlePrevious = (e) => {
+        e.preventDefault(); // Add this line to prevent the form from submitting
         setIsForm1Filled(false);
         form1.current.style.opacity = 1;
         form1.current.style.pointerEvents = 'auto';
@@ -168,57 +119,64 @@ function VolunteerRegistration() {
         preBtn.current.addEventListener('click', handlePrevious);
     }, []);
 
+
+    //v
+
+
     return (
         <div className='all'>
             <Nav />
-            <div className='container30' id='section2'>
+            <div className='container20' id='section2'>
                 <header>Registration</header>
+
                 <form action='#' onSubmit={handleSubmit}>
-                    <div ref={form1} className='form first30'>
+                    <div ref={form1} className='form first'>
                         <div className='details personal'>
                             <span className='title'>Personal Details</span>
+
                             <div className='fields'>
                                 <div className='input-field'>
                                     <label>First Name</label>
                                     <input type='text' onChange={handleChange} placeholder='Enter Your Name' value={input.first_name} name='first_name' required />
-                                    {errors.first_name && <p className="error">{errors.first_name}</p>}
+
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Last Name</label>
                                     <input type='text' onChange={handleChange} placeholder='Enter Your Name' name='last_name' value={input.last_name} required />
-                                    {errors.last_name && <p className="error">{errors.last_name}</p>}
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Date of Birth</label>
-                                    <input type='Date' onChange={handleChange} placeholder='Enter birth date' name='date_of_birth' value={input.date_of_birth} required />
-                                    {errors.date_of_birth && <p className="error">{errors.date_of_birth}</p>}
+                                    <input type='Date' onChange={handleChange} placeholder='Enter birth date' name='date_of_birth' value={input.date_of_birth ? input.date_of_birth.substring(0, 10) : ''} required />
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Gender</label>
                                     <select id="gen" name="gender" onChange={handleChange} value={input.gender}>
                                         <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                        <option value="female">Female</option>
                                     </select>
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Email</label>
                                     <input type='text' onChange={handleChange} placeholder='Enter Your email' name='email' value={input.email} required />
-                                    {errors.email && <p className="error">{errors.email}</p>}
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Join Date</label>
-                                    <input type='Date' onChange={handleChange} placeholder='Enter date' name='date' value={input.date} required />
-                                    {errors.date && <p className="error">{errors.date}</p>}
+                                    <input type='Date' onChange={handleChange} placeholder='Enter date' name='date' value={input.date ? input.date.substring(0, 10) : ''} required />
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Mobile Number</label>
                                     <input type='number' onChange={handleChange} placeholder='Enter Your number' name='mobile' value={input.mobile} required />
-                                    {errors.mobile && <p className="error">{errors.mobile}</p>}
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Emergency Mobile Number</label>
                                     <input type='number' onChange={handleChange} placeholder='Enter mobile number' name='emobile' value={input.emobile} required />
-                                    {errors.emobile && <p className="error">{errors.emobile}</p>}
                                 </div>
                                 <div className='input-field'>
                                     <label>Address</label>
@@ -226,8 +184,12 @@ function VolunteerRegistration() {
                                 </div>
                             </div>
                         </div>
+
+
                         <button ref={nextBtn} className='nextBtn'>Next</button>
+
                     </div>
+
                     <div ref={form2} className='form second'>
                         <div className='details Volunteer'>
                             <span className='title'>Volunteering  Details</span>
@@ -235,8 +197,8 @@ function VolunteerRegistration() {
                                 <div className='input-field'>
                                     <label>Duration</label>
                                     <input type='text' onChange={handleChange} placeholder='1-Month' value={input.duration} name='duration' required />
-                                    {errors.duration && <p className="error">{errors.duration}</p>}
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Preferred Type of Work</label>
                                     <select id="work" name="type_of_work" onChange={handleChange} value={input.type_of_work}>
@@ -252,19 +214,30 @@ function VolunteerRegistration() {
                                         <option value="Intergenerational Programs">Intergenerational Programs</option>
                                     </select>
                                 </div>
+
                                 <div className='input-field'>
                                     <label>Experience</label>
-                                    <select id="experience" name="experience" onChange={handleChange} value={input.experience}>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
+                                    <select id="ex" name="experience" onChange={handleChange} value={input.experience}>
+                                        <option value="Yes">Yes, I have</option>
+                                        <option value="No">Not, I don't have</option>
                                     </select>
                                 </div>
+
                                 <div className='input-field'>
-                                    <label>Days Available</label>
-                                    <select id="days" name="days" onChange={handleChange} value={input.days}>
-                                        <option value="Wd">Weekdays</option>
-                                        <option value="We">Weekends</option>
-                                        <option value="Bw">Both</option>
+                                    <label>Available Days</label>
+                                    <select id="dy" name="days" onChange={handleChange} value={input.days}>
+                                        <option value="WD">Week-Days</option>
+                                        <option value="WE">Week-Ends</option>
+                                    </select>
+                                </div>
+
+                                <div className='input-field'>
+                                    <label>Available Times</label>
+                                    <select id="time" name="time" onChange={handleChange} value={input.time}>
+                                        <option value="Morning">Morning ( 8:00 AM - 12:00 PM)</option>
+                                        <option value="Afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                                        <option value="Evening">Evening ( 4:00 PM - 8:00 PM)</option>
+                                        <option value="Night">Night ( 8:00 PM - 12:00 AM or overnight shifts for 24-hour care facilities)</option>
                                     </select>
                                 </div>
                                 <div className='input-field'>
@@ -278,17 +251,10 @@ function VolunteerRegistration() {
 
                                     </select>
                                 </div>
-                                <div className='input-field'>
-                                    <label>Time Available</label>
-                                    <select id="time" name="time" onChange={handleChange} value={input.time}>
-                                        <option value="Morning">Morning</option>
-                                        <option value="Afternoon">Afternoon</option>
-                                        <option value="Evening">Evening</option>
-                                    </select>
-                                </div>
+
                                 <div className='input-fieldA'>
-                                    <label>Description</label>
-                                    <textarea className="area" name='description' onChange={handleChange} placeholder='Describe your interest' value={input.description} required></textarea>
+                                    <label>Why Do You Want To Volunteer?</label>
+                                    <textarea className='area' name='description' onChange={handleChange} value={input.description} placeholder='Enter your description' ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -296,12 +262,18 @@ function VolunteerRegistration() {
                             <button ref={preBtn} className='preBtn'>Previous</button>
                             <button className='subBtn'>Submit</button>
                         </div>
+
                     </div>
+
                 </form>
             </div>
-            <Footer />
+
+            <div className='ft'>
+                <Footer />
+            </div>
+
         </div>
-    );
+    )
 }
 
-export default VolunteerRegistration;
+export default VolunteerPdUpdate

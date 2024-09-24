@@ -13,7 +13,7 @@ body{
 
 }
 
-.container30{
+.container20{
     margin-top: 120px;
     margin-left: 105px;
     position: relative;
@@ -25,12 +25,12 @@ body{
     box-shadow: 0 5px 10px black;
     height: 656px;
 }
-.container30 form .form{
+.container20 form .form{
     position:absolute;
     background-color: #fff;
     height: 500px;
 }
-.container30 form .form.second{
+.container20 form .form.second{
     opacity: 0;
     pointer-events: none;
     
@@ -45,12 +45,12 @@ body{
     pointer-events: none;
     
 }
-.container30 header{
+.container20 header{
     font-size: 26px;
     font-weight: 600;
     color: #333;
 }
-.container30 header::before{
+.container20 header::before{
     content: "";
     position: absolute;
     left: 0;
@@ -61,24 +61,24 @@ body{
     border-radius: 8px;
     background-color: #4070fa;
 }
-.container30 form{
+.container20 form{
     position: relative;
     margin-top: 29px;
     min-height: 490px;
     background-color: #fff;
 }
-.container30 form .details{
+.container20 form .details{
 
     /*margin-top: 10px;*/
 
 }
-.container30 form .title{
+.container20 form .title{
     font-size: 19px;
     font-weight: 500;
     margin:6px 0;
     color: #333;
 }
-.container30 form .fields{
+.container20 form .fields{
     margin-top: 15px;
     display: flex;
     align-items: center;
@@ -89,7 +89,6 @@ body{
 form .fields .input-field{
     display: flex;
     width: 290px;
-    
     flex-direction: column;
     margin: 10px;
 }
@@ -120,7 +119,7 @@ form .fields .input-field{
     height: 42px;
     margin: 8px 0;
 }
-.input-fieldA .area{
+.input-field textarea{
     margin-top: 10px;
     width: 1020px;
     height: 150px;
@@ -137,7 +136,7 @@ form .fields .input-field{
     color: #707070;
 }
 
-.container30 form .nextBtn{
+.container20 form .nextBtn{
     
     display: flex;
     align-items: center;
@@ -177,7 +176,7 @@ form button:hover{
     margin-left: 20px;
     
 }
-.input-fieldA .area:hover{
+.input-field textarea:hover{
     border-color: #6B75FE;
 }
 select{
@@ -186,7 +185,6 @@ select{
 .input-field input:hover{
     border-color: #6B75FE;
 }
-.input-field p{
-    color: red;
-    font-size: 11px;
+.ft{
+    margin-top: 20px;
 }
