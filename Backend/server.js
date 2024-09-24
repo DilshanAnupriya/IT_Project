@@ -51,7 +51,7 @@ const sal = require("./Routes/Account/salaryRoutes");
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+ap- p.use(cors());
 
 
 app.use("/users", router);
