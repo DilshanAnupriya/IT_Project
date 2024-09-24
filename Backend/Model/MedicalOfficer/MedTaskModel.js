@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const MedTask_Schema = new Schema({
 
 
+
     Elder_pname: {
         type: String,
         required: true,
@@ -13,6 +14,13 @@ const MedTask_Schema = new Schema({
     Treatments: {
         type: String,
         required: true,
+
+    },
+
+    Elder_pname: {
+        type: String,
+        required: true,
+
     },
     Taskdate: {
         type: Date,
