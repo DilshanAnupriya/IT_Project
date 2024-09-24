@@ -9,13 +9,24 @@ import { Link } from 'react-router-dom'
 import ss from "../../Assets/ss2.jpg"
 
 
-
 function Home() {
 
     return (
+
+        <div>
+           
+
         <div >
 
+           
+        </div>
+                
+   )
+
+
+
             <Nav />
+
 
 
 
@@ -128,8 +139,10 @@ function Home() {
 
 
 
+
         </div>
 
     )
+
 }
 export default Home
