@@ -8,7 +8,12 @@ import Volunteer from "./Pages/Volunteers/VolunteerHome";
 
 
 
+
 import EmpDashForm from "./Pages/Employee/EmpDash";
+
+import Vol_pd from "./Pages/Volunteers/VolunteerProfileDash"
+import Vol_update from "./Pages/Volunteers/VolunteerPdUpdate"
+
 function App() {
   return (
     <div>
@@ -19,6 +24,8 @@ function App() {
           <Route path='/mainHome' element={<Home />} />
           <Route path='/vol-reg' element={<Vol />} />
           <Route path='/volunteer' element={<Volunteer />} />
+          <Route path='/volunteer_pd' element={<Vol_pd />} />
+          <Route path='/volunteer_pd_update' element={<Vol_update />} />
 
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
         </Routes>

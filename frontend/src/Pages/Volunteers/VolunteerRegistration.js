@@ -116,22 +116,12 @@ function VolunteerRegistration() {
     return (
         <div className='all'>
             <Nav />
-            <div className='c1' id="section1">
-                <img src={p3} alt='landing picture' />
-                <div className='sub-c'>
-                    <h3>"Make a Difference: Register to Volunteer with Our Elderly Care System"</h3>
-                    <p>Join our team of dedicated volunteers and make a positive impact on the lives
-                        of <br />seniors in our community. Your time and skills can bring joy,
-                        companionship and<br /> support those who need it most and your contribution can make a real difference.</p>
 
-                    <Link to="section2" offset={-100}><button>Click Here</button></Link>
-                </div>
-            </div>
-            <div className='container' id='section2'>
+            <div className='container30' id='section2'>
                 <header>Registration</header>
 
                 <form action='#' onSubmit={handleSubmit}>
-                    <div ref={form1} className='form first'>
+                    <div ref={form1} className='form first30'>
                         <div className='details personal'>
                             <span className='title'>Personal Details</span>
 
@@ -255,9 +245,9 @@ function VolunteerRegistration() {
                                     </select>
                                 </div>
 
-                                <div className='input-field'>
+                                <div className='input-fieldA'>
                                     <label>Why Do You Want To Volunteer?</label>
-                                    <textarea name='description' onChange={handleChange} value={input.description} placeholder='Enter your description' ></textarea>
+                                    <textarea className='area' name='description' onChange={handleChange} value={input.description} placeholder='Enter your description' ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -271,8 +261,10 @@ function VolunteerRegistration() {
                 </form>
             </div>
 
+            <div className='ft'>
+                <Footer />
+            </div>
 
-            <Footer />
 
         </div>
     )

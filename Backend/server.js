@@ -47,7 +47,7 @@ const fun = require("./Routes/Account/fundRoutes");
 const sal = require("./Routes/Account/salaryRoutes");
 
 
-const app = express();
+
 
 // Middleware
 app.use(express.json());
@@ -93,12 +93,10 @@ app.use("/task", volunteerTaskRoutes);      // Volunteer task routes
 
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
+    .then(() => console.log("Connected to Mongodb"))
     .then(() => {
-        console.log("Connected to MongoDB");
-        app.listen(3000, () => {
-            console.log("Server is running on port 3000");
-        });
+        app.listen(3000);
     })
-    .catch((err) => {
-        console.error("Error connecting to MongoDB:", err);
-    });
+    .catch((err) => console.log((err)));
+
+
