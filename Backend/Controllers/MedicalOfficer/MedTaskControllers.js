@@ -7,34 +7,34 @@ const getAllMedTasks = async (req, res, next) => {
     let mtask;
     //Get all Tasks
 
-    try{
-        mtask = await MTasksd.find ();
-    } catch(err) {
+    try {
+        mtask = await MTasksd.find();
+    } catch (err) {
         console.log(err);
     }
     //could not found
-    if(!mtask){
-        return res.status(404).json({message: "Task not found "});
+    if (!mtask) {
+        return res.status(404).json({ message: "Task not found " });
     }
     //Display all Tasks
-    return res.status(200).json({mtask});
+    return res.status(200).json({ mtask });
 }
 
 //data insert
-const addMedTasks = async( req, res, next) =>{
+const addMedTasks = async (req, res, next) => {
 
-    const {Pat_number,Elder_pname,Treatments,Taskdate,Status} =req.body;
+    const { Elder_pname, Treatments, Taskdate, Status } = req.body;
 
     let mtask;
 
-    try{
-        mtask = new MTasksd({Pat_number,Elder_pname,Treatments,Taskdate,Status});
+    try {
+        mtask = new MTasksd({ Elder_pname, Treatments, Taskdate, Status });
         await mtask.save();
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
     //not found 
-    if(!mtask){
+    if (!mtask) {
         return res.status(404).json({ massage: "unable to find" })
     }
 
@@ -57,7 +57,7 @@ const getIdByMedTask = async (req, res, next) => {
     }
 
     //not found 
-    if(!mtask){
+    if (!mtask) {
         return res.status(404).json({ massage: "unable to find" })
     }
 
@@ -68,12 +68,12 @@ const getIdByMedTask = async (req, res, next) => {
 const updateMedicalTasks = async (req, res, next) => {
     let id = req.params.id;
     let mtask;
-    const {Pat_number,Elder_pname,Treatments,Taskdate,Status} = req.body;
+    const { Elder_pname, Treatments, Taskdate, Status } = req.body;
 
     //update tasks
     try {
-        mtask = await MTasksd.findByIdAndUpdate(id, 
-            { Pat_number : Pat_number,Elder_pname :Elder_pname,Treatments :Treatments,Taskdate :Taskdate,Status :Status}
+        mtask = await MTasksd.findByIdAndUpdate(id,
+            { Elder_pname: Elder_pname, Treatments: Treatments, Taskdate: Taskdate, Status: Status }
         );
         mtask = await mtask.save(); //tasks
     } catch (error) {
@@ -81,7 +81,7 @@ const updateMedicalTasks = async (req, res, next) => {
     }
 
     //not found 
-    if(!mtask){
+    if (!mtask) {
         return res.status(404).json({ massage: "unable to update" })
     }
 
@@ -101,7 +101,7 @@ const deleteMedTasks = async (req, res, next) => {
     }
 
     //not found 
-    if(!mtask){
+    if (!mtask) {
         return res.status(404).json({ massage: "unable to find" })
     }
 
