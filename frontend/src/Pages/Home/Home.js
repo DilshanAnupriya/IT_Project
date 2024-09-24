@@ -10,11 +10,11 @@ import ss from "../../Assets/ss2.jpg"
 
 
 
-
 function Home() {
 
     return (
         <div >
+
             <Nav />
 
 
@@ -121,6 +121,7 @@ function Home() {
             <div className='ft0'>
                 <Footer />
             </div>
+
 
 
 
