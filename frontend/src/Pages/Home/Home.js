@@ -3,7 +3,6 @@ import Nav from "../../Components/Navbar/Navbar"
 import Footer from '../../Components/Footer/Footer'
 import Dash from "../../Components/Dashboard/Dashboard"
 import "../Home/Home.css"
-import Er from "../Employee/EmpReqFormDis"
 import pic from "../../Assets/dd11.jpg"
 import pic1 from "../../Assets/d4.jpg"
 import { Link } from 'react-router-dom'
@@ -14,7 +13,7 @@ function Home() {
 
     return (
         <div >
-            <Er/>
+
 
             <div className='d1'>
                 <img src={pic} alt='' />
