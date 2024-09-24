@@ -16,6 +16,7 @@ function Home() {
             <Nav />
 
 
+
             <div className='d1'>
                 <img src={pic} alt='' />
                 <div className='s1'>
