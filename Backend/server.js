@@ -31,8 +31,8 @@ const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
 
 
 
-const app = express();
 
+const app = express();
 //careplan
 const care = require("./Routes/careplan/careRoutes");
 
@@ -82,23 +82,21 @@ app.use("/careplan", care);
 app.use("/appointments", appointmentRoutes); // Appointment routes (corrected path here)
 app.use("/User", user);
 //accounts
-app.use("/funds",fun);
-app.use("/salary",sal);
+app.use("/funds", fun);
+app.use("/salary", sal);
 
 
 
 // Define the routes
-app.use("/users", volunteerRoutes);         // Volunteer routes
-app.use("/task", volunteerTaskRoutes);      // Volunteer task routes
+
+// Volunteer task routes
 
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
+    .then(() => console.log("Connected to Mongodb"))
     .then(() => {
-        console.log("Connected to MongoDB");
-        app.listen(3000, () => {
-            console.log("Server is running on port 3000");
-        });
+        app.listen(3000);
     })
-    .catch((err) => {
-        console.error("Error connecting to MongoDB:", err);
-    });
+    .catch((err) => console.log((err)));
+
+
