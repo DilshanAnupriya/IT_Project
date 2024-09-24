@@ -7,12 +7,12 @@ import pic from "../../Assets/dd11.jpg"
 import pic1 from "../../Assets/d4.jpg"
 import { Link } from 'react-router-dom'
 import ss from "../../Assets/ss2.jpg"
+
+
+
+
 function Home() {
 
-
-
-function Home() {
-  
     return (
         <div >
             <Nav />
