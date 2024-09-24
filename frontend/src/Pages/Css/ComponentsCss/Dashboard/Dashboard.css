@@ -21,7 +21,11 @@ body {
     width: 300px;
     height: 100%;
     background: #9BA4BF;
+
+    border-left: 10px solid #9BA4BF;
+
     border-left: 10px solid#9BA4BF;
+
     transition: 0.5s;
     overflow: hidden;
   }

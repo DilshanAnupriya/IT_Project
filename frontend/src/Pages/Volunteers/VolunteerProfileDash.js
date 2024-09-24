@@ -3,6 +3,10 @@ import "../Css/Volunteers/VolunteerProfileDash.css";
 import Dash from "../../Components/Dashboard/Dashboard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
+
 
 const URL = "http://localhost:3000/users/";
 
@@ -12,14 +16,58 @@ const fetchHandler = async () => {
     return data;
 };
 
+
+
 function VolunteerProfileDash() {
     const [users, setUsers] = useState([]);
+    const [setErrorMessage] = useState('');
 
     useEffect(() => {
         fetchHandler().then((data) => setUsers(data.Volunteers));
         console.log(users);
     }, []);
 
+    // Delete care plan by ID
+    const deleteCareplan = async (id) => {
+        const deleteUser = window.confirm(`Are you sure you want to delete the volunteer with ID ${id}? This action cannot be undone.`);
+        if (deleteUser) {
+            try {
+                await axios.delete(`http://localhost:3000/users/delete/${id}`);
+                setUsers(users.filter((user) => user._id !== id));
+            } catch (error) {
+                setErrorMessage('Failed to delete care plan. Please try again.');
+            }
+        }
+    };
+    const generateReport = () => {
+        const doc = new jsPDF();
+        doc.text("Volunteer Profile Report", 14, 16);
+        autoTable(doc, {
+            head: [
+                ['First Name', 'Last Name', 'Date of Birth', 'Gender', 'Email', 'Mobile', 'Address', 'Join Date', 'Skills', 'Duration', 'Work', 'Experience', 'Days', 'Time', 'Description']
+            ],
+            body: users.map(user => [
+                user.first_name,
+                user.last_name,
+                new Date(user.date_of_birth).toLocaleDateString(),
+                user.gender,
+                user.email,
+                user.mobile,
+                user.address,
+                new Date(user.date).toLocaleDateString(),
+                user.skills,
+                user.duration,
+                user.type_of_work,
+                user.experience,
+                user.days,
+                user.time,
+                user.description
+            ]),
+            startY: 20,
+        });
+        doc.save("volunteer_profile_report.pdf");
+        alert("Report generated successfully!");
+    };
     return (
         <div>
             <div className='dashboard'>
@@ -32,23 +80,17 @@ function VolunteerProfileDash() {
                         <input type="search" placeholder="Search Data..." />
                         <img src="images/search.png" alt="" />
                     </div>
-                    <div className="export__file">
-                        <label htmlFor="export-file" className="export__file-btn" title="Export File">+</label>
-                        <input type="checkbox" id="export-file" />
-                        <div className="export__file-options">
-                            <label>Export As </label>
-                            <label htmlFor="export-file" id="toPDF">PDF <img src="images/pdf.png" alt="" /></label>
-                            <label htmlFor="export-file" id="toJSON">JSON <img src="images/json.png" alt="" /></label>
-                            <label htmlFor="export-file" id="toCSV">CSV <img src="images/csv.png" alt="" /></label>
-                            <label htmlFor="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
-                        </div>
+                    <div className='report'>
+                        <button onClick={generateReport}>Generate report</button>
                     </div>
+                    <Link to="/vol_dash_register"><button className='create'>+</button></Link>
+
                 </section>
                 <section className="table__body">
                     <table>
                         <thead>
                             <tr>
-                                <th>Id</th>
+
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Date of Birth</th>
@@ -70,7 +112,7 @@ function VolunteerProfileDash() {
                         <tbody>
                             {users.map((user) => (
                                 <tr key={user._id}>
-                                    <td>{user._id}</td>
+
                                     <td>{user.first_name}</td>
                                     <td>{user.last_name}</td>
                                     <td>{new Date(user.date_of_birth).toLocaleDateString()}</td>
@@ -88,8 +130,8 @@ function VolunteerProfileDash() {
                                     <td>{user.description}</td>
                                     <td>
                                         <div className='action'>
-                                            <Link to="/volunteer_pd_update"><button>up</button></Link>
-                                            <button className='del'>del</button>
+                                            <Link to={`/volunteer_pd_update/${user._id}`}><button className='up'>Edit</button></Link>
+                                            <Link to=""><button className='del' onClick={() => deleteCareplan(user._id)}>Delete</button></Link>
                                         </div>
                                     </td>
                                 </tr>

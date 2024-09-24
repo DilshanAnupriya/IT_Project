@@ -3,9 +3,18 @@ import React from 'react';
 import './App.css';
 import Home from "./Pages/Home/Home";
 import Vol from "./Pages/Volunteers/VolunteerRegistration";
+import Vol_dash_reg from "./Pages/Volunteers/Volunteer_dash_reg";
 import Volunteer from "./Pages/Volunteers/VolunteerHome";
+
+
+
+
+
+import EmpDashForm from "./Pages/Employee/EmpDash";
+
 import Vol_pd from "./Pages/Volunteers/VolunteerProfileDash"
 import Vol_update from "./Pages/Volunteers/VolunteerPdUpdate"
+
 function App() {
   return (
     <div>
@@ -17,8 +26,10 @@ function App() {
           <Route path='/vol-reg' element={<Vol />} />
           <Route path='/volunteer' element={<Volunteer />} />
           <Route path='/volunteer_pd' element={<Vol_pd />} />
-          <Route path='/volunteer_pd_update' element={<Vol_update />} />
+          <Route path='/volunteer_pd_update/:id' element={<Vol_update />} />
+          <Route path='/vol_dash_register' element={<Vol_dash_reg />} />
 
+          <Route path='/EmpDashForm' element={<EmpDashForm />} />
         </Routes>
       </React.Fragment>
     </div>
