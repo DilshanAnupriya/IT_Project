@@ -23,7 +23,8 @@ import empAvalForm from "./Pages/Employee/EmpAvalForm"
 
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 
-
+import Med_Dash from "./Pages/Medical/MedDashboard"
+import MedTaskForm from "./Pages/Medical/MedTaskForm"
 
 
 
@@ -53,6 +54,8 @@ function App() {
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
 
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
+          <Route path='/Med' element={<Med_Dash />} />
+          <Route path ='/MedtaskF' element={<MedTaskForm />} />
 
 
         </Routes>
