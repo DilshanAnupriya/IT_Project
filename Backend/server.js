@@ -82,14 +82,14 @@ app.use("/careplan", care);
 app.use("/appointments", appointmentRoutes); // Appointment routes (corrected path here)
 app.use("/User", user);
 //accounts
-app.use("/funds",fun);
-app.use("/salary",sal);
+app.use("/funds", fun);
+app.use("/salary", sal);
 
 
 
 // Define the routes
-app.use("/users", volunteerRoutes);         // Volunteer routes
-app.use("/task", volunteerTaskRoutes);      // Volunteer task routes
+
+// Volunteer task routes
 
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
