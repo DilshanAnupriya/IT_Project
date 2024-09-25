@@ -76,13 +76,12 @@ function VolunteerRegistration() {
         }
 
         if (name === "date") {
-            const selectedDate = new Date(value);
-            const today = new Date();
-            if (selectedDate > today) {
-                errorMessages[name] = "You cannot select a future date.";
-            } else if (selectedDate < today) {
-                errorMessages[name] = "You cannot select a past date.";
-            } else if (selectedDate == today) {
+            const selectedDate = new Date(value).setHours(0, 0, 0, 0);
+            const today = new Date().setHours(0, 0, 0, 0);
+
+            if (selectedDate !== today) {
+                errorMessages[name] = "You can only select the present date.";
+            } else {
                 delete errorMessages[name];
             }
         }

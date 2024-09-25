@@ -7,21 +7,23 @@ import pic from "../../Assets/dd11.jpg"
 import pic1 from "../../Assets/d4.jpg"
 import { Link } from 'react-router-dom'
 import ss from "../../Assets/ss2.jpg"
-
+import s2 from "../../Assets/cp1.jpeg"
+import s3 from "../../Assets/e1.webp"
+import s4 from "../../Assets/m1.jpg"
+import s5 from "../../Assets/ms1.jpg"
+import s6 from "../../Assets/r1.jpeg"
+import s7 from "../../Assets/v1.png"
 
 function Home() {
 
     return (
 
         <div>
-           
 
-        <div >
 
-           
-        </div>
-                
-   )
+
+
+
 
 
 
@@ -70,42 +72,42 @@ function Home() {
                             <div class="box-container90">
 
                                 <div class="box90">
-                                    <img src="" alt="" />
+                                    <img src={s4} alt="" />
                                     <h3>Medical </h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
                                     <Link to="#" class="btn">View</Link>
                                 </div>
 
                                 <div class="box90">
-                                    <img src="" alt="" />
+                                    <img src={s7} alt="" />
                                     <h3>Volunteering</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
                                     <Link to="/volunteer" class="btn">View </Link>
                                 </div>
 
                                 <div class="box90">
-                                    <img src="" alt="" />
+                                    <img src={s3} alt="" />
                                     <h3>Employee</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
                                     <Link to="#" class="btn">View </Link>
                                 </div>
 
                                 <div class="box90">
-                                    <img src="" alt="" />
+                                    <img src={s5} alt="" />
                                     <h3>Mobility Support</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
                                     <Link to="#" class="btn">View</Link>
                                 </div>
 
                                 <div class="box90">
-                                    <img src="" alt="" />
+                                    <img src={s6} alt="" />
                                     <h3>Reviews</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
                                     <Link to="#" class="btn">View </Link>
                                 </div>
 
                                 <div class="box90">
-                                    <img src="" alt="" />
+                                    <img src={s2} alt="" />
                                     <h3>Care Plans</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
                                     <Link to="#" class="btn">View </Link>
