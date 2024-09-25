@@ -33,11 +33,11 @@ function Dashboard() {
                         </li>
 
                         <li>
-                            <Link to="">
+                            <Link to="/volunteer_schedule">
                                 <span className="icon">
                                     <i className="fa fa-desktop fa-2x" aria-hidden="true"></i>
                                 </span>
-                                <span className="title">Order</span>
+                                <span className="title">Schedule</span>
                             </Link>
                         </li>
                         <li>

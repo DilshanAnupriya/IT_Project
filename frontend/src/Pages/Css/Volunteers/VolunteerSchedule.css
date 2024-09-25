@@ -1,0 +1,108 @@
+.Dash{
+    position: absolute;
+    margin-left: -62px;
+    margin-top: -84px;
+}
+
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    display: flex;
+  }
+  
+  .container100 {
+    display: flex;
+    background-color: white;
+    width: 1100px;
+    height: 680px;
+    margin-left: 270px;
+    margin-top: 70px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .form-container {
+    flex: 1;
+    padding: 20px;
+    padding-left: 40px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #D6D7ED;
+    background-color: #F5F5F5;
+    outline: none;
+    font-size: 0.9rem;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .textarea textarea {
+    height: 90px;
+  }
+  
+  .submit-btn {
+    text-align: center;
+  }
+  
+  button {
+    background-color: #6A75F0;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #565cd3;
+  }
+  
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .image-container img {
+    width: 550px;
+    height: 900px;
+    border-radius: 10px;
+  }
+  .view{
+    position: absolute;
+    margin-left: 300px;
+    margin-top: -60px;
+  }
