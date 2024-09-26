@@ -70,7 +70,7 @@ function Navbar() {
                 </li>
               </ul>
             </li>
-            <li className="menu-item"><Link to="/volunteer_pd">Contact</Link></li>
+            <li className="menu-item"><Link to="/newDash">Contact</Link></li>
             <li className="menu-item"><button>Login</button></li>
           </ul>
         </div>
