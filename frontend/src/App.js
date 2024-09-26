@@ -6,7 +6,7 @@ import Vol from "./Pages/Volunteers/VolunteerRegistration";
 import Vol_sch from "./Pages/Volunteers/VolunteerDashSchedule";
 import Vol_dash_reg from "./Pages/Volunteers/Volunteer_dash_reg";
 import Volunteer from "./Pages/Volunteers/VolunteerHome";
-
+import New_Dash from "./Components/new_Dashboard/New_Dashboard"
 import EmpForm from "./Pages/Employee/EmpForm";
 
 
@@ -47,6 +47,7 @@ function App() {
           <Route path='/vol_dash_register' element={<Vol_dash_reg />} />
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
+          <Route path='/NewDash' element={<New_Dash />} />
 
 
         </Routes>
