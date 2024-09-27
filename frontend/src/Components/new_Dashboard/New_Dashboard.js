@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { MdDashboard } from "react-icons/md";
 import { FaTasks } from "react-icons/fa";
 import { RiCalendarScheduleFill } from "react-icons/ri";
@@ -9,12 +9,35 @@ import { MdLogout } from "react-icons/md";
 import "../../Pages/Css/ComponentsCss/New_Dashboard/Dash.css"
 import logo from "../../Assets/logo.png"
 import { FaSearch } from "react-icons/fa";
+import { IoNotifications } from "react-icons/io5";
+import { TiThMenu } from "react-icons/ti";
+import { Link } from 'react-router-dom';
 function New_Dashboard() {
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+    const [marginLeft, setMarginLeft] = useState(0);
+    const [sidebarVisible, setSidebarVisible] = useState(false);
+
+    useEffect(() => {
+        if (sidebarVisible) {
+            setMarginLeft(350); // adjust this value to match the width of your sidebar
+        } else {
+            setMarginLeft(50);
+        }
+    }, [sidebarVisible]);
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
+
+
+    const toggleSidebar = () => {
+        setSidebarVisible(!sidebarVisible);
+    };
     return (
         <div className="m-0 font-sans text-base antialiased font-normal dark:bg-slate-900 leading-default bg-gray-50 text-slate-500">
             <div class="absolute w-full bg-blue-500 dark:hidden min-h-75"></div>
-            <div className='d'>
-                <div className='d2'>
+            <div className="d"  >
+                <div className="d2" style={{ marginLeft: `${marginLeft}px` }}>
                     <h1>Hello, Dilshan</h1>
                     <h5>Today is #date</h5>
                 </div>
@@ -24,16 +47,38 @@ function New_Dashboard() {
                     <FaSearch />
                 </div>
                 <input type='search' placeholder='Search..' ></input>
-                <img src={logo} alt='' />
+                <div className='menu001' onClick={toggleSidebar}>
+                    <TiThMenu />
+                </div>
+                <div className='notify'>
+                    <Link to="/"> <IoNotifications /></Link>
+                </div>
+                <div className="relative">
+                    <img
+                        src={logo}
+                        alt=''
+                        onClick={toggleDropdown}
+                        className="cursor-pointer"
+                    />
+                    {dropdownVisible && (
+                        <div className="absolute right-0 mt-4 w-48 bg-white rounded-md shadow-lg z-10">
+                            <ul>
+                                <Link to="/"> <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile</li></Link>
+                                <Link to="/"> <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Settings</li></Link>
+                                <Link to="/"> <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Log Out</li></Link>
+                            </ul>
+                        </div>
+                    )}
+                </div>
             </div>
-            <aside className="fixed inset-y-0 flex-wrap items-center justify-between block w-full p-0 my-4 overflow-y-auto antialiased transition-transform duration-200 -translate-x-full bg-white border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0" aria-expanded="false">
+            <aside className={`fixed inset-y-0 flex-wrap items-center justify-between block w-full p-0 my-4 overflow-y-auto antialiased  ${sidebarVisible ? 'translate-x-0' : '-translate-x-full'} bg-white border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0`}>
                 <div className="h-19">
                     <i className="absolute top-0 right-0 p-4 opacity-50 cursor-pointer fas fa-times dark:text-white text-slate-400 xl:hidden" sidenav-close></i>
-                    <a className="block px-8 py-6 m-0 text-sm whitespace-nowrap dark:text-black text-slate-700" href="https://demos.creative-tim.com/argon-dashboard-tailwind/pages/dashboard.html" target="_blank">
+                    <Link to="/" className="block px-8 py-6 m-0 text-sm whitespace-nowrap dark:text-black text-slate-700" target="_blank">
 
                         <img src={logo} className="hidden h-full max-w-full transition-all duration-200 dark:inline ease-nav-brand max-h-8" alt="main_logo" />
                         <span className="head ml-6  font-semibold transition-all duration-200 ease-nav-brand">Care Zone</span>
-                    </a>
+                    </Link >
                 </div>
 
                 <hr className="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
@@ -41,7 +86,7 @@ function New_Dashboard() {
                 <div className="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
                     <ul className="titles flex flex-col pl-0 mb-0">
                         <li className="mt-0.5 w-full">
-                            <a className="py-2.7 bg-blue-500/13 dark:text-black dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors hover:text-[#6B75FE]" href="../pages/dashboard.html">
+                            <Link to="/" className="py-2.7 bg-blue-500/13 dark:text-black dark:opacity-80 text-sm  my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700  hover:text-[#6B75FE]" href="../pages/dashboard.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-blue-500 ni ni-tv-2"></i>
                                 </div>
@@ -51,11 +96,11 @@ function New_Dashboard() {
                                         Dashboard
                                     </div>
                                 </span>
-                            </a>
+                            </Link >
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <a className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/tables.html">
+                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4  hover:text-[#6B75FE]" href="../pages/tables.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
                                 </div>
@@ -65,11 +110,11 @@ function New_Dashboard() {
                                         Tasks
                                     </div>
                                 </span>
-                            </a>
+                            </Link >
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <a className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/billing.html">
+                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/billing.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-emerald-500 ni ni-credit-card"></i>
                                 </div>
@@ -79,11 +124,11 @@ function New_Dashboard() {
                                         Schedules
                                     </div>
                                 </span>
-                            </a>
+                            </Link >
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <a className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/virtual-reality.html">
+                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/virtual-reality.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-cyan-500 ni ni-app"></i>
                                 </div>
@@ -93,11 +138,11 @@ function New_Dashboard() {
                                         Donations
                                     </div>
                                 </span>
-                            </a>
+                            </Link >
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <a className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/rtl.html">
+                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/rtl.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-red-600 ni ni-world-2"></i>
                                 </div>
@@ -107,7 +152,7 @@ function New_Dashboard() {
                                         Certificates
                                     </div>
                                 </span>
-                            </a>
+                            </Link >
                         </li>
 
                         <li className="w-full mt-4">
@@ -115,7 +160,7 @@ function New_Dashboard() {
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <a className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/profile.html">
+                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/profile.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-slate-700 ni ni-single-02"></i>
                                 </div>
@@ -125,12 +170,12 @@ function New_Dashboard() {
                                         Profile
                                     </div>
                                 </span>
-                            </a>
+                            </Link >
                         </li>
 
 
                         <li className="mt-0.5 w-full">
-                            <a className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/sign-up.html">
+                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/sign-up.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-cyan-500 ni ni-collection"></i>
                                 </div>
@@ -140,7 +185,7 @@ function New_Dashboard() {
                                         Log Out
                                     </div>
                                 </span>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
