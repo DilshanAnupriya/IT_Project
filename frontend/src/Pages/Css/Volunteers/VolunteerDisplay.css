@@ -49,7 +49,7 @@ body {
 }
 .dt200{
     display: flex;
-    padding-left: 20px;
+    padding-left: 210px;
     padding-top: 20px;
     font-size: 22px;
 }
@@ -69,6 +69,42 @@ border-radius: 6px;
 color: white;
 }
 .dt202{
-    margin-left: 700px;
+    margin-left: 598px;
     padding-bottom: 35px;
+}
+.title001{
+    color: gray;
+    position: absolute;
+    margin-top: -78px;
+    padding-bottom: 40px;
+    font-size: 26px;
+}
+.search-bar{
+    position: absolute;
+    display: flex;
+    margin-left: 160px;
+    width: 40%;
+}
+.search-bar input{
+    width: 300px;
+    padding-right: 80px;
+    height: 34px;
+    margin-left: 186px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.search-btb{
+    width: 20px;
+    background-color: #6B75FE;
+  
+}
+.dt205{
+   font-size: 20px;
+   padding: 7px 15px;
+   margin-right: 20px;
+   background-color: #6B75FE;
+   border-radius: 6px;
+   color: white;
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
 }
