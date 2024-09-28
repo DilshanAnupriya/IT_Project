@@ -1,7 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Nav from "../../Components/Navbar/Navbar"
-import "../../Pages/Css/Volunteers/VolunteerRegistration.css"
-import Footer from "../../Components/Footer/Footer"
+import "../Css/Volunteers/VolunteerRegistration.css"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
@@ -169,7 +167,7 @@ function VolunteerRegistration() {
 
     return (
         <div className='all'>
-            <Nav />
+
             <div className='container30' id='section2'>
                 <header>Registration</header>
                 <form action='#' onSubmit={handleSubmit}>
@@ -298,7 +296,7 @@ function VolunteerRegistration() {
                     </div>
                 </form>
             </div>
-            <Footer />
+
         </div>
     );
 }

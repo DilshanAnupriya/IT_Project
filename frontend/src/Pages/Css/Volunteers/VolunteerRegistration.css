@@ -7,23 +7,24 @@
 }
 
 body{
-    background-color: #ffffff;
+
     display: flex;
     
 
 }
 
 .container30{
-    margin-top: 120px;
-    margin-left: 105px;
-    position: relative;
-    max-width: 1100px;
+    
+    margin-top: -230px;
+    margin-left: -380px;
+    position: absolute;
+    max-width: 1050px;
     width: 100%;
     border-radius: 6px;
     background-color: #ffffff;
     padding: 30px;
     box-shadow: 0 5px 10px black;
-    height: 656px;
+    height: 606px;
 }
 .container30 form .form{
     position:absolute;
@@ -189,4 +190,9 @@ select{
 .input-field p{
     color: red;
     font-size: 11px;
+}
+.last02{
+   position: absolute;
+    margin-top: 500px;
+    color: rgb(243, 243, 243);
 }
