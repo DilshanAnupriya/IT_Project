@@ -20,12 +20,6 @@ import EmpForm from "./Pages/Employee/EmpForm";
 
 
 
-
-
-sxs
-
-
-
 function App() {
   return (
     <div>
