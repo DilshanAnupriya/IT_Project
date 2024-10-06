@@ -24,11 +24,11 @@ const DisplaySchedule = async (req, res, next) => {
 
 const CreateSchedule = async (req, res, next) => {
     let id = req.params.id
-    const { event_name, S_time, E_time } = req.body;
+    const { event_name, S_time, E_time, date } = req.body;
     let schedule;
 
     try {
-        schedule = new Schedule({ event_name, S_time, E_time });
+        schedule = new Schedule({ event_name, S_time, E_time, date });
         await schedule.save();
     } catch (error) {
         console.log(error);
@@ -60,11 +60,11 @@ const GetId = async (req, res, next) => {
 //update 
 const UpdateSchedule = async (req, res, next) => {
     let id = req.params.id;
-    const { event_name, S_time, E_time } = req.body;
+    const { event_name, S_time, E_time, date } = req.body;
     let schedule;
 
     try {
-        schedule = await Schedule.findByIdAndUpdate(id, { event_name: event_name, S_time: S_time, E_time: E_time });
+        schedule = await Schedule.findByIdAndUpdate(id, { event_name: event_name, S_time: S_time, E_time: E_time, date: date });
         await schedule.save();
     } catch (error) {
         console.log(error);

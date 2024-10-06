@@ -1,0 +1,203 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+body{
+
+    display: flex;
+    
+
+}
+
+.container1000{
+    
+    margin-top: -230px;
+    margin-left: -350px;
+    position: absolute;
+    max-width: 970px;
+    width: 100%;
+    border-radius: 6px;
+    background-color: #ffffff;
+    padding-top: 30px;
+    padding-left: 80px;
+    padding-right: 90px;
+    box-shadow: 0 5px 10px black;
+    height: 726px;
+   
+}
+.container1000 form .form{
+    position:absolute;
+    background-color: #fff;
+    height: 500px;
+}
+.container1000 form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    
+}
+.form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+.form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    
+}
+.container1000 header{
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+}
+.container1000 header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 65px;
+    margin-left: 101px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #4070fa;
+}
+.container1000 form{
+    position: relative;
+    margin-top: 29px;
+    min-height: 490px;
+    background-color: #fff;
+}
+.container1000 form .details{
+
+    /*margin-top: 10px;*/
+
+}
+.container1000 form .title{
+    font-size: 19px;
+    font-weight: 500;
+    margin:6px 0;
+    color: #333;
+}
+.container1000 form .fields{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+form .fields .input-field{
+    display: flex;
+    width: 290px;
+    
+    flex-direction: column;
+    margin: 10px;
+}
+.input-field label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+.input-field input{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+.input-field select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+.input-field input:is(:focus, :valid){
+    box-shadow: 0 3px 6px rgba(0,0,0,0,13);
+}
+.input-field input[type="date"]{
+    color: #707070;
+}
+.input-field input[type="date"]:valid{
+    color: #707070;
+}
+
+.container1000 form .nextBtn1000{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    max-width: 150px;
+    width:100%;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    margin: 35px 8px;
+    background-color: #6B75FE;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+form button:hover{
+    background-color: #4070ff;
+}
+
+.details1{
+    margin-top: 10px;
+}
+
+.buttons button{
+    background-color: #6B75FE;
+    height: 40px;
+    width: 150px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: all 0.3s linear;
+}
+
+
+select{
+    border-color: #6B75FE;
+}
+.input-field input:hover{
+    border-color: #6B75FE;
+}
+.input-field p{
+    color: red;
+    font-size: 11px;
+}
+.last02{
+   position: absolute;
+    margin-top: 550px;
+    color: rgb(243, 243, 243);
+}
+.div1008 .area1001 {
+    width: 778px;
+    height: 100px;
+    border-color: #aaa;
+}
+.div1008{
+    display: block;
+}
+.div1008 .area1000{
+    width: 778px;
+    height: 70px;
+    border-color: #aaa;
+}

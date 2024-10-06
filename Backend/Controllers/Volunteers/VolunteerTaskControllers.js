@@ -42,8 +42,8 @@ const CreateTask = async (req, res, next) => {
 };
 
 //get by id
-const getByIId = async (req, res, next) => {
-    let id = req.params.id;
+const getByIId = async (req, res) => {
+    const id = req.params.id;
     let task;
 
     try {

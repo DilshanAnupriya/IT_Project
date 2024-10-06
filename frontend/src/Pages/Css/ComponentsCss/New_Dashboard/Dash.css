@@ -63,18 +63,20 @@ position: fixed;
 .titles li span:hover{
   color: white;
 }
-.head{
-  position: absolute;
-  margin-top: 5px;
-  font-size: 27px;
+
   
-  
-}
+
 .h-19 img{
   border-radius: 10px;
 }
 .h-19 {
  padding-bottom: 25px;
+}
+.h-19 span{
+  font-size: 28px;
+  position: absolute;
+  margin-top: 9px;
+  margin-left: 30px;
 }
 .w-full h6{
 margin-left: 48px;
@@ -146,12 +148,14 @@ padding-top: 20px;
   }
   .head {
     font-size: 20px;
+    
   }
   .h-19 img {
     border-radius: 5px;
   }
   .h-19 {
     padding-bottom: 15px;
+    
   }
   .w-full h6 {
     margin-left: 20px;

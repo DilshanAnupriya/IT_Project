@@ -72,16 +72,16 @@ function New_Dashboard() {
                 </div>
             </div>
             <aside className={`fixed inset-y-0 flex-wrap items-center justify-between block w-full p-0 my-4 overflow-y-auto antialiased  ${sidebarVisible ? 'translate-x-0' : '-translate-x-full'} bg-white border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0`}>
-                <div className="h-19">
+                <div className="h-19 ">
                     <i className="absolute top-0 right-0 p-4 opacity-50 cursor-pointer fas fa-times dark:text-white text-slate-400 xl:hidden" sidenav-close></i>
                     <Link to="/" className="block px-8 py-6 m-0 text-sm whitespace-nowrap dark:text-black text-slate-700" target="_blank">
 
-                        <img src={logo} className="hidden h-full max-w-full transition-all duration-200 dark:inline ease-nav-brand max-h-8" alt="main_logo" />
+                        <img src={logo} className=" h-full max-w-full transition-all duration-200 dark:inline ease-nav-brand max-h-8" alt="main_logo" />
                         <span className="head ml-6  font-semibold transition-all duration-200 ease-nav-brand">Care Zone</span>
                     </Link >
                 </div>
 
-                <hr className="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
+
 
                 <div className="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
                     <ul className="titles flex flex-col pl-0 mb-0">
@@ -100,7 +100,7 @@ function New_Dashboard() {
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4  hover:text-[#6B75FE]" href="../pages/tables.html">
+                            <Link to="/TaskDisplay" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4  hover:text-[#6B75FE]" href="../pages/tables.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
                                 </div>
@@ -114,7 +114,7 @@ function New_Dashboard() {
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/billing.html">
+                            <Link to="/ScheduleDisplay" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/billing.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-emerald-500 ni ni-credit-card"></i>
                                 </div>
@@ -142,7 +142,7 @@ function New_Dashboard() {
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/rtl.html">
+                            <Link to="/CertificateDisplay" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/rtl.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-red-600 ni ni-world-2"></i>
                                 </div>
