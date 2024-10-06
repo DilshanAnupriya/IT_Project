@@ -10,7 +10,14 @@ import Vol from "./Pages/Volunteers//VolunteerRegistration"; //Client-side regis
 import VolunteerDisplay from "./Pages/Volunteers/Volunteer/VolunteerDisplay"  //display details of volunteers
 import Vol_update from "./Pages/Volunteers/Volunteer/VolunteerPdUpdate" //Dashboard Update Volunteer details
 import Vol_dash_reg from "./Pages/Volunteers/Volunteer/Volunteer_dash_reg"; //Dashboard registration
-
+import TaskDisplay from "./Pages/Volunteers/task/TaskDisplay"; //Dashboard task Display
+import TaskCreate from "./Pages/Volunteers/task/TaskCreate";//create task page dashboard
+import TaskUpdate from "./Pages/Volunteers/task/TaskUpdate";//update task page dashboard
+import ScheduleDisplay from "./Pages/Volunteers/Schedule/ScheduleD";//display schedule page dashboard
+import ScheduleUpdate from "./Pages/Volunteers/Schedule/ScheduleU";//update task page dashboard
+import CertificateD from "./Pages/Volunteers/Certificate/CertificateD";//update task page dashboard
+import CertificateC from "./Pages/Volunteers/Certificate/CertificateC";//update task page dashboard
+import CertificateU from "./Pages/Volunteers/Certificate/CertificateU";//update task page dashboard
 
 
 import EmpDashForm from "./Pages/Employee/EmpDash";
@@ -42,6 +49,14 @@ function App() {
           <Route path='/volunteer_pd_update/:id' element={<Vol_update />} />
           <Route path='/vol_dash_register' element={<Vol_dash_reg />} />
           <Route path='/Display' element={<VolunteerDisplay />} />
+          <Route path='/TaskDisplay' element={<TaskDisplay />} />
+          <Route path='/TaskCreate' element={<TaskCreate />} />
+          <Route path='/TaskUpdate/:id' element={<TaskUpdate />} />
+          <Route path='/ScheduleDisplay' element={<ScheduleDisplay />} />
+          <Route path='/ScheduleUpdate/:id' element={<ScheduleUpdate />} />
+          <Route path='/CertificateDisplay' element={<CertificateD />} />
+          <Route path='/CertificateCreate' element={<CertificateC />} />
+          <Route path='/CertificateU/:id' element={<CertificateU />} />
 
           <Route path='/empForm' element={<EmpForm />} />
           <Route path='/empAvalForm' element={<empAvalForm />} />

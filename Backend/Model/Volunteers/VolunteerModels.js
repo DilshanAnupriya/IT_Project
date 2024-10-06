@@ -47,10 +47,6 @@ const Volunteer_Schema = new Schema({
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-        required: true
-    },
     date: {
         type: Date,
         required: true
@@ -58,15 +54,9 @@ const Volunteer_Schema = new Schema({
     mobile: {
         type: Number,
         required: true
-    },
-    emobile: {
-        type: Number,
-        required: true
-    },
-    address: {
-        type: String,
-        required: true
     }
+
+
 
 });
 

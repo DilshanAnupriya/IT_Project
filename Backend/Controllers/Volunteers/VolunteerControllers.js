@@ -27,12 +27,12 @@ const getAllVolunteers = async (req, res, next) => {
 const CreateVolunteers = async (req, res, next) => {
 
 
-    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date, mobile, emobile, address } = req.body;
+    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, date, mobile } = req.body;
 
     let volunteers;
 
     try {
-        volunteers = new Volunteer({ first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date, mobile, emobile, address });
+        volunteers = new Volunteer({ first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, date, mobile });
         await volunteers.save();
     } catch (error) {
         console.log(error)
@@ -72,12 +72,12 @@ const getByIId = async (req, res) => {
 //Update 
 const UpdateVolunteer = async (req, res, next) => {
     const id = req.params.id
-    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, description, date, mobile, emobile, address } = req.body;
+    const { first_name, last_name, date_of_birth, gender, email, duration, skills, type_of_work, experience, days, time, date, mobile } = req.body;
     let volunteers;
 
     try {
         volunteers = await Volunteer.findByIdAndUpdate(id,
-            { first_name: first_name, last_name: last_name, date_of_birth: date_of_birth, gender: gender, email: email, duration: duration, skills: skills, type_of_work: type_of_work, experience: experience, days: days, time: time, description: description, date: date, mobile: mobile, emobile: emobile, address: address });
+            { first_name: first_name, last_name: last_name, date_of_birth: date_of_birth, gender: gender, email: email, duration: duration, skills: skills, type_of_work: type_of_work, experience: experience, days: days, time: time, date: date, mobile: mobile });
         volunteers = await volunteers.save();
     } catch (error) {
         console.log(error);

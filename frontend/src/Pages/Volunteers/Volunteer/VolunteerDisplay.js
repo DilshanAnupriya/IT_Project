@@ -55,73 +55,26 @@ function Volunteers_Display() {
             }
         }
     };
-    //second way to generate report
-    const generateReport = () => {
-        const doc = new jsPDF();
-        doc.setFontSize(16);
-        doc.text("Volunteer Profile Report", 14, 16); // Title
 
-        autoTable(doc, {
-            head: [
-                [
-                    'First Name', 'Last Name', 'Date of Birth', 'Gender',
-                    'Email', 'Mobile', 'Join Date',
-                    'Skills', 'Duration', 'Work', 'Experience',
-                    'Days', 'Time'
-                ]
-            ],
-            body: users.map(user => [
-                user.first_name,
-                user.last_name,
-                new Date(user.date_of_birth).toLocaleDateString(),
-                user.gender,
-                user.email,
-                user.mobile,
-                new Date(user.date).toLocaleDateString(),
-                user.skills,
-                user.duration,
-                user.type_of_work,
-                user.experience,
-                user.days,
-                user.time
-            ]),
-            startY: 22,
-            theme: 'striped', // Better readability with striped theme
-            styles: {
-                fontSize: 10, // Reducing font size for better fit
-                cellPadding: 4
-            },
-            columnStyles: {
-                0: { cellWidth: 20 }, // First Name
-                1: { cellWidth: 20 }, // Last Name
-                2: { cellWidth: 20 }, // Date of Birth
-                3: { cellWidth: 15 }, // Gender
-                4: { cellWidth: 35, cellWidth: 'wrap' }, // Email (wrap text)
-                5: { cellWidth: 25 }, // Mobile
-                7: { cellWidth: 20 }, // Join Date
-                8: { cellWidth: 30 }, // Skills
-                9: { cellWidth: 15 }, // Duration
-                10: { cellWidth: 30 }, // Work Type
-                11: { cellWidth: 30 }, // Experience
-                12: { cellWidth: 15 }, // Days
-                13: { cellWidth: 15 }, // Time
-            },
-            margin: { top: 20 }, // Leave some space for title
-            didDrawPage: (data) => {
-                // Page Header (optional)
-                doc.setFontSize(12);
-                doc.text("Volunteer Report", 14, 10);
-            }
-        });
-
-        doc.save("volunteer_profile_report.pdf");
-        alert("Report generated successfully!");
-    };
 
 
     const [searchQuery, setSearchQuery] = useState("");
     const [noResults, setNoResults] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchHandler().then((data) => {
+            setUsers(data.Volunteers);
+            setLoading(false);  // Ensure tasks are fetched
+        });
+    }, []);
     const handleSearch = () => {
+        if (!searchQuery.trim()) {
+            // If search is empty, reset to show all tasks
+            fetchHandler().then((data) => setUsers(data.Volunteers));
+            setNoResults(false);
+            return;
+        }
         fetchHandler().then((data) => {
             const filteredUsers = data.Volunteers.filter((user) => {
                 const fullName = `${user.first_name} ${user.last_name}`.toLowerCase();
@@ -161,6 +114,11 @@ function Volunteers_Display() {
                             placeholder="Search Volunteers..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleSearch();  // Trigger search on Enter key press
+                                }
+                            }}
                         />
                         <button className="search-btn"></button>
                     </div>
