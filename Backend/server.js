@@ -47,7 +47,9 @@ const fun = require("./Routes/Account/fundRoutes");
 const sal = require("./Routes/Account/salaryRoutes");
 
 
-
+//complainReviews
+const reviewRoute = require('./Routes/ReviewComplain/reviews.route.js');
+const complaintRoute = require('./Routes/ReviewComplain/complaints.route.js');
 
 // Middleware
 app.use(express.json());
@@ -86,6 +88,9 @@ app.use("/funds", fun);
 app.use("/salary", sal);
 
 
+//complanRewiews
+app.use('/api/review', reviewRoute);
+app.use('/api/complaint', complaintRoute);
 
 // Define the routes
 
