@@ -23,9 +23,7 @@ const Sidebar = () => {
           <FaUser className="text-black hover:text-blue-600 cursor-pointer" size={24} />
         </Link>
 
-        
-          <FaUser className="text-black hover:text-blue-600 cursor-pointer" size={24} />
-       
+
 
 
         <Link to="/report">
@@ -34,14 +32,15 @@ const Sidebar = () => {
         </Link>
 
         <Link to="/admin-complaint">
-        <IoToggle className="text-black hover:text-blue-600 cursor-pointer" size={24} />
+          <IoToggle className="text-black hover:text-blue-600 cursor-pointer" size={24} />
         </Link>
       </div>
 
       <div className="space-y-8 mt-auto">
 
-        <FaCog className="text-black hover:text-blue-600 cursor-pointer" size={24} />
-
+        <Link to="/complaints">
+          <FaCog className="text-black hover:text-blue-600 cursor-pointer" size={24} />
+        </Link>
         <FaSignOutAlt className="text-black hover:text-blue-600 cursor-pointer" size={24} />
       </div>
     </div>
