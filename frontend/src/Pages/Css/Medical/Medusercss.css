@@ -1,0 +1,112 @@
+/* General Container Styling */
+.container7 {
+    width: 100%;
+    max-width: 800px;
+    margin: 120px auto;  /* Center vertically and horizontally */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+/* Header Box Styling */
+.header-box {
+    background-color: #6B75FE;  /* Purple color for the header box */
+    border-radius: 8px 8px 0 0;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.header-box h2 {
+    color: white;
+    font-size: 22px;
+    margin: 0;
+}
+
+/* Form Fields Styling */
+.fields7 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input-field7 {
+    display: flex;
+    flex-direction: column;
+    width: 48%;  /* Each field takes almost half of the row */
+    margin-bottom: 15px;
+}
+
+.input-field7 label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+
+.input-field7 input, .input-field7 select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+
+input-field7 select:focus {  /* Add focus style for select */
+    border-color: #6B75FE;
+    }
+
+/* Change input border on hover/focus */
+.input-field7 input:focus {
+    border-color: #6B75FE;
+}
+
+/* Submit Button Styling */
+.subButton {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 0;
+    background-color: #6B75FE;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 100px;
+}
+
+.subBtton:hover {
+    background-color: #4070ff;
+}
+
+/* Media Query for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .fields7 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-field7 {
+        width: 100%;  /* Full width for input fields on small screens */
+    }
+
+    .container7 {
+        padding: 20px;
+    }
+    
+
+    @media (max-width: 768px) {
+        .input-field7 {
+            flex: 1 1 100%; /* Full width on mobile devices */
+        }
+    }
+}
+ 
+

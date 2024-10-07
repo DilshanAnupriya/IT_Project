@@ -1,0 +1,475 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Modern font */
+}
+
+
+.dt{
+    position: absolute;
+    width: 10800px;
+    height: 200px;
+    margin-left: -730px;
+    margin-top: -390px;
+    background-color:#6B75FE;
+  }
+  .d .d2{
+  margin-left: 90px;
+  margin-top: 30px;
+  }
+  .d .d2 h1{
+  
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+  }
+  .d .d2 h5{
+  
+    margin-top: 30px;
+    margin-left: -207px;
+   
+    color: white;
+  }
+  .d3{
+  position: fixed;
+    display: flex;
+    position: absolute;
+    margin-top: -365px;
+    margin-left: 300px;
+  }
+  .d3 input{
+  
+    padding: 10px 39px;
+    border-radius: 8px;
+  }
+  .d3 img{
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 20px;
+  }
+  
+  .d5{
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 14px;
+  }
+  .custom{
+    position: absolute;
+    width: 100%;
+    background-color: rebeccapurple;
+    min-height: 18.75rem;
+    
+  }
+  .icons{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    font-size: 17px;
+  }
+  .titles li span:hover{
+    color: white;
+  }
+  .head{
+    position: absolute;
+    margin-top: 5px;
+    font-size: 27px;
+    
+    
+  }
+  .h-19 img{
+    border-radius: 10px;
+  }
+  .h-19 {
+   padding-bottom: 25px;
+  }
+  .w-full h6{
+  margin-left: 48px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+  }
+  .notify{
+    font-size: 24px;
+    margin-top: 10px;
+    padding-left: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  .menu001{
+    color: white;
+    font-size: 24px;
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  /* Add this to the existing CSS code */
+  
+  /* Mobile devices (max-width: 768px) */
+  @media only screen and (max-width: 768px) {
+    .d {
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .d .d2 {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    .d .d2 h1 {
+      font-size: 18px;
+    }
+    .d .d2 h5 {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+    .d3 {
+      flex-direction: column;
+      margin-top: 0;
+      margin-left: 20px;
+    }
+    .d3 input {
+      width: 100%;
+      padding: 10px;
+    }
+    .d3 img {
+      width: 30px;
+      margin-left: 10px;
+    }
+    .d5 {
+      position: relative;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .custom {
+      width: 100%;
+      min-height: 10rem;
+    }
+    .icons {
+      flex-direction: column;
+      gap: 5px;
+    }
+    .titles li span:hover {
+      color: white;
+    }
+    .head {
+      font-size: 20px;
+    }
+    .h-19 img {
+      border-radius: 5px;
+    }
+    .h-19 {
+      padding-bottom: 15px;
+    }
+    .w-full h6 {
+      margin-left: 20px;
+      padding-bottom: 20px;
+      padding-top: 10px;
+    }
+    .notify {
+      font-size: 18px;
+      margin-top: 5px;
+      padding-left: 10px;
+    }
+    .menu001 {
+      font-size: 18px;
+      margin-top: 5px;
+      padding-left: 10px;
+    }
+  }
+  
+  /* Tablet devices (min-width: 769px and max-width: 1024px) */
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .d {
+      width: 80%;
+      height: auto;
+      margin-left: 10%;
+      margin-top: 0;
+    }
+    .d .d2 {
+      margin-left: 40px;
+      margin-top: 20px;
+    }
+    .d .d2 h1 {
+      font-size: 20px;
+    }
+    .d .d2 h5 {
+      margin-top: 15px;
+      margin-left: 0;
+    }
+    .d3 {
+      flex-direction: row;
+      margin-top: 0;
+      margin-left: 40px;
+    }
+    .d3 input {
+      width: 50%;
+      padding: 10px;
+    }
+    .d3 img {
+      width: 40px;
+      margin-left: 20px;
+    }
+    .d5 {
+      position: relative;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .custom {
+      width: 80%;
+      min-height: 12rem;
+    }
+    .icons {
+      flex-direction: row;
+      gap: 10px;
+    }
+    .titles li span:hover {
+      color: white;
+    }
+    .head {
+      font-size: 22px;
+    }
+    .h-19 img {
+      border-radius: 8px;
+    }
+    .h-19 {
+      padding-bottom: 20px;
+    }
+    .w-full h6 {
+      margin-left: 30px;
+      padding-bottom: 25px;
+      padding-top: 15px;
+    }
+    .notify {
+      font-size: 20px;
+      margin-top: 10px;
+      padding-left: 15px;
+    }
+    .menu001 {
+      font-size: 20px;
+      margin-top: 10px;
+      padding-left: 15px;
+    }
+  }
+  
+  /* Desktop devices (min-width: 1025px) */
+  
+  .fixed{
+    background-color: #fafbfc;
+  
+    box-shadow: 0px 0px 5px  rgb(131, 131, 131);
+  }
+  
+
+body {
+    background-color: #eaeff2; /* Light grey background */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard30 {
+    position: absolute;
+    margin-left: -100px;
+    margin-top: -60px;
+}
+
+.container57 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    height: fit-content;
+}
+
+.add-btn {
+    background-color: #000000;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 900px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.status-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+/* Green button (ALL CHECKUPS ARE DONE) */
+.status-btn.green {
+    background-color: #38a745;
+    color: white;
+}
+
+.status-btn.green:hover {
+    background-color: #2e933b;
+}
+
+/* Red button (CHECKUPS TO BE DONE) */
+.status-btn.red {
+    background-color: #db4c4c;
+    color: white;
+}
+
+.status-btn.red:hover {
+    background-color: #c43e3e;
+}
+
+.main-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    max-height: 400px; /* Set height for scroll */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.task-table thead {
+    position: sticky;
+    top: 0;
+    background-color: #f7f7f7; /* Sticky header background */
+    z-index: 1; /* Keep header above table content */
+}
+
+.task-table th,
+.task-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.task-table th {
+    background-color: #f7f7f7;
+}
+
+.task-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.task-table .action-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.action-buttons .edit-btn,
+.action-buttons .delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    font-size: 14px;
+}
+
+.edit-btn {
+    color: #2b8a3e;
+}
+
+.delete-btn {
+    color: #db4c4c;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 10px 20px;
+    width: 30%;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Add this to your TaskForm.css file */
+
+/* Add this to your TaskForm.css file */
+
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-table th, .task-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.task-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.status-btn {
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.status-btn.green {
+    background-color: green;
+}
+
+.status-btn.red {
+    background-color: red;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+
+

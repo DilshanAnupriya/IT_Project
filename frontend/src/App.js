@@ -18,7 +18,16 @@ import empAvalForm from "./Pages/Employee/EmpAvalForm"
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 import EmpForm from "./Pages/Employee/EmpForm";
 
+//medical 
+import MedDashboard from "./Pages/Medical/MedDashboard";
+import Meduserreq from './Pages/Medical/Meduserreq';
+import MedTaskForm from './Pages/Medical/MedTaskForm';
+import PatientUpdate from './Pages/Medical/PatientUpdate';
+import NutritionPage from './Pages/Medical/NutritionPage';
 
+import PatientList from './Pages/Medical/PatientList';
+import AddPatientForm from './Pages/Medical/AddPatientForm';
+import NutritionList from './Pages/Medical/NutritionList';
 
 
 
@@ -42,6 +51,16 @@ function App() {
           <Route path='/volunteer_pd_update/:id' element={<Vol_update />} />
           <Route path='/vol_dash_register' element={<Vol_dash_reg />} />
           <Route path='/Display' element={<VolunteerDisplay />} />
+
+
+          <Route path='/medDash' element={<MedDashboard />} />
+          <Route path='/meduserreq' element={<Meduserreq />} />
+          <Route path='/medTaskForm' element={<MedTaskForm />} />
+          <Route path='/patientList' element={<PatientList />} />
+          <Route path='/addPatient' element={<AddPatientForm />} />
+          <Route path="/edit-patient/:id" element={<PatientUpdate />} />
+          <Route path='/nutritionList' element={<NutritionList />} />
+          <Route path='/nutrition/:id' element={<NutritionPage />} />
 
           <Route path='/empForm' element={<EmpForm />} />
           <Route path='/empAvalForm' element={<empAvalForm />} />
