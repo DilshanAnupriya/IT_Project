@@ -1,10 +1,10 @@
-body {
-    min-height: 100vh;
+  body {
+     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     
-}
+} 
 .dt{
     position: absolute;
     margin-left: -400px;
@@ -107,4 +107,4 @@ color: white;
    color: white;
    border-top-left-radius: 0;
    border-bottom-left-radius: 0;
-}
+} 

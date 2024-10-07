@@ -1,18 +1,18 @@
-* {
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; 
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-body {
+ body {
     background-color: #ffffff;
     display: flex;
-}
+} 
 
 .container37 {
     margin-top: 120px;
@@ -108,8 +108,8 @@ form .fields37 .input-field37 {
 
 .button-container37 {
     display: flex;
-    justify-content: center; /* Horizontally centers the button */
-    margin-top: 20px; /* Optional: Adds some space above the button */
+    justify-content: center; 
+    margin-top: 20px; 
 }
 
 .container37 form .subBtn37 {
@@ -142,11 +142,11 @@ form button:hover {
     width: 1550px;
 }
 
-/* Error message styling */
+
 .error {
     color: red;
     font-size: 12px;
     margin-top: -5px;
     display: block;
     padding-left: 5px;
-}
+} 
