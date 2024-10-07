@@ -185,7 +185,7 @@ const ClientComplaints = () => {
   };
 
   return (
-    <section className="flex bg-gray-100 min-h-screen">
+    <section className="flex bg-[#9BA4BF] min-h-screen">
       {/* Sidebar */}
       <Sidebar />
 
@@ -197,7 +197,7 @@ const ClientComplaints = () => {
           <button
             type="button"
             onClick={() => { navigate('/complaints') }}
-            className="rounded-3xl bg-blue-700 text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-[#6B75FE] transition"
+            className="rounded-3xl bg-[#6B75FE] text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-[#6B75FE] transition"
           >
             Complaints
           </button>

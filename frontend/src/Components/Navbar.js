@@ -24,7 +24,7 @@ const NavBar = ({ searchfunction, user }) => {
         <div className="text-gray-800">
           <p className="text-sm font-semibold">Hello, {user?.name || "User"}</p>
           <p className="text-xs text-gray-500">
-            Today is #{date}, #Month {month}, #Year {year}
+            Today : {date} : {month} : {year}
           </p>
         </div>
       </div>
