@@ -1,17 +1,17 @@
 *{
-    margin: 0;
+     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; 
     
 }
 
-body{
+ body{
    
-    display: flex;
+     display: flex; 
     
 
-}
+} 
 
 .container20{
     margin-top: -230px;
@@ -68,11 +68,7 @@ body{
     min-height: 490px;
     background-color: #fff;
 }
-.container20 form .details{
 
-    /*margin-top: 10px;*/
-
-}
 .container20 form .title{
     font-size: 19px;
     font-weight: 500;
@@ -193,4 +189,4 @@ select{
     position: absolute;
     margin-top: 40px;
     color: rgb(243, 243, 243);
-}
+} 

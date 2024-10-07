@@ -84,33 +84,32 @@
     padding-top: 4px;
 }
 @media print {
-    /* Hide elements that shouldn't appear in the print version */
+    
     .div1100 {
         display: block;
-        align-items: center;/* Change according to what you want */
+        align-items: center;
     }
     
     .modal, .add-event {
-        display: none; /* Hide modal and add event button in print */
+        display: none; 
     }
 
-    /* Make sure the layout looks similar to what you want in the PDF */
     .right {
         display: block;
         width: 100%;
-        margin: 0; /* Reset margins */
+        margin: 0; 
     }
 
     .day {
-        width: 14.285%; /* Seven days in a week */
-        float: left; /* Align days in a row */
+        width: 14.285%; 
+        float: left; 
     }
 
     .box1100 {
-        width: 100%; /* Ensure event boxes take full width */
+        width: 100%; 
         display: flex;
-        justify-content: space-between; /* Space out content */
+        justify-content: space-between; 
     }
 
-    /* Additional styling as necessary for print */
+    
 }
