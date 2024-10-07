@@ -1,7 +1,7 @@
 import { FaHome, FaUser, FaChartBar, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { MdDashboard, MdWidgets } from "react-icons/md"; 
 import { IoToggle } from "react-icons/io5";
-import Logo from "../Assets/logo_nav.png";
+import Logo from "../Assets/logo_web.png";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
