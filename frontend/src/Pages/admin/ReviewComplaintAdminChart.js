@@ -73,15 +73,18 @@ const ReviewComplaintAdminChart = () => {
     const canvas = await html2canvas(input);
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF();
-    pdf.addImage(imgData, 'PNG', 10, 10, 180, 160);
+    pdf.setFontSize(16);
+    pdf.text("Review & Complain Report", 105, 20, null, null, "center");
+    pdf.addImage(imgData, 'PNG', 10, 30, 180, 160);
     pdf.save('report.pdf');
     setReportLoading(false);
     toast.success('PDF downloaded successfully!');
   };
 
+
   return (
     <section className="flex bg-[#D5D6D9] min-h-screen">
- 
+
       <Sidebar />
       <div className="flex-1 flex flex-col">
 
