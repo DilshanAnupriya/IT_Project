@@ -52,7 +52,7 @@ function Navbar() {
                 <li className="sub-item more">
                   <Link to="/">Sub Item 03</Link>
                   <ul className="more-menu">
-                    <li className="more-item"><Link to="/">More Item 01</Link></li>
+                    <li className="more-item"><Link to="/AddAppoint">More Item 01</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>

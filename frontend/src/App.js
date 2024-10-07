@@ -25,6 +25,8 @@ import empAvalForm from "./Pages/Employee/EmpAvalForm"
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 import EmpForm from "./Pages/Employee/EmpForm";
 
+import AppointForm from "./Pages/appointment/AddAppointment";
+
 
 
 
@@ -62,6 +64,8 @@ function App() {
           <Route path='/empAvalForm' element={<empAvalForm />} />
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
+
+          <Route path='/AddAppoint' element={<AppointForm />} />
 
 
 
