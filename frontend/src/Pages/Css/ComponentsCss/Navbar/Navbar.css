@@ -7,7 +7,7 @@
      font-family: poppins;
      
 }
-Nav {
+.nav1000 {
      z-index: 999;
      position: fixed;
      top: 0;
@@ -18,10 +18,10 @@ Nav {
      align-items: center;
      background: #9BA4BF;
      box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
-     padding: 0 90px;
+     padding: 18px 90px;
      transition: .5s;
 }
-Nav .logo {
+.nav1000 .logo {
      color: #000000;
      font-size: 1.8em;
      text-decoration: none;
@@ -42,10 +42,10 @@ Nav .logo {
      padding-left: 10px;
      margin-top: 5px;
 }
-.menu-item button{
+.menu-item1000 button{
  color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 0px 16px;
   border-radius: 8px;
   cursor: pointer;
      background-color: #6B75FE;
@@ -53,16 +53,16 @@ Nav .logo {
 }
 
 
-Nav .navigation {
+.nav1000 .navigation {
      position: relative;
-     line-height: 75px;
+     line-height: 45px;
      transition: .5s;
      transition-property: line-height;
 }
-Nav.sticky .navigation {
+.nav1000.sticky .navigation {
      line-height: 60px;
 }
-Nav .navigation .menu {
+.nav1000 .navigation .menu {
      position: relative;
      display: flex;
      justify-content: center;
@@ -74,7 +74,7 @@ Nav .navigation .menu {
      font-size: 1em;
      text-decoration: none;
      margin: 18px;
-     padding: 15px 0;
+     padding: 10px 0;
 }
 .menu-item > a:hover {
      color: #6B75FE;
@@ -83,11 +83,10 @@ Nav .navigation .menu {
 .menu-item .sub-menu {
      position: absolute;
      background: #9BA4BF;
-     top: 74px;
+     top: 50px;
      line-height: 40px;
      list-style: none;
      border-radius: 0 0 5px 5px;
-     box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
      pointer-events: none;
      transform: translateY(20px);
      opacity: 0;
@@ -98,11 +97,12 @@ Nav .navigation .menu {
      width: 200px;
      margin-left: 10px;
 }
-Nav.sticky .menu-item .sub-menu {
+.nav1000.sticky .menu-item .sub-menu {
      top: 60px;
 }
 .menu-item:hover .sub-menu {
-     pointer-events: all;
+     display: block; /* Make it visible on hover */
+     pointer-events: auto; /* Enable interactions */
      transform: translateY(0);
      opacity: 1;
 }
@@ -160,13 +160,13 @@ i.menu-btn, i.close-btn {
 
 
 @media (max-width:1110px) {
-     Nav {
+     .nav1000 {
           padding: 20px;
      }
-     Nav.sticky {
+     .nav1000.sticky {
           padding: 20px;
      }
-     Nav .navigation .menu {
+     .nav1000 .navigation .menu {
           position: fixed;
           display: block;
           background: #23252B;
@@ -180,10 +180,10 @@ i.menu-btn, i.close-btn {
           transition-property: right, visibility;
           visibility: hidden;
       }
-      Nav.sticky .navigation {
+      .nav1000.sticky .navigation {
           line-height: 75px;
       }
-      Nav .navigation .menu.active {
+      .nav1000 .navigation .menu.active {
           right: 0;
           visibility: visible;
       }
@@ -204,7 +204,7 @@ i.menu-btn, i.close-btn {
           width: auto;
           margin-left: 0;
       }
-      Nav.sticky .menu-item .sub-menu {
+      .nav1000.sticky .menu-item .sub-menu {
           top: 0;
       }
       .menu-item:hover .sub-menu {

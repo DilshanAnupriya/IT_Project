@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav >
+      <div className="nav1000">
         <div className="pic">
           <img src={Logo} className="img" alt="logo" />
           <Link to="/" className="logo">Care Zone</Link>
@@ -71,11 +71,11 @@ function Navbar() {
               </ul>
             </li>
             <li className="menu-item"><Link to="/newDash">Contact</Link></li>
-            <li className="menu-item"><button>Login</button></li>
+            <li className="menu-item1000"><button>Login</button></li>
           </ul>
         </div>
         <i className="fa-solid fa-bars menu-btn"></i>
-      </nav>
+      </div>
     </div>
 
   )

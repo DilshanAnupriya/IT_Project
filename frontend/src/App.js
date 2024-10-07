@@ -18,7 +18,8 @@ import ScheduleUpdate from "./Pages/Volunteers/Schedule/ScheduleU";//update task
 import CertificateD from "./Pages/Volunteers/Certificate/CertificateD";//update task page dashboard
 import CertificateC from "./Pages/Volunteers/Certificate/CertificateC";//update task page dashboard
 import CertificateU from "./Pages/Volunteers/Certificate/CertificateU";//update task page dashboard
-
+import UTD from "./Pages/Volunteers/User-Task/UserTask";//update task page dashboard
+import UCD from "./Pages/Volunteers/User-Task/UCertificate"
 
 import EmpDashForm from "./Pages/Employee/EmpDash";
 import empAvalForm from "./Pages/Employee/EmpAvalForm"
@@ -57,11 +58,15 @@ function App() {
           <Route path='/CertificateDisplay' element={<CertificateD />} />
           <Route path='/CertificateCreate' element={<CertificateC />} />
           <Route path='/CertificateU/:id' element={<CertificateU />} />
+          <Route path='/UTaskD' element={<UTD />} />
+          <Route path='/UCD' element={<UCD />} />
 
           <Route path='/empForm' element={<EmpForm />} />
           <Route path='/empAvalForm' element={<empAvalForm />} />
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
+
+          <Route path='/app' element={<EmpDashForm />} />
 
 
 

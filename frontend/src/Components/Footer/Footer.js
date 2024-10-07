@@ -2,6 +2,10 @@ import React from 'react'
 import "../../Pages/Css/ComponentsCss/Footer/Footer.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FaFacebook } from "react-icons/fa";
+import { GrInstagram } from "react-icons/gr";
+import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 function Footer() {
     return (
         <div>
@@ -9,13 +13,13 @@ function Footer() {
                 <div className="footer">
                     <div className="footer-content">
                         <div className="footer-main">
-                            <h2>Name</h2>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus quo et dignissimos veniam laborum!</p>
+                            <h2>Care Zone</h2>
+                            <p>sworld best elder care.we provide best service to our elders and well expirence</p>
                             <div className="social-link">
-                                <Link to="#"><FontAwesomeIcon icon="fa-brands fa-facebook" /></Link>
-                                <Link to="#"><i className="fa-brands fa-twitter"></i></Link>
-                                <Link to="#"><i className="fa-brands fa-tiktok"></i></Link>
-                                <Link to="#"><i className="fa-brands fa-facebook-f"></i></Link>
+                                <Link to="#"><FontAwesomeIcon icon="fa-brands fa-facebook" /><FaFacebook /></Link>
+                                <Link to="#"><i className="fa-brands fa-twitter"></i><GrInstagram /></Link>
+                                <Link to="#"><i className="fa-brands fa-tiktok"></i><FaLinkedin /></Link>
+                                <Link to="#"><i className="fa-brands fa-facebook-f"></i><FaTwitter /></Link>
                             </div>
                         </div>
                         <div className="links">

@@ -1,0 +1,18 @@
+
+.s2000{
+    display: flex;
+    gap: 150px;
+}
+.s2000 img{
+    width: 600px;
+    margin-left: -220px;
+}
+.sub3000 h1{
+    font-size: 36px;
+    font-style: bold;
+    font-weight: 800;
+}
+
+.sub3000 p{
+    padding-top: 40px;
+}

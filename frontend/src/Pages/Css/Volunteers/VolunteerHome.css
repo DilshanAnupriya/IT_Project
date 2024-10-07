@@ -139,9 +139,9 @@
     margin-top: 130px;
     margin-left: 100px;
     margin-right: 50px;
-    
     border-radius: 20px;
-    box-shadow: 0 0 4px black;
+    box-shadow: 0 0 2px black;
+    padding-top: 1px;
 
 }
 
@@ -157,10 +157,11 @@
 
 }
 
-.content-5 .reg .sub {
+.content-5 .reg .sub9 {
     position: absolute;
     margin-top: -270px;
     margin-left: 80px;
+    font-size: 28px;
     animation: slide 5s linear;
     animation-timeline: view();
     animation-range: entry 0% cover 30%;
@@ -207,7 +208,7 @@
   .header {
     text-align: center;
     padding: 32px;
-    font-size: 25px;
+    font-size: 44px;
     animation: appear 5s linear;
     animation-timeline: view();
     animation-range: entry 0% cover 40%;
@@ -269,6 +270,7 @@
   .content-7{
     
     margin-top: 200px;
+    margin-left: 00px;
   }
   *{
     font-family: 'Poppins', sans-serif;
@@ -280,7 +282,7 @@
     transition: .2s linear;
 }
 
-.container9{
+.container8{
     background:white;
     padding:15px 9%;
     padding-bottom: 100px;
@@ -288,22 +290,22 @@
    
 }
 
-.container9 .heading{
+.container8 .heading9{
     text-align: center;
     padding-bottom: 15px;
     color:#000000;
     font-size: 50px;
 }
 
-.container9 .box-container{
-    display: grid;
+.container8 .box-container9{
+    display: flex;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap:50px;
     margin-top: 100px;
     
 }
 
-.container9 .box-container .box{
+.container8 .box-container9 .box9{
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
     border-radius: 5px;
     background: #fff;
@@ -314,23 +316,23 @@
     animation-range: entry 0% cover 40%;
 }
 
-.container9 .box-container .box img{
+.container8 .box-container9 .box9 img{
     height: 280px;
 }
 
-.container9 .box-container .box h3{
+.container8 .box-container9 .box9 h3{
     color:#444;
     font-size: 22px;
     padding:10px 0;
 }
 
-.container9 .box-container .box p{
+.container8 .box-container9 .box9 p{
     color:#777;
     font-size: 15px;
     line-height: 1.8;
 }
 
-.container9 .box-container .box .btn{
+.container8 .box-container9 .box9 .btn{
     margin-top: 10px;
     display: inline-block;
     background:#333;
@@ -340,13 +342,13 @@
     padding: 8px 25px;
 }
 
-.container9 .box-container .box .btn:hover{
+.container8 .box-container9 .box9 .btn:hover{
     letter-spacing: 1px;
     background-color: #6B75FE;
     color: #fff;
 }
 
-.container9 .box-container .box:hover{
+.container8 .box-container9 .box9:hover{
     box-shadow: 0 10px 15px rgba(0,0,0,.3);
     transform: scale(1.03);
    

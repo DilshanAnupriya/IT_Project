@@ -15,8 +15,8 @@ body{
 
 .container30{
     
-    margin-top: -230px;
-    margin-left: -380px;
+    margin-top: -250px;
+    margin-left: -490px;
     position: absolute;
     max-width: 1050px;
     width: 100%;
@@ -195,4 +195,10 @@ select{
    position: absolute;
     margin-top: 500px;
     color: rgb(243, 243, 243);
+}
+.ft1100{
+    position: absolute;
+    margin-top: 400px;
+    width: 100%;
+    margin-left: -718px;
 }
