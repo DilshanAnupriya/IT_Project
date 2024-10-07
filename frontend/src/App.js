@@ -12,7 +12,7 @@ import EmpForm from "./Pages/Employee/EmpForm";
 
 
 
-
+import EmpDash from "./Pages/Employee/EmpDashBoard";
 import EmpDashForm from "./Pages/Employee/EmpDash";
 
 import Vol_pd from "./Pages/Volunteers/VolunteerProfileDash"
@@ -51,7 +51,7 @@ function App() {
 
 
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
-
+          <Route path='/EmpDash' element={<EmpDash />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
 
 

@@ -27,9 +27,6 @@ const createRequests = async (req, res, next) => {
 
     const {name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference} = req.body;
 
-    const { name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference } = req.body;
-
-
     let requ;
 
     //create Requests
@@ -38,7 +35,6 @@ const createRequests = async (req, res, next) => {
 
         await requ.save(); 
 
-        await requ.save();
 
     } catch (error) {
         console.log(error);
@@ -85,14 +81,7 @@ const updateRequests = async (req, res, next) => {
 
     //update Requests
     try {
-        requ = await Requests.findByIdAndUpdate(id, 
-
-    const { name, email, phone_no, gender, address, edu_qualifications, experience, yearsOfQualification, computerLiteracy, englishSkills, reference } = req.body;
-
-    //update Requests
-    try {
         requ = await Requests.findByIdAndUpdate(id,
-
             { name: name, email: email, phone_no: phone_no, gender: gender, address: address, edu_qualifications: edu_qualifications, experience: experience, yearsOfQualification: yearsOfQualification, computerLiteracy: computerLiteracy, englishSkills: englishSkills, reference: reference }
         );
         requ = await requ.save();
