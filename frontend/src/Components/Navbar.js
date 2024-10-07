@@ -1,5 +1,5 @@
 import { FaArrowDown, FaBell, FaMessage, FaUser } from "react-icons/fa6";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import { useState } from "react";
 
 const NavBar = ({ searchfunction, user }) => {
@@ -19,17 +19,17 @@ const NavBar = ({ searchfunction, user }) => {
     <nav className="bg-transparent w-full h-16 flex items-center justify-between px-6 lg:px-12">
       <div className="flex items-center space-x-4">
         <div className="text-gray-800">
-          <p className="text-sm font-semibold">Hello, {user?.name || "User"}</p>
+          <p className="text-sm font-semibold">Hello, {user?.name || "Suwini"}</p>
           <p className="text-xs text-gray-500">
-            Today is #{date}, #Month {month}, #Year {year}
+            Today  {date} : {month} : {year}
           </p>
         </div>
       </div>
 
 
-      <div className="flex-1 max-w-md">
+      {/* <div className="flex-1 max-w-md">
         <SearchBar searchfunction={searchfunction} />
-      </div>
+      </div> */}
 
       <div className="flex items-center space-x-4 text-gray-600">
         <FaBell className="cursor-pointer hover:text-gray-800 transition" />

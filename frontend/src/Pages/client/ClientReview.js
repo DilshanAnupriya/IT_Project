@@ -224,7 +224,7 @@ const ClientReview = () => {
   };
 
   return (
-    <section className="flex bg-[#F5F5F5] min-h-screen">
+    <section className="flex bg-[#9BA4BF] min-h-screen">
 
       <Sidebar />
 
