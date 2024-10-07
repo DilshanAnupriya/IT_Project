@@ -250,7 +250,7 @@ const ClientReview = () => {
 
         <div className="flex-1 p-8 flex flex-col lg:flex-row gap-8">
    
-          <div className="bg-white p-6 rounded-lg mb-6 flex-1 h-[450px] shadow-lg border border-gray-300 rounded-lg">
+          <div className="bg-white p-6 rounded-lg mb-6 flex-1 h-[550px] shadow-lg border border-gray-300 rounded-lg">
             <form onSubmit={handleFormSubmit} className="space-y-4 border border-[#1f1f1f] p-6 rounded-lg">
               <div>
                 <label htmlFor="name" className="block font-semibold mb-2 text-gray-700">Name:</label>
