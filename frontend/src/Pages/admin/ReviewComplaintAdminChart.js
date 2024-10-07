@@ -83,7 +83,7 @@ const ReviewComplaintAdminChart = () => {
 
 
   return (
-    <section className="flex bg-[#D5D6D9] min-h-screen">
+    <section className="flex bg-[#9BA4BF] min-h-screen">
 
       <Sidebar />
       <div className="flex-1 flex flex-col">

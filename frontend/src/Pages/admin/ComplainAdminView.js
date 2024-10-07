@@ -52,7 +52,7 @@ const ComplainAdminView = () => {
   };
 
   return (
-    <section className="flex bg-gray-100 min-h-screen">
+    <section className="flex bg-[#9BA4BF] min-h-screen">
 
       <Sidebar />
 

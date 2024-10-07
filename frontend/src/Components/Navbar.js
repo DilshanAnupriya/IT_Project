@@ -22,7 +22,7 @@ const NavBar = ({ searchfunction, user }) => {
 
       <div className="flex items-center space-x-4">
         <div className="text-gray-800">
-          <p className="text-sm font-semibold">Hello, {user?.name || "User"}</p>
+          <p className="text-sm font-semibold">Hello, {user?.name || "Suwini"}</p>
           <p className="text-xs text-gray-500">
             Today : {date} : {month} : {year}
           </p>
