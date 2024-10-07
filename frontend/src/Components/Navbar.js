@@ -1,84 +1,66 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../Pages/Css/ComponentsCss/Navbar/Navbar.css";
-import Logo from "../Assets/logo_nav.png";
+import { FaArrowDown, FaBell, FaMessage, FaUser } from "react-icons/fa6";
+// import SearchBar from "./SearchBar";
+import { useState } from "react";
 
-function Navbar() {
+const NavBar = ({ searchfunction, user }) => {
 
+  const [display, setDisplay] = useState(false);
+
+ 
+  const displayProfile = () => {
+    setDisplay(!display);
+  };
+
+
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1; 
+  const date = currentDate.getDate();
 
   return (
-    <div>
-      <nav >
-        <div className="pic">
-          <img src={Logo} className="img" alt="logo" />
-          <Link to="/" className="logo">Care Zone</Link>
+    <nav className="bg-transparent w-full h-16 flex items-center justify-between px-6 lg:px-12">
+
+      <div className="flex items-center space-x-4">
+        <div className="text-gray-800">
+          <p className="text-sm font-semibold">Hello, {user?.name || "User"}</p>
+          <p className="text-xs text-gray-500">
+            Today is #{date}, #Month {month}, #Year {year}
+          </p>
         </div>
+      </div>
 
-        <div className="navigation">
-          <ul className="menu">
-            <i className="fa-solid fa-xmark close-btn"></i>
-            <li className="menu-item"><Link to="/mainhome">Home</Link></li>
-            <li className="menu-item">
-              <Link className="sub-btn" to="/">Features <i className="fas fa-angle-down"></i></Link>
-              <ul className="sub-menu">
-                <li className="sub-item"><Link to="/">Mobility Support</Link></li>
-                <li className="sub-item"><Link to="/">Appointment</Link></li>
-                <li className="sub-item"><Link to="/">Care plans</Link></li>
-                <li className="sub-item"><Link to="/">Donation</Link></li>
 
-              </ul>
-            </li>
-            <li className="menu-item">
-              <Link className="sub-btn" to="/">Services <i className="fas fa-angle-down"></i></Link>
-              <ul className="sub-menu subtow">
-                <li className="sub-item more">
-                  <Link to="/">Sub Item 01</Link>
-                  <ul className="more-menu">
-                    <li className="more-item"><Link to="/volunteer_pd">More Item 01</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                  </ul>
-                </li>
-                <li className="sub-item more">
-                  <Link to="/">Sub Item 02</Link>
-                  <ul className="more-menu">
-                    <li className="more-item"><Link to="/">More Item 01</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                  </ul>
-                </li>
-                <li className="sub-item more">
-                  <Link to="/">Sub Item 03</Link>
-                  <ul className="more-menu">
-                    <li className="more-item"><Link to="/">More Item 01</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                  </ul>
-                </li>
-                <li className="sub-item more"> <Link to="/volunteer">Volunteering</Link> </li>
-                <li className="sub-item more">
-                  <Link className="more-btn" to="/" >More Items </Link>
-                  <ul className="more-menu">
-                    <li className="more-item"><Link to="">More Item 01</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li className="menu-item"><Link to="/newDash">Contact</Link></li>
-            <li className="menu-item"><button>Login</button></li>
-          </ul>
+      {/* <div className="flex-1 max-w-md">
+        <SearchBar searchfunction={searchfunction} />
+      </div> */}
+
+      <div className="flex items-center space-x-4 text-gray-600">
+        <FaBell className="cursor-pointer hover:text-gray-800 transition" />
+        <FaMessage className="cursor-pointer hover:text-gray-800 transition" />
+        <FaUser className="cursor-pointer hover:text-gray-800 transition" />
+        <div className="relative">
+    
+          <div className="flex items-center cursor-pointer" onClick={displayProfile}>
+            <div className="text-sm text-gray-700">
+              <p>{user?.name || "User"}</p>
+              <p className="text-xs text-gray-500">{user?.role || "Role"}</p>
+            </div>
+            <FaArrowDown className="ml-2" />
+          </div>
+
+    
+          {display && (
+            <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg py-2">
+              <a href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+              <a href="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+              <a href="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+            </div>
+          )}
         </div>
-        <i className="fa-solid fa-bars menu-btn"></i>
-      </nav>
-    </div>
+      </div>
+    </nav>
+  );
+};
 
-  )
-}
 
-export default Navbar;
+export default NavBar;

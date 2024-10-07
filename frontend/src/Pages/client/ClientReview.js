@@ -242,7 +242,7 @@ const ClientReview = () => {
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="rounded-3xl bg-blue-700 text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-blue-800 transition"
+            className="rounded-3xl bg-blue-700 text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-[#6B75FE] transition"
           >
             Review
           </button>
