@@ -204,7 +204,7 @@ const ClientComplaints = () => {
           <button
             type="button"
             onClick={() => { navigate('/') }}
-            className="rounded-3xl bg-transparent border border-blue-700 py-2 px-6 md:py-4 md:px-10 text-blue-700 w-full md:w-auto text-center shadow-md hover:bg-blue-700 hover:text-white transition"
+            className="rounded-3xl bg-transparent border border-blue-700 py-2 px-6 md:py-4 md:px-10 text-blue-700 w-full md:w-auto text-center shadow-md hover:bg-[#6B75FE] hover:text-white transition"
           >
             Review
           </button>
@@ -258,7 +258,7 @@ const ClientComplaints = () => {
                 />
               </div>
               <div>
-                <button type="submit" className="w-full bg-blue-700 text-white py-2 px-4 rounded shadow-md hover:bg-[#6B75FE] transition">
+                <button type="submit" className="w-full bg-[#6B75FE] text-white py-2 px-4 rounded shadow-md hover:bg-[#6B75FE] transition">
                   {isUpdate ? "Update Complaint" : "Submit Complaint"}
                 </button>
               </div>
@@ -287,7 +287,7 @@ const ClientComplaints = () => {
               {complaints.length > filteredComplaints.length && (
                 <button
                   onClick={handleReadMore}
-                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded mt-4 w-full transition"
+                  className="bg-[#6B75FE] hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded mt-4 w-full transition"
                 >
                   Read More
                 </button>

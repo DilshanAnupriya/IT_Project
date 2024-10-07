@@ -113,7 +113,7 @@ const ReviewComplaintAdminChart = () => {
 
           <button
             onClick={downloadPDF}
-            className={`bg-blue-700 text-white py-2 px-4 rounded ${reportLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`bg-[#6B75FE] text-white py-2 px-4 rounded ${reportLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={reportLoading}
           >
             {reportLoading ? 'Generating PDF...' : 'Get Report'}

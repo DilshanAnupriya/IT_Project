@@ -235,14 +235,14 @@ const ClientReview = () => {
           <button
             type="button"
             onClick={() => navigate('/complaints')}
-            className="rounded-3xl bg-transparent border border-blue-700 py-2 px-6 md:py-4 md:px-10 text-blue-700 w-full md:w-auto text-center shadow-md hover:bg-blue-700 hover:text-white transition"
+            className="rounded-3xl bg-transparent border border-blue-700 py-2 px-6 md:py-4 md:px-10 text-blue-700 w-full md:w-auto text-center shadow-md hover:bg-[#6B75FE] hover:text-white transition"
           >
             Complaints
           </button>
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="rounded-3xl bg-blue-700 text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-blue-800 transition"
+            className="rounded-3xl bg-[#6B75FE] text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-blue-800 transition"
           >
             Review
           </button>
@@ -335,7 +335,7 @@ const ClientReview = () => {
               {filteredReviews.length < reviews.length && (
                 <button
                   onClick={handleReadMore}
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center transition"
+                  className="bg-[#6B75FE] text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center transition"
                 >
                   <FaPlusSquare className="h-5 w-5" />
                   <span className="ml-2">Read More</span>
