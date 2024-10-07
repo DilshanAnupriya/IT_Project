@@ -291,7 +291,7 @@ const ClientReview = () => {
               </div>
               <button
                 type="submit"
-                className="text-right w-full bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-600 transition flex items-center justify-center"
+                className="text-right w-full bg-[#6B75FE] text-white px-4 py-2 rounded hover:bg-blue-600 transition flex items-center justify-center"
               >
                 {isUpdate ? <p>Update</p> : <p>Send</p>}
               </button>
