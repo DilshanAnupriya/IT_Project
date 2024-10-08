@@ -1,0 +1,13 @@
+body {
+    background-color: #9BA4BF;
+}
+
+button {
+    background-color: #6B75FE;
+    color: white; /* Optional: to ensure text is readable */
+}
+.error-message {
+    color: red; /* Make error messages red */
+    margin: 5px 0; /* Optional spacing */
+}
+

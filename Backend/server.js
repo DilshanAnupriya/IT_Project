@@ -2,7 +2,11 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyparser = require("body-parser");
+const dotenv = require("dotenv");
 
+
+const app = express();
 
 // Import the routes
 const volunteerRoutes = require("./Routes/Volunteers/VolunteerRoutes");
@@ -28,11 +32,15 @@ const Breakfast = require("./Routes/MedicalOfficer/BreakfastRoute");
 const Lunch = require("./Routes/MedicalOfficer/LunchRoute");
 const Dinner = require("./Routes/MedicalOfficer/DinnerRoute");
 
+//mobilitysupport
+const shedule  = require ("./Routes/mobility_support/shedules");
+const equipment = require ("./Routes/mobility_support/equipments");
+const mRequests = require ("./Routes/mobility_support/requests");
 
 
 
 
-const app = express();
+
 //careplan
 const care = require("./Routes/careplan/careRoutes");
 
@@ -85,7 +93,9 @@ app.use("/User", user);
 app.use("/funds", fun);
 app.use("/salary", sal);
 
-
+app.use("/shedule",shedule );
+app.use("/e",equipment);
+app.use("/request",mRequests);
 
 // Define the routes
 
