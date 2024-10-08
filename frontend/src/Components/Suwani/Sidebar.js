@@ -1,34 +1,25 @@
-import { FaHome, FaUser, FaChartBar, FaCog, FaSignOutAlt } from "react-icons/fa";
-import { MdDashboard, MdWidgets } from "react-icons/md";
+import { FaUser, FaChartBar, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { IoToggle } from "react-icons/io5";
 import Logo from "../../Assets/logo_suwini.png";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-16 bg-white flex flex-col items-center py-20 space-y-8 shadow-lg">
-
-      <div className="space-y-8">
-
-        <div className="j">
-          <img src={Logo} className="k" alt="logo" />
-        </div>
-
-        {/* <MdDashboard className="text-blue-600 hover:text-blue-800 cursor-pointer" size={24} /> */}
+    <div className="h-screen w-16 mt-10 bg-white fixed top-0 left-0 flex flex-col items-center py-10 space-y-6 shadow-lg z-50">
+      
+      {/* Logo Section */}
+      <div className="mb-12">
+        <img src={Logo} className="w-12" alt="logo" />
       </div>
 
-
-      <div className="space-y-8">
+      {/* Menu Icons */}
+      <div className="flex flex-col space-y-12">
         <Link to="/admin-review">
           <FaUser className="text-black hover:text-blue-600 cursor-pointer" size={24} />
         </Link>
 
-
-
-
         <Link to="/report">
-          <FaChartBar className="text-black hover:text-blue-600 cursor-pointer"
-            size={24} />
+          <FaChartBar className="text-black hover:text-blue-600 cursor-pointer" size={24} />
         </Link>
 
         <Link to="/admin-complaint">
@@ -36,14 +27,14 @@ const Sidebar = () => {
         </Link>
       </div>
 
-      <div className="space-y-8 mt-auto">
-
+      {/* Footer Icons (Bottom) */}
+      <div className="flex flex-col space-y-8 mt-auto mb-10">
         <Link to="/complaints">
           <FaCog className="text-black hover:text-blue-600 cursor-pointer" size={24} />
         </Link>
 
         <Link to="/client-review">
-        <FaSignOutAlt className="text-black hover:text-blue-600 cursor-pointer" size={24} />
+          <FaSignOutAlt className="text-black hover:text-blue-600 cursor-pointer" size={24} />
         </Link>
       </div>
     </div>

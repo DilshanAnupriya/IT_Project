@@ -185,7 +185,7 @@ const ClientComplaints = () => {
   };
 
   return (
-    <section className="w-[1300px] mt-20 flex bg-[#9BA4BF] min-h-screen">
+    <section className="w-[1300px] ml-10 mt-20 flex bg-[#9BA4BF] min-h-screen">
       {/* Sidebar */}
       <Sidebar />
 
@@ -193,7 +193,7 @@ const ClientComplaints = () => {
 
         <Navbar_profile />
 
-        <div className="flex justify-start space-x-4 md:space-x-8 py-4">
+        <div className="flex ml-20 justify-start space-x-4 md:space-x-8 py-4">
           <button
             type="button"
             onClick={() => { navigate('/complaints') }}

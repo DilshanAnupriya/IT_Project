@@ -83,7 +83,7 @@ const ReviewComplaintAdminChart = () => {
 
 
   return (
-    <div className="w-[1300px] mt-20 flex bg-[#9BA4BF] min-h-screen">
+    <div className="w-[1300px] ml-10 mt-20 flex bg-[#9BA4BF] min-h-screen">
 
       <Sidebar/>
       <div className="flex-1 flex flex-col">

@@ -224,7 +224,7 @@ const ClientReview = () => {
   };
 
   return (
-    <section className="w-[1300px] mt-20 flex bg-[#9BA4BF] min-h-screen">
+    <section className="w-[1300px] ml-10 mt-20 flex bg-[#9BA4BF] min-h-screen">
 
       <Sidebar />
       <div>
@@ -232,7 +232,7 @@ const ClientReview = () => {
         <div className="flex-1 flex flex-col">
 
           <Navbar_profile />
-          <div className="flex justify-start space-x-4 md:space-x-8 py-4">
+          <div className="flex ml-20 justify-start space-x-4 md:space-x-8 py-4">
             <button
               type="button"
               onClick={() => navigate('/complaints')}
@@ -251,7 +251,7 @@ const ClientReview = () => {
 
           <div className="flex-1 p-8 flex flex-col lg:flex-row gap-8">
 
-            <div className="bg-white p-6 rounded-lg mb-6 flex-1 h-[550px] shadow-lg border border-gray-300 rounded-lg">
+            <div className="bg-white p-6 rounded-lg mb-6 flex-1 shadow-lg border border-gray-300">
               <form onSubmit={handleFormSubmit} className="space-y-4 border border-[#1f1f1f] p-6 rounded-lg">
                 <div>
                   <label htmlFor="name" className="block font-semibold mb-2 text-gray-700">Name:</label>
@@ -299,7 +299,7 @@ const ClientReview = () => {
               </form>
             </div>
 
-            <div className="bg-white shadow-lg p-6 rounded-lg flex-1">
+            <div className="bg-white w-[700px] shadow-lg p-6 rounded-lg flex-1">
               <input
                 type="text"
                 placeholder="Search reviews..."
