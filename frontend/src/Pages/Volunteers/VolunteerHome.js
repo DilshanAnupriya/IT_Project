@@ -136,7 +136,7 @@ function VolunteerHome() {
                                     <img src={c27} alt="" />
                                     <h3>Schedule</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="#" class="btn">View </Link>
+                                    <Link to="/USC" class="btn">View </Link>
                                 </div>
                             </div>
                         </div>

@@ -129,7 +129,7 @@ function UserTask() {
                 </div>
             </div>
             <div>
-                <Footer />
+
             </div>
 
 
