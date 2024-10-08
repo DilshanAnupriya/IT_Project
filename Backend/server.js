@@ -98,7 +98,7 @@ app.use('/api/complaint', complaintRoute);
 
 // Connect to MongoDB
 // mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
-mongoose.connect("mongodb+srv://root:root@test.fesduce.mongodb.net/?retryWrites=true&w=majority&appName=test")
+mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
     .then(() => console.log("Connected to Mongodb"))
     .then(() => {
         app.listen(3000);
