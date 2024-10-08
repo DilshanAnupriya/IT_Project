@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-16 mt-10 bg-white fixed top-0 left-0 flex flex-col items-center py-10 space-y-6 shadow-lg z-50">
+    <div className="h-screen w-16 mt-20 bg-white fixed -top-4 left-0 flex flex-col items-center py-10 space-y-6 shadow-lg z-50">
       
       {/* Logo Section */}
       <div className="mb-12">

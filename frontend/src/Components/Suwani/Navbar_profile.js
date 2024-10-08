@@ -15,7 +15,7 @@ const Navbar_suwani = ({ searchfunction, user }) => {
   const date = currentDate.getDate();
 
   return (
-    <nav className="bg-white w-full h-16 fixed top-0 z-50 shadow flex items-center justify-between px-6 lg:px-12">
+    <nav className="bg-white w-full -ml-12 h-16 fixed top-0 z-50 shadow flex items-center justify-between px-6 lg:px-12">
       <div className="flex items-center space-x-4">
         <div className="text-gray-800">
           <p className="text-sm font-semibold">Hello, {user?.name || "Suwini"}</p>
