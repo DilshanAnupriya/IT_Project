@@ -38,13 +38,18 @@ import UpC from "./Pages/Care Plan/UpdateC";
 
 
 
-
+import ClientReview from './Pages/Suwani/client/ClientReview.js';
+import ClientComplaints from './Pages/Suwani/client/ClientComplaints.js';
+import AdminViewReviewPage from './Pages/Suwani/admin/AdminReviews.js'
+import ComplainAdminView from './Pages/Suwani/admin/ComplainAdminView.js';
+import ReviewComplaintAdminChart from './Pages/Suwani/admin/ReviewComplaintAdminChart.js';
 
 
 
 
 
 function App() {
+  localStorage.setItem('userid', '5a9427648b0beebeb6957bda')
   return (
     <div>
 
@@ -85,7 +90,11 @@ function App() {
           <Route path='/UpC/:id' element={<UpC />} />
 
 
-
+          <Route path='/client-review' element={<ClientReview />} />
+          <Route path='/complaints' element={<ClientComplaints />} />
+          <Route path='/admin-review' element={<AdminViewReviewPage />} />
+          <Route path='/admin-complaint' element={<ComplainAdminView />} />
+          <Route path='/report' element={<ReviewComplaintAdminChart />} />
 
 
         </Routes>

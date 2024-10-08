@@ -97,7 +97,8 @@ app.use('/api/complaint', complaintRoute);
 // Volunteer task routes
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
+// mongoose.connect("mongodb+srv://Admin:B03_07@cluster0.3giug.mongodb.net/")
+mongoose.connect("mongodb+srv://root:root@test.fesduce.mongodb.net/?retryWrites=true&w=majority&appName=test")
     .then(() => console.log("Connected to Mongodb"))
     .then(() => {
         app.listen(3000);
