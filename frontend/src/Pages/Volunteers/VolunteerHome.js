@@ -1,4 +1,3 @@
-
 import React from 'react'
 import "../Css/Volunteers/VolunteerHome.css"
 import ph6 from "../../Assets/Volunteers/ph6.jpg"
@@ -67,7 +66,7 @@ function VolunteerHome() {
                 <div className='content-5'>
                     <div className='reg'>
                         <img src={c30} alt='' />
-                        <div className='sub'>
+                        <div className='sub9'>
                             <h1>Be part of a  <span>Volunteer </span><br />community!</h1>
                             <Link to="/vol-reg"><button>Register Now</button></Link>
                         </div>
@@ -112,31 +111,31 @@ function VolunteerHome() {
                     </div>
                     <div className='flex'>
 
-                        <div class="container9">
+                        <div class="container8">
 
-                            <h1 class="heading"><span>Core</span> Features</h1>
+                            <h1 class="heading9"><span>Core</span> Features</h1>
 
-                            <div class="box-container">
+                            <div class="box-container9">
 
-                                <div class="box">
+                                <div class="box9">
                                     <img src={c28} alt="" />
                                     <h3>Task </h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="#" class="btn">View</Link>
+                                    <Link to="/UTaskD" class="btn">View</Link>
                                 </div>
 
-                                <div class="box">
+                                <div class="box9">
                                     <img src={c26} alt="" />
                                     <h3>Certificate</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="#" class="btn">View </Link>
+                                    <Link to="/UCD" class="btn">View </Link>
                                 </div>
 
-                                <div class="box">
+                                <div class="box9">
                                     <img src={c27} alt="" />
                                     <h3>Schedule</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="#" class="btn">View </Link>
+                                    <Link to="/USC" class="btn">View </Link>
                                 </div>
                             </div>
                         </div>

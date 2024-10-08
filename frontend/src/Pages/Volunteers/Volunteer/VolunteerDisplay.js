@@ -96,6 +96,50 @@ function Volunteers_Display() {
         });
     };
 
+    // Function to generate report
+    const generateReport = () => {
+        const doc = new jsPDF();
+
+        // Add title with styles
+        doc.setFontSize(18);
+        doc.setFont("Helvetica", "bold");
+        doc.text("Volunteer Report", 14, 22);
+
+        // Add a horizontal line with left margin
+        const lineLeftMargin = 15;
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(0, 51, 102);
+        doc.line(lineLeftMargin, 40, 200, 40);
+
+        // Add table
+        autoTable(doc, {
+            head: [["Full Name", "Email", "Mobile", "Date of Birth", "Gender", "Join Date", "Skills", "Duration", "Type of Work"]],
+            body: users.map((user) => [
+                `${user.first_name} ${user.last_name}`,
+                user.email,
+                user.mobile,
+                new Date(user.date_of_birth).toLocaleDateString(),
+                user.gender,
+                new Date(user.date).toLocaleDateString(),
+                user.skills,
+                user.duration,
+                user.type_of_work,
+            ]),
+            startY: 45, // Start after the title and line
+        });
+
+        // Add footer with correct date
+        const footerY = doc.autoTable.previous.finalY + 20;
+        doc.setFontSize(10);
+        doc.setFont("Helvetica", "normal");
+        const formattedDate = new Date().toLocaleDateString();
+        doc.text("Generated on: " + formattedDate, 14, footerY);
+
+        // Save the PDF
+        doc.save("volunteer_report.pdf");
+        alert("Report generated successfully!");
+    };
+
 
 
 
@@ -124,7 +168,7 @@ function Volunteers_Display() {
                     </div>
                     <div className="dt202">
                         <button className="dt205" onClick={handleSearch}> <ImSearch /></button>
-                        <button className="dt201" onClick={handlePrint}> <FaDownload /></button>
+                        <button className="dt201" onClick={generateReport}> <FaDownload /></button>
 
 
 

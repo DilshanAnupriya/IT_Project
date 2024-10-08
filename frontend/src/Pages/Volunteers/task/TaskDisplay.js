@@ -9,6 +9,8 @@ import { MdDelete } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md";
 import axios from 'axios'; // For fetching the volunteers
 import { useReactToPrint } from "react-to-print"
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 const URL = "http://localhost:3000/task/";
 
@@ -92,6 +94,46 @@ function TaskDisplay() {
             setNoResults(filteredTask.length === 0);
         });
     };
+    // Function to generate report
+    const generateReport = () => {
+        const doc = new jsPDF();
+
+        // Add title with styles
+        doc.setFontSize(18);
+        doc.setFont("Helvetica", "bold");
+        doc.text("Task Report", 14, 22);
+
+        // Add a horizontal line with left margin
+        const lineLeftMargin = 15;
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(0, 51, 102);
+        doc.line(lineLeftMargin, 40, 200, 40);
+
+        // Add table
+        autoTable(doc, {
+            head: [["Task Name", "Assign To", "Location", "Duration", "Special Instructions", "Description"]],
+            body: tasks.map((task) => [
+                task.task_name,
+                task.assign_to,
+                task.location,
+                task.duration,
+                task.special_instruction,
+                task.description,
+            ]),
+            startY: 45, // Start after the title and line
+        });
+
+        // Add footer with correct date
+        const footerY = doc.autoTable.previous.finalY + 20;
+        doc.setFontSize(10);
+        doc.setFont("Helvetica", "normal");
+        const formattedDate = new Date().toLocaleDateString();
+        doc.text("Generated on: " + formattedDate, 14, footerY);
+
+        // Save the PDF
+        doc.save("task_report.pdf");
+        alert("Report generated successfully!");
+    };
 
 
     return (
@@ -120,7 +162,7 @@ function TaskDisplay() {
                                 </div>
                                 <div className="dt202">
                                     <button className="dt205" onClick={handleSearch}><ImSearch /></button>
-                                    <button className="dt201" onClick={handlePrint}><FaDownload /></button>
+                                    <button className="dt201" onClick={generateReport}><FaDownload /></button>
                                     <Link to="/TaskCreate">
                                         <button className="dt203"><IoMdAddCircle /></button>
                                     </Link>

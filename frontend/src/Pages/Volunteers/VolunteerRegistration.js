@@ -1,7 +1,10 @@
 import React, { useRef, useState } from 'react';
-import "../Css/Volunteers/VolunteerRegistration.css"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import "../Css/Volunteers/VolunteerRegistration.css";
 
 function VolunteerRegistration() {
     const history = useNavigate();
@@ -26,22 +29,16 @@ function VolunteerRegistration() {
 
     const [errors, setErrors] = useState({});
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setInputs((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
 
-        validateField(name, value);
-    };
 
     const validateField = (name, value) => {
         let errorMessages = { ...errors };
 
         if (name === "first_name" || name === "last_name") {
             if (!/^[a-zA-Z]{3,20}$/.test(value)) {
-                errorMessages[name] = "Name must be 3-20 characters long and cannot contain numbers or special characters.";
+                const errorMessage = "Name must be 3-20 characters long and cannot contain numbers or special characters.";
+                errorMessages[name] = errorMessage;
+                toast.error(errorMessage);
             } else {
                 delete errorMessages[name];
             }
@@ -50,7 +47,9 @@ function VolunteerRegistration() {
         if (name === "date_of_birth") {
             const age = new Date().getFullYear() - new Date(value).getFullYear();
             if (age < 18) {
-                errorMessages[name] = "You must be at least 18 years old.";
+                const errorMessage = "You must be at least 18 years old.";
+                errorMessages[name] = errorMessage;
+                toast.error(errorMessage);
             } else {
                 delete errorMessages[name];
             }
@@ -59,7 +58,9 @@ function VolunteerRegistration() {
         if (name === "email") {
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (!emailPattern.test(value)) {
-                errorMessages[name] = "Please enter a valid email address.";
+                const errorMessage = "Please enter a valid email address.";
+                errorMessages[name] = errorMessage;
+                toast.error(errorMessage);
             } else {
                 delete errorMessages[name];
             }
@@ -67,7 +68,9 @@ function VolunteerRegistration() {
 
         if (name === "duration") {
             if (/[*&^%$#@!()]/.test(value)) {
-                errorMessages[name] = "Duration cannot contain special characters.";
+                const errorMessage = "Duration cannot contain special characters.";
+                errorMessages[name] = errorMessage;
+                toast.error(errorMessage);
             } else {
                 delete errorMessages[name];
             }
@@ -78,7 +81,9 @@ function VolunteerRegistration() {
             const today = new Date().setHours(0, 0, 0, 0);
 
             if (selectedDate !== today) {
-                errorMessages[name] = "You can only select the present date.";
+                const errorMessage = "You can only select the present date.";
+                errorMessages[name] = errorMessage;
+                toast.error(errorMessage);
             } else {
                 delete errorMessages[name];
             }
@@ -86,7 +91,9 @@ function VolunteerRegistration() {
 
         if (name === "mobile" || name === "emobile") {
             if (!/^[0-9]{10}$/.test(value)) {
-                errorMessages[name] = "Please enter a valid 10-digit mobile number.";
+                const errorMessage = "Please enter a valid 10-digit mobile number.";
+                errorMessages[name] = errorMessage;
+                toast.error(errorMessage);
             } else {
                 delete errorMessages[name];
             }
@@ -94,13 +101,24 @@ function VolunteerRegistration() {
 
         setErrors(errorMessages);
     };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInputs((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+
+        console.log(`Validating: ${name}`);
+        validateField(name, value);
+    };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
             sendRequest().then(() => history('/mainHome'));
         } else {
-            alert("Please fix the validation errors.");
+            toast.error("Please fix the validation errors.");
         }
     };
 
@@ -148,7 +166,7 @@ function VolunteerRegistration() {
             form2.current.style.opacity = 1;
             form2.current.style.pointerEvents = 'auto';
         } else {
-            alert('Please fill out all required fields in the form.');
+            toast.error('Please fill out all required fields in the form.');
         }
     };
 
@@ -296,6 +314,7 @@ function VolunteerRegistration() {
                     </div>
                 </form>
             </div>
+            <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
 
         </div>
     );

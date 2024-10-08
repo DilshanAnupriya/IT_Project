@@ -1,17 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
-import Nav from "../../../Components/Navbar/Navbar"
+import React, { useState } from 'react';
+import Nav from "../../../Components/Navbar/Navbar";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import "../User-Task/USchedule.css"
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "../User-Task/USchedule.css";
 
 function USchedule() {
     const history = useNavigate();
     const [input, setInputs] = useState({
         event_name: "",
-        S_time: "",  // Dropdown for volunteers
+        S_time: "",
         E_time: "",
         date: "",
-
     });
     const [errors, setErrors] = useState({});
 
@@ -27,21 +28,37 @@ function USchedule() {
     // Validation logic
     const validateField = (name, value) => {
         let errorMessages = { ...errors };
+
         if (name === "event_name") {
             if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
                 errorMessages[name] = "Event name must be 3-20 characters long and contain only letters.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
         }
+
+        if (name === "date") {
+            const selectedDate = new Date(value).setHours(0, 0, 0, 0);
+            const today = new Date().setHours(0, 0, 0, 0);
+
+            if (selectedDate <= today) {
+                errorMessages[name] = "Please select a future date.";
+                toast.error(errorMessages[name]);
+            } else {
+                delete errorMessages[name];
+            }
+        }
+
         setErrors(errorMessages);
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
             sendRequest().then(() => history('/'));
         } else {
-            alert("Please fix the validation errors.");
+            toast.error("Please fix the validation errors.");
         }
     };
 
@@ -50,9 +67,10 @@ function USchedule() {
             event_name: String(input.event_name),
             S_time: String(input.S_time),
             E_time: String(input.E_time),
-            date: new Date(input.date)
+            date: new Date(input.date),
         }).then(res => res.data);
     };
+
     return (
         <div>
             <Nav />
@@ -61,7 +79,6 @@ function USchedule() {
                     <h1>Make a Schedule</h1>
                 </div>
                 <div className='container2100'>
-
                     <form onSubmit={handleSubmit}>
                         <div className='form first30'>
                             <div className='details personal'>
@@ -75,8 +92,8 @@ function USchedule() {
                                             placeholder='Enter Task Name'
                                             value={input.event_name}
                                             name='event_name'
-                                            required />
-
+                                            required
+                                        />
                                     </div>
                                     <div className='input-field'>
                                         <label>Start Time</label>
@@ -86,8 +103,8 @@ function USchedule() {
                                             placeholder='Enter Start Time'
                                             name='S_time'
                                             value={input.S_time}
-                                            required />
-
+                                            required
+                                        />
                                     </div>
                                     <div className='input-field'>
                                         <label>End Time</label>
@@ -97,19 +114,19 @@ function USchedule() {
                                             placeholder='Enter End Time'
                                             name='E_time'
                                             value={input.E_time}
-                                            required />
-
+                                            required
+                                        />
                                     </div>
                                     <div className='input-field'>
                                         <label>Date</label>
                                         <input
-                                            type='Date'
+                                            type='date'
                                             onChange={handleChange}
-                                            placeholder='Enter End Time'
+                                            placeholder='Enter Date'
                                             name='date'
                                             value={input.date}
-                                            required />
-
+                                            required
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -118,9 +135,9 @@ function USchedule() {
                     </form>
                 </div>
             </div>
-
+            <ToastContainer />
         </div>
-    )
+    );
 }
 
-export default USchedule
+export default USchedule;

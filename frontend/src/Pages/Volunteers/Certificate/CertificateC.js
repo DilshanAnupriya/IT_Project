@@ -5,10 +5,11 @@ import "../../Css/Volunteers/Certificate/CertificateC.css";
 import Dash from "../../../Components/new_Dashboard/New_Dashboard";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CertificateC() {
     const ref = useRef(null);
-    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const [volunteers, setVolunteers] = useState([]); // State to hold the list of volunteers
 
@@ -32,7 +33,6 @@ function CertificateC() {
         };
         fetchVolunteers();
     }, []);
-
 
     const onButtonClick = useCallback(() => {
         if (ref.current === null) {
@@ -61,19 +61,14 @@ function CertificateC() {
     };
 
     const validateField = (name, value) => {
-        let errorMessages = { ...errors };
         if (name === "v_name") {
             if (!value) { // Check if a volunteer name is selected
-                errorMessages[name] = "Please select a volunteer name.";
-            } else {
-                delete errorMessages[name];
+                toast.error("Please select a volunteer name.");
             }
         }
         if (name === "title") {
             if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
-                errorMessages[name] = "Title must be 3-20 characters long and cannot include special characters.";
-            } else {
-                delete errorMessages[name];
+                toast.error("Title must be 3-20 characters long and cannot include special characters.");
             }
         }
         if (name === "issue_date") {
@@ -81,21 +76,27 @@ function CertificateC() {
             const today = new Date().setHours(0, 0, 0, 0);
 
             if (selectedDate !== today) {
-                errorMessages[name] = "You can only select the present date.";
-            } else {
-                delete errorMessages[name];
+                toast.error("You can only select the present date.");
             }
         }
-        setErrors(errorMessages);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (Object.keys(errors).length === 0) {
-            sendRequest().then(() => navigate('/CertificateDisplay'));
-        } else {
-            alert("Please fix the validation errors.");
+        // Validate before submitting
+        if (!input.v_name) {
+            toast.error("Please select a volunteer name.");
+            return;
         }
+        if (!/^[a-zA-Z\s]{3,20}$/.test(input.title)) {
+            toast.error("Title must be 3-20 characters long and cannot include special characters.");
+            return;
+        }
+        if (new Date(input.issue_date).setHours(0, 0, 0, 0) !== new Date().setHours(0, 0, 0, 0)) {
+            toast.error("You can only select the present date.");
+            return;
+        }
+        sendRequest().then(() => navigate('/CertificateDisplay'));
     };
 
     const sendRequest = async () => {
@@ -128,7 +129,7 @@ function CertificateC() {
                                 </option>
                             ))}
                         </select>
-                        {errors.v_name && <p className="error">{errors.v_name}</p>}
+
                         <br />
                         <div className='sep2200'>
                             <label >Title</label>
@@ -141,7 +142,6 @@ function CertificateC() {
                                 onChange={handleChange}
                                 required
                             />
-                            {errors.title && <p className="error">{errors.title}</p>}
 
                             <label>Time Period</label>
                             <input
@@ -162,8 +162,8 @@ function CertificateC() {
                                 onChange={handleChange}
                                 required
                             />
-                            {errors.issue_date && <p className="error">{errors.issue_date}</p>}
                         </div>
+
                         <h1 className='title2200'>Certificate Preview</h1>
                         <div className='cont2200' ref={ref}>
                             <img src={template} alt='' />
@@ -179,6 +179,7 @@ function CertificateC() {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

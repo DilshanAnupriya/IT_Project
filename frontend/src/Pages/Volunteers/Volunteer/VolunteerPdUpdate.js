@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import "../../Css/Volunteers/VolunteerPdUpdate.css"
-import axios from 'axios'
+import "../../Css/Volunteers/VolunteerPdUpdate.css";
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Dash from "../../../Components/new_Dashboard/New_Dashboard"
+import Dash from "../../../Components/new_Dashboard/New_Dashboard";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function VolunteerPdUpdate() {
-
-    //update part
-
     const { id } = useParams(); // Get the care plan ID from the URL
     const navigate = useNavigate(); // Initialize the useNavigate hook
     const [input, setInputs] = useState({
@@ -24,12 +24,9 @@ function VolunteerPdUpdate() {
         time: "",
         date: "",
         mobile: "",
-
-
     });
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
+    const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(true);
 
     // Fetch the existing care plan data
@@ -40,21 +37,19 @@ function VolunteerPdUpdate() {
                 setInputs(response.data.volunteer);
                 setLoading(false);
             } catch (error) {
-                setErrorMessage('Failed to fetch care plan. Please try again.');
+                toast.error('Failed to fetch care plan. Please try again.');
                 setLoading(false);
             }
         };
         fetchCareplan();
     }, [id]);
 
-    const [errors, setErrors] = useState({});
-
     // Handle form field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputs({
             ...input,
-            [e.target.name]: e.target.value
+            [name]: value
         });
 
         validateField(name, value);
@@ -66,6 +61,7 @@ function VolunteerPdUpdate() {
         if (name === "first_name" || name === "last_name") {
             if (!/^[a-zA-Z]{3,20}$/.test(value)) {
                 errorMessages[name] = "Name must be 3-20 characters long and cannot contain numbers or special characters.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -75,6 +71,7 @@ function VolunteerPdUpdate() {
             const age = new Date().getFullYear() - new Date(value).getFullYear();
             if (age < 18) {
                 errorMessages[name] = "You must be at least 18 years old.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -84,6 +81,7 @@ function VolunteerPdUpdate() {
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (!emailPattern.test(value)) {
                 errorMessages[name] = "Please enter a valid email address.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -92,6 +90,7 @@ function VolunteerPdUpdate() {
         if (name === "duration") {
             if (/[*&^%$#@!()]/.test(value)) {
                 errorMessages[name] = "Duration cannot contain special characters.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -103,14 +102,16 @@ function VolunteerPdUpdate() {
 
             if (selectedDate !== today) {
                 errorMessages[name] = "You can only select the present date.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
         }
 
-        if (name === "mobile" || name === "emobile") {
+        if (name === "mobile") {
             if (!/^[0-9]{10}$/.test(value)) {
                 errorMessages[name] = "Please enter a valid 10-digit mobile number.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -124,26 +125,20 @@ function VolunteerPdUpdate() {
         e.preventDefault();
         try {
             if (Object.keys(errors).length === 0) {
-
                 await axios.put(`http://localhost:3000/users/update/${id}`, input);
-                setSuccessMessage('Careplan updated successfully!');
-                setErrorMessage('');
-
-
+                toast.success('Volunteer details updated successfully!');
                 setTimeout(() => {
                     navigate('/Display');
                 }, 1500); // 1.5 seconds delay to show the success message
             } else {
-                alert("Please fix the validation errors.");
+                toast.warn("Please fix the validation errors.");
             }
         } catch (error) {
-            setErrorMessage('Failed to update Volunteer details. Please try again.');
-            setSuccessMessage('');
+            toast.error('Failed to update Volunteer details. Please try again.');
         }
     };
 
-
-    //navigation between next pre
+    // Navigation between forms
     const form1 = useRef(null);
     const form2 = useRef(null);
     const nextBtn = useRef(null);
@@ -151,7 +146,7 @@ function VolunteerPdUpdate() {
     const [isForm1Filled, setIsForm1Filled] = useState(false);
 
     const handleNext = (e) => {
-        e.preventDefault(); // Add this line to prevent the form from submitting
+        e.preventDefault();
         const form1Inputs = form1.current.querySelectorAll('input, select, textarea');
         let isForm1Valid = true;
 
@@ -168,12 +163,12 @@ function VolunteerPdUpdate() {
             form2.current.style.opacity = 1;
             form2.current.style.pointerEvents = 'auto';
         } else {
-            alert('Please fill out all required fields in the  form.');
+            toast.warn('Please fill out all required fields in the form.');
         }
     };
 
     const handlePrevious = (e) => {
-        e.preventDefault(); // Add this line to prevent the form from submitting
+        e.preventDefault();
         setIsForm1Filled(false);
         form1.current.style.opacity = 1;
         form1.current.style.pointerEvents = 'auto';
@@ -181,7 +176,7 @@ function VolunteerPdUpdate() {
         form2.current.style.pointerEvents = 'none';
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         nextBtn.current.addEventListener('click', handleNext);
         preBtn.current.addEventListener('click', handlePrevious);
     }, []);
@@ -193,6 +188,7 @@ function VolunteerPdUpdate() {
     return (
         <div className='all'>
             <Dash />
+            <ToastContainer />
             <div className='container20' id='section2'>
                 <header>Registration</header>
 

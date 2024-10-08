@@ -9,7 +9,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Dash from "../../../Components/new_Dashboard/New_Dashboard"
 import "../../Css/Volunteers/Certificate/CertificateD.css"
-
+import jsPDF from "jspdf"; // Import jsPDF
+import autoTable from 'jspdf-autotable'; // Import autoTable
 const URL = "http://localhost:3000/certificate/";
 
 const fetchHandler = async () => {
@@ -93,6 +94,46 @@ function CertificateD() {
 
     });
 
+    // Function to generate report
+    const generateReport = () => {
+        const doc = new jsPDF();
+
+        // Add title with styles
+        doc.setFontSize(18);
+        doc.setFont("Helvetica", "bold");
+        doc.text("Certificate Report", 14, 22);
+
+        // Add a horizontal line with left margin
+        const lineLeftMargin = 15;
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(0, 51, 102);
+        doc.line(lineLeftMargin, 40, 200, 40);
+
+        // Add table
+        autoTable(doc, {
+            head: [["Name", "Title", "Issue Date", "Time Period"]],
+            body: certificate.map((cert) => [
+                cert.v_name,
+                cert.title,
+                new Date(cert.issue_date).toLocaleDateString(),
+                cert.time_period,
+            ]),
+            startY: 45, // Start after the title and line
+        });
+
+        // Add footer with correct date
+        const footerY = doc.autoTable.previous.finalY + 20;
+        doc.setFontSize(10);
+        doc.setFont("Helvetica", "normal");
+        const formattedDate = new Date().toLocaleDateString();
+        doc.text("Generated on: " + formattedDate, 14, footerY);
+
+        // Save the PDF
+        doc.save("certificate_report.pdf");
+        alert("Report generated successfully!");
+    };
+
+
     return (
         <div>
             <Dash />
@@ -116,7 +157,7 @@ function CertificateD() {
                     </div>
                     <div className="dt202">
                         <button className="dt205" onClick={handleSearch}> <ImSearch /></button>
-                        <button className="dt201" onClick={handlePrint}> <FaDownload /></button>
+                        <button className="dt201" onClick={generateReport}> <FaDownload /></button>
 
 
 

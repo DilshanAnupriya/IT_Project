@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Dash from "../../../Components/new_Dashboard/New_Dashboard"
+import Dash from "../../../Components/new_Dashboard/New_Dashboard";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import "../../Css/Volunteers/Task/TaskC.css"
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "../../Css/Volunteers/Task/TaskC.css";
 
 function TaskCreate() {
     const history = useNavigate();
@@ -42,28 +44,25 @@ function TaskCreate() {
 
     const validateField = (name, value) => {
         let errorMessages = { ...errors };
-        // Validation logic here
+
         if (name === "task_name") {
-            if (!/^[a-zA-Z]{3,20}$/.test(value)) {
-                errorMessages[name] = "Name must be 3-20 characters long and cannot contain numbers or special characters.";
+            if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
+                errorMessages[name] = "Task name must be 3-20 characters long and contain only letters.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
         }
-        if (name === "duration") {
+
+        if (name === "duration" || name === "location") {
             if (/[*&^%$#@!()]/.test(value)) {
-                errorMessages[name] = "Duration cannot contain special characters.";
+                errorMessages[name] = `${name === 'duration' ? 'Duration' : 'Location'} cannot contain special characters.`;
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
         }
-        if (name === "location") {
-            if (/[*&^%$#@!()]/.test(value)) {
-                errorMessages[name] = "Duration cannot contain special characters.";
-            } else {
-                delete errorMessages[name];
-            }
-        }
+
         setErrors(errorMessages);
     };
 
@@ -72,7 +71,7 @@ function TaskCreate() {
         if (Object.keys(errors).length === 0) {
             sendRequest().then(() => history('/TaskDisplay'));
         } else {
-            alert("Please fix the validation errors.");
+            toast.error("Please fix the validation errors.");
         }
     };
 
@@ -106,10 +105,8 @@ function TaskCreate() {
                                         value={input.task_name}
                                         name='task_name'
                                         required />
-                                    {errors.task_name && <p className="error">{errors.task_name}</p>}
                                 </div>
 
-                                {/* Updated Assign To Dropdown */}
                                 <div className='input-field'>
                                     <label>Assign To</label>
                                     <select
@@ -135,7 +132,6 @@ function TaskCreate() {
                                         name='location'
                                         value={input.location}
                                         required />
-                                    {errors.location && <p className="error">{errors.location}</p>}
                                 </div>
 
                                 <div className='input-field'>
@@ -147,14 +143,13 @@ function TaskCreate() {
                                         name='duration'
                                         value={input.duration}
                                         required />
-                                    {errors.duration && <p className="error">{errors.duration}</p>}
                                 </div>
+
                                 <div className='div1008'>
                                     <div className='input-field'>
                                         <label>Special Instructions</label>
                                         <textarea
                                             className='area1000'
-                                            type='text'
                                             onChange={handleChange}
                                             placeholder='Enter Special Instructions'
                                             name='special_instruction'
@@ -166,7 +161,6 @@ function TaskCreate() {
                                         <label>Description</label>
                                         <textarea
                                             className='area1001'
-                                            type='text'
                                             onChange={handleChange}
                                             placeholder='Enter Description'
                                             name='description'
@@ -180,9 +174,7 @@ function TaskCreate() {
                     </div>
                 </form>
             </div>
-            <div className='last02'>
-                <h1>end</h1>
-            </div>
+            <ToastContainer />
         </div>
     );
 }

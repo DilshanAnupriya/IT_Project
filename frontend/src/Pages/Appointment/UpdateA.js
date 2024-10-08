@@ -45,7 +45,7 @@ const UpdateAppointment = () => {
             setSuccessMessage('Appointment updated successfully!');
             setErrorMessage('');
             setTimeout(() => {
-                navigate('/viewappoinment'); // Redirect to view appointments page
+                navigate('/ViewA'); // Redirect to view appointments page
             }, 1500);
         } catch (error) {
             setErrorMessage('Failed to update appointment. Please try again.');

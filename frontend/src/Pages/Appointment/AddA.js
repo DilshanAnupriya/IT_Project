@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Dashboard from '../../Components/MDash/MD'; // Import your Dashboard component
@@ -22,6 +22,10 @@ const AddAppointment = () => {
 
         // Prevent numbers and special characters in the name
         if (name === 'name' && /[^a-zA-Z\s]/.test(value)) {
+            return;
+        }
+        // Prevent numbers and special characters in the name
+        if (name === 'gmail' && /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(value)) {
             return;
         }
 
@@ -48,6 +52,7 @@ const AddAppointment = () => {
             setErrorMessage('Please select a date for the appointment.');
             return false;
         }
+
         // Name validation: no numbers or special symbols
         const nameRegex = /^[A-Za-z\s]+$/;
         if (!nameRegex.test(name)) {
@@ -55,11 +60,9 @@ const AddAppointment = () => {
             return false;
         }
 
-
-        // Gmail validation: basic email format check
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/; // Updated regex for Gmail
         if (!emailRegex.test(gmail)) {
-            setErrorMessage('Please enter a valid email address.');
+            setErrorMessage('Please enter a valid Gmail address (e.g., example@gmail.com).');
             return false;
         }
 
@@ -75,13 +78,10 @@ const AddAppointment = () => {
             return false;
         }
 
-
-
         // If all validations pass
         setErrorMessage('');
         return true;
     };
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -90,8 +90,10 @@ const AddAppointment = () => {
         if (!validateForm()) return;
 
         try {
-            await axios.post('http://localhost:3000/appointments/addApp', formData);
+            const response = await axios.post('http://localhost:3000/appointments/addApp', formData);
             setSuccessMessage('Appointment added successfully!');
+
+            // Reset form data
             setFormData({
                 name: '',
                 gmail: '',
@@ -100,17 +102,24 @@ const AddAppointment = () => {
                 appointmenttype: 'Online', // Reset to default value
 
             });
+
+            // Redirect after a timeout
             setTimeout(() => {
-                navigate('/viewappointment'); // Redirect to view appointments page
+                navigate('/ViewA'); // Redirect to view appointments page
             }, 1500);
         } catch (error) {
-            setErrorMessage('Failed to add appointment. Please try again.');
+            console.error('Error while adding appointment:', error); // Log the error
+
+            // Safely access the error message or set a default message
+            const errorMessage = error.response?.data?.message || 'Failed to add appointment. Please try again.';
+
+            setErrorMessage(errorMessage); // Display the error message from the server
             setSuccessMessage('');
         }
     };
 
     return (
-        <div  >
+        <div>
             {/* Sidebar / Dashboard */}
             <Dashboard />
 

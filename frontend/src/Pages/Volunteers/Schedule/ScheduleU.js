@@ -1,41 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Dash from "../../../Components/new_Dashboard/New_Dashboard";
 import "../../Css/Volunteers/Schedule/ScheduleU.css";
 
 function ScheduleU() {
-    const id = useParams().id; // Get the task ID from the URL
-    const navigate = useNavigate(); // Initialize the useNavigate hook
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({
         event_name: "",
         S_time: "",
         E_time: "",
     });
-    const [eventDate, setEventDate] = useState(''); // New state for storing event date
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
+    const [eventDate, setEventDate] = useState('');
     const [errors, setErrors] = useState({});
 
-    // Fetch the existing task details
     useEffect(() => {
         const fetchSchedule = async () => {
             if (id) {
                 try {
                     const response = await axios.get(`http://localhost:3000/schedule/${id}`);
                     setInputs(response.data.schedule);
-                    setEventDate(new Date(response.data.schedule.date).toDateString()); // Set the event date in state
+                    setEventDate(new Date(response.data.schedule.date).toDateString());
                 } catch (error) {
-                    setErrorMessage('Failed to fetch task. Please try again.');
+                    toast.error('Failed to fetch task. Please try again.');
                 }
             } else {
-                setErrorMessage('No task ID provided.');
+                toast.error('No task ID provided.');
             }
         };
         fetchSchedule();
     }, [id]);
 
-    // Handle form field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputs(prevInputs => ({
@@ -50,6 +48,7 @@ function ScheduleU() {
         if (name === "event_name") {
             if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
                 errorMessages[name] = "Event name must be 3-20 characters long and contain only letters.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -57,29 +56,28 @@ function ScheduleU() {
         setErrors(errorMessages);
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
             try {
                 await axios.put(`http://localhost:3000/schedule/update/${id}`, inputs);
-                setSuccessMessage('Schedule updated successfully!');
-                setErrorMessage('');
+                toast.success('Schedule updated successfully!');
                 setTimeout(() => navigate('/ScheduleDisplay'), 1500);
             } catch (error) {
-                setErrorMessage('Failed to update Task details. Please try again.');
+                toast.error('Failed to update Task details. Please try again.');
             }
         } else {
-            alert("Please fix the validation errors.");
+            toast.error("Please fix the validation errors.");
         }
     };
 
     return (
         <div>
             <Dash />
+            <ToastContainer />
             <div className='container2000'>
                 <header>
-                    <h2>Updating Event on: {eventDate}</h2> {/* Display the event date in the header */}
+                    <h2>Updating Event on: {eventDate}</h2>
                 </header>
                 <form onSubmit={handleSubmit}>
                     <div className='form first30'>
@@ -95,7 +93,6 @@ function ScheduleU() {
                                         value={inputs.event_name}
                                         name='event_name'
                                         required />
-                                    {errors.event_name && <p className="error">{errors.event_name}</p>}
                                 </div>
                                 <div className='input-field'>
                                     <label>Start Time</label>
@@ -106,7 +103,6 @@ function ScheduleU() {
                                         name='S_time'
                                         value={inputs.S_time}
                                         required />
-                                    {errors.S_time && <p className="error">{errors.S_time}</p>}
                                 </div>
                                 <div className='input-field'>
                                     <label>End Time</label>
@@ -117,7 +113,6 @@ function ScheduleU() {
                                         name='E_time'
                                         value={inputs.E_time}
                                         required />
-                                    {errors.E_time && <p className="error">{errors.E_time}</p>}
                                 </div>
                             </div>
                         </div>

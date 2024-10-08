@@ -7,7 +7,8 @@ const appointmentSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     gmail: {
         type: String,
@@ -26,5 +27,6 @@ const appointmentSchema = new mongoose.Schema({
         required: true
     }
 });
+
 
 module.exports = mongoose.model("Appointment", appointmentSchema);

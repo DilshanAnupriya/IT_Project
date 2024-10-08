@@ -64,14 +64,21 @@ const AddUser = () => {
         setErrorMessage('');
         return true;
     };
-
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission
 
-        if (!validateForm()) return;
+        if (!validateForm()) return; // Validate the form
 
         try {
-            await axios.post('http://localhost:3000/User/add', formData);
+            console.log("Submitting user data:", formData); // Log the data being submitted
+            await axios.post('http://localhost:3000/User/add', {
+                fullName: formData.fullName,
+                dob: formData.dob,
+                gmail: formData.gmail,
+                phoneNo: formData.phoneNo,
+                gender: formData.gender,
+                password: formData.password, // Send only the password
+            });
             setSuccessMessage('User added successfully!');
             setFormData({
                 fullName: '',
@@ -83,30 +90,31 @@ const AddUser = () => {
                 confirmPassword: '',
             });
             setTimeout(() => {
-                navigate('/userview');
+                navigate('/ViewU'); // Navigate after a delay
             }, 1500);
         } catch (error) {
+            console.error('Error adding user:', error);
             setErrorMessage('Failed to add user. Please try again.');
         }
     };
 
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div>
             {/* Sidebar / Dashboard */}
             <Dashboard />
 
             {/* Main Content */}
-            <div className="flex flex-col w-4/5 p-8 bg-gray-100">
+            <div className="flex flex-col w-[1000px] ml-[200px] p-5 bg-gray-100">
                 <div className="flex justify-center items-center mb-8">
                     <h2 className="text-3xl font-bold text-gray-900">Add New User</h2>
                 </div>
 
-                <div className="flex bg-[#d7daf3] rounded-lg shadow-lg p-8">
+                <div className="w-[900px] py-5 px-8 bg-[#d7daf3] rounded-lg shadow-lg">
                     <form onSubmit={handleSubmit} className="w-full flex space-x-4">
                         {/* Left Side: 4 Fields */}
                         <div className="w-1/2 space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700">Full Name:</label>
+                                <label className="w-[900px] block text-sm font-medium text-gray-700">Full Name:</label>
                                 <input
                                     type="text"
                                     name="fullName"
@@ -198,12 +206,17 @@ const AddUser = () => {
                 {/* Centered Submit Button */}
                 <div className="flex justify-center mt-6">
                     <button
-                        onClick={handleSubmit}
+                        type="submit" // Change to submit
+                        onClick={handleSubmit} // Ensure it's linked to the submit function
                         className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105"
                     >
                         Add User
                     </button>
                 </div>
+
+                {/* Display error or success message */}
+                {errorMessage && <p className="text-red-500 text-center">{errorMessage}</p>}
+                {successMessage && <p className="text-green-500 text-center">{successMessage}</p>}
             </div>
         </div>
     );

@@ -4,8 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import Dashboard from '../../Components/MDash/MD';
-import myLogo from '../../Assets/logo.png'; // Adjust the path based on your folder structure
-
+import myLogo from '../../Assets/logo.png';
 
 const UserView = () => {
     const [users, setUsers] = useState([]);
@@ -21,7 +20,8 @@ const UserView = () => {
                 setUsers(response.data);
                 setLoading(false);
             } catch (err) {
-                setError('Failed to fetch users.');
+                console.error('Error fetching users:', err); // Log the error details
+                setError('Failed to fetch users. Please check your backend.');
                 setLoading(false);
             }
         };
@@ -39,11 +39,11 @@ const UserView = () => {
     };
 
     const handleUpdate = (id) => {
-        navigate(`/updateuser/${id}`);
+        navigate(`/UpU/${id}`);
     };
 
     const handleAddUser = () => {
-        navigate('/adduser');
+        navigate('/AddU');
     };
 
     const handleSearch = (e) => {
@@ -52,57 +52,45 @@ const UserView = () => {
 
     const generateReport = () => {
         const doc = new jsPDF();
-
-        // Add title with styles
         doc.setFontSize(24);
         doc.setFont("Helvetica", "bold");
         doc.text('User Report', 14, 22);
-
-        // Add a logo with adjusted dimensions
-        const logoWidth = 30; // Adjusted width
-        const logoHeight = 30; // Adjusted height
+        const logoWidth = 30;
+        const logoHeight = 30;
         doc.addImage(myLogo, 'PNG', 140, 10, logoWidth, logoHeight);
-
-        // Add a horizontal line
         doc.setLineWidth(1);
-        doc.setDrawColor(0, 51, 102); // Dark blue color
+        doc.setDrawColor(0, 51, 102);
         doc.line(14, 40, 200, 40);
-
-        // Define table styles and include dob and gender columns
         autoTable(doc, {
             head: [['Full Name', 'Email', 'Phone', 'Date of Birth', 'Gender']],
             body: users.map(user => [
                 user.fullName,
                 user.gmail,
                 user.phoneNo,
-                user.dob,  // Include Date of Birth
-                user.gender // Include Gender
+                user.dob,
+                user.gender
             ]),
-            startY: 50, // Start the table below the line
+            startY: 50,
             headStyles: {
-                fillColor: [0, 51, 102], // Dark blue for header
-                textColor: [255, 255, 255], // White text color
+                fillColor: [0, 51, 102],
+                textColor: [255, 255, 255],
                 fontSize: 12,
                 halign: 'center',
             },
             bodyStyles: {
-                fillColor: [240, 240, 240], // Light gray for body
-                textColor: [0, 0, 0], // Black text color
+                fillColor: [240, 240, 240],
+                textColor: [0, 0, 0],
                 fontSize: 10,
             },
             alternateRowStyles: {
-                fillColor: [255, 255, 255], // White for alternate rows
+                fillColor: [255, 255, 255],
             },
             margin: { top: 60 },
-            theme: 'striped', // Optional striped theme
+            theme: 'striped',
         });
-
-        // Add footer
         doc.setFontSize(10);
         doc.setFont("Helvetica", "normal");
         doc.text("Generated on: " + new Date().toLocaleDateString(), 14, doc.autoTable.previous.finalY + 10);
-
-        // Save the PDF
         doc.save('user_report.pdf');
         alert('Report generated successfully!');
     };
@@ -176,7 +164,7 @@ const UserView = () => {
                                             <td className="px-6 py-4 text-sm text-gray-900">{user.dob}</td> {/* Add Date of Birth */}
                                             <td className="px-6 py-4 text-sm text-gray-900">{user.gender}</td> {/* Add Gender */}
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                <Link to="/UpU"> <button
+                                                <Link to={`/UpdateA/${user._id}`}> <button
                                                     className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-lg mr-2 transition duration-300 ease-in-out transform hover:scale-105"
                                                     onClick={() => handleUpdate(user._id)}
                                                 >

@@ -106,7 +106,7 @@ const ViewAppointment = () => {
                     <>
                         <div className="flex justify-between items-center mb-6">
 
-                            <Link to="/AddU">
+                            <Link to="/AddA">
                                 <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 ml-4">
                                     Add Appointment
                                 </button>

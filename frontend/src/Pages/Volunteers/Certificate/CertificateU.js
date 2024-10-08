@@ -5,27 +5,20 @@ import "../../Css/Volunteers/Certificate/CertificateC.css";
 import Dash from "../../../Components/new_Dashboard/New_Dashboard";
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
-
-
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CertificateU() {
-
-
     const id = useParams().id; // Get the task ID from the URL
     const navigate = useNavigate(); // Initialize the useNavigate hook
-    const [inputs, setInputs] = useState({  // Changed from 'input' to 'inputs'
+    const [inputs, setInputs] = useState({
         v_name: "",
         title: "",
         time_period: "",
         issue_date: "",
-
     });
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
     const [errors, setErrors] = useState({});
-
 
     // Fetch the existing task details
     useEffect(() => {
@@ -34,14 +27,11 @@ function CertificateU() {
                 try {
                     const response = await axios.get(`http://localhost:3000/certificate/${id}`);
                     setInputs(response.data.certificate); // Populate form with task data
-
                 } catch (error) {
-                    setErrorMessage('Failed to fetch . Please try again.');
-
+                    toast.error('Failed to fetch certificate. Please try again.');
                 }
             } else {
-                setErrorMessage('No task ID provided.');
-
+                toast.error('No task ID provided.');
             }
         };
         fetchCertificate();
@@ -49,40 +39,43 @@ function CertificateU() {
 
     const validateField = (name, value) => {
         let errorMessages = { ...errors };
+
         if (name === "v_name") {
             if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
                 errorMessages[name] = "Name must be 3-20 characters long and cannot contain numbers or special characters.";
+                toast.error(errorMessages[name]); // Show toast notification
             } else {
                 delete errorMessages[name];
             }
         }
-        // Validation for title
+
         if (name === "title") {
             if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
                 errorMessages[name] = "Title must be 3-20 characters long and cannot include special characters.";
+                toast.error(errorMessages[name]); // Show toast notification
             } else {
                 delete errorMessages[name];
             }
         }
-        // Validation for issue_date
+
         if (name === "issue_date") {
             const selectedDate = new Date(value).setHours(0, 0, 0, 0);
             const today = new Date();
-            today.setHours(0, 0, 0, 0); // Resetting hours, minutes, seconds, and milliseconds to ensure it's at the start of the day
-
+            today.setHours(0, 0, 0, 0);
             const oneMonthAgo = new Date();
-            oneMonthAgo.setMonth(today.getMonth() - 1); // Set to one month ago
-            oneMonthAgo.setHours(0, 0, 0, 0); // Reset to the start of the day
+            oneMonthAgo.setMonth(today.getMonth() - 1);
+            oneMonthAgo.setHours(0, 0, 0, 0);
 
             if (selectedDate > today) {
                 errorMessages[name] = "Future dates are not allowed.";
+                toast.error(errorMessages[name]); // Show toast notification
             } else if (selectedDate < oneMonthAgo) {
                 errorMessages[name] = "You can only select dates from the last month.";
+                toast.error(errorMessages[name]); // Show toast notification
             } else {
                 delete errorMessages[name];
             }
         }
-
 
         setErrors(errorMessages);
     };
@@ -91,7 +84,7 @@ function CertificateU() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputs(prevInputs => ({
-            ...prevInputs,  // Now using 'prevInputs' to ensure the state doesn't get overwritten
+            ...prevInputs,
             [name]: value
         }));
         validateField(name, value);
@@ -102,21 +95,19 @@ function CertificateU() {
         e.preventDefault();
         try {
             if (Object.keys(errors).length === 0) {
-                await axios.put(`http://localhost:3000/certificate/update/${id}`, inputs);  // Ensure 'inputs' is passed
-                setSuccessMessage('certificate updated successfully!');
-                setErrorMessage('');
-
+                await axios.put(`http://localhost:3000/certificate/update/${id}`, inputs);
+                toast.success('Certificate updated successfully!');
                 setTimeout(() => {
                     navigate('/CertificateDisplay');
                 }, 1500); // 1.5 seconds delay to show the success message
             } else {
-                alert("Please fix the validation errors.");
+                toast.error("Please fix the validation errors.");
             }
         } catch (error) {
-            setErrorMessage('Failed to update  details. Please try again.');
-            setSuccessMessage('');
+            toast.error('Failed to update certificate details. Please try again.');
         }
     };
+
     const ref = useRef(null);
     const onButtonClick = useCallback(() => {
         if (ref.current === null) {
@@ -133,7 +124,9 @@ function CertificateU() {
                 console.log(err);
             });
     }, [ref]);
+
     const [volunteers, setVolunteers] = useState([]); // State to hold the list of volunteers
+
     // Fetch the list of volunteers
     useEffect(() => {
         const fetchVolunteers = async () => {
@@ -141,6 +134,7 @@ function CertificateU() {
                 const response = await axios.get("http://localhost:3000/users/");
                 setVolunteers(response.data.Volunteers);
             } catch (error) {
+                toast.error("Failed to fetch volunteers.");
                 console.error("Failed to fetch volunteers", error);
             }
         };
@@ -150,6 +144,7 @@ function CertificateU() {
     return (
         <div>
             <Dash />
+            <ToastContainer /> {/* Include ToastContainer for notifications */}
             <div className='full2200'>
                 <div className='in2200'>
                     <h1>Certificate Details</h1>
@@ -193,9 +188,8 @@ function CertificateU() {
 
                             <label>Issue Date</label>
                             <input
-                                type='Date'
+                                type='date'
                                 name='issue_date'
-                                placeholder='Enter Issue Date'
                                 value={inputs.issue_date ? inputs.issue_date.substring(0, 10) : ''}
                                 onChange={handleChange}
                                 required
@@ -218,7 +212,7 @@ function CertificateU() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default CertificateU
+export default CertificateU;

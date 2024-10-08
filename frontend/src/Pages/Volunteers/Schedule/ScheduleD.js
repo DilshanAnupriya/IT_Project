@@ -3,15 +3,16 @@ import Dash from "../../../Components/new_Dashboard/New_Dashboard";
 import "../../Css/Volunteers/Schedule/ScheduleD.css";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
-import { MdDelete } from "react-icons/md";
-import { MdModeEdit } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { MdDelete, MdModeEdit } from "react-icons/md";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { FaDownload } from "react-icons/fa";
 import { ImSearch } from "react-icons/im";
-import { useReactToPrint } from "react-to-print"
-import { useParams } from 'react-router-dom';
+import { useReactToPrint } from "react-to-print";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 const URL = "http://localhost:3000/schedule/";
 
 const fetchHandler = async () => {
@@ -20,34 +21,20 @@ const fetchHandler = async () => {
 };
 
 function ScheduleD() {
-
     const [searchQuery, setSearchQuery] = useState("");
     const [noResults, setNoResults] = useState(false);
-    const [setErrorMessage] = useState('');
     const [schedule, setSchedule] = useState([]);
     const [errors, setErrors] = useState({});
     const [showModal, setShowModal] = useState(false);
-
-
-    const [input, setInputs] = useState({
-        event_name: "",
-        S_time: "",
-        E_time: "",
-        date: "",
-    });
-
+    const [input, setInputs] = useState({ event_name: "", S_time: "", E_time: "", date: "" });
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-
-    // Fetch data on component load
     useEffect(() => {
         fetchHandler().then((data) => setSchedule(data.schedule));
     }, []);
 
-    // Filter events by selected date
     const filteredSchedule = schedule.filter(event => new Date(event.date).toDateString() === selectedDate.toDateString());
 
-    // Delete schedule by ID
     const deleteSchedule = async (id) => {
         const deleteSchedule = window.confirm(`Are you sure you want to delete the Task with ID ${id}? This action cannot be undone.`);
         if (deleteSchedule) {
@@ -55,12 +42,11 @@ function ScheduleD() {
                 await axios.delete(`http://localhost:3000/schedule/delete/${id}`);
                 setSchedule(schedule.filter((schedule) => schedule._id !== id));
             } catch (error) {
-                setErrorMessage('Failed to delete Task. Please try again.');
+                toast.error('Failed to delete Task. Please try again.');
             }
         }
     };
 
-    // Handle input change
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputs((prevState) => ({
@@ -70,14 +56,12 @@ function ScheduleD() {
         validateField(name, value);
     };
 
-
-
-    // Validation logic
     const validateField = (name, value) => {
         let errorMessages = { ...errors };
         if (name === "event_name") {
             if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
                 errorMessages[name] = "Event name must be 3-20 characters long and contain only letters.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -85,7 +69,6 @@ function ScheduleD() {
         setErrors(errorMessages);
     };
 
-    // Submit form handler
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
@@ -94,11 +77,10 @@ function ScheduleD() {
             setInputs({ event_name: "", S_time: "", E_time: "", date: "" });
             fetchHandler().then((data) => setSchedule(data.schedule));
         } else {
-            alert("Please fix the validation errors.");
+            toast.error("Please fix the validation errors.");
         }
     };
 
-    // Send request to add event
     const sendRequest = async () => {
         await axios.post("http://localhost:3000/schedule/add", {
             event_name: String(input.event_name),
@@ -117,7 +99,6 @@ function ScheduleD() {
         "July", "August", "September", "October", "November", "December"
     ];
 
-    // Get days in the month
     const getDaysInMonth = (month, year) => {
         const days = new Date(year, month + 1, 0).getDate();
         const firstDay = new Date(year, month, 1).getDay();
@@ -186,25 +167,21 @@ function ScheduleD() {
         });
     };
 
-
-    // Check if the selected date is in the past
     const isPastDate = selectedDate < new Date(new Date().setHours(0, 0, 0, 0));
 
     const handleAddEventClick = () => {
         if (isPastDate) {
-            alert("You cannot create a new event for previous dates.");
+            toast.error("You cannot create a new event for previous dates.");
         } else {
             setShowModal(true);
         }
     };
-
 
     const ComponentsRef = useRef();
 
     const handlePrint = useReactToPrint({
         content: () => ComponentsRef.current,
         onBeforeGetContent: () => {
-            // Set the document title before printing
             document.title = "Schedule";
             return Promise.resolve();
         },
@@ -212,7 +189,6 @@ function ScheduleD() {
 
     const handleSearch = () => {
         if (!searchQuery.trim()) {
-            // If search is empty, reset to show all tasks
             fetchHandler().then((data) => setSchedule(data.schedule));
             setNoResults(false);
             return;
@@ -238,8 +214,44 @@ function ScheduleD() {
         });
     };
 
+    // Function to generate report
+    const generateReport = () => {
+        const doc = new jsPDF();
 
+        // Add title with styles
+        doc.setFontSize(18);
+        doc.setFont("Helvetica", "bold");
+        doc.text("Schedule Report", 14, 22);
 
+        // Add a horizontal line with left margin
+        const lineLeftMargin = 15;
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(0, 51, 102);
+        doc.line(lineLeftMargin, 40, 200, 40);
+
+        // Add table
+        autoTable(doc, {
+            head: [["Event Name", "Start Time", "End Time", "Date"]],
+            body: schedule.map((event) => [
+                event.event_name,
+                event.S_time,
+                event.E_time,
+                new Date(event.date).toLocaleDateString(),
+            ]),
+            startY: 45, // Start after the title and line
+        });
+
+        // Add footer with correct date
+        const footerY = doc.autoTable.previous.finalY + 20;
+        doc.setFontSize(10);
+        doc.setFont("Helvetica", "normal");
+        const formattedDate = new Date().toLocaleDateString();
+        doc.text("Generated on: " + formattedDate, 14, footerY);
+
+        // Save the PDF
+        doc.save("schedule_report.pdf");
+        toast.success("Report generated successfully!");
+    };
 
 
 
@@ -248,6 +260,7 @@ function ScheduleD() {
     return (
         <div>
             <Dash />
+            <ToastContainer />
             <div className='div1100'>
                 <div className="container1100">
                     <div className="left">
@@ -299,7 +312,7 @@ function ScheduleD() {
                                     </div>
                                     <div className="dt1102">
                                         <button className="dt1105" onClick={handleSearch}><ImSearch /></button>
-                                        <button className="dt1101" onClick={handlePrint}><FaDownload /></button>
+                                        <button className="dt1101" onClick={generateReport}><FaDownload /></button>
 
                                     </div>
                                 </div>

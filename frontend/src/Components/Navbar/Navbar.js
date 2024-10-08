@@ -34,7 +34,7 @@ function Navbar() {
                 <li className="sub-item more">
                   <Link to="/">Sub Item 01</Link>
                   <ul className="more-menu">
-                    <li className="more-item"><Link to="/volunteer_pd">More Item 01</Link></li>
+                    <li className="more-item"><Link to="/report">More Item 01</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>

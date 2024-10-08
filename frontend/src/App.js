@@ -18,6 +18,7 @@ import ScheduleUpdate from "./Pages/Volunteers/Schedule/ScheduleU";//update task
 import CertificateD from "./Pages/Volunteers/Certificate/CertificateD";//update task page dashboard
 import CertificateC from "./Pages/Volunteers/Certificate/CertificateC";//update task page dashboard
 import CertificateU from "./Pages/Volunteers/Certificate/CertificateU";//update task page dashboard
+import USC from "./Pages/Volunteers/User-Task/USchedule"
 
 
 import EmpDashForm from "./Pages/Employee/EmpDash";
@@ -31,7 +32,8 @@ import AddA from "./Pages/Appointment/AddA";
 import UpA from "./Pages/Appointment/UpdateA";
 import ViewU from "./Pages/User/ViewU";
 import AddU from "./Pages/User/AddU";
-import UpU from "./Pages/User/UpdateU";
+import UpU from "./Pages/User/UpdateU.js";
+
 import ViewC from "./Pages/Care Plan/ViewC";
 import AddC from "./Pages/Care Plan/AddC";
 import UpC from "./Pages/Care Plan/UpdateC";
@@ -73,6 +75,8 @@ function App() {
           <Route path='/CertificateDisplay' element={<CertificateD />} />
           <Route path='/CertificateCreate' element={<CertificateC />} />
           <Route path='/CertificateU/:id' element={<CertificateU />} />
+          <Route path='/USC' element={<USC />} />
+
 
           <Route path='/empForm' element={<EmpForm />} />
           <Route path='/empAvalForm' element={<empAvalForm />} />
@@ -88,6 +92,8 @@ function App() {
           <Route path='/ViewC' element={<ViewC />} />
           <Route path='/AddC' element={<AddC />} />
           <Route path='/UpC/:id' element={<UpC />} />
+          <Route path='/UpU/:id' element={<UpU />} />
+
 
 
           <Route path='/client-review' element={<ClientReview />} />

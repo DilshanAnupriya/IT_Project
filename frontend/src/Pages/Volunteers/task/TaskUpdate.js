@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Dash from "../../../Components/new_Dashboard/New_Dashboard";
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function TaskUpdate() {
-
-
-
-    const id = useParams().id; // Get the task ID from the URL
-    const navigate = useNavigate(); // Initialize the useNavigate hook
-    const [inputs, setInputs] = useState({  // Changed from 'input' to 'inputs'
+    const id = useParams().id;
+    const navigate = useNavigate();
+    const [inputs, setInputs] = useState({
         task_name: "",
         assign_to: "",
         location: "",
@@ -18,12 +17,11 @@ function TaskUpdate() {
         description: ""
     });
 
-    const [volunteers, setVolunteers] = useState([]);  // To store volunteers data
+    const [volunteers, setVolunteers] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [errors, setErrors] = useState({});
 
-    // Fetch volunteers
     useEffect(() => {
         const fetchVolunteers = async () => {
             try {
@@ -36,44 +34,38 @@ function TaskUpdate() {
         fetchVolunteers();
     }, []);
 
-    // Fetch the existing task details
     useEffect(() => {
         const fetchTask = async () => {
-            if (id) {  // Check if the id exists
+            if (id) {
                 try {
                     const response = await axios.get(`http://localhost:3000/task/${id}`);
-                    setInputs(response.data.task); // Populate form with task data
-
+                    setInputs(response.data.task);
                 } catch (error) {
                     setErrorMessage('Failed to fetch task. Please try again.');
-
                 }
             } else {
                 setErrorMessage('No task ID provided.');
-
             }
         };
         fetchTask();
     }, [id]);
 
-
-    // Handle form field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputs(prevInputs => ({
-            ...prevInputs,  // Now using 'prevInputs' to ensure the state doesn't get overwritten
+            ...prevInputs,
             [name]: value
         }));
         validateField(name, value);
     };
 
-    // Validate input fields
     const validateField = (name, value) => {
         let errorMessages = { ...errors };
 
         if (name === "task_name") {
-            if (!/^[a-zA-Z]{3,20}$/.test(value)) {
-                errorMessages[name] = "Name must be 3-20 characters long and cannot contain numbers or special characters.";
+            if (!/^[a-zA-Z\s]{3,20}$/.test(value)) {
+                errorMessages[name] = "Task name must be 3-20 characters long and contain only letters.";
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -81,7 +73,8 @@ function TaskUpdate() {
 
         if (name === "duration" || name === "location") {
             if (/[*&^%$#@!()]/.test(value)) {
-                errorMessages[name] = "Cannot contain special characters.";
+                errorMessages[name] = `${name.charAt(0).toUpperCase() + name.slice(1)} cannot contain special characters.`;
+                toast.error(errorMessages[name]);
             } else {
                 delete errorMessages[name];
             }
@@ -90,28 +83,25 @@ function TaskUpdate() {
         setErrors(errorMessages);
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            if (Object.keys(errors).length === 0) {
-                await axios.put(`http://localhost:3000/task/update/${id}`, inputs);  // Ensure 'inputs' is passed
+        if (Object.keys(errors).length === 0) {
+            try {
+                await axios.put(`http://localhost:3000/task/update/${id}`, inputs);
                 setSuccessMessage('Task updated successfully!');
-                setErrorMessage('');
+                toast.success('Task updated successfully!');
 
                 setTimeout(() => {
                     navigate('/TaskDisplay');
-                }, 1500); // 1.5 seconds delay to show the success message
-            } else {
-                alert("Please fix the validation errors.");
+                }, 1500);
+            } catch (error) {
+                setErrorMessage('Failed to update Task details. Please try again.');
+                toast.error('Failed to update Task details. Please try again.');
             }
-        } catch (error) {
-            setErrorMessage('Failed to update Task details. Please try again.');
-            setSuccessMessage('');
+        } else {
+            toast.error("Please fix the validation errors.");
         }
     };
-
-
 
     return (
         <div>
@@ -129,19 +119,17 @@ function TaskUpdate() {
                                         type='text'
                                         onChange={handleChange}
                                         placeholder='Enter Task Name'
-                                        value={inputs.task_name}  // Ensure this uses 'inputs'
+                                        value={inputs.task_name}
                                         name='task_name'
                                         required />
-                                    {errors.task_name && <p className="error">{errors.task_name}</p>}
                                 </div>
 
-                                {/* Updated Assign To Dropdown */}
                                 <div className='input-field'>
                                     <label>Assign To</label>
                                     <select
                                         name="assign_to"
                                         onChange={handleChange}
-                                        value={inputs.assign_to}  // Ensure this uses 'inputs'
+                                        value={inputs.assign_to}
                                         required>
                                         <option value="">Select Volunteer</option>
                                         {volunteers.map((volunteer) => (
@@ -159,9 +147,8 @@ function TaskUpdate() {
                                         onChange={handleChange}
                                         placeholder='Enter Location'
                                         name='location'
-                                        value={inputs.location}  // Ensure this uses 'inputs'
+                                        value={inputs.location}
                                         required />
-                                    {errors.location && <p className="error">{errors.location}</p>}
                                 </div>
 
                                 <div className='input-field'>
@@ -171,9 +158,8 @@ function TaskUpdate() {
                                         onChange={handleChange}
                                         placeholder='Enter Duration'
                                         name='duration'
-                                        value={inputs.duration}  // Ensure this uses 'inputs'
+                                        value={inputs.duration}
                                         required />
-                                    {errors.duration && <p className="error">{errors.duration}</p>}
                                 </div>
 
                                 <div className='div1008'>
@@ -181,11 +167,10 @@ function TaskUpdate() {
                                         <label>Special Instructions</label>
                                         <textarea
                                             className='area1000'
-                                            type='text'
                                             onChange={handleChange}
                                             placeholder='Enter Special Instructions'
                                             name='special_instruction'
-                                            value={inputs.special_instruction}  // Ensure this uses 'inputs'
+                                            value={inputs.special_instruction}
                                             required />
                                     </div>
 
@@ -193,11 +178,10 @@ function TaskUpdate() {
                                         <label>Description</label>
                                         <textarea
                                             className='area1001'
-                                            type='text'
                                             onChange={handleChange}
                                             placeholder='Enter Description'
                                             name='description'
-                                            value={inputs.description}  // Ensure this uses 'inputs'
+                                            value={inputs.description}
                                             required />
                                     </div>
                                 </div>
@@ -207,9 +191,7 @@ function TaskUpdate() {
                     </div>
                 </form>
             </div>
-            <div className='last02'>
-                <h1>end</h1>
-            </div>
+            <ToastContainer />
         </div>
     );
 }
