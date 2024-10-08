@@ -11,7 +11,7 @@ const accountSchema = new Schema({
         required: true,
         unique: true // Assuming account number should be unique for each account
     },
-    branch: {
+    branch: { 
         type: String,
         required: true
     },

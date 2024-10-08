@@ -96,7 +96,7 @@ function Home() {
                                     <img src={s5} alt="" />
                                     <h3>Mobility Support</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="#" class="btn">View</Link>
+                                    <Link to="/AddNewFundForm" class="btn">View</Link>
                                 </div>
 
                                 <div class="box90">

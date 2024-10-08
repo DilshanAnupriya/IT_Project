@@ -2,6 +2,7 @@ const { get } = require('mongoose');
 const Funds = require("../../Model/Account/fundModels");
 
 
+
 const getDetails = async (req, res, next) => {
     let fund;
   
