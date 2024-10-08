@@ -22,7 +22,7 @@ function Navbar() {
               <Link className="sub-btn" to="/">Features <i className="fas fa-angle-down"></i></Link>
               <ul className="sub-menu">
                 <li className="sub-item"><Link to="/">Mobility Support</Link></li>
-                <li className="sub-item"><Link to="/">Appointment</Link></li>
+                <li className="sub-item"><Link to="/ViewA">Appointment</Link></li>
                 <li className="sub-item"><Link to="/">Care plans</Link></li>
                 <li className="sub-item"><Link to="/">Donation</Link></li>
 

@@ -1,17 +1,17 @@
-*{
-    margin: 0;
+ *{
+     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    
+     
 }
 
-body{
+/* body{
 
-    display: flex;
+    display: flex; 
     
 
-}
+} */
 
 .container1000{
     
@@ -71,11 +71,7 @@ body{
     min-height: 490px;
     background-color: #fff;
 }
-.container1000 form .details{
 
-    /*margin-top: 10px;*/
-
-}
 .container1000 form .title{
     font-size: 19px;
     font-weight: 500;
@@ -200,4 +196,4 @@ select{
     width: 778px;
     height: 70px;
     border-color: #aaa;
-}
+} 

@@ -27,6 +27,17 @@ import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 import EmpForm from "./Pages/Employee/EmpForm";
 
 
+import ViewA from "./Pages/Appointment/ViewA";
+import AddA from "./Pages/Appointment/AddA";
+import UpA from "./Pages/Appointment/UpdateA";
+import ViewU from "./Pages/User/ViewU";
+import AddU from "./Pages/User/AddU";
+import UpU from "./Pages/User/UpdateU";
+import ViewC from "./Pages/Care Plan/ViewC";
+import AddC from "./Pages/Care Plan/AddC";
+import UpC from "./Pages/Care Plan/UpdateC";
+
+
 
 
 
@@ -66,7 +77,19 @@ function App() {
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
 
+
           <Route path='/app' element={<EmpDashForm />} />
+
+          <Route path='/ViewA' element={<ViewA />} />
+          <Route path='/AddA' element={<AddA />} />
+          <Route path='/UpdateA/:id' element={<UpA />} />
+          <Route path='/ViewU' element={<ViewU />} />
+          <Route path='/AddU' element={<AddU />} />
+          <Route path='/UpU/:id' element={<UpU />} />
+          <Route path='/ViewC' element={<ViewC />} />
+          <Route path='/AddC' element={<AddC />} />
+          <Route path='/UpC/:id' element={<UpC />} />
+
 
 
 
