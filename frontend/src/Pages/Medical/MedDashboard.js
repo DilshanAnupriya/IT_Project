@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "../Css/Medical/Med_dashboardcss.css"; // Include updated CSS
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar'; 
@@ -22,6 +22,7 @@ function MedicalDash() {
     const [totalTasks, setTotalTasks] = useState(0);
     const [completedTasks, setCompletedTasks] = useState(0);
     const [allCheckupsDone, setAllCheckupsDone] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchHandler().then((data) => {
@@ -72,6 +73,10 @@ function MedicalDash() {
         });
         doc.save('tasks_report.pdf');
     };
+
+    const handleEdit = (id) => {
+    navigate(`/edit-task/${id}`);
+  };
 
     return (
         <div className="flex h-screen">
@@ -131,7 +136,7 @@ function MedicalDash() {
                                             <td>{task.Treatments}</td>
                                             <td>{task.Status}</td>
                                             <td className="action-buttons">
-                                                <Link to='/MedtaskForm'><button className="edit-btn">✏️</button></Link>
+                                                <button className="edit-btn" onClick={() => handleEdit(task._id)}>✏️</button>
                                                 <button className="delete-btn" onClick={() => deleteTask(task._id)}>🗑️</button>
                                             </td>
                                         </tr>

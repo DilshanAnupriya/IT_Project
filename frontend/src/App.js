@@ -24,6 +24,23 @@ import Meduserreq from './Pages/Medical/Meduserreq';
 import MedTaskForm from './Pages/Medical/MedTaskForm';
 import PatientUpdate from './Pages/Medical/PatientUpdate';
 import NutritionPage from './Pages/Medical/NutritionPage';
+import MedUpdateTask from './Pages/Medical/MedUpdateTask';
+import Breakfast from './Pages/Medical/Breakfast';
+import Lunch from './Pages/Medical/Lunch';
+import Dinner from './Pages/Medical/Dinner';
+import MeduserreqDisplay from './Pages/Medical/MeduserreqDisplay'; // Import the new display component
+import MeduserreqUpdate from './Pages/Medical/MeduserreqUpdate'; // Import the update component
+
+
+
+import BreakfastForm from './Pages/Medical/BreakfastForm';
+import LunchForm from './Pages/Medical/LunchForm';
+import DinnerForm from './Pages/Medical/DinnerForm';
+
+import BreakfastUpdate from './Pages/Medical/BreakfastUpdate';
+import LunchUpdate from './Pages/Medical/LunchUpdate';
+import DinnerUpdate from './Pages/Medical/DinnerUpdate';
+
 
 import PatientList from './Pages/Medical/PatientList';
 import AddPatientForm from './Pages/Medical/AddPatientForm';
@@ -61,6 +78,25 @@ function App() {
           <Route path="/edit-patient/:id" element={<PatientUpdate />} />
           <Route path='/nutritionList' element={<NutritionList />} />
           <Route path='/nutrition/:id' element={<NutritionPage />} />
+          <Route path='/MedUpdateTask' element={<MedUpdateTask />} />
+          <Route path="/edit-task/:id" element={<MedUpdateTask />} />
+          <Route path='/breakfast' element={<Breakfast />} />
+          <Route path='/lunch' element={<Lunch />} />
+          <Route path='/dinner' element={<Dinner />} />
+          <Route path='/meduserreqDisplay' element={<MeduserreqDisplay />} />
+          <Route path='/meduserreq/edit/:id' element={<MeduserreqUpdate />} /> {/* Add the new route */}
+
+          <Route path='/breakfast/add' element={<BreakfastForm />} />
+          <Route path='/lunch/add' element={<LunchForm />} />
+          <Route path='/dinner/add' element={<DinnerForm />} />
+
+          <Route path='/breakfast/edit/:id' element={<BreakfastUpdate />} />
+          <Route path='/lunch/edit/:id' element={<LunchUpdate />} />
+          <Route path='/dinner/edit/:id' element={<DinnerUpdate />} />
+
+
+
+
 
           <Route path='/empForm' element={<EmpForm />} />
           <Route path='/empAvalForm' element={<empAvalForm />} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar'; // Adjust the import path as necessary
+import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar';
 
 const PatientProfile = () => {
   const { id } = useParams();

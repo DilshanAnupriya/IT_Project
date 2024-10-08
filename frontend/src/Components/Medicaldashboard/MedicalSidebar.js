@@ -116,13 +116,13 @@ function New_Dashboard() {
                         </li>
 
                         <li className="mt-0.5 w-full">
-                            <Link to="/" className="dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]">
+                            <Link to="/meduserreqDisplay" className="dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                     <RiMoneyDollarCircleFill className="relative top-0 text-sm leading-normal text-cyan-500" />
                                 </div>
                                 <span className="ml-1 duration-300 opacity-100 pointer-events-none ease">
                                     <div className='icons'>
-                                        Analytics
+                                        Report requests
                                     </div>
                                 </span>
                             </Link>
@@ -132,18 +132,7 @@ function New_Dashboard() {
                             <h6 className="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-black opacity-60">Account pages</h6>
                         </li>
 
-                        <li className="mt-0.5 w-full">
-                            <Link to="/" className="dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]">
-                                <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                    <FaUser className="relative top-0 text-sm leading-normal text-slate-700" />
-                                </div>
-                                <span className="ml-1 duration-300 opacity-100 pointer-events-none ease">
-                                    <div className='icons'>
-                                        Profile
-                                    </div>
-                                </span>
-                            </Link>
-                        </li>
+                      
 
                         <li className="mt-0.5 w-full">
                             <Link to="/" className="dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]">

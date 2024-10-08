@@ -18,7 +18,7 @@ const PatientUpdate = () => {
   useEffect(() => {
     const fetchPatientData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/patients/${id}`);
+        const response = await axios.get(`http://localhost:3000/patient/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error('Error fetching patient data:', error);
@@ -35,7 +35,7 @@ const PatientUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/patients/update/${id}`, formData);
+      await axios.put(`http://localhost:3000/patient/update/${id}`, formData);
       navigate('/patientList');
     } catch (error) {
       console.error('Error updating patient:', error);
