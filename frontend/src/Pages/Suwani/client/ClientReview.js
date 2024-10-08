@@ -155,7 +155,7 @@ const ClientReview = () => {
       rating: 0,
       date: reviewDate,
       userid: userid,
-      title: "", 
+      title: "",
     });
   };
 
@@ -224,128 +224,129 @@ const ClientReview = () => {
   };
 
   return (
-    <section className="w-[1300px] flex bg-[#9BA4BF] min-h-screen">
+    <section className="w-[1300px] mt-20 flex bg-[#9BA4BF] min-h-screen">
 
       <Sidebar />
+      <div>
 
-      <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col">
 
-        <Navbar_profile />
-        <div className="flex justify-start space-x-4 md:space-x-8 py-4">
-          <button
-            type="button"
-            onClick={() => navigate('/complaints')}
-            className="rounded-3xl bg-transparent border border-blue-700 py-2 px-6 md:py-4 md:px-10 text-blue-700 w-full md:w-auto text-center shadow-md hover:bg-[#6B75FE] hover:text-white transition"
-          >
-            Complaints
-          </button>
-          <button
-            type="button"
-            onClick={() => navigate('/')}
-            className="rounded-3xl bg-[#6B75FE] text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-blue-800 transition"
-          >
-            Review
-          </button>
-        </div>
-
-        <div className="flex-1 p-8 flex flex-col lg:flex-row gap-8">
-   
-          <div className="bg-white p-6 rounded-lg mb-6 flex-1 h-[550px] shadow-lg border border-gray-300 rounded-lg">
-            <form onSubmit={handleFormSubmit} className="space-y-4 border border-[#1f1f1f] p-6 rounded-lg">
-              <div>
-                <label htmlFor="name" className="block font-semibold mb-2 text-gray-700">Name:</label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleOnChange}
-                  className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block font-semibold mb-2 text-gray-700">Email:</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleOnChange}
-                  className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="description" className="block font-semibold mb-2 text-gray-700">Description:</label>
-                <textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={handleOnChange}
-                  className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                  rows="4"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="rating" className="block font-semibold mb-2 text-gray-700">Rating:</label>
-                <StarRating />
-              </div>
-              <button
-                type="submit"
-                className="text-right w-full bg-[#6B75FE] text-white px-4 py-2 rounded hover:bg-blue-600 transition flex items-center justify-center"
-              >
-                {isUpdate ? <p>Update</p> : <p>Send</p>}
-              </button>
-            </form>
+          <Navbar_profile />
+          <div className="flex justify-start space-x-4 md:space-x-8 py-4">
+            <button
+              type="button"
+              onClick={() => navigate('/complaints')}
+              className="rounded-3xl bg-transparent border border-blue-700 py-2 px-6 md:py-4 md:px-10 text-blue-700 w-full md:w-auto text-center shadow-md hover:bg-[#6B75FE] hover:text-white transition"
+            >
+              Complaints
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="rounded-3xl bg-[#6B75FE] text-white py-2 px-6 md:py-4 md:px-10 w-full md:w-auto text-center shadow-md hover:bg-blue-800 transition"
+            >
+              Review
+            </button>
           </div>
 
-          <div className="bg-white shadow-lg p-6 rounded-lg flex-1">
-            <input
-              type="text"
-              placeholder="Search reviews..."
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-              className="p-2 border border-gray-300 rounded w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            />
-            <div className="flex flex-col gap-4">
-              {filteredReviews.map((review) => (
-                <div
-                  key={review._id}
-                  className="p-4 bg-gray-50 rounded-lg shadow-md flex flex-col justify-between"
-                >
-                  <h3 className="text-lg font-semibold mb-2">{review.title}</h3>
-                  <p className="text-sm text-gray-500 mb-2">{new Date(review.date).toLocaleDateString()}</p>
-                  <p className="mb-2">{review.description}</p>
-                  <p className="text-sm text-gray-500 mb-4">Rating: {review.rating}</p>
-                  <div className="flex space-x-2">
-                    <button
-                      className="px-2 py-1 bg-blue-500 text-white rounded-lg flex items-center hover:bg-blue-600 transition"
-                      onClick={() => openUpdateModal(review)}
-                    >
-                      <FaPen className="h-5 w-5" />
-                    </button>
-                    <button
-                      className="px-2 py-1 bg-red-500 text-white rounded-lg flex items-center hover:bg-red-600 transition"
-                      onClick={() => handleDelete(review._id)}
-                    >
-                      <FaTrash className="h-5 w-5" />
-                    </button>
-                  </div>
+          <div className="flex-1 p-8 flex flex-col lg:flex-row gap-8">
+
+            <div className="bg-white p-6 rounded-lg mb-6 flex-1 h-[550px] shadow-lg border border-gray-300 rounded-lg">
+              <form onSubmit={handleFormSubmit} className="space-y-4 border border-[#1f1f1f] p-6 rounded-lg">
+                <div>
+                  <label htmlFor="name" className="block font-semibold mb-2 text-gray-700">Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={handleOnChange}
+                    className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    required
+                  />
                 </div>
-              ))}
-              {filteredReviews.length < reviews.length && (
+                <div>
+                  <label htmlFor="email" className="block font-semibold mb-2 text-gray-700">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleOnChange}
+                    className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="description" className="block font-semibold mb-2 text-gray-700">Description:</label>
+                  <textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={handleOnChange}
+                    className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    rows="4"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="rating" className="block font-semibold mb-2 text-gray-700">Rating:</label>
+                  <StarRating />
+                </div>
                 <button
-                  onClick={handleReadMore}
-                  className="bg-[#6B75FE] text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center transition"
+                  type="submit"
+                  className="text-right w-full bg-[#6B75FE] text-white px-4 py-2 rounded hover:bg-blue-600 transition flex items-center justify-center"
                 >
-                  <FaPlusSquare className="h-5 w-5" />
-                  <span className="ml-2">Read More</span>
+                  {isUpdate ? <p>Update</p> : <p>Send</p>}
                 </button>
-              )}
+              </form>
+            </div>
+
+            <div className="bg-white shadow-lg p-6 rounded-lg flex-1">
+              <input
+                type="text"
+                placeholder="Search reviews..."
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="p-2 border border-gray-300 rounded w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              />
+              <div className="flex flex-col gap-4">
+                {filteredReviews.map((review) => (
+                  <div
+                    key={review._id}
+                    className="p-4 bg-gray-50 rounded-lg shadow-md flex flex-col justify-between"
+                  >
+                    <h3 className="text-lg font-semibold mb-2">{review.title}</h3>
+                    <p className="text-sm text-gray-500 mb-2">{new Date(review.date).toLocaleDateString()}</p>
+                    <p className="mb-2">{review.description}</p>
+                    <p className="text-sm text-gray-500 mb-4">Rating: {review.rating}</p>
+                    <div className="flex space-x-2">
+                      <button
+                        className="px-2 py-1 bg-blue-500 text-white rounded-lg flex items-center hover:bg-blue-600 transition"
+                        onClick={() => openUpdateModal(review)}
+                      >
+                        <FaPen className="h-5 w-5" />
+                      </button>
+                      <button
+                        className="px-2 py-1 bg-red-500 text-white rounded-lg flex items-center hover:bg-red-600 transition"
+                        onClick={() => handleDelete(review._id)}
+                      >
+                        <FaTrash className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                {filteredReviews.length < reviews.length && (
+                  <button
+                    onClick={handleReadMore}
+                    className="bg-[#6B75FE] text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center transition"
+                  >
+                    <FaPlusSquare className="h-5 w-5" />
+                    <span className="ml-2">Read More</span>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <ToastContainer />
     </section>
   );

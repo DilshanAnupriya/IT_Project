@@ -54,7 +54,7 @@ const AdminReviews = () => {
   };
 
   return (
-    <section className="w-[1300px] flex bg-[#9BA4BF] min-h-screen">
+    <section className="w-[1300px] mt-20 flex bg-[#9BA4BF] min-h-screen">
 
       <Sidebar />
 

@@ -83,9 +83,9 @@ const ReviewComplaintAdminChart = () => {
 
 
   return (
-    <section className="w-[1300px] flex bg-[#9BA4BF] min-h-screen">
+    <div className="w-[1300px] mt-20 flex bg-[#9BA4BF] min-h-screen">
 
-      <Sidebar className=""/>
+      <Sidebar/>
       <div className="flex-1 flex flex-col">
 
         <Navbar_profile />
@@ -121,7 +121,7 @@ const ReviewComplaintAdminChart = () => {
         </div>
       </div>
       <ToastContainer />
-    </section>
+    </div>
   );
 };
 
