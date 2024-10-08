@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import "../Css/Volunteers/VolunteerRegistration.css"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import Nav from "../../Components/Navbar/Navbar"
+
 
 function VolunteerRegistration() {
     const history = useNavigate();
@@ -167,7 +169,7 @@ function VolunteerRegistration() {
 
     return (
         <div className='all'>
-
+            <Nav />
             <div className='container30' id='section2'>
                 <header>Registration</header>
                 <form action='#' onSubmit={handleSubmit}>

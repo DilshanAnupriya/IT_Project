@@ -1,0 +1,58 @@
+.section100{
+    margin-left: -20px;
+}
+.im2000{
+    width: 10020px;
+    height: 650px;
+    filter: blur(3px);
+
+}
+.s1100{
+    position: absolute;
+    margin-top: -400px;
+    margin-left: 450px;
+    color: white;
+    padding-bottom: 20px;
+    border-radius:5px;
+   
+    padding: 30px;
+
+    
+}
+.s1100 h1{
+    font-size: 58px;
+    font-family: sans-serif;
+    font-style: bold;
+    font-weight: 1000;
+    
+}
+.s1100 p{
+    font-size: 19px;
+    text-align: center;
+    font-weight: 200;
+}
+.s1200{
+    background-color: blueviolet;
+    padding: 10px;
+    border-radius: 6px;
+    margin-left: 170px;
+    margin-top: 20px;
+
+}
+.section1001{
+    margin-top: 100px;
+}
+.section1001 h1{
+    font-size: 34px;
+    font-family:sans-serif;
+    font-style: bold;
+    font-weight: 500;
+    margin-left: 100px;
+
+
+}
+.s1101{
+    margin-top: 20px;
+    margin-left: 85px;
+    padding-right: 60px;
+}
