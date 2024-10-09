@@ -1,0 +1,258 @@
+
+.d{
+    position: absolute;
+    width: 10800px;
+    height: 200px;
+    margin-left: -730px;
+    margin-top: -390px;
+    background-color:#6B75FE;
+  }
+  .d .d2{
+  margin-left: 90px;
+  margin-top: 30px;
+  }
+  .d .d2 h1{
+  
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+  }
+  .d .d2 h5{
+  
+    margin-top: 30px;
+    margin-left: -207px;
+   
+    color: white;
+  }
+  .d3{
+  position: fixed;
+    display: flex;
+    position: absolute;
+    margin-top: -365px;
+    margin-left: 300px;
+  }
+  .d3 input{
+  
+    padding: 10px 39px;
+    border-radius: 8px;
+  }
+  .d3 img{
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 20px;
+  }
+  
+  .d5{
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 14px;
+  }
+  .custom{
+    position: absolute;
+    width: 100%;
+    background-color: rebeccapurple;
+    min-height: 18.75rem;
+    
+  }
+  .icons{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    font-size: 17px;
+  }
+  .titles li span:hover{
+    color: white;
+  }
+  
+    
+  
+  .h-19 img{
+    border-radius: 10px;
+  }
+  .h-19 {
+   padding-bottom: 25px;
+  }
+  .h-19 span{
+    font-size: 28px;
+    position: absolute;
+    margin-top: 9px;
+    margin-left: 30px;
+  }
+  .w-full h6{
+  margin-left: 48px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+  }
+  .notify{
+    font-size: 24px;
+    margin-top: 10px;
+    padding-left: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  .menu001{
+    color: white;
+    font-size: 24px;
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  /* Add this to the existing CSS code */
+  
+  /* Mobile devices (max-width: 768px) */
+  @media only screen and (max-width: 768px) {
+    .d {
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .d .d2 {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    .d .d2 h1 {
+      font-size: 18px;
+    }
+    .d .d2 h5 {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+    .d3 {
+      flex-direction: column;
+      margin-top: 0;
+      margin-left: 20px;
+    }
+    .d3 input {
+      width: 100%;
+      padding: 10px;
+    }
+    .d3 img {
+      width: 30px;
+      margin-left: 10px;
+    }
+    .d5 {
+      position: relative;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .custom {
+      width: 100%;
+      min-height: 10rem;
+    }
+    .icons {
+      flex-direction: column;
+      gap: 5px;
+    }
+    .titles li span:hover {
+      color: white;
+    }
+    .head {
+      font-size: 20px;
+      
+    }
+    .h-19 img {
+      border-radius: 5px;
+    }
+    .h-19 {
+      padding-bottom: 15px;
+      
+    }
+    .w-full h6 {
+      margin-left: 20px;
+      padding-bottom: 20px;
+      padding-top: 10px;
+    }
+    .notify {
+      font-size: 18px;
+      margin-top: 5px;
+      padding-left: 10px;
+    }
+    .menu001 {
+      font-size: 18px;
+      margin-top: 5px;
+      padding-left: 10px;
+    }
+  }
+  
+  /* Tablet devices (min-width: 769px and max-width: 1024px) */
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .d {
+      width: 80%;
+      height: auto;
+      margin-left: 10%;
+      margin-top: 0;
+    }
+    .d .d2 {
+      margin-left: 40px;
+      margin-top: 20px;
+    }
+    .d .d2 h1 {
+      font-size: 20px;
+    }
+    .d .d2 h5 {
+      margin-top: 15px;
+      margin-left: 0;
+    }
+    .d3 {
+      flex-direction: row;
+      margin-top: 0;
+      margin-left: 40px;
+    }
+    .d3 input {
+      width: 50%;
+      padding: 10px;
+    }
+    .d3 img {
+      width: 40px;
+      margin-left: 20px;
+    }
+    .d5 {
+      position: relative;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .custom {
+      width: 80%;
+      min-height: 12rem;
+    }
+    .icons {
+      flex-direction: row;
+      gap: 10px;
+    }
+    .titles li span:hover {
+      color: white;
+    }
+    .head {
+      font-size: 22px;
+    }
+    .h-19 img {
+      border-radius: 8px;
+    }
+    .h-19 {
+      padding-bottom: 20px;
+    }
+    .w-full h6 {
+      margin-left: 30px;
+      padding-bottom: 25px;
+      padding-top: 15px;
+    }
+    .notify {
+      font-size: 20px;
+      margin-top: 10px;
+      padding-left: 15px;
+    }
+    .menu001 {
+      font-size: 20px;
+      margin-top: 10px;
+      padding-left: 15px;
+    }
+  }
+  
+  /* Desktop devices (min-width: 1025px) */
+  
+  .fixed{
+    background-color: #fafbfc;
+  
+    box-shadow: 0px 0px 5px  rgb(131, 131, 131);
+  }
+  

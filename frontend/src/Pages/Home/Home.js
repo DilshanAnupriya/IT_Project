@@ -89,7 +89,7 @@ function Home() {
                                     <img src={s3} alt="" />
                                     <h3>Employee</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="#" class="btn">View </Link>
+                                    <Link to="/empForm" class="btn">View </Link>
                                 </div>
 
                                 <div class="box90">

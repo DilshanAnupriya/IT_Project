@@ -24,8 +24,9 @@ import EmpDashForm from "./Pages/Employee/EmpDash";
 import empAvalForm from "./Pages/Employee/EmpAvalForm"
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 import EmpForm from "./Pages/Employee/EmpForm";
-
-
+import EmpDash from "./Pages/Employee/EmpDashBoard";
+import UpdateEmployee from "./Pages/Employee/UpdateEmployee";
+import UpdateRecruitment from './Pages/Employee/UpdateRecruitment';
 
 
 
@@ -62,9 +63,9 @@ function App() {
           <Route path='/empAvalForm' element={<empAvalForm />} />
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
-
-
-
+          <Route path='/EmpDash' element={<EmpDash />} />
+          <Route path="/UpdateEmployee" element={<UpdateEmployee />} />
+          <Route path="/UpdateRecruitment" element={<UpdateRecruitment/>}/>
 
 
         </Routes>
