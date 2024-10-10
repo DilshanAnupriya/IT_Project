@@ -17,12 +17,12 @@ function UpdateEmployee() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    // Fetch employee data by ID when component mounts
     useEffect(() => {
         const fetchEmployee = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/employees/${id}`);
-                setFormData(response.data);
+                console.log('Fetched employee data:', response.data); // Debugging log
+                setFormData(response.data); // Ensure the correct data structure
             } catch (error) {
                 console.error('Error fetching employee data:', error);
             }
@@ -39,9 +39,11 @@ function UpdateEmployee() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Form submitted:', formData); // Debugging log
         try {
-            await axios.put(`http://localhost:3000/employees/update/${id}`, formData);
-            navigate('/dashboard'); // Navigate back to employee dashboard
+            const response = await axios.put(`http://localhost:3000/employees/update/${id}`, formData);
+            console.log('Update response:', response); // Debugging log
+            navigate('/EmpDash'); // Navigate back to employee dashboard
         } catch (error) {
             console.error('Error updating employee:', error);
         }

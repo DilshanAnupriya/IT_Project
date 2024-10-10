@@ -22,7 +22,6 @@ function EmpDashBoard() {
 
     useEffect(() => {
         fetchHandler().then((data) => setUsers(data.emp));
-        
     }, []);
 
     const deleteEmployee = async (id, first_name) => {
@@ -72,9 +71,9 @@ function EmpDashBoard() {
 
     return (
         <div className="flex h-screen">
-                <EmployeeDash />
-                <div className="flex-1 p-4">
-                 <div>
+            <EmployeeDash />
+            <div className="flex-1 p-4">
+                <div>
                     <section className="count-panel">
                         <div className="count-box">
                             <h2>Care Givers</h2>
@@ -92,12 +91,10 @@ function EmpDashBoard() {
                             <h2>Nutritionists</h2>
                             <p>Number of Nutritionists: {nutritionistsCount}</p>
                         </div>
-                        
                     </section>
 
                     <div className="input-group36" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                   
-                </div>
+                    </div>
 
                     <main className="table36" id="customers_table">
                         <section className="table__header36">
@@ -112,7 +109,7 @@ function EmpDashBoard() {
                                 />
                                 <img src={Searchpng} alt="Search" />
                             </div>
-                             {/* Generate Report Button */}
+                            {/* Generate Report Button */}
                             <button
                                 className="px-2 py-1 text-xs text-white bg-green-500 rounded hover:bg-green-600"
                                 onClick={generatePDF}
@@ -122,7 +119,6 @@ function EmpDashBoard() {
                             <Link to="/EmpDashForm">
                                 <button className='add36'>Add Employee</button>
                             </Link>
-                             
                         </section>
 
                         <section className="table__body36">
@@ -153,22 +149,20 @@ function EmpDashBoard() {
                                             <td>{new Date(user.joined_date).toLocaleDateString()}</td>
                                             <td>
                                                 <div className='action36'>
-                                                    <Link to="/UpdateEmployee">
+                                                    <Link to={`/UpdateEmployee/${user._id}`}>
                                                         <button className='edit36'>Edit   ✏</button>
                                                     </Link>
-                                                    <button className='del36' onClick={() => deleteEmployee(user._id)}>delete🗑</button>
+                                                    <button className='del36' onClick={() => deleteEmployee(user._id, user.first_name)}>delete🗑</button>
                                                 </div>
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
-                            
                         </section>
                         
                         {errorMessage && <p className="error-message">{errorMessage}</p>}
                     </main>
-                    
                 </div>
             </div>
         </div>

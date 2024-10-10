@@ -161,7 +161,7 @@ function Recruitments() {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-gray-900">
                                             <div className="flex space-x-2">
-                                            <Link to={'/UpdateRecruitment'}>
+                                            <Link to={`/UpdateRecruitment/${user._id}`}>
                                                     <button className="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600">
                                                         Edit
                                                     </button>

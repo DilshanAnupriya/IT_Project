@@ -64,8 +64,8 @@ function App() {
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
           <Route path='/EmpDash' element={<EmpDash />} />
-          <Route path="/UpdateEmployee" element={<UpdateEmployee />} />
-          <Route path="/UpdateRecruitment" element={<UpdateRecruitment/>}/>
+          <Route path="/UpdateEmployee/:id" element={<UpdateEmployee />} /> {/* Added :id parameter */}
+          <Route path="/UpdateRecruitment/:id" element={<UpdateRecruitment/>}/>
 
 
         </Routes>
