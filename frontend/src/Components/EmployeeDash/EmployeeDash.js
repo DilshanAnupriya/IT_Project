@@ -97,7 +97,7 @@ function EmployeeDash() {
                     
 
                         <li className="mt-0.5 w-full">
-                            <Link to="/" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/billing.html">
+                            <Link to="/availability" className=" dark:text-black dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors hover:text-[#6B75FE]" href="../pages/billing.html">
                                 <div className="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
                                     <i className="relative top-0 text-sm leading-normal text-emerald-500 ni ni-credit-card"></i>
                                 </div>

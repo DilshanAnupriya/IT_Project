@@ -21,12 +21,14 @@ import CertificateU from "./Pages/Volunteers/Certificate/CertificateU";//update 
 
 
 import EmpDashForm from "./Pages/Employee/EmpDash";
-import empAvalForm from "./Pages/Employee/EmpAvalForm"
+import EmpAvalForm from "./Pages/Employee/EmpAvalForm"
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 import EmpForm from "./Pages/Employee/EmpForm";
 import EmpDash from "./Pages/Employee/EmpDashBoard";
 import UpdateEmployee from "./Pages/Employee/UpdateEmployee";
 import UpdateRecruitment from './Pages/Employee/UpdateRecruitment';
+import EmpAvailabilityDisplay from './Pages/Employee/EmpAvailabilityDisplay';
+import EmpAvailabilityUpdate from './Pages/Employee/EmpAvailabilityUpdate';
 
 
 
@@ -60,12 +62,14 @@ function App() {
           <Route path='/CertificateU/:id' element={<CertificateU />} />
 
           <Route path='/empForm' element={<EmpForm />} />
-          <Route path='/empAvalForm' element={<empAvalForm />} />
+          <Route path='/empAvalForm' element={<EmpAvalForm />} />
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
           <Route path='/EmpDash' element={<EmpDash />} />
           <Route path="/UpdateEmployee/:id" element={<UpdateEmployee />} /> {/* Added :id parameter */}
           <Route path="/UpdateRecruitment/:id" element={<UpdateRecruitment/>}/>
+          <Route path="/availability" element={<EmpAvailabilityDisplay />} />
+          <Route path="/edit-availability/:id" element={<EmpAvailabilityUpdate />} />
 
 
         </Routes>
