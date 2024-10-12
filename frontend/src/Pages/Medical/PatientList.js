@@ -75,27 +75,27 @@ const PatientList = () => {
   return (
     <div className="flex">
       <MedicalSidebar />
-      <div className="container mx-auto mt-10 ml-72"> {/* Adjust margin-left as necessary */}
+      <div className="container mx-auto mt-10 ml-72 p-6 bg-gray-50 rounded-lg shadow-lg"> {/* Adjust margin-left as necessary */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Admit Patient List</h2>
+          <h2 className="text-3xl font-bold text-gray-800">Admit Patient List</h2>
           <input
             type="text"
             placeholder="Search by name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="border rounded px-4 py-2"
+            className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Display error message if there is one */}
         {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
 
-        <button onClick={generatePDF} className="report-btn mb-4">📄 Generate Report</button>
+        <button onClick={generatePDF} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 mb-4">📄 Generate Report</button>
 
         <div className="overflow-y-auto max-h-96"> {/* Add scrollable container */}
-          <table className="min-w-full bg-white border rounded-lg">
+          <table className="min-w-full bg-white border rounded-lg shadow-sm">
             <thead>
-              <tr className="w-full bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                 <th className="py-3 px-6 text-left">Elder No</th>
                 <th className="py-3 px-6 text-left">Name</th>
                 <th className="py-3 px-6 text-left">Date Of Admit</th>
@@ -119,13 +119,13 @@ const PatientList = () => {
                   <td className="py-3 px-6 flex space-x-2">
                     <button 
                       onClick={() => handleEdit(patient._id)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                     >
                       Edit
                     </button>
                     <button 
                       onClick={() => deletePatient(patient._id)}
-                      className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700"
+                      className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700"
                     >
                       Delete
                     </button>
@@ -138,7 +138,7 @@ const PatientList = () => {
         <div className="mt-4">
           <button
             onClick={() => navigate('/addPatient')}
-            className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-700"
+            className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-700"
           >
             Add Patient
           </button>
