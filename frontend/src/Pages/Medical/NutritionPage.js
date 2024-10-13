@@ -26,9 +26,9 @@ const NutritionPage = () => {
     <div className="flex">
       <MedicalSidebar />
       <div className="flex flex-col items-center justify-center min-h-screen ml-64" style={{ backgroundColor: '#C6BCEA' }}>
-        <h2 className="text-4xl font-bold mb-6 mt-8">Select Meal Type</h2>
+        <h2 className="text-4xl font-bold ml-16 mb-32 mt-8">Select Meal Type</h2>
         
-        <div className="flex justify-end mb-8 space-x-12 mr-96 ml-64">
+        <div className="flex justify-end mb-8 space-x-12 mr-96 ml-96">
           {/* Breakfast Button */}
           <div
             className="w-60 h-60 bg-cover bg-center rounded-full cursor-pointer"
