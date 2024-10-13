@@ -94,7 +94,7 @@ function EmpDashBoard() {
                         </div>
                     </section>
 
-                    <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                    <div className="flex flex-col md:flex-row justify-between items-center mb-4 ml-96">
                         <div className="relative mb-4 md:mb-0">
                             <input
                                 type="search"
@@ -117,7 +117,7 @@ function EmpDashBoard() {
                         </div>
                     </div>
 
-                    <div className="overflow-x-auto">
+                    <div className="overflow-x-auto ml-96">
                         <table className="min-w-full bg-white border border-gray-200">
                             <thead>
                                 <tr>
