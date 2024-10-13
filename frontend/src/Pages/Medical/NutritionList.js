@@ -45,9 +45,9 @@ const NutritionList = () => {
             className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto max-h-96">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 overflow-y-auto max-h-96">
           {filteredPatients.map((patient) => (
-            <div key={patient._id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div key={patient._id} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
               <p className="text-lg font-semibold text-gray-800">{patient.Elder_name}</p>
               <p className="text-gray-600">Age: {patient.age}</p>
               <p className="text-gray-600">Date of Admit: {new Date(patient.datein).toLocaleDateString()}</p>

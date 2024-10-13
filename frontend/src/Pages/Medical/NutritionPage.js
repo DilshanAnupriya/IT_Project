@@ -25,39 +25,35 @@ const NutritionPage = () => {
   return (
     <div className="flex">
       <MedicalSidebar />
-      <div className="container mx-auto mt-10 ml-72"> </div>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <div className="w-full flex justify-start p-6">
-        </div>
+      <div className="flex flex-col items-center justify-center min-h-screen ml-64" style={{ backgroundColor: '#C6BCEA' }}>
+        <h2 className="text-4xl font-bold mb-6 mt-8">Select Meal Type</h2>
         
-        <h2 className="text-2xl font-bold mb-6">Select Meal Type</h2>
-        
-        <div className="flex justify-evenly mb-8 space-x-6">
+        <div className="flex justify-end mb-8 space-x-12 mr-96 ml-64">
           {/* Breakfast Button */}
           <div
-            className="w-40 h-40 bg-cover bg-center rounded-full cursor-pointer"
+            className="w-60 h-60 bg-cover bg-center rounded-full cursor-pointer"
             style={{ backgroundImage: `url(${breakfastImage})` }}
             onClick={() => navigate('/breakfast')}
           >
-            <p className="text-center mt-32 text-white font-bold">Breakfast</p>
+            <p className="text-center mt-48 text-white font-bold">Breakfast</p>
           </div>
 
           {/* Lunch Button */}
           <div
-            className="w-40 h-40 bg-cover bg-center rounded-full cursor-pointer"
+            className="w-60 h-60 bg-cover bg-center rounded-full cursor-pointer"
             style={{ backgroundImage: `url(${lunchImage})` }}
             onClick={() => navigate('/lunch')}
           >
-            <p className="text-center mt-32 text-white font-bold">Lunch</p>
+            <p className="text-center mt-48 text-white font-bold">Lunch</p>
           </div>
 
           {/* Dinner Button */}
           <div
-            className="w-40 h-40 bg-cover bg-center rounded-full cursor-pointer"
+            className="w-60 h-60 bg-cover bg-center rounded-full cursor-pointer"
             style={{ backgroundImage: `url(${dinnerImage})` }}
             onClick={() => navigate('/dinner')}
           >
-            <p className="text-center mt-32 text-white font-bold">Dinner</p>
+            <p className="text-center mt-48 text-white font-bold">Dinner</p>
           </div>
         </div>
 

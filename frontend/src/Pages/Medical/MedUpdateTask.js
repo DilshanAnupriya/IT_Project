@@ -59,7 +59,7 @@ const [errorMessage, setErrorMessage] = useState('');
 
             // Navigate back to the View Care Plans page after a short delay
             setTimeout(() => {
-                navigate('/med_dd');
+                navigate('/medDash');
             }, 1500); // 1.5 seconds delay to show the success message
         } catch (error) {
             setErrorMessage('Failed to update care plan. Please try again.');

@@ -8,7 +8,7 @@ import axios from "axios";
 function Meduserreq() {
     const history = useNavigate();
     const [input, setInputs] = useState({
-        Elder_firstnamee: "",
+        Elder_firstname: "",
         Elder_lastname: "",
         Age: "",
         Gender: "Male",  // default value
@@ -20,6 +20,16 @@ function Meduserreq() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+        // Prevent numbers in Elder_firstname and Elder_lastname
+        if ((name === "Elder_firstname" || name === "Elder_lastname") && /\d/.test(value)) {
+            return;
+        }
+
+        // Prevent letters in Age
+        if (name === "Age" && /\D/.test(value)) {
+            return;
+        }
 
         setInputs((prevState) => ({
             ...prevState,
@@ -34,22 +44,42 @@ function Meduserreq() {
 
         switch (name) {
             case "Elder_firstname":
-                if (!value) errorMsg = "First name is required";
+                if (!value) {
+                    errorMsg = "First name is required";
+                } else if (/\d/.test(value)) {
+                    errorMsg = "First name should not contain numbers";
+                }
                 break;
             case "Elder_lastname":
-                if (!value) errorMsg = "Last name is required";
+                if (!value) {
+                    errorMsg = "Last name is required";
+                } else if (/\d/.test(value)) {
+                    errorMsg = "Last name should not contain numbers";
+                }
                 break;
             case "Age":
-                if (!value || value === "0") errorMsg = "Age should not be 0";
+                if (!value || value === "0") {
+                    errorMsg = "Age should not be 0";
+                }
                 break;
             case "Gender":
-                if (!value) errorMsg = "Gender is required";
+                if (!value) {
+                    errorMsg = "Gender is required";
+                }
                 break;
             case "Current_need":
-                if (!value) errorMsg = "Current need is required";
+                if (!value) {
+                    errorMsg = "Current need is required";
+                } else if (value.length > 100) {
+                    errorMsg = "Current need should not exceed 100 characters";
+                }
                 break;
             case "Summary":
-                if (!value) errorMsg = "Summary is required";
+                if (!value) {
+                    errorMsg = "Summary is required";
+                } else if (value.length > 250) {
+                    errorMsg = "Summary should not exceed 250 characters";
+                }
                 break;
             default:
                 break;
@@ -97,7 +127,7 @@ function Meduserreq() {
         e.preventDefault();
 
         if (validateForm()) {
-            sendRequest().then(() => history('/form-succeful'));
+            sendRequest().then(() => history('/meduserreq'));
         }
     };
 
@@ -114,98 +144,103 @@ function Meduserreq() {
 
     return (
         <div className='all'>
-        <div className='newN'><Nav /></div>
-        <div className='container7'>
-            <div class = "header-box">
-            <h2>Elder Care Request Form</h2>
+            <div className='newN'><Nav /></div>
+            <div className='container7'>
+                <div className="header-box">
+                    <h2>Elder Care Request Form</h2>
+                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className='fields7'>
+                        <div className='input-field7'>
+                            <label>Elder First Name</label>
+                            <input 
+                                type='text' 
+                                onChange={handleChange} 
+                                placeholder='Enter Elder First Name' 
+                                value={input.Elder_firstname} 
+                                name='Elder_firstname' 
+                                required 
+                            />
+                            {errors.Elder_firstname && <span className="error">{errors.Elder_firstname}</span>}
+                        </div>
+
+                        <div className='input-field7'>
+                            <label>Elder Last Name</label>
+                            <input 
+                                type='text' 
+                                onChange={handleChange} 
+                                placeholder='Enter Elder Last Name' 
+                                value={input.Elder_lastname} 
+                                name='Elder_lastname' 
+                                required 
+                            />
+                            {errors.Elder_lastname && <span className="error">{errors.Elder_lastname}</span>}
+                        </div>
+
+                        <div className='input-field7'>
+                            <label>Age</label>
+                            <input 
+                                type='number' 
+                                onChange={handleChange} 
+                                placeholder='Enter Age' 
+                                value={input.Age} 
+                                name='Age' 
+                                required 
+                                onKeyPress={(e) => {
+                                    if (!/[0-9]/.test(e.key)) {
+                                        e.preventDefault();
+                                    }
+                                }}
+                            />
+                            {errors.Age && <span className="error">{errors.Age}</span>}
+                        </div>
+
+                        <div className='input-field7'>
+                            <label>Gender</label>
+                            <select name="Gender" onChange={handleChange} value={input.Gender}>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            {errors.Gender && <span className="error">{errors.Gender}</span>}
+                        </div>
+
+                        <div className='input-field7'>
+                            <label>Current Need</label>
+                            <input 
+                                type='text' 
+                                onChange={handleChange} 
+                                placeholder='Enter Current Need' 
+                                value={input.Current_need} 
+                                name='Current_need' 
+                                required 
+                            />
+                            <span className="char-count">{input.Current_need.length}/100</span>
+                            {errors.Current_need && <span className="error">{errors.Current_need}</span>}
+                        </div>
+
+                        <div className='input-field7'>
+                            <label>Summary</label>
+                            <input 
+                                type='text' 
+                                onChange={handleChange} 
+                                placeholder='Enter Summary' 
+                                value={input.Summary} 
+                                name='Summary' 
+                                required 
+                            />
+                            <span className="char-count">{input.Summary.length}/250</span>
+                            {errors.Summary && <span className="error">{errors.Summary}</span>}
+                        </div>
+                    </div>
+
+                    <div className="button-container">
+                        <button className='subButton'>Submit</button>
+                    </div>
+                </form>
             </div>
-            <form onSubmit={handleSubmit}>
-                <div className='fields7'>
-                    <div className='input-field7'>
-                        <label>Elder First Name</label>
-                        <input 
-                            type='text' 
-                            onChange={handleChange} 
-                            placeholder='Enter Elder First Name' 
-                            value={input.Elder_firstname} 
-                            name='Elder_firstname' 
-                            required 
-                        />
-                        {errors.Elder_firstname && <span className="error">{errors.Elder_firstname}</span>}
-                    </div>
-
-                    <div className='input-field7'>
-                        <label>Elder Last Name</label>
-                        <input 
-                            type='text' 
-                            onChange={handleChange} 
-                            placeholder='Enter Elder Last Name' 
-                            value={input.Elder_lastname} 
-                            name='Elder_lastname' 
-                            required 
-                        />
-                        {errors.Elder_lastname && <span className="error">{errors.Elder_lastname}</span>}
-                    </div>
-
-                    <div className='input-field7'>
-                        <label>Age</label>
-                        <input 
-                            type='number' 
-                            onChange={handleChange} 
-                            placeholder='Enter Age' 
-                            value={input.Age} 
-                            name='Age' 
-                            required 
-                        />
-                        {errors.Age && <span className="error">{errors.Age}</span>}
-                    </div>
-            
-
-                    <div className='input-field7'>
-                        <label>Gender</label>
-                        <select name="Gender" onChange={handleChange} value={input.Gender}>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                        
-                        {errors.Gender && <span className="error">{errors.Gender}</span>}
-                    </div>
-
-                    <div className='input-field7'>
-                        <label>Current Need</label>
-                        <input 
-                            type='text' 
-                            onChange={handleChange} 
-                            placeholder='Enter Current Need' 
-                            value={input.Current_need} 
-                            name='Current_need' 
-                            required 
-                        />
-                        {errors.Current_need && <span className="error">{errors.Current_need}</span>}
-                    </div>
-
-                    <div className='input-field7'>
-                        <label>Summary</label>
-                        <input 
-                            type='text' 
-                            onChange={handleChange} 
-                            placeholder='Enter Summary' 
-                            value={input.Summary} 
-                            name='Summary' 
-                            required 
-                        />
-                        {errors.Summary && <span className="error">{errors.Summary}</span>}
-                    </div>
-                </div>
-
-                <div className="button-container">
-                    <button className='subButton'>Submit</button>
-                </div>
-            </form>
+            <div className='newf'><Footer /></div>
         </div>
-        <div className='newf'><Footer /></div>
-    </div>
-);
+    );
 }
 
 export default Meduserreq;

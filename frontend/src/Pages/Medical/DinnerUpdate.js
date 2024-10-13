@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar';
+
 
 const DinnerUpdate = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +41,8 @@ const DinnerUpdate = () => {
   };
 
   return (
+    <div className="flex">
+      <MedicalSidebar />
     <div className="container mx-auto mt-10">
       <h2 className="text-2xl font-bold mb-6">Update Dinner</h2>
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -70,6 +74,7 @@ const DinnerUpdate = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };
