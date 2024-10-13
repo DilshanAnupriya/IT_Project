@@ -1,61 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import EmployeeDash from "../../Components/EmployeeDash/EmployeeDash";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
-const URL = "http://localhost:3000/requests/";
+const URL = "http://localhost:3000/Availability/";
 
 const fetchHandler = async () => {
-    const data = await axios.get(URL).then((res) => res.data);
-   
+    const data = await axios.get(URL).then((res) => res.data.avl); // Ensure to access the 'avl' property
     return data;
 };
 
 const deleteHandler = async (id) => {
-    await axios.delete(`http://localhost:3000/requests/delete/${id}`);
+    await axios.delete(`http://localhost:3000/Availability/delete/${id}`);
 };
 
-function Recruitments() {
-    const [users, setUsers] = useState([]);
+function EmpAvailabilityDisplay() {
+    const [availabilities, setAvailabilities] = useState([]);
     const [searchTerm, setSearchTerm] = useState(""); // State to track search input
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchHandler().then((data) => setUsers(data.requ));
-   
+        fetchHandler().then((data) => {
+            if (Array.isArray(data)) {
+                setAvailabilities(data);
+            } else {
+                console.error('Unexpected response data:', data);
+            }
+        });
     }, []);
 
-    // Filter users based on search term (by name only)
-    const filteredUsers = users.filter((user) =>
-        user.name && user.name.toLowerCase().includes(searchTerm.toLowerCase()) // Check if 'name' exists before using it
-    );
+    // Filter availabilities based on search term (by employee name only)
+    const filteredAvailabilities = Array.isArray(availabilities) ? availabilities.filter((availability) =>
+        availability.emp_name && availability.emp_name.toLowerCase().includes(searchTerm.toLowerCase()) // Check if 'emp_name' exists before using it
+    ) : [];
 
     const handleDelete = (id) => {
         deleteHandler(id).then(() => {
-            setUsers(users.filter((user) => user._id !== id));
+            setAvailabilities(availabilities.filter((availability) => availability._id !== id));
         });
-    };
-
-    // Generate PDF report
-    const generatePDF = () => {
-        const doc = new jsPDF();
-        doc.text("Recruitment Report", 14, 16);
-        doc.autoTable({
-            head: [['Name', 'Email', 'Phone No', 'Gender', 'Education Qualification', 'Experience', 'Computer Literacy', 'English Skill']],
-            body: filteredUsers.map(user => [
-                user.name,
-                user.email,
-                user.phone_no,
-                user.gender,
-                user.edu_qualifications,
-                user.experience,
-                user.computerLiteracy,
-                user.englishSkills
-            ]),
-        });
-        doc.save("recruitment_report.pdf");
     };
 
     return (
@@ -65,7 +47,7 @@ function Recruitments() {
 
             {/* Main Content */}
             <div className="container mx-auto mt-10 ml-72">
-                <h2 className="text-3xl font-bold mb-6">Employee Request Details</h2>
+                <h2 className="text-3xl font-bold mb-6">Employee Availability</h2>
                 <div className="bg-white p-8 rounded-lg shadow-md">
                     <section className="mb-4">
                         <div className="relative mb-4">
@@ -75,7 +57,7 @@ function Recruitments() {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
                                 className="w-full p-2 pl-8 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                placeholder="Search by Name..."
+                                placeholder="Search by Employee Name..."
                             />
                             <span className="absolute left-2 top-2 text-gray-400">
                                 <svg
@@ -97,13 +79,13 @@ function Recruitments() {
                     </section>
 
                     <div className="mb-4">
-                        {/* Generate Report Button */}
+                        {/* Add Availability Button */}
                         <button
-                            className="px-2 py-1 text-xs text-white bg-green-500 rounded hover:bg-green-600"
-                            onClick={generatePDF}
+                            className="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600"
+                            onClick={() => navigate('/empAvalForm')}
                             style={{ marginLeft: 'auto' }}
                         >
-                            Generate Report
+                            Add Availability
                         </button>
                     </div>
 
@@ -113,14 +95,10 @@ function Recruitments() {
                             <thead className="bg-gray-50">
                                 <tr>
                                     {[
-                                        "Name",
-                                        "Email",
-                                        "Phone no",
-                                        "Gender",
-                                        "Education Qualification",
-                                        "Experience",
-                                        "Computer Literacy",
-                                        "English Skill",
+                                        "Employee Name",
+                                        "Schedule Date",
+                                        "Start Time",
+                                        "End Time",
                                         "Action",
                                     ].map((header) => (
                                         <th
@@ -133,41 +111,29 @@ function Recruitments() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredUsers.map((user) => (
-                                    <tr key={user._id} className="odd:bg-white even:bg-gray-50">
+                                {filteredAvailabilities.map((availability) => (
+                                    <tr key={availability._id} className="odd:bg-white even:bg-gray-50">
                                         <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.name}
+                                            {availability.emp_name}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.email}
+                                            {new Date(availability.schedule_date).toLocaleDateString()}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.phone_no}
+                                            {availability.schedule_start_time}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.gender}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.edu_qualifications}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.experience}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.computerLiteracy}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                                            {user.englishSkills}
+                                            {availability.schedule_end_time}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-gray-900">
                                             <div className="flex space-x-2">
-                                            <Link to={`/UpdateRecruitment/${user._id}`}>
+                                                <Link to={`/edit-availability/${availability._id}`}>
                                                     <button className="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600">
                                                         Edit
                                                     </button>
                                                 </Link>
                                                 <button
-                                                    onClick={() => handleDelete(user._id)}
+                                                    onClick={() => handleDelete(availability._id)}
                                                     className="px-2 py-1 text-xs text-white bg-red-500 rounded hover:bg-red-600">
                                                     Del
                                                 </button>
@@ -184,4 +150,4 @@ function Recruitments() {
     );
 }
 
-export default Recruitments;
+export default EmpAvailabilityDisplay;
