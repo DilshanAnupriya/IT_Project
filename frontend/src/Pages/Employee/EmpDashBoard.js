@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import EmployeeDash from "../../Components/EmployeeDash/EmployeeDash";
 import Dashboard from '../../Components/EmployeeDash/EmployeeDashboard';
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Searchpng from "../../Assets/Employee/search.png";
+import { Link, useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
@@ -11,29 +9,32 @@ const URL = "http://localhost:3000/employees/";
 
 const fetchHandler = async () => {
     const data = await axios.get(URL).then((res) => res.data);
-    console.log(data);
     return data;
+};
+
+const deleteHandler = async (id) => {
+    await axios.delete(`http://localhost:3000/employees/delete/${id}`);
 };
 
 function EmpDashBoard() {
     const [users, setUsers] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(""); // State to track search input
     const [errorMessage, setErrorMessage] = useState('');
-    const [searchTerm, setSearchTerm] = useState(""); // For search functionality
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchHandler().then((data) => setUsers(data.emp));
     }, []);
 
-    const deleteEmployee = async (id, first_name) => {
+    const handleDelete = (id, first_name) => {
         const deleteUser = window.confirm(`Are you sure you want to delete the employee ${first_name}?`);
         
         if (deleteUser) {
-            try {
-                await axios.delete(`http://localhost:3000/employees/delete/${id}`);
+            deleteHandler(id).then(() => {
                 setUsers(users.filter((user) => user._id !== id));
-            } catch (error) {
+            }).catch(() => {
                 setErrorMessage(`Failed to delete employee ${first_name}. Please try again.`);
-            }
+            });
         }
     };
 
@@ -54,7 +55,7 @@ function EmpDashBoard() {
         const doc = new jsPDF();
         doc.text("Employee Report", 14, 16);
         doc.autoTable({
-            head: [['First Name', 'Last Name', 'Job Role', 'NIC', 'Email', 'Qualifications', 'Bank Details', 'Join Date']],
+            head: [['First Name', 'Last Name', 'Job Role', 'NIC', 'Email', 'Qualifications', 'Join Date']],
             body: filteredUsers.map(user => [
                 user.first_name,
                 user.last_name,
@@ -62,7 +63,6 @@ function EmpDashBoard() {
                 user.nic,
                 user.email,
                 user.qualifications,
-                user.bank_details,
                 new Date(user.joined_date).toLocaleDateString()
             ]),
         });
@@ -70,92 +70,142 @@ function EmpDashBoard() {
     };
 
     return (
-        <div className="flex">
+        <div className="flex h-screen">
             {/* Sidebar */}
-            <Dashboard />
-            <div className="flex-1 p-4">
-                <div>
-                    <section className="flex gap-8 justify-center mb-8">
-                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
-                            <h2 className="text-xl font-bold">Care Givers</h2>
-                            <p>Number of Care givers: {careGiversCount}</p>
+            <Dashboard className="w-1/4" />
+
+            {/* Main Content */}
+            <div className="container mx-auto mt-10 ml-56">
+                <h2 className="text-3xl font-bold mb-6 ml-16">Employee Dashboard</h2>
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                    <section className="grid grid-cols-2 md:grid-cols-4 mb-8 ml-32">
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Care Givers</h2>
+                            <p>{careGiversCount}</p>
                         </div>
-                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
-                            <h2 className="text-xl font-bold">Doctors</h2>
-                            <p>Number of Doctors: {doctorsCount}</p>
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Doctors</h2>
+                            <p>{doctorsCount}</p>
                         </div>
-                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
-                            <h2 className="text-xl font-bold">Nurses</h2>
-                            <p>Number of Nurses: {nursesCount}</p>
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Nurses</h2>
+                            <p>{nursesCount}</p>
                         </div>
-                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
-                            <h2 className="text-xl font-bold">Nutritionists</h2>
-                            <p>Number of Nutritionists: {nutritionistsCount}</p>
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Nutritionists</h2>
+                            <p>{nutritionistsCount}</p>
                         </div>
                     </section>
 
-                    <div className="flex flex-col md:flex-row justify-between items-center mb-4 ml-96">
-                        <div className="relative mb-4 md:mb-0">
+                    <section className="mb-4">
+                        <div className="relative mb-4 ml-8">
+                            {/* Search Bar */}
                             <input
                                 type="search"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
+                                className="w-full p-2 pl-8 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 placeholder="Search by Name..."
-                                className="border rounded-lg p-2"
                             />
-                            <img src={Searchpng} alt="Search" className="absolute right-2 top-2 w-4 h-4" />
+                            <span className="absolute left-2 top-2 text-gray-400">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zm8 14l-4-4m0 0l-4 4m4-4V6"
+                                    />
+                                </svg>
+                            </span>
                         </div>
-                        <div className="flex gap-4">
-                            <button
-                                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-                                onClick={generatePDF}>
-                                Generate Report
-                            </button>
-                            <Link to="/EmpDashForm">
-                                <button className='px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600'>Add Employee</button>
-                            </Link>
-                        </div>
+                    </section>
+
+                    <div className="mb-4 ml-8 flex justify-between">
+                        {/* Generate Report Button */}
+                        <button
+                            className="px-2 py-1 text-xs text-white bg-green-500 rounded hover:bg-green-600 mr-2"
+                            onClick={generatePDF}
+                        >
+                            Generate Report
+                        </button>
+                        <Link to="/EmpDashForm">
+                            <button className='px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600'>Add Employee</button>
+                        </Link>
                     </div>
 
-                    <div className="overflow-x-auto ml-96">
-                        <table className="min-w-full bg-white border border-gray-200">
-                            <thead>
+                    {/* Scrollable Table */}
+                    <section className="overflow-x-auto overflow-y-auto max-h-[500px] ml-8">
+                        <table className="min-w-full bg-white border border-gray-300 text-sm ">
+                            <thead className="bg-gray-50">
                                 <tr>
-                                    <th className="px-4 py-2 border-b">First Name</th>
-                                    <th className="px-4 py-2 border-b">Last Name</th>
-                                    <th className="px-4 py-2 border-b">Job Role</th>
-                                    <th className="px-4 py-2 border-b">NIC</th>
-                                    <th className="px-4 py-2 border-b">Email</th>
-                                    <th className="px-4 py-2 border-b">Qualifications</th>
-                                    <th className="px-4 py-2 border-b">Bank Details</th>
-                                    <th className="px-4 py-2 border-b">Join Date</th>
-                                    <th className="px-4 py-2 border-b">Other</th>
+                                    {[
+                                        "First Name",
+                                        "Last Name",
+                                        "Job Role",
+                                        "NIC",
+                                        "Email",
+                                        "Qualifications",
+                                        "Join Date",
+                                        "Actions",
+                                    ].map((header) => (
+                                        <th
+                                            key={header}
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                        >
+                                            {header}
+                                        </th>
+                                    ))}
                                 </tr>
                             </thead>
                             <tbody>
                                 {filteredUsers.map((user) => (
-                                    <tr key={user._id} className="hover:bg-gray-100">
-                                        <td className="px-4 py-2 border-b">{user.first_name}</td>
-                                        <td className="px-4 py-2 border-b">{user.last_name}</td>
-                                        <td className="px-4 py-2 border-b">{user.job_role}</td>
-                                        <td className="px-4 py-2 border-b">{user.nic}</td>
-                                        <td className="px-4 py-2 border-b">{user.email}</td>
-                                        <td className="px-4 py-2 border-b">{user.qualifications}</td>
-                                        <td className="px-4 py-2 border-b">{user.bank_details}</td>
-                                        <td className="px-4 py-2 border-b">{new Date(user.joined_date).toLocaleDateString()}</td>
-                                        <td className="px-4 py-2 border-b">
-                                            <div className='flex gap-2'>
+                                    <tr key={user._id} className="odd:bg-white even:bg-gray-50">
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.first_name}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.last_name}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.job_role}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.nic}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.email}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.qualifications}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {new Date(user.joined_date).toLocaleDateString()}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            <div className="flex space-x-2">
                                                 <Link to={`/UpdateEmployee/${user._id}`}>
-                                                    <button className='px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600'>Edit</button>
+                                                    <button className="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600">
+                                                        Edit
+                                                    </button>
                                                 </Link>
-                                                <button className='px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600' onClick={() => deleteEmployee(user._id, user.first_name)}>Delete</button>
+                                                <button
+                                                    onClick={() => handleDelete(user._id, user.first_name)}
+                                                    className="px-2 py-1 text-xs text-white bg-red-500 rounded hover:bg-red-600">
+                                                    Delete
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
-                    </div>
+                    </section>
                     
                     {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
                 </div>

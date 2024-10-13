@@ -65,10 +65,10 @@ function Recruitments() {
 
             {/* Main Content */}
             <div className="container mx-auto mt-10 ml-72">
-                <h2 className="text-3xl font-bold mb-6">Employee Request Details</h2>
+                <h2 className="text-3xl font-bold mb-6 ml-16">Employee Request Details</h2>
                 <div className="bg-white p-8 rounded-lg shadow-md">
                     <section className="mb-4">
-                        <div className="relative mb-4">
+                        <div className="relative mb-4 ml-8">
                             {/* Search Bar */}
                             <input
                                 type="search"
@@ -96,7 +96,7 @@ function Recruitments() {
                         </div>
                     </section>
 
-                    <div className="mb-4">
+                    <div className="mb-4 ml-8">
                         {/* Generate Report Button */}
                         <button
                             className="px-2 py-1 text-xs text-white bg-green-500 rounded hover:bg-green-600"
@@ -108,8 +108,8 @@ function Recruitments() {
                     </div>
 
                     {/* Scrollable Table */}
-                    <section className="overflow-x-auto overflow-y-auto max-h-[500px]">
-                        <table className="min-w-full bg-white border border-gray-300 text-sm">
+                    <section className="overflow-x-auto overflow-y-auto max-h-[500px] ml-8">
+                        <table className="min-w-full bg-white border border-gray-300 text-sm ">
                             <thead className="bg-gray-50">
                                 <tr>
                                     {[
