@@ -48,12 +48,12 @@ const Lunch = () => {
         <tbody>
           {lunchData.map((item) => (
             <tr key={item._id}>
-              <td className="py-2 px-4 border-b">{item.Nutrition_title}</td>
-              <td className="py-2 px-4 border-b">{item.Nutrition_description}</td>
+              <td className="py-2 px-4 border-b">{item.LNutrition_title}</td>
+              <td className="py-2 px-4 border-b">{item.LNutrition_description}</td>
               <td className="py-2 px-4 border-b">
                 <button
                   className="bg-yellow-500 text-white py-1 px-2 rounded mr-2"
-                  onClick={() => navigate(`http://localhost:3000/Lunch/edit/${item._id}`)}
+                  onClick={() => navigate(`/lunch/edit/${item._id}`)}
                 >
                   Edit
                 </button>

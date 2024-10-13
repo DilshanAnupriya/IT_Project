@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const DinnerUpdate = () => {
   const [formData, setFormData] = useState({
-    Nutrition_title: '',
-    Nutrition_description: '',
+    DNutrition_title: '',
+    DNutrition_description: '',
   });
 
   const navigate = useNavigate();
@@ -46,8 +46,8 @@ const DinnerUpdate = () => {
           <label className="block text-gray-700 text-sm font-bold mb-2">Title:</label>
           <input 
             type="text"
-            name="Nutrition_title"
-            value={formData.Nutrition_title}
+            name="DNutrition_title"
+            value={formData.DNutrition_title}
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
@@ -55,8 +55,8 @@ const DinnerUpdate = () => {
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">Description:</label>
           <textarea
-            name="Nutrition_description"
-            value={formData.Nutrition_description}
+            name="DNutrition_description"
+            value={formData.DNutrition_description}
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />

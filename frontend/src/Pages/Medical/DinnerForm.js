@@ -9,8 +9,8 @@ const DinnerForm = () => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:3000/Dinner/add', {
-        Nutrition_title: title,
-        Nutrition_description: description,
+        DNutrition_title: title,
+        DNutrition_description: description,
       });
       alert('Dinner added successfully');
     } catch (error) {

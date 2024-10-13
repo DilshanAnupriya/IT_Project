@@ -53,7 +53,7 @@ const Breakfast = () => {
               <td className="py-2 px-4 border-b">
                 <button
                   className="bg-yellow-500 text-white py-1 px-2 rounded mr-2"
-                  onClick={() => navigate(`http://localhost:3000/Breakfast/edit/${item._id}`)}
+                  onClick={() => navigate(`/breakfast/edit/${item._id}`)}
                 >
                   Edit
                 </button>
