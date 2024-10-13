@@ -9,7 +9,9 @@ function EmpDash() {
         emp_name: "",
         schedule_date: "",
         schedule_start_time: "",
+        schedule_start_period: "AM",
         schedule_end_time: "",
+        schedule_end_period: "AM",
     });
 
     const [errors, setErrors] = useState({});
@@ -25,12 +27,19 @@ function EmpDash() {
         validateField(name, value);
     };
 
+    const handlePeriodChange = (name, period) => {
+        setInputs((prevState) => ({
+            ...prevState,
+            [name]: period,
+        }));
+    };
+
     const validateField = (name, value) => {
         let errorMsg = "";
 
         switch (name) {
             case "emp_name":
-                if (!value) errorMsg = "First name is required";
+                if (!value) errorMsg = "Employee name is required";
                 break;
             case "schedule_date":
                 if (!value) errorMsg = "Schedule date is required";
@@ -87,14 +96,13 @@ function EmpDash() {
     const sendRequest = async () => {
         await axios.post("http://localhost:3000/Availability/Create", {
             emp_name: String(input.emp_name),
-            schedule_date: Date(input.schedule_date),
-            schedule_start_time: String(input.schedule_start_time),
-            schedule_end_time: String(input.schedule_end_time),
+            schedule_date: new Date(input.schedule_date).toISOString(),
+            schedule_start_time: `${input.schedule_start_time} ${input.schedule_start_period}`,
+            schedule_end_time: `${input.schedule_end_time} ${input.schedule_end_period}`,
         }).then(res => res.data);
     };
 
     const onClose = () => {
-        // Logic to handle closing the modal
         history("/"); // Redirect to home or another page
     };
 
@@ -128,24 +136,46 @@ function EmpDash() {
                         </div>
                         <div className="form-group33">
                             <label>Schedule Start Time</label>
-                            <input 
-                                type="text" 
-                                name="schedule_start_time" 
-                                value={input.schedule_start_time} 
-                                onChange={handleChange} 
-                                required 
-                            />
+                            <div className="time-input-container">
+                                <input 
+                                    type="time" 
+                                    name="schedule_start_time" 
+                                    value={input.schedule_start_time} 
+                                    onChange={handleChange} 
+                                    required 
+                                />
+                                <select 
+                                    name="schedule_start_period" 
+                                    value={input.schedule_start_period} 
+                                    onChange={(e) => handlePeriodChange('schedule_start_period', e.target.value)}
+                                    required
+                                >
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
                             {errors.schedule_start_time && <p className="error33">{errors.schedule_start_time}</p>}
                         </div>
                         <div className="form-group33">
                             <label>Schedule End Time</label>
-                            <input 
-                                type="text" 
-                                name="schedule_end_time" 
-                                value={input.schedule_end_time} 
-                                onChange={handleChange} 
-                                required 
-                            />
+                            <div className="time-input-container">
+                                <input 
+                                    type="time" 
+                                    name="schedule_end_time" 
+                                    value={input.schedule_end_time} 
+                                    onChange={handleChange} 
+                                    required 
+                                />
+                                <select 
+                                    name="schedule_end_period" 
+                                    value={input.schedule_end_period} 
+                                    onChange={(e) => handlePeriodChange('schedule_end_period', e.target.value)}
+                                    required
+                                >
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
                             {errors.schedule_end_time && <p className="error33">{errors.schedule_end_time}</p>}
                         </div>
                     </div>

@@ -9,7 +9,9 @@ function EmpAvailabilityUpdate() {
         emp_name: "",
         schedule_date: "",
         schedule_start_time: "",
+        schedule_start_period: "AM",
         schedule_end_time: "",
+        schedule_end_period: "AM",
     });
 
     const [errors, setErrors] = useState({});
@@ -21,7 +23,17 @@ function EmpAvailabilityUpdate() {
     const fetchAvailability = async () => {
         try {
             const response = await axios.get(`http://localhost:3000/Availability/${id}`);
-            setInputs(response.data.avl);
+            const data = response.data.avl;
+            const [start_time, start_period] = data.schedule_start_time.split(' ');
+            const [end_time, end_period] = data.schedule_end_time.split(' ');
+            setInputs({
+                emp_name: data.emp_name,
+                schedule_date: new Date(data.schedule_date).toISOString().split('T')[0],
+                schedule_start_time: start_time,
+                schedule_start_period: start_period,
+                schedule_end_time: end_time,
+                schedule_end_period: end_period,
+            });
         } catch (error) {
             console.error('Error fetching availability:', error);
         }
@@ -36,6 +48,13 @@ function EmpAvailabilityUpdate() {
         }));
 
         validateField(name, value);
+    };
+
+    const handlePeriodChange = (name, period) => {
+        setInputs((prevState) => ({
+            ...prevState,
+            [name]: period,
+        }));
     };
 
     const validateField = (name, value) => {
@@ -100,9 +119,9 @@ function EmpAvailabilityUpdate() {
     const sendRequest = async () => {
         await axios.put(`http://localhost:3000/Availability/update/${id}`, {
             emp_name: String(input.emp_name),
-            schedule_date: Date(input.schedule_date),
-            schedule_start_time: String(input.schedule_start_time),
-            schedule_end_time: String(input.schedule_end_time),
+            schedule_date: new Date(input.schedule_date).toISOString(),
+            schedule_start_time: `${input.schedule_start_time} ${input.schedule_start_period}`,
+            schedule_end_time: `${input.schedule_end_time} ${input.schedule_end_period}`,
         }).then(res => res.data);
     };
 
@@ -140,24 +159,46 @@ function EmpAvailabilityUpdate() {
                         </div>
                         <div className="form-group33">
                             <label>Schedule Start Time</label>
-                            <input 
-                                type="text" 
-                                name="schedule_start_time" 
-                                value={input.schedule_start_time} 
-                                onChange={handleChange} 
-                                required 
-                            />
+                            <div className="time-input-container">
+                                <input 
+                                    type="time" 
+                                    name="schedule_start_time" 
+                                    value={input.schedule_start_time} 
+                                    onChange={handleChange} 
+                                    required 
+                                />
+                                <select 
+                                    name="schedule_start_period" 
+                                    value={input.schedule_start_period} 
+                                    onChange={(e) => handlePeriodChange('schedule_start_period', e.target.value)}
+                                    required
+                                >
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
                             {errors.schedule_start_time && <p className="error33">{errors.schedule_start_time}</p>}
                         </div>
                         <div className="form-group33">
                             <label>Schedule End Time</label>
-                            <input 
-                                type="text" 
-                                name="schedule_end_time" 
-                                value={input.schedule_end_time} 
-                                onChange={handleChange} 
-                                required 
-                            />
+                            <div className="time-input-container">
+                                <input 
+                                    type="time" 
+                                    name="schedule_end_time" 
+                                    value={input.schedule_end_time} 
+                                    onChange={handleChange} 
+                                    required 
+                                />
+                                <select 
+                                    name="schedule_end_period" 
+                                    value={input.schedule_end_period} 
+                                    onChange={(e) => handlePeriodChange('schedule_end_period', e.target.value)}
+                                    required
+                                >
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
                             {errors.schedule_end_time && <p className="error33">{errors.schedule_end_time}</p>}
                         </div>
                     </div>
