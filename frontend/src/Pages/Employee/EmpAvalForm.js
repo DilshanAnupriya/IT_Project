@@ -80,7 +80,7 @@ function EmpDash() {
         e.preventDefault();
 
         if (validateForm()) {
-            sendRequest().then(() => history('/success'));
+            sendRequest().then(() => history('/availability'));
         }
     };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import EmployeeDash from "../../Components/EmployeeDash/EmployeeDash";
+import EmployeeDash from "../../Components/EmployeeDash/EmployeeDashboard";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import "../Css/Employee/EmpDashboard.css";
 import EmployeeDash from "../../Components/EmployeeDash/EmployeeDash";
+import Dashboard from '../../Components/EmployeeDash/EmployeeDashboard';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Searchpng from "../../Assets/Employee/search.png";
@@ -70,99 +70,94 @@ function EmpDashBoard() {
     };
 
     return (
-        <div className="flex h-screen">
-            <EmployeeDash />
+        <div className="flex">
+            {/* Sidebar */}
+            <Dashboard />
             <div className="flex-1 p-4">
                 <div>
-                    <section className="count-panel">
-                        <div className="count-box">
-                            <h2>Care Givers</h2>
+                    <section className="flex gap-8 justify-center mb-8">
+                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
+                            <h2 className="text-xl font-bold">Care Givers</h2>
                             <p>Number of Care givers: {careGiversCount}</p>
                         </div>
-                        <div className="count-box">
-                            <h2>Doctors</h2>
+                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
+                            <h2 className="text-xl font-bold">Doctors</h2>
                             <p>Number of Doctors: {doctorsCount}</p>
                         </div>
-                        <div className="count-box">
-                            <h2>Nurses</h2>
+                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
+                            <h2 className="text-xl font-bold">Nurses</h2>
                             <p>Number of Nurses: {nursesCount}</p>
                         </div>
-                        <div className="count-box">
-                            <h2>Nutritionists</h2>
+                        <div className="bg-blue-500 text-white p-4 rounded-lg text-center">
+                            <h2 className="text-xl font-bold">Nutritionists</h2>
                             <p>Number of Nutritionists: {nutritionistsCount}</p>
                         </div>
                     </section>
 
-                    <div className="input-group36" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    </div>
-
-                    <main className="table36" id="customers_table">
-                        <section className="table__header36">
-                            <h1>Employee Details</h1>
-                            <div className="input-group36">
-                                {/* Search Bar */}
-                                <input
-                                    type="search"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
-                                    placeholder="Search by Name..."
-                                />
-                                <img src={Searchpng} alt="Search" />
-                            </div>
-                            {/* Generate Report Button */}
+                    <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                        <div className="relative mb-4 md:mb-0">
+                            <input
+                                type="search"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
+                                placeholder="Search by Name..."
+                                className="border rounded-lg p-2"
+                            />
+                            <img src={Searchpng} alt="Search" className="absolute right-2 top-2 w-4 h-4" />
+                        </div>
+                        <div className="flex gap-4">
                             <button
-                                className="px-2 py-1 text-xs text-white bg-green-500 rounded hover:bg-green-600"
-                                onClick={generatePDF}
-                                style={{ marginLeft: 'auto' }}>
+                                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                                onClick={generatePDF}>
                                 Generate Report
                             </button>
                             <Link to="/EmpDashForm">
-                                <button className='add36'>Add Employee</button>
+                                <button className='px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600'>Add Employee</button>
                             </Link>
-                        </section>
+                        </div>
+                    </div>
 
-                        <section className="table__body36">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Job Role</th>
-                                        <th>NIC</th>
-                                        <th>Email</th>
-                                        <th>Qualifications</th>
-                                        <th>Bank Details</th>
-                                        <th>Join Date</th>
-                                        <th>Other</th>
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full bg-white border border-gray-200">
+                            <thead>
+                                <tr>
+                                    <th className="px-4 py-2 border-b">First Name</th>
+                                    <th className="px-4 py-2 border-b">Last Name</th>
+                                    <th className="px-4 py-2 border-b">Job Role</th>
+                                    <th className="px-4 py-2 border-b">NIC</th>
+                                    <th className="px-4 py-2 border-b">Email</th>
+                                    <th className="px-4 py-2 border-b">Qualifications</th>
+                                    <th className="px-4 py-2 border-b">Bank Details</th>
+                                    <th className="px-4 py-2 border-b">Join Date</th>
+                                    <th className="px-4 py-2 border-b">Other</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredUsers.map((user) => (
+                                    <tr key={user._id} className="hover:bg-gray-100">
+                                        <td className="px-4 py-2 border-b">{user.first_name}</td>
+                                        <td className="px-4 py-2 border-b">{user.last_name}</td>
+                                        <td className="px-4 py-2 border-b">{user.job_role}</td>
+                                        <td className="px-4 py-2 border-b">{user.nic}</td>
+                                        <td className="px-4 py-2 border-b">{user.email}</td>
+                                        <td className="px-4 py-2 border-b">{user.qualifications}</td>
+                                        <td className="px-4 py-2 border-b">{user.bank_details}</td>
+                                        <td className="px-4 py-2 border-b">{new Date(user.joined_date).toLocaleDateString()}</td>
+                                        <td className="px-4 py-2 border-b">
+                                            <div className='flex gap-2'>
+                                                <Link to={`/UpdateEmployee/${user._id}`}>
+                                                    <button className='px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600'>Edit</button>
+                                                </Link>
+                                                <button className='px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600' onClick={() => deleteEmployee(user._id, user.first_name)}>Delete</button>
+                                            </div>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    {filteredUsers.map((user) => (
-                                        <tr key={user._id}>
-                                            <td>{user.first_name}</td>
-                                            <td>{user.last_name}</td>
-                                            <td>{user.job_role}</td>
-                                            <td>{user.nic}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.qualifications}</td>
-                                            <td>{user.bank_details}</td>
-                                            <td>{new Date(user.joined_date).toLocaleDateString()}</td>
-                                            <td>
-                                                <div className='action36'>
-                                                    <Link to={`/UpdateEmployee/${user._id}`}>
-                                                        <button className='edit36'>Edit   ✏</button>
-                                                    </Link>
-                                                    <button className='del36' onClick={() => deleteEmployee(user._id, user.first_name)}>delete🗑</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </section>
-                        
-                        {errorMessage && <p className="error-message">{errorMessage}</p>}
-                    </main>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
                 </div>
             </div>
         </div>
