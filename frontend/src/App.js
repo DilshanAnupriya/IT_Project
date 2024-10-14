@@ -22,9 +22,14 @@ import USC from "./Pages/Volunteers/User-Task/USchedule"
 
 
 import EmpDashForm from "./Pages/Employee/EmpDash";
-import empAvalForm from "./Pages/Employee/EmpAvalForm"
+import EmpAvalForm from "./Pages/Employee/EmpAvalForm"
 import EmpReqFormDis from "./Pages/Employee/EmpReqFormDis"
 import EmpForm from "./Pages/Employee/EmpForm";
+import EmpDash from "./Pages/Employee/EmpDashBoard";
+import UpdateEmployee from "./Pages/Employee/UpdateEmployee";
+import UpdateRecruitment from './Pages/Employee/UpdateRecruitment';
+import EmpAvailabilityDisplay from './Pages/Employee/EmpAvailabilityDisplay';
+import EmpAvailabilityUpdate from './Pages/Employee/EmpAvailabilityUpdate';
 
 
 import ViewA from "./Pages/Appointment/ViewA";
@@ -54,6 +59,36 @@ import Dashboard from './Pages/Pabathi/pabathi_admin/Dashboard.jsx'
 import Profile from './Pages/Pabathi/pabathi_admin/Profile.jsx'
 import Residents from './Pages/Pabathi/pabathi_admin/Residents.jsx'
 import MainPage from './Pages/Pabathi/pabathi_admin/MainPage.jsx'
+
+//medical 
+import MedDashboard from "./Pages/Medical/MedDashboard";
+import Meduserreq from './Pages/Medical/Meduserreq';
+import MedTaskForm from './Pages/Medical/MedTaskForm';
+import PatientUpdate from './Pages/Medical/PatientUpdate';
+import NutritionPage from './Pages/Medical/NutritionPage';
+import MedUpdateTask from './Pages/Medical/MedUpdateTask';
+import Breakfast from './Pages/Medical/Breakfast';
+import Lunch from './Pages/Medical/Lunch';
+import Dinner from './Pages/Medical/Dinner';
+import MeduserreqDisplay from './Pages/Medical/MeduserreqDisplay'; // Import the new display component
+import MeduserreqUpdate from './Pages/Medical/MeduserreqUpdate'; // Import the update component
+import Medservices from './Pages/Medical/Medserviced.js';
+
+
+
+import BreakfastForm from './Pages/Medical/BreakfastForm';
+import LunchForm from './Pages/Medical/LunchForm';
+import DinnerForm from './Pages/Medical/DinnerForm';
+
+import BreakfastUpdate from './Pages/Medical/BreakfastUpdate';
+import LunchUpdate from './Pages/Medical/LunchUpdate';
+import DinnerUpdate from './Pages/Medical/DinnerUpdate';
+
+
+import PatientList from './Pages/Medical/PatientList';
+import AddPatientForm from './Pages/Medical/AddPatientForm';
+import NutritionList from './Pages/Medical/NutritionList';
+
 
 
 
@@ -85,11 +120,24 @@ function App() {
           <Route path='/CertificateU/:id' element={<CertificateU />} />
           <Route path='/USC' element={<USC />} />
 
+          <Route path="/login" element={<LoginForm />} />
+          <Route path='/signup' element={<SignupForm />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/residents" element={<Residents />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path='/application-form' element={<ApplicationForm />} />
+
 
           <Route path='/empForm' element={<EmpForm />} />
-          <Route path='/empAvalForm' element={<empAvalForm />} />
+          <Route path='/empAvalForm' element={<EmpAvalForm />} />
           <Route path='/EmpReqFormDis' element={<EmpReqFormDis />} />
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
+          <Route path='/EmpDash' element={<EmpDash />} />
+          <Route path="/UpdateEmployee/:id" element={<UpdateEmployee />} /> {/* Added :id parameter */}
+          <Route path="/UpdateRecruitment/:id" element={<UpdateRecruitment />} />
+          <Route path="/availability" element={<EmpAvailabilityDisplay />} />
+          <Route path="/edit-availability/:id" element={<EmpAvailabilityUpdate />} />
 
           <Route path='/ViewA' element={<ViewA />} />
           <Route path='/AddA' element={<AddA />} />
@@ -112,13 +160,31 @@ function App() {
 
 
 
-          <Route path="/login" element={<LoginForm />} />
-          <Route path='/signup' element={<SignupForm />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/residents" element={<Residents />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path='/application-form' element={<ApplicationForm />} />
+          <Route path='/medDash' element={<MedDashboard />} />
+          <Route path='/meduserreq' element={<Meduserreq />} />
+          <Route path='/medTaskForm' element={<MedTaskForm />} />
+          <Route path='/patientList' element={<PatientList />} />
+          <Route path='/addPatient' element={<AddPatientForm />} />
+          <Route path="/edit-patient/:id" element={<PatientUpdate />} />
+          <Route path='/nutritionList' element={<NutritionList />} />
+          <Route path='/nutrition/:id' element={<NutritionPage />} />
+          <Route path='/MedUpdateTask' element={<MedUpdateTask />} />
+          <Route path="/edit-task/:id" element={<MedUpdateTask />} />
+          <Route path='/breakfast' element={<Breakfast />} />
+          <Route path='/lunch' element={<Lunch />} />
+          <Route path='/dinner' element={<Dinner />} />
+          <Route path='/meduserreqDisplay' element={<MeduserreqDisplay />} />
+          <Route path='/meduserreq/edit/:id' element={<MeduserreqUpdate />} /> {/* Add the new route */}
+          <Route path='/medservices' element={<Medservices />} />
+
+          <Route path='/breakfast/add' element={<BreakfastForm />} />
+          <Route path='/lunch/add' element={<LunchForm />} />
+          <Route path='/dinner/add' element={<DinnerForm />} />
+
+          <Route path='/breakfast/edit/:id' element={<BreakfastUpdate />} />
+          <Route path='/lunch/edit/:id' element={<LunchUpdate />} />
+          <Route path='/dinner/edit/:id' element={<DinnerUpdate />} />
+
 
 
         </Routes>

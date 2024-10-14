@@ -20,29 +20,51 @@ function TaskForm() {
     });
 
     const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        // Prevent numbers in Elder_pname
+        if (name === "Elder_pname" && /\d/.test(value)) {
+            return;
+        }
+
+        // Prevent past dates in Taskdate
+        if (name === "Taskdate" && new Date(value) < new Date().setHours(0, 0, 0, 0)) {
+            setErrors((prevState) => ({
+                ...prevState,
+                [name]: "You can't add a past date for tasks",
+            }));
+            return;
+        }
+
         setInputs((prevState) => ({
             ...prevState,
-            [e.target.name]: e.target.value,
+            [name]: value,
         }));
-        validateInput(e.target.name, e.target.value);
+        validateInput(name, value);
     };
 
-    const validateInput = (name, value) => { //validate fields
+    const validateInput = (name, value) => {
         let error = "";
         switch (name) {
             case "Elder_pname":
                 if (!value) {
-                    error = "please enter a elder name";
+                    error = "Please enter an elder name";
+                } else if (/\d/.test(value)) {
+                    error = "Elder name should not contain numbers";
                 }
                 break;
             case "Treatments":
                 if (!value) {
                     error = "Please input a treatment";
+                } else if (value.length > 100) {
+                    error = "Treatment should not exceed 100 characters";
                 }
                 break;
             case "Taskdate":
                 if (!value) {
                     error = "Please select a date";
+                } else if (new Date(value) < new Date().setHours(0, 0, 0, 0)) {
+                    error = "You can't add a past date for tasks";
                 }
                 break;
             case "Status":
@@ -69,7 +91,7 @@ function TaskForm() {
         });
 
         if (isValid) {
-            sendRequest().then(() => history('/medtask'));
+            sendRequest().then(() => history('/medDash'));
         }
     };
 
@@ -85,7 +107,7 @@ function TaskForm() {
         } catch (error) {
             console.error(error); // Catch any errors
         } finally {
-            history('/mainhome'); // Navigate to /mainhome regardless of the outcome
+            history('/medDash'); // Navigate to /mainhome regardless of the outcome
         }
     };
 
@@ -133,6 +155,7 @@ function TaskForm() {
                                 value={input.Treatments}
                                 required
                             />
+                            <span>{input.Treatments.length}/100</span>
                             {errors.Treatments && <span className="error">{errors.Treatments}</span>}
                         </div>
 
@@ -161,4 +184,3 @@ function TaskForm() {
 }
 
 export default TaskForm;
-

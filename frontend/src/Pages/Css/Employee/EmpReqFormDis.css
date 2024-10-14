@@ -1,22 +1,22 @@
-
+/* Main CSS for the Employee Dashboard */
 body {
-     margin: 0;
+    margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #f0f1f6; 
+    background-color: #f0f1f6;
 }
 
 .dashboard70 {
     position: absolute;
-    margin-top: -100px;
-    margin-left: -70px;
+
 }
 
 .main-container {
-    margin-left: 270px;
+
     padding: 20px;
 }
 
+/* Top Header */
 .table36 {
     width: 80%;
     margin: 20px auto;
@@ -26,11 +26,12 @@ body {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Add vertical and horizontal scrolling for the table body */
 .table__body36 {
     padding: 20px;
-    max-height: 400px; 
-    overflow-y: auto; 
-    overflow-x: auto; 
+    max-height: 400px; /* Set a max height for the table to create vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Allow horizontal scrolling */
 }
 
 .table__header36 {
@@ -82,11 +83,11 @@ body {
     background-color: #474DCB;
 }
 
-
+/* Table Styles */
 .table__body36 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1000px; 
+    min-width: 1000px; /* Ensures the table takes a minimum width for horizontal scrolling */
 }
 
 .table__body36 th,
@@ -140,7 +141,7 @@ body {
     background-color: #e55a5a;
 }
 
-
+/* Employee Count Panel */
 .count-panel {
     display: flex;
     gap: 100px;

@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import "../Css/Employee/EmpDashboard.css";
-import Dash from "../../Components/Dashboard/Dashboard";
+import Dashboard from '../../Components/EmployeeDash/EmployeeDashboard';
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Searchpng from "../../Assets/Employee/search.png";
+import { Link, useNavigate } from "react-router-dom";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const URL = "http://localhost:3000/employees/";
 
 const fetchHandler = async () => {
     const data = await axios.get(URL).then((res) => res.data);
-    console.log(data);
     return data;
+};
+
+const deleteHandler = async (id) => {
+    await axios.delete(`http://localhost:3000/employees/delete/${id}`);
 };
 
 function EmpDashBoard() {
     const [users, setUsers] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(""); // State to track search input
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchHandler().then((data) => setUsers(data.emp));
-        console.log(users);
     }, []);
 
-    // Function to delete an employee by ID
-    const deleteEmployee = async (id) => {
-        const deleteUser = window.confirm(`Are you sure you want to delete the employee with ID ${id}? This action cannot be undone.`);
+    const handleDelete = (id, first_name) => {
+        const deleteUser = window.confirm(`Are you sure you want to delete the employee ${first_name}?`);
+        
         if (deleteUser) {
-            try {
-                await axios.delete(`http://localhost:3000/employees/delete/${id}`);
+            deleteHandler(id).then(() => {
                 setUsers(users.filter((user) => user._id !== id));
-            } catch (error) {
-                setErrorMessage('Failed to delete employee. Please try again.');
-            }
+            }).catch(() => {
+                setErrorMessage(`Failed to delete employee ${first_name}. Please try again.`);
+            });
         }
     };
 
@@ -41,84 +44,172 @@ function EmpDashBoard() {
     const nursesCount = users.filter(user => user.job_role.toLowerCase() === 'nurse').length;
     const nutritionistsCount = users.filter(user => user.job_role.toLowerCase() === 'nutritionist').length;
 
+    // Filter users based on search term (by first or last name)
+    const filteredUsers = users.filter((user) =>
+        (user.first_name && user.first_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (user.last_name && user.last_name.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+
+    // Generate PDF report
+    const generatePDF = () => {
+        const doc = new jsPDF();
+        doc.text("Employee Report", 14, 16);
+        doc.autoTable({
+            head: [['First Name', 'Last Name', 'Job Role', 'NIC', 'Email', 'Qualifications', 'Join Date']],
+            body: filteredUsers.map(user => [
+                user.first_name,
+                user.last_name,
+                user.job_role,
+                user.nic,
+                user.email,
+                user.qualifications,
+                new Date(user.joined_date).toLocaleDateString()
+            ]),
+        });
+        doc.save("employee_report.pdf");
+    };
+
     return (
-        <div>
-            <div className='dashboard70'>
-                <Dash />
-            </div>
+        <div className="flex h-screen">
+            {/* Sidebar */}
+            <Dashboard className="w-1/4" />
 
-            <section className="count-panel">
-                <div className="count-box">
-                    <h2>Care Givers</h2>
-                    <p>Number of Care givers: {careGiversCount}</p>
-                </div>
-                <div className="count-box">
-                    <h2>Doctors</h2>
-                    <p>Number of Doctors: {doctorsCount}</p>
-                </div>
-                <div className="count-box">
-                    <h2>Nurses</h2>
-                    <p>Number of Nurses: {nursesCount}</p>
-                </div>
-                <div className="count-box">
-                    <h2>Nutritionists</h2>
-                    <p>Number of Nutritionists: {nutritionistsCount}</p>
-                </div>
-            </section>
+            {/* Main Content */}
+            <div className="container mx-auto mt-10 ml-56">
+                <h2 className="text-3xl font-bold mb-6 ml-16">Employee Dashboard</h2>
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                    <section className="grid grid-cols-2 md:grid-cols-4 mb-8 ml-32">
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Care Givers</h2>
+                            <p>{careGiversCount}</p>
+                        </div>
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Doctors</h2>
+                            <p>{doctorsCount}</p>
+                        </div>
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Nurses</h2>
+                            <p>{nursesCount}</p>
+                        </div>
+                        <div className="bg-blue-500 text-white p-2 rounded-lg text-center w-24 h-24 flex flex-col justify-center items-center">
+                            <h2 className="text-sm font-bold">Nutritionists</h2>
+                            <p>{nutritionistsCount}</p>
+                        </div>
+                    </section>
 
-            <main className="table36" id="customers_table">
-                <section className="table__header36">
-                    <h1>Employee Details</h1>
-                    <div className="input-group36">
-                        <input type="search" placeholder="Search Data..." />
-                        <img src={Searchpng} alt="Search" />
+                    <section className="mb-4">
+                        <div className="relative mb-4 ml-8">
+                            {/* Search Bar */}
+                            <input
+                                type="search"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
+                                className="w-full p-2 pl-8 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                placeholder="Search by Name..."
+                            />
+                            <span className="absolute left-2 top-2 text-gray-400">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zm8 14l-4-4m0 0l-4 4m4-4V6"
+                                    />
+                                </svg>
+                            </span>
+                        </div>
+                    </section>
+
+                    <div className="mb-4 ml-8 flex justify-between">
+                        {/* Generate Report Button */}
+                        <button
+                            className="px-2 py-1 text-xs text-white bg-green-500 rounded hover:bg-green-600 mr-2"
+                            onClick={generatePDF}
+                        >
+                            Generate Report
+                        </button>
+                        <Link to="/EmpDashForm">
+                            <button className='px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600'>Add Employee</button>
+                        </Link>
                     </div>
-                    
-                    <button className='add36'>Add Employee</button>
-                </section>
-                
-                <section className="table__body36">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Job Role</th>
-                                <th>NIC</th>
-                                <th>Email</th>
-                                <th>Qualifications</th>
-                                <th>Bank Details</th>
-                                <th>Join Date</th>
-                                <th>Other</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user) => (
-                                <tr key={user._id}>
-                                    <td>{user._id}</td>
-                                    <td>{user.first_name}</td>
-                                    <td>{user.last_name}</td>
-                                    <td>{user.job_role}</td>
-                                    <td>{user.nic}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.qualifications}</td>
-                                    <td>{user.bank_details}</td>
-                                    <td>{new Date(user.joined_date).toLocaleDateString()}</td>
-                                    <td>
-                                        <div className='action36'>
-                                            <Link to="/#"><button className='edit36'>Edit   ✏</button></Link>
-                                            <button className='del36' onClick={() => deleteEmployee(user._id)}>delete🗑</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </section>
 
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
-            </main>
+                    {/* Scrollable Table */}
+                    <section className="overflow-x-auto overflow-y-auto max-h-[500px] ml-8">
+                        <table className="min-w-full bg-white border border-gray-300 text-sm ">
+                            <thead className="bg-gray-50">
+                                <tr>
+                                    {[
+                                        "First Name",
+                                        "Last Name",
+                                        "Job Role",
+                                        "NIC",
+                                        "Email",
+                                        "Qualifications",
+                                        "Join Date",
+                                        "Actions",
+                                    ].map((header) => (
+                                        <th
+                                            key={header}
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                        >
+                                            {header}
+                                        </th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredUsers.map((user) => (
+                                    <tr key={user._id} className="odd:bg-white even:bg-gray-50">
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.first_name}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.last_name}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.job_role}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.nic}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.email}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {user.qualifications}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            {new Date(user.joined_date).toLocaleDateString()}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                            <div className="flex space-x-2">
+                                                <Link to={`/UpdateEmployee/${user._id}`}>
+                                                    <button className="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600">
+                                                        Edit
+                                                    </button>
+                                                </Link>
+                                                <button
+                                                    onClick={() => handleDelete(user._id, user.first_name)}
+                                                    className="px-2 py-1 text-xs text-white bg-red-500 rounded hover:bg-red-600">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
+                </div>
+            </div>
         </div>
     );
 }

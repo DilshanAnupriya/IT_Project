@@ -35,9 +35,11 @@ function EmpDash() {
         switch (name) {
             case "first_name":
                 if (!value) errorMsg = "First name is required";
+                else if (!/^[A-Za-z]+$/.test(value)) errorMsg = "First name should only contain letters";
                 break;
             case "last_name":
                 if (!value) errorMsg = "Last name is required";
+                else if (!/^[A-Za-z]+$/.test(value)) errorMsg = "Last name should only contain letters";
                 break;
             case "job_role":
                 if (!value) errorMsg = "Job role is required";
@@ -56,8 +58,12 @@ function EmpDash() {
                 if (!value) errorMsg = "Bank details are required";
                 break;
             case "joined_date":
-                if (!value) errorMsg = "Joined date is required";
-                break;
+                    if (!value) {
+                        errorMsg = "Joined date is required";
+                    } else if (new Date(value) > new Date()) {
+                        errorMsg = "Joined date cannot be in the future";
+                    }
+                    break;
             default:
                 break;
         }
@@ -72,14 +78,23 @@ function EmpDash() {
         let valid = true;
         let newErrors = {};
 
-        if (!input.first_name) {
-            valid = false;
-            newErrors.first_name = "First name is required";
-        }
-        if (!input.last_name) {
-            valid = false;
-            newErrors.last_name = "Last name is required";
-        }
+         // Validate first name: required and alphabetic only
+    if (!input.first_name) {
+        valid = false;
+        newErrors.first_name = "First name is required";
+    } else if (!/^[A-Za-z]+$/.test(input.first_name)) {
+        valid = false;
+        newErrors.first_name = "First name should only contain letters";
+    }
+
+    // Validate last name: required and alphabetic only
+    if (!input.last_name) {
+        valid = false;
+        newErrors.last_name = "Last name is required";
+    } else if (!/^[A-Za-z]+$/.test(input.last_name)) {
+        valid = false;
+        newErrors.last_name = "Last name should only contain letters";
+    }
         if (!input.job_role) {
             valid = false;
             newErrors.job_role = "Job role is required";
@@ -103,8 +118,10 @@ function EmpDash() {
         if (!input.joined_date) {
             valid = false;
             newErrors.joined_date = "Joined date is required";
+        } else if (new Date(input.joined_date) > new Date()) {
+            valid = false;
+            newErrors.joined_date = "Joined date cannot be in the future";
         }
-
         setErrors(newErrors);
         return valid;
     };
@@ -113,7 +130,7 @@ function EmpDash() {
         e.preventDefault();
 
         if (validateForm()) {
-            sendRequest().then(() => history('/success'));
+            sendRequest().then(() => history('/EmpDash'));
         }
     };
 
@@ -132,7 +149,7 @@ function EmpDash() {
 
     const onClose = () => {
         // Logic to handle closing the modal
-        history("/"); // Redirect to home or another page
+        history("/EmpDash"); // Redirect to home or another page
     };
 
     return (

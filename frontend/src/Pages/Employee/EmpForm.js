@@ -98,7 +98,7 @@ function EmployeeForm() {
         e.preventDefault();
 
         if (validateForm()) {
-            sendRequest().then(() => history('/job-success'));
+            sendRequest().then(() => history('/EmpReqFormDis'));
         }
     };
 
@@ -176,8 +176,7 @@ function EmployeeForm() {
                                 placeholder='Enter Your Address' 
                                 value={input.address} 
                                 name='address' 
-                                required 
-                            />
+                                required />
                             {errors.address && <span className="error">{errors.address}</span>}
                         </div>
                         <div className='input-field37'>

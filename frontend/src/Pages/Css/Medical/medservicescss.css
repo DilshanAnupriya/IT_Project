@@ -1,0 +1,149 @@
+.our-medical-services {
+  padding: 50px 0;
+}
+
+.our-medical-services .container5 {
+  max-width: 1600px;
+  margin-top: 30px;
+  padding: 0 15px;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  padding: 100px;
+}
+
+.our-medical-services .section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: -65px;
+  outline: #000000;
+  color: #ffffff;
+}
+
+.our-medical-services .section-title h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 70px;
+}
+
+.our-medical-services .section-title p {
+  font-size: 24px;
+  margin-top: 10px;
+  line-height: 1.5;
+  color: #fff9f9;
+}
+
+.our-medical-services .services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.our-medical-services .service-item {
+  border: 1px solid #ddd;
+  margin-bottom: 80px;
+  padding: 30px;
+  border-radius: 70px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.our-medical-services .service-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.our-medical-services .service-item.white-background {
+  background-color: #9BA4BF;
+}
+
+.our-medical-services .service-item .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-color: #9BA4BF;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.our-medical-services .service-item .icon img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.our-medical-services .service-item h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.our-medical-services .service-item p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.our-medical-services .meet-our-team .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.our-medical-services .meet-our-team .container44 {
+  width: 1500px;
+  margin: 0 auto;
+  padding: 0 15px;
+  height: auto;
+  background-color: #5b678c;
+}
+
+.our-medical-services .meet-our-team .team-member {
+  padding: 10px;
+  margin-left: 60px;
+  margin-right: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.our-medical-services .meet-our-team .team-member img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.our-medical-services .meet-our-team .team-member h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.our-medical-services .meet-our-team .team-member p {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .our-medical-services .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .our-medical-services .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.newN {
+  margin-bottom: 100px;
+}
+
+.newf {
+  margin-bottom: -100px;
+  width: 1500px;
+}
