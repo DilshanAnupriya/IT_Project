@@ -58,12 +58,12 @@ function EmpDash() {
                 if (!value) errorMsg = "Bank details are required";
                 break;
             case "joined_date":
-                    if (!value) {
-                        errorMsg = "Joined date is required";
-                    } else if (new Date(value) > new Date()) {
-                        errorMsg = "Joined date cannot be in the future";
-                    }
-                    break;
+                if (!value) {
+                    errorMsg = "Joined date is required";
+                } else if (new Date(value) > new Date()) {
+                    errorMsg = "Joined date cannot be in the future";
+                }
+                break;
             default:
                 break;
         }
@@ -78,23 +78,22 @@ function EmpDash() {
         let valid = true;
         let newErrors = {};
 
-         // Validate first name: required and alphabetic only
-    if (!input.first_name) {
-        valid = false;
-        newErrors.first_name = "First name is required";
-    } else if (!/^[A-Za-z]+$/.test(input.first_name)) {
-        valid = false;
-        newErrors.first_name = "First name should only contain letters";
-    }
+        if (!input.first_name) {
+            valid = false;
+            newErrors.first_name = "First name is required";
+        } else if (!/^[A-Za-z]+$/.test(input.first_name)) {
+            valid = false;
+            newErrors.first_name = "First name should only contain letters";
+        }
 
-    // Validate last name: required and alphabetic only
-    if (!input.last_name) {
-        valid = false;
-        newErrors.last_name = "Last name is required";
-    } else if (!/^[A-Za-z]+$/.test(input.last_name)) {
-        valid = false;
-        newErrors.last_name = "Last name should only contain letters";
-    }
+        if (!input.last_name) {
+            valid = false;
+            newErrors.last_name = "Last name is required";
+        } else if (!/^[A-Za-z]+$/.test(input.last_name)) {
+            valid = false;
+            newErrors.last_name = "Last name should only contain letters";
+        }
+
         if (!input.job_role) {
             valid = false;
             newErrors.job_role = "Job role is required";
@@ -148,8 +147,7 @@ function EmpDash() {
     };
 
     const onClose = () => {
-        // Logic to handle closing the modal
-        history("/EmpDash"); // Redirect to home or another page
+        history("/EmpDash");
     };
 
     return (
@@ -182,13 +180,20 @@ function EmpDash() {
                         </div>
                         <div className="form-group35">
                             <label>Job Role</label>
-                            <input 
-                                type="text" 
+                            <select 
                                 name="job_role" 
                                 value={input.job_role} 
                                 onChange={handleChange} 
-                                required 
-                            />
+                                required
+                                className="select-field35"
+                            >
+                                <option value="" disabled>Select Job Role</option>
+                                <option value="Doctor">Doctor</option>
+                                <option value="Nurse">Nurse</option>
+                                <option value="Nutritionist">Nutritionist</option>
+                                <option value="Care giver">Care giver</option>
+                                <option value="Other">Other</option>
+                            </select>
                             {errors.job_role && <p className="error35">{errors.job_role}</p>}
                         </div>
                         <div className="form-group35">
@@ -215,13 +220,23 @@ function EmpDash() {
                         </div>
                         <div className="form-group35">
                             <label>Qualifications</label>
-                            <input 
-                                type="text" 
+                            <select 
                                 name="qualifications" 
                                 value={input.qualifications} 
                                 onChange={handleChange} 
-                                required 
-                            />
+                                required
+                                className="select-field35"
+                            >
+                                <option value="" disabled>Select Qualification</option>
+                                <option value="No formal education">No formal education</option>
+                                <option value="Primary education">Primary education</option>
+                                <option value="O/L">GCE Ordinary Level</option>
+                                <option value="A/L">GCE Advanced Level</option>
+                                <option value="Vocational qualification">Vocational qualification</option>
+                                <option value="Bachelor's degree">Bachelor's degree</option>
+                                <option value="Master's degree">Master's degree</option>
+                                <option value="Doctorate or higher">Doctorate or higher</option>
+                            </select>
                             {errors.qualifications && <p className="error35">{errors.qualifications}</p>}
                         </div>
                         <div className="form-group35">

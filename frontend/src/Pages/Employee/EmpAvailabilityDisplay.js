@@ -108,6 +108,7 @@ function EmpAvailabilityDisplay() {
         const doc = new jsPDF();
         doc.text("Employee Availability Report", 14, 16);
         doc.autoTable({
+            startY: 20,
             head: [['Employee Name', 'Schedule Date', 'Start Time', 'End Time']],
             body: dateFilteredAvailabilities.map(availability => [
                 availability.emp_name,

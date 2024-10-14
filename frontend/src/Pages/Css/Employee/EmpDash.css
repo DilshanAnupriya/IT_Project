@@ -56,19 +56,25 @@ html {
 
 input[type="text"],
 input[type="email"],
-input[type="date"] {
+input[type="date"],
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
     transition: border-color 0.3s ease-in-out;
+    appearance: none; /* Remove default dropdown arrow */
+    background: url('data:image/svg+xml;utf8,<svg fill="%23ccc" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+    background-color: white;
+    background-size: 12px;
 }
 
 /* Add focus effect for input fields */
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="date"]:focus {
+input[type="date"]:focus,
+select:focus {
     border-color: #4caf50; /* Green focus border */
     outline: none;
 }
@@ -102,22 +108,15 @@ input[type="date"]:focus {
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: #ff4d4d; /* Red close button */
-    color: white;
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    font-size: 20px;
     cursor: pointer;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease-in-out;
 }
 
+/* Close Button Hover */
 .close-btn35:hover {
-    background-color: #ff1a1a;
+    color: red;
 }
 
 /* Added CSS Grid to divide form fields into two columns */

@@ -43,6 +43,7 @@ function Recruitments() {
         const doc = new jsPDF();
         doc.text("Recruitment Report", 14, 16);
         doc.autoTable({
+            startY: 20,
             head: [['Name', 'Email', 'Phone No', 'Gender', 'Education Qualification', 'Experience', 'Computer Literacy', 'English Skill']],
             body: filteredUsers.map(user => [
                 user.name,

@@ -42,7 +42,11 @@ function EmpDash() {
                 if (!value) errorMsg = "Employee name is required";
                 break;
             case "schedule_date":
-                if (!value) errorMsg = "Schedule date is required";
+                if (!value) {
+                    errorMsg = "Schedule date is required";
+                } else if (new Date(value) < new Date().setHours(0, 0, 0, 0)) {
+                    errorMsg = "Schedule date cannot be in the past";
+                }
                 break;
             case "schedule_start_time":
                 if (!value) errorMsg = "Schedule start time is required";
@@ -71,6 +75,9 @@ function EmpDash() {
         if (!input.schedule_date) {
             valid = false;
             newErrors.schedule_date = "Schedule date is required";
+        } else if (new Date(input.schedule_date) < new Date().setHours(0, 0, 0, 0)) {
+            valid = false;
+            newErrors.schedule_date = "Schedule date cannot be in the past";
         }
         if (!input.schedule_start_time) {
             valid = false;
@@ -78,7 +85,7 @@ function EmpDash() {
         }
         if (!input.schedule_end_time) {
             valid = false;
-            newErrors.schedule_end_time = "Schedule End time is required";
+            newErrors.schedule_end_time = "Schedule end time is required";
         }
 
         setErrors(newErrors);
@@ -103,7 +110,7 @@ function EmpDash() {
     };
 
     const onClose = () => {
-        history("/"); // Redirect to home or another page
+        history("/availability");
     };
 
     return (
