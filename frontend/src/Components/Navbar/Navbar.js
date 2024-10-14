@@ -32,13 +32,8 @@ function Navbar() {
               <Link className="sub-btn" to="/">Services <i className="fas fa-angle-down"></i></Link>
               <ul className="sub-menu subtow">
                 <li className="sub-item more">
-                  <Link to="/NewDash">Sub Item 01</Link>
-                  <ul className="more-menu">
-                    <li className="more-item"><Link to="/volunteer_pd">More Item 01</Link></li>
-                    <li className="more-item"><Link to="/Fund">Funds</Link></li>
-                    <li className="more-item"><Link to="/accDash">Acc Dashboard</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                  </ul>
+                  <Link to="/NewDash">Accounts</Link>
+                 
                 </li>
                 <li className="sub-item more">
                   <Link to="/">Sub Item 02</Link>
@@ -51,23 +46,10 @@ function Navbar() {
                 </li>
                 <li className="sub-item more">
                   <Link to="/">Sub Item 03</Link>
-                  <ul className="more-menu">
-                    <li className="more-item"><Link to="/">More Item 01</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                  </ul>
+                 
                 </li>
                 <li className="sub-item more"> <Link to="/volunteer">Volunteering</Link> </li>
-                <li className="sub-item more">
-                  <Link className="more-btn" to="/" >More Items </Link>
-                  <ul className="more-menu">
-                    <li className="more-item"><Link to="">More Item 01</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                    <li className="more-item"><Link to="/">More Item 02</Link></li>
-                  </ul>
-                </li>
+               
               </ul>
             </li>
             <li className="menu-item"><Link to="/newDash">Contact</Link></li>

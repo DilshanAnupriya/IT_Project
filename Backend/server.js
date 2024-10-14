@@ -45,7 +45,9 @@ const cors = require("cors");
 //account
 const fun = require("./Routes/Account/fundRoutes");
 const sal = require("./Routes/Account/salaryRoutes");
-const account = require("./Routes/Account/accountRoute")
+const account = require("./Routes/Account/accountRoute");
+const club = require("./Routes/Account/clubroute");
+const expenditure = require("./Routes/Account/expenditureroutes");
 
 
 
@@ -78,18 +80,21 @@ app.use("/Breakfast", Breakfast);
 app.use("/Lunch", Lunch);
 app.use("/Dinner", Dinner);
 
-//Accounts
-app.use("/account", account);
+
 
 
 //careplan
 app.use("/careplan", care);
 app.use("/appointments", appointmentRoutes); // Appointment routes (corrected path here)
 app.use("/User", user);
+
+
 //accounts
 app.use("/funds", fun);
 app.use("/salary", sal);
-
+app.use("/account", account);
+app.use("/club", club);
+app.use("/expenditure", expenditure);
 
 
 // Define the routes

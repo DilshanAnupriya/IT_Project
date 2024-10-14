@@ -4,8 +4,12 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "tailwind.config.js",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@hookform/resolvers": "^3.9.0",
+    "@popperjs/core": "^2.11.8",
     "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
     "js-tokens": "^4.0.0",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.3",
@@ -13,11 +17,16 @@
     "material-react-table": "^3.0.1",
     "mdb-react-ui-kit": "^9.0.0",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.5",
+    "react-confirm-alert": "^3.0.6",
+    "react-csv": "^2.2.2",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
     "react-router-dom": "^6.26.2",
     "react-scripts": "^5.0.1",
     "react-to-print": "^3.0.1",
-    "scheduler": "^0.23.2"
+    "scheduler": "^0.23.2",
+    "zod": "^3.23.8"
   },
   "scripts": {
     "start": "react-scripts start",

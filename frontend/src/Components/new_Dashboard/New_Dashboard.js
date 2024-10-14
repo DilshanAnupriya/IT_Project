@@ -9,11 +9,16 @@ import logo from "../../Assets/logo.png";
 import "../../Pages/Css/ComponentsCss/New_Dashboard/Dash.css";
 import Dashboard from '../Dashboard/Dashboard';
 import Profile from '../Profile/Profile';
+import Clubs from '../Clubs/Clubs';
+import Funds from '../Funds/Funds';
+import Expenditure from '../Expenditures/Expenditures';
+import FinancialReport from '../FinancialReport/FinancialReport';
+import { FaPeopleGroup } from 'react-icons/fa6';
 
 function New_Dashboard() {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [sidebarVisible, setSidebarVisible] = useState(true);
-    const [showProfile, setShowProfile] = useState(false); // State to control profile visibility
+    const [currentView, setCurrentView] = useState('dashboard'); // State to control which component to display
     const dropdownRef = useRef(null);
 
     const toggleDropdown = () => {
@@ -38,7 +43,46 @@ function New_Dashboard() {
     }, []);
 
     const handleProfileClick = () => {
-        setShowProfile(!showProfile); // Toggle profile display
+        setCurrentView('profile'); // Switch to Profile view
+    };
+
+    const handleClubsClick = () => {
+        setCurrentView('clubs'); // Switch to Clubs view
+    };
+
+    const handleFundsClick = () => {
+        setCurrentView('funds'); // Switch to Funds view
+    };
+
+    const handleDashboardClick = () => {
+        setCurrentView('dashboard'); // Switch to Dashboard view
+    };
+
+    const handleExpenditureClick = () => {
+        setCurrentView('expenditure'); // Switch to Expenditure view
+    };
+
+    const handleFinancialClick = () => {
+        setCurrentView('financial'); // Switch to Expenditure view
+    };
+
+    // Render the appropriate component based on the current view
+    const renderContent = () => {
+        switch (currentView) {
+            case 'clubs':
+                return <Clubs />;
+            case 'profile':
+                return <Profile />;
+            case 'funds':
+                return <Funds />;
+            case 'expenditure':
+                return <Expenditure />;
+            case 'financial':
+                return <FinancialReport />;
+            case 'dashboard':
+            default:
+                return <Dashboard />; // Render the Dashboard component by default
+        }
     };
 
     return (
@@ -54,34 +98,34 @@ function New_Dashboard() {
                 </div>
                 <ul className="menu-list p-4">
                     <li>
-                        <Link to="/NewDash" className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
+                        <button onClick={handleDashboardClick} className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
                             <MdDashboard className="mr-3 text-blue-500" />
                             <span>Dashboard</span>
-                        </Link>
+                        </button>
                     </li>
                     <li>
-                        <Link to="/clubs" className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
+                        <button onClick={handleClubsClick} className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
+                            <FaPeopleGroup className="mr-3 text-blue-500" />
+                            <span>Clubs and Societies</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={handleExpenditureClick} className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
                             <FaTasks className="mr-3 text-blue-500" />
-                            <span>Clubs and Society</span>
-                        </Link>
+                            <span>Expenditure Allocation</span>
+                        </button>
                     </li>
                     <li>
-                        <Link to="/salary" className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
-                            <FaTasks className="mr-3 text-blue-500" />
-                            <span>Salary Allocation</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/funds" className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
+                        <button onClick={handleFundsClick} className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
                             <RiCalendarScheduleFill className="mr-3 text-blue-500" />
                             <span>Funds Management</span>
-                        </Link>
+                        </button>
                     </li>
                     <li>
-                        <Link to="/financial-reports" className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
+                        <button onClick={handleFinancialClick} className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
                             <RiMoneyDollarCircleFill className="mr-3 text-blue-500" />
                             <span>Financial Reports</span>
-                        </Link>
+                        </button>
                     </li>
                     <li>
                         <button onClick={handleProfileClick} className="menu-item flex items-center py-3 hover:bg-blue-100 rounded-lg">
@@ -133,7 +177,7 @@ function New_Dashboard() {
 
                 {/* Main Table or Content */}
                 <div className="content-container">
-                    {showProfile ? <Profile /> : <Dashboard />}
+                    {renderContent()} {/* Render the appropriate component */}
                 </div>
             </div>
         </div>

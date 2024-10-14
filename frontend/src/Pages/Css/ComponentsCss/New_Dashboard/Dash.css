@@ -332,3 +332,198 @@ aside {
       text-align: center;
   }
 }
+.edit-btn {
+  background-color: #007bff; /* Bootstrap Primary Blue */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn {
+  background-color: #007bff; /* Bootstrap Primary Blue */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  background-color: #0056b3; /* Darker shade of blue for hover effect */
+}
+
+.lostStatus,
+.foundStatus {
+  width: 100px;
+  margin-left: auto;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.lostStatus {
+  background-color: rgb(243, 91, 91);
+}
+
+.foundStatus {
+  background-color: rgb(117, 185, 115);
+}
+
+.card {
+  margin-top: 30px;
+}
+
+.image {
+  margin: 0 auto; /* Center the image */
+  width: 250px;
+}
+
+.customTabs {
+  transition: height 1.4s ease-in-out;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.span {
+  color: rgb(30, 134, 252);
+}
+
+.viewButton {
+  width: 200px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  color: rgb(105, 166, 236);
+  border-color: rgb(105, 166, 236);
+}
+
+.viewButton:hover {
+  background-color: rgb(105, 166, 236);
+  border-color: rgb(105, 166, 236);
+}
+
+.addIcon {
+  color: #6cabd9;
+  background-color: #d4d0d0d2;
+  padding: 10px 13px;
+  border-radius: 90px;
+  cursor: pointer;
+  margin-top: 100px;
+}
+
+.filterContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.iconContainer {
+  margin-right: 10px;
+}
+
+.tabsContainer {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.heading {
+  background-color: #6cabd9;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.section {
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.addBtn {
+  border: none;
+  background-color: transparent;
+}
+
+.addIcon:hover {
+  background-color: #d8d8d8;
+  color: #5e96be;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modalHeader Button {
+  color: #6cabd9;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+}
+
+.modalHeader Button:hover {
+  color: #f7f3f3;
+  background-color: #6cabd9;
+}
+
+.errorValidation {
+  color: rgba(255, 0, 0, 0.655);
+  font-size: 12px;
+  margin-left: 6px;
+  font-weight: 500;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  margin: 0px 4px;
+  color: #6cabd9;
+}
+
+/* Add button and Cancel button styles */
+.addBtn, .cancelBtn {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addBtn:hover, .cancelBtn:hover {
+  background-color: darkblue;
+}
+
+.addBtn:disabled, .cancelBtn:disabled {
+  background-color: lightblue;
+  cursor: not-allowed;
+}
+
+/* Error message styling */
+.errorValidation {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Additional styling for the modal, if needed */
+.form {
+  padding: 20px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
