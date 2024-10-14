@@ -22,38 +22,51 @@ const NutritionPage = () => {
     }
   };
 
+  const handleMealClick = (mealType) => {
+    navigate(`/${mealType}`);
+  };
+
   return (
     <div className="flex">
       <MedicalSidebar />
-      <div className="flex flex-col items-center justify-center min-h-screen ml-64" style={{ backgroundColor: '#C6BCEA' }}>
+      <div className="flex flex-col items-center justify-center min-h-screen ml-64" style={{ backgroundColor: '#9BA4BF' }}>
         <h2 className="text-4xl font-bold ml-16 mb-32 mt-8">Select Meal Type</h2>
         
         <div className="flex justify-end mb-8 space-x-12 mr-96 ml-96">
           {/* Breakfast Button */}
           <div
-            className="w-60 h-60 bg-cover bg-center rounded-full cursor-pointer"
-            style={{ backgroundImage: `url(${breakfastImage})` }}
-            onClick={() => navigate('/breakfast')}
+            className="flex flex-col items-center cursor-pointer transform transition-transform duration-300 hover:scale-105 focus:scale-105"
+            onClick={() => handleMealClick('breakfast')}
           >
-            <p className="text-center mt-48 text-white font-bold">Breakfast</p>
+            <div
+              className="w-60 h-60 bg-cover bg-center rounded-full"
+              style={{ backgroundImage: `url(${breakfastImage})` }}
+            ></div>
+            <p className="mt-4 text-white font-bold">Breakfast</p>
           </div>
 
           {/* Lunch Button */}
           <div
-            className="w-60 h-60 bg-cover bg-center rounded-full cursor-pointer"
-            style={{ backgroundImage: `url(${lunchImage})` }}
-            onClick={() => navigate('/lunch')}
+            className="flex flex-col items-center cursor-pointer transform transition-transform duration-300 hover:scale-105 focus:scale-105"
+            onClick={() => handleMealClick('lunch')}
           >
-            <p className="text-center mt-48 text-white font-bold">Lunch</p>
+            <div
+              className="w-60 h-60 bg-cover bg-center rounded-full"
+              style={{ backgroundImage: `url(${lunchImage})` }}
+            ></div>
+            <p className="mt-4 text-white font-bold">Lunch</p>
           </div>
 
           {/* Dinner Button */}
           <div
-            className="w-60 h-60 bg-cover bg-center rounded-full cursor-pointer"
-            style={{ backgroundImage: `url(${dinnerImage})` }}
-            onClick={() => navigate('/dinner')}
+            className="flex flex-col items-center cursor-pointer transform transition-transform duration-300 hover:scale-105 focus:scale-105"
+            onClick={() => handleMealClick('dinner')}
           >
-            <p className="text-center mt-48 text-white font-bold">Dinner</p>
+            <div
+              className="w-60 h-60 bg-cover bg-center rounded-full"
+              style={{ backgroundImage: `url(${dinnerImage})` }}
+            ></div>
+            <p className="mt-4 text-white font-bold">Dinner</p>
           </div>
         </div>
 
