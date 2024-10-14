@@ -127,7 +127,7 @@ function Meduserreq() {
         e.preventDefault();
 
         if (validateForm()) {
-            sendRequest().then(() => history('/meduserreq'));
+            sendRequest().then(() => history('/medservices'));
         }
     };
 

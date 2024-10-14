@@ -64,6 +64,7 @@ import Lunch from './Pages/Medical/Lunch';
 import Dinner from './Pages/Medical/Dinner';
 import MeduserreqDisplay from './Pages/Medical/MeduserreqDisplay'; // Import the new display component
 import MeduserreqUpdate from './Pages/Medical/MeduserreqUpdate'; // Import the update component
+import Medservices from './Pages/Medical/Medserviced.js';
 
 
 
@@ -157,6 +158,7 @@ function App() {
           <Route path='/dinner' element={<Dinner />} />
           <Route path='/meduserreqDisplay' element={<MeduserreqDisplay />} />
           <Route path='/meduserreq/edit/:id' element={<MeduserreqUpdate />} /> {/* Add the new route */}
+          <Route path='/medservices' element={<Medservices />} />
 
           <Route path='/breakfast/add' element={<BreakfastForm />} />
           <Route path='/lunch/add' element={<LunchForm />} />

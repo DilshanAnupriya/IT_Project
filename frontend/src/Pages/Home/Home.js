@@ -117,7 +117,7 @@ function Home() {
                                     <img src={s4} alt="" />
                                     <h3>Medical Care</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                                    <Link to="/meduserreq" class="btn">View </Link>
+                                    <Link to="/medservices" class="btn">View </Link>
                                 </div>
                             </div>
                             <div class="box-container9">
