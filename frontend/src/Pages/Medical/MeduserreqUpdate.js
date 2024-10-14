@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar'; // Adjust the import path as necessary
+import "../../Pages/Css/Medical/Medusercss.css";  // Make sure this path is correct
 
 const MeduserreqUpdate = () => {
   const { id } = useParams();
@@ -35,6 +36,16 @@ const MeduserreqUpdate = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // Prevent numbers in Elder_firstname and Elder_lastname
+    if ((name === "Elder_firstname" || name === "Elder_lastname") && /\d/.test(value)) {
+      return;
+    }
+
+    // Prevent letters in Age
+    if (name === "Age" && /\D/.test(value)) {
+      return;
+    }
+
     setInputs((prevState) => ({
       ...prevState,
       [name]: value,
@@ -48,11 +59,43 @@ const MeduserreqUpdate = () => {
 
     switch (name) {
       case "Elder_firstname":
+        if (!value) {
+          errorMsg = "First name is required";
+        } else if (/\d/.test(value)) {
+          errorMsg = "First name should not contain numbers";
+        }
+        break;
       case "Elder_lastname":
+        if (!value) {
+          errorMsg = "Last name is required";
+        } else if (/\d/.test(value)) {
+          errorMsg = "Last name should not contain numbers";
+        }
+        break;
       case "Age":
+        if (!value || value === "0") {
+          errorMsg = "Age should not be 0";
+        }
+        break;
       case "Gender":
+        if (!value) {
+          errorMsg = "Gender is required";
+        }
+        break;
       case "Current_need":
+        if (!value) {
+          errorMsg = "Current need is required";
+        } else if (value.length > 100) {
+          errorMsg = "Current need should not exceed 100 characters";
+        }
+        break;
       case "Summary":
+        if (!value) {
+          errorMsg = "Summary is required";
+        } else if (value.length > 250) {
+          errorMsg = "Summary should not exceed 250 characters";
+        }
+        break;
       default:
         break;
     }
@@ -116,91 +159,98 @@ const MeduserreqUpdate = () => {
   };
 
   return (
-    <div className="flex">
+    <div className='all'>
       <MedicalSidebar />
-      <div className="container mx-auto mt-10 ml-72">
-        <h2 className="text-2xl font-bold mb-4">Update Elder Care Request</h2>
+      <div className='container7'>
+        <div className="header-box">
+          <h2>Update Elder Care Request</h2>
+        </div>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Elder First Name</label>
-            <input
-              type="text"
-              name="Elder_firstname"
-              value={input.Elder_firstname}
-              onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-            {errors.Elder_firstname && <span className="text-red-500 text-xs">{errors.Elder_firstname}</span>}
+          <div className='fields7'>
+            <div className='input-field7'>
+              <label>Elder First Name</label>
+              <input 
+                type='text' 
+                onChange={handleChange} 
+                placeholder='Enter Elder First Name' 
+                value={input.Elder_firstname} 
+                name='Elder_firstname' 
+                required 
+              />
+              {errors.Elder_firstname && <span className="error">{errors.Elder_firstname}</span>}
+            </div>
+
+            <div className='input-field7'>
+              <label>Elder Last Name</label>
+              <input 
+                type='text' 
+                onChange={handleChange} 
+                placeholder='Enter Elder Last Name' 
+                value={input.Elder_lastname} 
+                name='Elder_lastname' 
+                required 
+              />
+              {errors.Elder_lastname && <span className="error">{errors.Elder_lastname}</span>}
+            </div>
+
+            <div className='input-field7'>
+              <label>Age</label>
+              <input 
+                type='number' 
+                onChange={handleChange} 
+                placeholder='Enter Age' 
+                value={input.Age} 
+                name='Age' 
+                required 
+                onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
+              />
+              {errors.Age && <span className="error">{errors.Age}</span>}
+            </div>
+
+            <div className='input-field7'>
+              <label>Gender</label>
+              <select name="Gender" onChange={handleChange} value={input.Gender}>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              {errors.Gender && <span className="error">{errors.Gender}</span>}
+            </div>
+
+            <div className='input-field7'>
+              <label>Current Need</label>
+              <input 
+                type='text' 
+                onChange={handleChange} 
+                placeholder='Enter Current Need' 
+                value={input.Current_need} 
+                name='Current_need' 
+                required 
+              />
+              <span className="char-count">{input.Current_need ? input.Current_need.length : 0}/100</span>
+              {errors.Current_need && <span className="error">{errors.Current_need}</span>}
+            </div>
+
+            <div className='input-field7'>
+              <label>Summary</label>
+              <input 
+                type='text' 
+                onChange={handleChange} 
+                placeholder='Enter Summary' 
+                value={input.Summary} 
+                name='Summary' 
+                required 
+              />
+              <span className="char-count">{input.Summary ? input.Summary.length : 0}/250</span>
+              {errors.Summary && <span className="error">{errors.Summary}</span>}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Elder Last Name</label>
-            <input
-              type="text"
-              name="Elder_lastname"
-              value={input.Elder_lastname}
-              onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-            {errors.Elder_lastname && <span className="text-red-500 text-xs">{errors.Elder_lastname}</span>}
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Age</label>
-            <input
-              type="number"
-              name="Age"
-              value={input.Age}
-              onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-            {errors.Age && <span className="text-red-500 text-xs">{errors.Age}</span>}
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Gender</label>
-            <select
-              name="Gender"
-              value={input.Gender}
-              onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            >
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-            {errors.Gender && <span className="text-red-500 text-xs">{errors.Gender}</span>}
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Current Need</label>
-            <input
-              type="text"
-              name="Current_need"
-              value={input.Current_need}
-              onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-            {errors.Current_need && <span className="text-red-500 text-xs">{errors.Current_need}</span>}
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Summary</label>
-            <input
-              type="text"
-              name="Summary"
-              value={input.Summary}
-              onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-            {errors.Summary && <span className="text-red-500 text-xs">{errors.Summary}</span>}
-          </div>
-          <div className="flex items-center justify-between">
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Update
-            </button>
+
+          <div className="button-container">
+            <button className='subButton'>Update</button>
           </div>
         </form>
       </div>

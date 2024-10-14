@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar'; // Adjust the import path as necessary
+import myLogo from '../../Assets/Medical/logo.png';
+
 
 const PatientList = () => {
   const [patients, setPatients] = useState([]);
@@ -55,9 +57,22 @@ const PatientList = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.text('Patient List Details', 14, 16);
+    
+
+    doc.setFontSize(18); // Reduced font size
+        doc.setFont("Helvetica", "bold");
+
+        doc.text('Patient List Details', 14, 16);
+
+                // Add a logo with adjusted dimensions
+                const logoWidth = 10; // Adjusted width
+                const logoHeight = 10; // Adjusted height
+                const logoX = 186; // Adjusted x-coordinate to move the logo to the right
+                const logoY = 10; // y-coordinate remains the same
+                doc.addImage(myLogo, 'PNG', logoX, logoY, logoWidth, logoHeight);
+        
     doc.autoTable({
-      startY: 20,
+      startY: 25,
       head: [['Elder No', 'Name', 'Date Of Admit', 'Diseases', 'Room No', 'Age', 'Prescription']],
       body: filteredPatients.map((patient, index) => [
         index + 1,
@@ -69,6 +84,19 @@ const PatientList = () => {
         patient.Prescription
       ]),
     });
+    // Add signature area with left margin
+    const signatureY = doc.autoTable.previous.finalY + 10; // Position below the table
+    const signatureLeftMargin = 15; // Left margin for the signature text
+    doc.setFontSize(8); // 
+    doc.text("______________________", signatureLeftMargin, signatureY); // Signature line with margin
+    doc.text("Medical Officer", signatureLeftMargin, signatureY + 10); // Title below the signature line with margin
+
+    // Add footer with correct date
+    const footerY = signatureY + 20; // Position footer below signature area
+    doc.setFontSize(8);
+    doc.setFont("Helvetica", "normal");
+    const formattedDate = new Date().toLocaleDateString(); // Correctly formatted date
+    doc.text("Generated on: " + formattedDate, 14, footerY);
     doc.save('patient_list_details.pdf');
   };
 
