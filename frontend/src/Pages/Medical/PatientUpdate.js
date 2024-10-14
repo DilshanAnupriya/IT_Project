@@ -25,7 +25,7 @@ const PatientUpdate = () => {
         console.log(`Fetching data for patient id: ${id}`); // Debug log
         const response = await axios.get(`http://localhost:3000/patient/${id}`);
         console.log('Fetched patient data:', response.data); // Debug log
-        setFormData(response.data);
+        setFormData(response.data.pat); // Ensure the response structure matches
       } catch (error) {
         console.error('Error fetching patient data:', error);
       }
@@ -246,8 +246,7 @@ const PatientUpdate = () => {
           {/* Prescription Field */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Prescription:</label>
-            <input 
-              type="text"
+            <textarea 
               name="Prescription"
               onChange={handleChange}
               value={formData.Prescription}
