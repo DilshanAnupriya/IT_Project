@@ -66,12 +66,13 @@ function Navbar() {
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
                     <li className="more-item"><Link to="/">More Item 02</Link></li>
+                    <li className="more-item"><Link to="/main">Elder Care</Link></li>
                   </ul>
                 </li>
               </ul>
             </li>
             <li className="menu-item"><Link to="/newDash">Contact</Link></li>
-            <li className="menu-item1000"><button>Login</button></li>
+            <li className="menu-item1000"><Link to="/login"><button>Login</button></Link></li>
           </ul>
         </div>
         <i className="fa-solid fa-bars menu-btn"></i>

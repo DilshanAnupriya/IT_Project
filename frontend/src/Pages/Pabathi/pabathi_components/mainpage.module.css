@@ -1,0 +1,18 @@
+/* Container for the entire page */
+.pageContainer {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  
+  /* Main content container styles */
+  .mainContent {
+    width: 100%;
+  }
+
+  /* Form container styles */
+  .formContainer {
+    padding: 20px;
+  }
+  

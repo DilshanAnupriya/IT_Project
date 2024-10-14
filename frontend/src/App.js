@@ -51,6 +51,14 @@ import AdminViewReviewPage from './Pages/Suwani/admin/AdminReviews.js'
 import ComplainAdminView from './Pages/Suwani/admin/ComplainAdminView.js';
 import ReviewComplaintAdminChart from './Pages/Suwani/admin/ReviewComplaintAdminChart.js';
 
+//pabathi
+import LoginForm from './Pages/Pabathi/pabathi_components/LoginForm.jsx'
+import SignupForm from './Pages/Pabathi/pabathi_components/SignupForm.jsx'
+import ApplicationForm from './Pages/Pabathi/pabathi_pages/ApplicationForm.jsx'
+import Dashboard from './Pages/Pabathi/pabathi_admin/Dashboard.jsx'
+import Profile from './Pages/Pabathi/pabathi_admin/Profile.jsx'
+import Residents from './Pages/Pabathi/pabathi_admin/Residents.jsx'
+import MainPage from './Pages/Pabathi/pabathi_admin/MainPage.jsx'
 
 //medical 
 import MedDashboard from "./Pages/Medical/MedDashboard";
@@ -112,6 +120,14 @@ function App() {
           <Route path='/CertificateU/:id' element={<CertificateU />} />
           <Route path='/USC' element={<USC />} />
 
+          <Route path="/login" element={<LoginForm />} />
+          <Route path='/signup' element={<SignupForm />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/residents" element={<Residents />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path='/application-form' element={<ApplicationForm />} />
+
 
           <Route path='/empForm' element={<EmpForm />} />
           <Route path='/empAvalForm' element={<EmpAvalForm />} />
@@ -119,7 +135,7 @@ function App() {
           <Route path='/EmpDashForm' element={<EmpDashForm />} />
           <Route path='/EmpDash' element={<EmpDash />} />
           <Route path="/UpdateEmployee/:id" element={<UpdateEmployee />} /> {/* Added :id parameter */}
-          <Route path="/UpdateRecruitment/:id" element={<UpdateRecruitment/>}/>
+          <Route path="/UpdateRecruitment/:id" element={<UpdateRecruitment />} />
           <Route path="/availability" element={<EmpAvailabilityDisplay />} />
           <Route path="/edit-availability/:id" element={<EmpAvailabilityUpdate />} />
 
@@ -141,6 +157,7 @@ function App() {
           <Route path='/admin-review' element={<AdminViewReviewPage />} />
           <Route path='/admin-complaint' element={<ComplainAdminView />} />
           <Route path='/report' element={<ReviewComplaintAdminChart />} />
+
 
 
           <Route path='/medDash' element={<MedDashboard />} />
@@ -167,6 +184,7 @@ function App() {
           <Route path='/breakfast/edit/:id' element={<BreakfastUpdate />} />
           <Route path='/lunch/edit/:id' element={<LunchUpdate />} />
           <Route path='/dinner/edit/:id' element={<DinnerUpdate />} />
+
 
 
         </Routes>

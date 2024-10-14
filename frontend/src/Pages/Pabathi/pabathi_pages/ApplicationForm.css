@@ -1,0 +1,161 @@
+/* Form container styles */
+.app-container {
+    display: flex;
+    background-color: #f7f9fc;
+    min-height: 100vh;
+  }
+  
+  .form-container {
+   
+    
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    flex-direction: column;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Button styles */
+  .view-submissions-btn {
+    margin-top: 16px;
+    background-color: #1a202c;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-submissions-btn:hover {
+    background-color: #2d3748;
+  }
+  
+  /* Submissions table styles */
+  .submissions-table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  .submissions-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .submissions-table th,
+  .submissions-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .submissions-table th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Button styles for edit/delete actions */
+  .edit-btn,
+  .delete-btn {
+    background-color: transparent;
+    color: #3182ce;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .delete-btn {
+    color: #e53e3e;
+    margin-left: 10px;
+  }
+  
+  /* Edit submission popup styles */
+  .edit-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .edit-popup-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .edit-popup-content h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  /* Input and select styles */
+  .edit-popup-content label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .edit-popup-content input,
+  .edit-popup-content select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .edit-popup-content input:focus,
+  .edit-popup-content select:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  /* Popup actions styles */
+  .popup-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .update-btn {
+    background-color: #38a169;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .update-btn:hover {
+    background-color: #2f855a;
+  }
+  
+  .cancel-btn {
+    background-color: #e53e3e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #c53030;
+  }
+  

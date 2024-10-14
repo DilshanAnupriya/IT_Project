@@ -1,0 +1,221 @@
+.dashboardContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f1f1f1;
+    margin-left: -30px;
+    width: 1400px;
+  }
+  
+  .mainContent {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+  }
+  
+  .buttonsContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #357ABD;
+  }
+  
+  .tableContainer {
+    margin-top: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #fff;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+  }
+  
+  .table th {
+    background-color: #f7f7f7;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .approveBtn {
+    padding: 8px 12px;
+    background-color: #5eff00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .approveBtn:hover {
+    background-color: #ff6600;
+  }
+  
+  .deleteBtn {
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+  }
+
+  .popupContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+  
+  .popup {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px; /* Adjust the width as needed */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth appearance */
+    opacity: 0; /* Initially hidden for transition */
+    transform: translateY(-20px); /* Slide in effect */
+  }
+  
+  .popup.show {
+    opacity: 1; /* Show the popup */
+    transform: translateY(0); /* Reset the transform */
+  }
+  
+  .popup h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em; /* Adjust the font size */
+    color: #333; /* Darker color for the heading */
+  }
+  
+  .popup label {
+    display: block;
+    margin-bottom: 10px; /* Space between labels */
+    font-weight: bold; /* Make labels stand out */
+  }
+  
+  .popup input[type="text"],
+  .popup input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    margin-bottom: 15px; /* Space between inputs */
+  }
+  
+  .popupButtons {
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+  }
+  
+  .popup button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .popup button:hover {
+    background: #007bff; /* Change background on hover */
+    color: white; /* Change text color */
+  }
+  
+  
+  .deleteBtn:hover {
+    background-color: #c82333;
+  }
+  
+  .analyticsContainer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .analyticsContainer h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .buttonsContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .btn {
+      margin-bottom: 10px;
+      width: 80%;
+      text-align: center;
+    }
+  
+    .table th, .table td {
+      font-size: 12px;
+      padding: 10px;
+    }
+  }
+  
+  /* Search bar styling */
+.searchContainer {
+    margin-bottom: 20px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
