@@ -193,49 +193,49 @@ function VolunteerRegistration() {
                         <div className='details personal'>
                             <span className='title'>Personal Details</span>
                             <div className='fields'>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>First Name</label>
                                     <input type='text' onChange={handleChange} placeholder='Enter Your Name' value={input.first_name} name='first_name' required />
                                     {errors.first_name && <p className="error">{errors.first_name}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Last Name</label>
                                     <input type='text' onChange={handleChange} placeholder='Enter Your Name' name='last_name' value={input.last_name} required />
                                     {errors.last_name && <p className="error">{errors.last_name}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Date of Birth</label>
                                     <input type='Date' onChange={handleChange} placeholder='Enter birth date' name='date_of_birth' value={input.date_of_birth} required />
                                     {errors.date_of_birth && <p className="error">{errors.date_of_birth}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Gender</label>
                                     <select id="gen" name="gender" onChange={handleChange} value={input.gender}>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Email</label>
                                     <input type='text' onChange={handleChange} placeholder='Enter Your email' name='email' value={input.email} required />
                                     {errors.email && <p className="error">{errors.email}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Join Date</label>
                                     <input type='Date' onChange={handleChange} placeholder='Enter date' name='date' value={input.date} required />
                                     {errors.date && <p className="error">{errors.date}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Mobile Number</label>
                                     <input type='number' onChange={handleChange} placeholder='Enter Your number' name='mobile' value={input.mobile} required />
                                     {errors.mobile && <p className="error">{errors.mobile}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Emergency Mobile Number</label>
                                     <input type='number' onChange={handleChange} placeholder='Enter mobile number' name='emobile' value={input.emobile} required />
                                     {errors.emobile && <p className="error">{errors.emobile}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Address</label>
                                     <input type='text' onChange={handleChange} placeholder='Enter Your address' name='address' value={input.address} required />
                                 </div>
@@ -247,12 +247,12 @@ function VolunteerRegistration() {
                         <div className='details Volunteer'>
                             <span className='title'>Volunteering  Details</span>
                             <div className='fields'>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Duration</label>
                                     <input type='text' onChange={handleChange} placeholder='1-Month' value={input.duration} name='duration' required />
                                     {errors.duration && <p className="error">{errors.duration}</p>}
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Preferred Type of Work</label>
                                     <select id="work" name="type_of_work" onChange={handleChange} value={input.type_of_work}>
                                         <option value=" Companionship"> Companionship</option>
@@ -267,14 +267,14 @@ function VolunteerRegistration() {
                                         <option value="Intergenerational Programs">Intergenerational Programs</option>
                                     </select>
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Experience</label>
                                     <select id="experience" name="experience" onChange={handleChange} value={input.experience}>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Days Available</label>
                                     <select id="days" name="days" onChange={handleChange} value={input.days}>
                                         <option value="Wd">Weekdays</option>
@@ -282,7 +282,7 @@ function VolunteerRegistration() {
                                         <option value="Bw">Both</option>
                                     </select>
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Skills</label>
                                     <select id="skills" name="skills" onChange={handleChange} value={input.skills}>
                                         <option value=" Technical Skills"> Technical Skills</option>
@@ -293,7 +293,7 @@ function VolunteerRegistration() {
 
                                     </select>
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Time Available</label>
                                     <select id="time" name="time" onChange={handleChange} value={input.time}>
                                         <option value="Morning">Morning</option>

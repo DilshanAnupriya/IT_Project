@@ -113,7 +113,7 @@ function TaskUpdate() {
                         <div className='details personal'>
                             <span className='title'>Task Details</span>
                             <div className='fields'>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Task Name</label>
                                     <input
                                         type='text'
@@ -124,7 +124,7 @@ function TaskUpdate() {
                                         required />
                                 </div>
 
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Assign To</label>
                                     <select
                                         name="assign_to"
@@ -140,7 +140,7 @@ function TaskUpdate() {
                                     </select>
                                 </div>
 
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Location</label>
                                     <input
                                         type='text'
@@ -151,7 +151,7 @@ function TaskUpdate() {
                                         required />
                                 </div>
 
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Duration</label>
                                     <input
                                         type='text'
@@ -163,7 +163,7 @@ function TaskUpdate() {
                                 </div>
 
                                 <div className='div1008'>
-                                    <div className='input-field'>
+                                    <div className='input-field100'>
                                         <label>Special Instructions</label>
                                         <textarea
                                             className='area1000'
@@ -174,7 +174,7 @@ function TaskUpdate() {
                                             required />
                                     </div>
 
-                                    <div className='input-field'>
+                                    <div className='input-field100'>
                                         <label>Description</label>
                                         <textarea
                                             className='area1001'

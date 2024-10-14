@@ -148,10 +148,10 @@ function Volunteers_Display() {
             <div>
                 <Dash />
             </div>
-            <div className="dt">
+            <div className="dt100">
                 <div className="dt200">
                     {/* Search Input */}
-                    <div className="search-bar">
+                    <div className="search-bar100">
                         <input
                             type="text"
                             className="search-input"

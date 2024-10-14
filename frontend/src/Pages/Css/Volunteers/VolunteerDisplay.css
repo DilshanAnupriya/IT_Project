@@ -5,7 +5,7 @@
     align-items: center; 
     
 } 
-.dt{
+.dt100{
     position: absolute;
     margin-left: -400px;
     margin-top: -224px;
@@ -79,13 +79,13 @@ color: white;
     padding-bottom: 40px;
     font-size: 26px;
 }
-.search-bar{
+.search-bar100{
     position: absolute;
     display: flex;
     margin-left: 160px;
     width: 40%;
 }
-.search-bar input{
+.search-bar100 input{
     width: 300px;
     padding-right: 80px;
     height: 34px;
