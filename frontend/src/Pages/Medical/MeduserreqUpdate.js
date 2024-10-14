@@ -20,7 +20,9 @@ const MeduserreqUpdate = () => {
   useEffect(() => {
     const fetchReport = async () => {
       try {
+        console.log(`Fetching data for id: ${id}`); // Debug log
         const response = await axios.get(`http://localhost:3000/medreport/${id}`);
+        console.log('Fetched data:', response.data); // Debug log
         setInputs(response.data);
       } catch (error) {
         console.error('Error fetching report:', error);
