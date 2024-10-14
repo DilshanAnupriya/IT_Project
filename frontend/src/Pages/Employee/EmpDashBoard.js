@@ -55,6 +55,7 @@ function EmpDashBoard() {
         const doc = new jsPDF();
         doc.text("Employee Report", 14, 16);
         doc.autoTable({
+            startY: 20,
             head: [['First Name', 'Last Name', 'Job Role', 'NIC', 'Email', 'Qualifications', 'Join Date']],
             body: filteredUsers.map(user => [
                 user.first_name,
