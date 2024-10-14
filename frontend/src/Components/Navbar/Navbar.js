@@ -71,7 +71,7 @@ function Navbar() {
                 </li>
               </ul>
             </li>
-            <li className="menu-item"><Link to="/newDash">Contact</Link></li>
+            <li className="menu-item"><Link to="/TaskDisplay">Contact</Link></li>
             <li className="menu-item1000"><Link to="/login"><button>Login</button></Link></li>
           </ul>
         </div>

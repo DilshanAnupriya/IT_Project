@@ -83,19 +83,19 @@
     flex-wrap: wrap;
 
 }
-form .fields .input-field{
+form .fields .input-field100{
     display: flex;
     width: 290px;
     
     flex-direction: column;
     margin: 10px;
 }
-.input-field label{
+.input-field100 label{
     font-size: 15px;
     font-weight: 500;
     color: #2e2e2e;
 }
-.input-field input{
+.input-field100 input{
     outline: none;
     font-size: 14px;
     font-weight: 400;
@@ -106,7 +106,7 @@ form .fields .input-field{
     height: 42px;
     margin: 8px 0;
 }
-.input-field select{
+.input-field100 select{
     outline: none;
     font-size: 14px;
     font-weight: 400;

@@ -84,7 +84,7 @@ function ScheduleU() {
                         <div className='details personal'>
                             <span className='title'>Schedule details</span>
                             <div className='fields'>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Event Name</label>
                                     <input
                                         type='text'
@@ -94,7 +94,7 @@ function ScheduleU() {
                                         name='event_name'
                                         required />
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>Start Time</label>
                                     <input
                                         type='text'
@@ -104,7 +104,7 @@ function ScheduleU() {
                                         value={inputs.S_time}
                                         required />
                                 </div>
-                                <div className='input-field'>
+                                <div className='input-field100'>
                                     <label>End Time</label>
                                     <input
                                         type='text'
