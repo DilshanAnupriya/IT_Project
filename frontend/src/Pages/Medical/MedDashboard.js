@@ -62,7 +62,7 @@ function MedicalDash() {
 
     const generatePDF = () => {
         const doc = new jsPDF();
-        doc.setFontSize(18); // Reduced font size
+        doc.setFontSize(18); 
         doc.setFont("Helvetica", "bold");
 
         doc.text('Tasks for Today', 14, 16);

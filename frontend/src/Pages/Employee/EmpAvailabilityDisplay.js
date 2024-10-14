@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import myLogo from '../../Assets/Employee/logo.png';
+
 
 const URL = "http://localhost:3000/Availability/";
 
@@ -106,7 +108,18 @@ function EmpAvailabilityDisplay() {
 
     const generateReport = () => {
         const doc = new jsPDF();
+
+        doc.setFontSize(18);
+        doc.setFont("Helvetica", "bold");
+
         doc.text("Employee Availability Report", 14, 16);
+
+        const logoWidth = 10; // Adjusted width
+        const logoHeight = 10; // Adjusted height
+        const logoX = 186; // Adjusted x-coordinate to move the logo to the right
+        const logoY = 10; // y-coordinate remains the same
+        doc.addImage(myLogo, 'PNG', logoX, logoY, logoWidth, logoHeight);
+
         doc.autoTable({
             startY: 20,
             head: [['Employee Name', 'Schedule Date', 'Start Time', 'End Time']],
@@ -117,6 +130,20 @@ function EmpAvailabilityDisplay() {
                 availability.schedule_end_time
             ]),
         });
+
+        // Add signature area with left margin
+        const signatureY = doc.autoTable.previous.finalY + 10; // Position below the table
+        const signatureLeftMargin = 15; // Left margin for the signature text
+        doc.setFontSize(8); // 
+        doc.text("______________________", signatureLeftMargin, signatureY); // Signature line with margin
+        doc.text("Staff Cordinator", signatureLeftMargin, signatureY + 10); // Title below the signature line with margin
+
+        // Add footer with correct date
+        const footerY = signatureY + 20; // Position footer below signature area
+        doc.setFontSize(8);
+        doc.setFont("Helvetica", "normal");
+        const formattedDate = new Date().toLocaleDateString(); // Correctly formatted date
+        doc.text("Generated on: " + formattedDate, 14, footerY);
         doc.save('availability_report.pdf');
     };
 
