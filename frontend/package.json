@@ -28,6 +28,7 @@
     "react-to-print": "^2.15.1",
     "react-toastify": "^10.0.5",
     "scrollreveal": "^4.0.9",
+    "sweetalert2": "^11.14.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

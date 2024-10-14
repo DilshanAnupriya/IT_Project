@@ -1,0 +1,112 @@
+/* Navbar container styles */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #C8C2E9;
+    color: #1f1f1f;
+    position: relative;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  /* Hamburger icon styles */
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #1f1f1f;
+  }
+  
+  /* Navigation links and button styles */
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transition: max-height 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  .navLinks.active {
+    max-height: 500px; /* Adjust as needed */
+  }
+  
+  .navLinks a, .navLinks button {
+    color: #1f1f1f;
+    text-decoration: none;
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+  
+  .navLinks a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Logout button styles */
+  .logoutBtn {
+    background-color: #14779e;
+    border: none;
+    color: white !important;
+    font-weight: 900;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .logoutBtn:hover {
+    background-color: #115069;
+  }
+  
+  /* Login button styles */
+  .loginBtn {
+    background-color: #3498db;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  
+  .loginBtn:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Responsive styles */
+  @media (min-width: 768px) {
+    .nav {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .navLinks {
+      flex-direction: row;
+      width: auto;
+      max-height: none;
+      overflow: visible;
+    }
+  
+    .navLinks a, .navLinks button {
+      margin: 0 15px;
+    }
+  
+    .hamburger {
+      display: none;
+    }
+  
+    .title {
+      margin-right: auto;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  

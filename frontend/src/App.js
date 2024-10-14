@@ -46,6 +46,14 @@ import AdminViewReviewPage from './Pages/Suwani/admin/AdminReviews.js'
 import ComplainAdminView from './Pages/Suwani/admin/ComplainAdminView.js';
 import ReviewComplaintAdminChart from './Pages/Suwani/admin/ReviewComplaintAdminChart.js';
 
+//pabathi
+import LoginForm from './Pages/Pabathi/pabathi_components/LoginForm.jsx'
+import SignupForm from './Pages/Pabathi/pabathi_components/SignupForm.jsx'
+import ApplicationForm from './Pages/Pabathi/pabathi_pages/ApplicationForm.jsx'
+import Dashboard from './Pages/Pabathi/pabathi_admin/Dashboard.jsx'
+import Profile from './Pages/Pabathi/pabathi_admin/Profile.jsx'
+import Residents from './Pages/Pabathi/pabathi_admin/Residents.jsx'
+import MainPage from './Pages/Pabathi/pabathi_admin/MainPage.jsx'
 
 
 
@@ -101,6 +109,16 @@ function App() {
           <Route path='/admin-review' element={<AdminViewReviewPage />} />
           <Route path='/admin-complaint' element={<ComplainAdminView />} />
           <Route path='/report' element={<ReviewComplaintAdminChart />} />
+
+
+
+          <Route path="/login" element={<LoginForm />} />
+          <Route path='/signup' element={<SignupForm />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/residents" element={<Residents />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path='/application-form' element={<ApplicationForm />} />
 
 
         </Routes>

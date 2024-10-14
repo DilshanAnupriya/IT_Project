@@ -1,0 +1,38 @@
+/* Sidebar container styles */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px; /* Adjust width as needed */
+    height: 100vh !important;
+    background-color: #ffffff;
+    color: #1f1f1f;
+    padding: 20px 0;
+    justify-content: space-between;
+  }
+  
+  /* Logo styles */
+  .logo {
+    width: 70px;
+    margin-bottom: 20px;
+  }
+  
+  /* Icon container styles */
+  .iconContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Icon styles */
+  .icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .icon:hover {
+    color: #3498db; /* Change color on hover */
+  }
+  

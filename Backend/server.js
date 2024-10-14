@@ -2,6 +2,9 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const authRoutes = require('./Routes/ElderCare/authRoutes.js');
+const parentRoutes = require('./Routes/ElderCare/parentRoutes.js');
+require('dotenv').config();
 
 
 // Import the routes
@@ -92,7 +95,9 @@ app.use("/salary", sal);
 app.use('/api/review', reviewRoute);
 app.use('/api/complaint', complaintRoute);
 
-// Define the routes
+// pabathi
+app.use('/api/auth', authRoutes);
+app.use('/api/adultcare', parentRoutes);
 
 // Volunteer task routes
 
