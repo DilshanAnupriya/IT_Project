@@ -98,7 +98,7 @@ function EmployeeForm() {
         e.preventDefault();
 
         if (validateForm()) {
-            sendRequest().then(() => history('/EmpReqFormDis'));
+            sendRequest().then(() => history('/mainhome'));
         }
     };
 
