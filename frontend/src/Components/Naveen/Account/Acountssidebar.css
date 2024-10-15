@@ -1,0 +1,167 @@
+/* Sidebar Container */
+.sidebar {
+    position: absolute; /* Position the sidebar absolutely */
+    right: 0; /* Align the sidebar to the right */
+    top: 0;
+    width: 250px;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #6B75FE;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 100; /* Ensure the sidebar stays on top of other content */
+}
+
+/* When the sidebar is toggled open */
+.sidebar.open {
+    width: 80px; /* Shrink the width when it's collapsed */
+}
+
+.sidebar .sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #5A67E7;
+    color: white;
+}
+
+.sidebar .sidebar-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.sidebar .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.sidebar .menu-item {
+    color: white;
+    font-size: 18px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.sidebar .menu-item:hover {
+    background-color: #5A67E7;
+}
+
+.sidebar .menu-item .icon {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.sidebar .menu-item span {
+    display: inline-block;
+}
+
+.sidebar .menu-item.collapsed span {
+    display: none;
+}
+
+.sidebar .menu-item.collapsed .icon {
+    margin-right: 0;
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    background-color: #6B75FE;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background-color: #5A67E7;
+}
+
+/* Media Queries */
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar.open {
+        width: 60px;
+    }
+
+    .sidebar .sidebar-header h1 {
+        font-size: 18px;
+    }
+
+    .sidebar .menu-item {
+        font-size: 16px;
+    }
+
+    .sidebar-toggle {
+        top: 15px;
+        left: -15px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Tablet Devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .sidebar.open {
+        width: 70px;
+    }
+
+    .sidebar .sidebar-header h1 {
+        font-size: 20px;
+    }
+
+    .sidebar .menu-item {
+        font-size: 17px;
+    }
+
+    .sidebar-toggle {
+        top: 18px;
+        left: -18px;
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* Desktop Devices */
+@media (min-width: 1025px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .sidebar.open {
+        width: 80px;
+    }
+
+    .sidebar .sidebar-header h1 {
+        font-size: 24px;
+    }
+
+    .sidebar .menu-item {
+        font-size: 18px;
+    }
+
+    .sidebar-toggle {
+        top: 20px;
+        left: -20px;
+        width: 40px;
+        height: 40px;
+    }
+}

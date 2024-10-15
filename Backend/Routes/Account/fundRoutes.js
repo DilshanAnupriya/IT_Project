@@ -1,5 +1,5 @@
 const express = require("express");
-const fund = express.Router();
+const Fund = express.Router();
 
 
 
@@ -8,10 +8,10 @@ const Funds = require('../../Controllers/Account/fundController');
 
 
 
-fund.get("/", Funds.getDetails);
-fund.post("/add", Funds.CreateFund);
-fund.get("/:id", Funds.getById);
-fund.put("/update/:id", Funds.UpdateDetails);
-fund.delete("/delete/:id", Funds.DeleteDetails);
+Fund.get("/", Funds.getDetails);
+Fund.post("/add", Funds.CreateFund);
+Fund.get("/:id", Funds.getById);
+Fund.put("/update/:id", Funds.UpdateDetails);
+Fund.delete("/delete/:id", Funds.DeleteDetails);
 
-module.exports = fund;
+module.exports = Fund;

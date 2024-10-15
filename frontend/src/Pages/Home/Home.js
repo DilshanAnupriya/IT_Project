@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from "../../Components/Navbar/Navbar"
 import Footer from '../../Components/Footer/Footer'
-import Dash from "../../Components/Dashboard/Dashboard"
+import Dash from "../../Components/Dashboard1/Dashboard"
 import "../Home/Home.css"
 import pic from "../../Assets/dd11.jpg"
 import pic1 from "../../Assets/d4.jpg"

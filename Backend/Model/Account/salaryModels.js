@@ -1,31 +1,106 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { get } = require('mongoose');
+const Salary = require("../../Model/Account/salaryModels");
 
-const salary_Schema = new Schema({
-    amount: {
-        type: Number,
-        required: true
-    },
-    status: {
-        type: String,
-        required: true
-    },
-    year: {
-        type: Number,
-        required: true
-    },
-    month: {
-        type: String,
-        required: true
-    },
-    cost: {
-        type: Number,
-        required: true
-    },
 
+const getDetails = async (req, res, next) => {
+    let sal;
   
-});
-module.exports = mongoose.model(
-    "salaryModels",//file name
-    salary_Schema //function name
-)
+    try {
+        sal = await Salary.find();
+    } catch (error) {
+        console.log(error);
+    }
+
+    if (!sal) {
+        return res.status(404).json({ massage: "unable to display" });
+    }
+    return res.status(200).json({ sal });
+};
+
+
+
+const Createsal = async (req, res, next) => {
+    const { amount, status, year, month, cost} = req.body
+
+    let sal;
+
+    try {
+        sal = new Salary({ amount, status, year, month,cost });
+        await sal.save()
+    } catch (error) {
+        console.log(error);
+    }
+
+    if (!sal) {
+        return res.status(404).json({ massage: "unable to create" });
+    }
+
+    return res.status(200).json({ sal });
+};
+
+
+
+
+
+const getById = async (req, res, next) => {
+    let id = req.params.id;
+    let sal;
+
+    try {
+        sal = await Salary.findById(id);
+    } catch (error) {
+        console.log(error);
+    }
+
+    if (!sal) {
+        return res.status(404).json({ massage: "unable to find" });
+    }
+
+    return res.status(200).json({ sal });
+};
+
+
+
+const UpdateDetails = async (req, res, next) => {
+    let id = req.params.id;
+    let sal;
+    const { amount, status, year, month,cost } = req.body
+
+    try {
+        sal = await Salary.findByIdAndUpdate(id, { amount: amount, status: status, year: year, month: month,cost:cost });
+        await sal.save();
+    } catch (error) {
+        console.log(error);
+    }
+    if (!sal) {
+        return res.status(404).json({ massage: "unable to update" });
+    }
+
+    return res.status(200).json({ sal });
+
+};
+
+
+
+const DeleteDetails = async (req, res, next) => {
+    let id = req.params.id;
+    let sal;
+
+    try {
+        sal = await Salary.findByIdAndDelete(id);
+    } catch (error) {
+        console.log(error);
+    }
+    if (!sal) {
+        return res.status(404).json({ massage: "unable to delete" });
+    }
+
+    return res.status(200).json({ sal });
+
+};
+
+exports.getDetails = getDetails
+exports.Createsal = Createsal
+exports.getById = getById
+exports.UpdateDetails = UpdateDetails
+exports.DeleteDetails = DeleteDetails

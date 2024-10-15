@@ -91,6 +91,8 @@ import NutritionList from './Pages/Medical/NutritionList';
 
 
 
+import AD from "./Components/NDash/ND.js";
+
 
 
 function App() {
@@ -186,6 +188,8 @@ function App() {
           <Route path='/dinner/edit/:id' element={<DinnerUpdate />} />
 
 
+
+          <Route path='/nd' element={<AD />} />
 
         </Routes>
       </React.Fragment>
