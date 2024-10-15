@@ -1,29 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const funds_Schema = new Schema({
-    fund_name: {
+const expenditure_Schema = new Schema({
+    expenditure_type: {
         type: String,
         required: true
     },
-    fund_amount: {
+    amount: {
         type: Number,
         required: true
     },
-    fund_date: {
-        type: String,
-        required: true
-    },
-    description: {
+    status: {
         type: String,
         required: true
     }
 });
 
-
 module.exports = mongoose.model(
-    "fundModels", // Collection name
-    funds_Schema  // Schema name
+    "expenditureModels", // Model name
+    expenditure_Schema   // Corrected variable name
 );
-
-

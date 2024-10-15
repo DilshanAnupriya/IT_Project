@@ -46,8 +46,12 @@ const cors = require("cors");
 
 
 //account
+//account
 const fun = require("./Routes/Account/fundRoutes");
 const sal = require("./Routes/Account/salaryRoutes");
+const account = require("./Routes/Account/accountRoute");
+const club = require("./Routes/Account/clubroute");
+const expenditure = require("./Routes/Account/expenditureroutes");
 
 
 //complainReviews
@@ -98,6 +102,15 @@ app.use('/api/complaint', complaintRoute);
 // pabathi
 app.use('/api/auth', authRoutes);
 app.use('/api/adultcare', parentRoutes);
+
+//naveen
+//accounts
+app.use("/funds", fun);
+app.use("/salary", sal);
+app.use("/account", account);
+app.use("/club", club);
+app.use("/expenditure", expenditure);
+
 
 // Volunteer task routes
 
