@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar'; // Adjust the import path as necessary
+import MedicalSidebar from '../../Components/Medicaldashboard/MedicalSidebar'; 
 
 const PatientUpdate = () => {
   const { id } = useParams();
@@ -99,8 +99,8 @@ const PatientUpdate = () => {
   const handleDateChange = (e) => {
     const { name, value } = e.target;
     const today = new Date().toISOString().split('T')[0];
-    if (value < today) {
-      setErrors((prev) => ({ ...prev, datein: 'Date of admit cannot be in the past.' }));
+    if (value > today) {
+      setErrors((prev) => ({ ...prev, datein: 'Date of admit cannot be in the future.' }));
     } else {
       setErrors((prev) => ({ ...prev, datein: '' }));
       setFormData({ ...formData, [name]: value });

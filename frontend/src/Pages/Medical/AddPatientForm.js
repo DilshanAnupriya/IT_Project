@@ -6,7 +6,7 @@ const AddPatientForm = () => {
   const [formData, setFormData] = useState({
     Elder_name: '',
     diagnosis: '',
-    datein: '',
+    datein: new Date().toISOString().split('T')[0], // Set default date to today
     roomnum: '',
     age: '',
     Prescription: '',
@@ -82,12 +82,12 @@ const AddPatientForm = () => {
   const handleDateChange = (e) => {
     const { name, value } = e.target;
     const today = new Date().toISOString().split('T')[0];
-    if (value < today) {
-      setErrors((prev) => ({ ...prev, datein: 'Date of admit cannot be in the past.' }));
+    if (value !== today) {
+      setErrors((prev) => ({ ...prev, datein: 'Date of admit must be today.' }));
     } else {
       setErrors((prev) => ({ ...prev, datein: '' }));
-      setFormData({ ...formData, [name]: value });
     }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
