@@ -151,19 +151,14 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
-th {
-  background-color: #4caf50;
-  color: white;
-}
+
 
 h2 {
   text-align: center;
   color: #333;
 }
 
-h3 {
-  color: #4caf50;
-}
+
 
 h4 {
   font-weight: bold;

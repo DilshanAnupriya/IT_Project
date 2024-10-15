@@ -67,9 +67,7 @@ const NDashboard = () => {
 
     return (
         <div className='nd'>
-            <button onClick={toggleSidebar} className="p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100">
-                <TiThMenu className="text-lg" />
-            </button>
+
 
             <aside className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${sidebarVisible ? "translate-x-0" : "-translate-x-full"} sm:translate-x-0`} aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -79,43 +77,44 @@ const NDashboard = () => {
                     </div>
                     <ul className="space-y-2 font-medium">
                         <li>
-                            <Link onClick={handleDashboardClick} className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                            <Link onClick={handleDashboardClick} className="flex items-center p-2  text-white rounded-lg  hover:bg-gray-900">
                                 <MdDashboard className="w-5 h-5 text-gray-500" />
                                 <span className="ml-3">Dashboard</span>
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={handleProfileClick} className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                            <Link onClick={handleProfileClick} className="flex items-center p-2 text-white rounded-lg  hover:bg-gray-900">
                                 <FaUser className="w-5 h-5 text-gray-500" />
                                 <span className="ml-3">Profile</span>
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={handleClubsClick} className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                            <Link onClick={handleClubsClick} className="flex items-center p-2 text-white rounded-lg h hover:bg-gray-900">
                                 <FaTasks className="w-5 h-5 text-gray-500" />
                                 <span className="ml-3">Clubs</span>
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={handleFundsClick} className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                            <Link onClick={handleFundsClick} className="flex items-center p-2 text-white rounded-lg  hover:bg-gray-900">
                                 <RiMoneyDollarCircleFill className="w-5 h-5 text-gray-500" />
                                 <span className="ml-3">Funds</span>
                             </Link>
                         </li>
+
                         <li>
-                            <Link onClick={handleExpenditureClick} className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                            <Link onClick={handleExpenditureClick} className="flex items-center p-2 text-white rounded-lg hover:bg-gray-900">
                                 <FaPeopleGroup className="w-5 h-5 text-gray-500" />
                                 <span className="ml-3">Expenditure</span>
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={handleFinancialClick} className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                            <Link onClick={handleFinancialClick} className="flex items-center p-2 text-white  rounded-lg hover:bg-gray-900">
                                 <RiCalendarScheduleFill className="w-5 h-5 text-gray-500" />
                                 <span className="ml-3">Financial Report</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                            <Link to="/" className="flex items-center p-2 text-white  rounded-lg hover:bg-gray-900">
                                 <MdLogout className="w-5 h-5 text-gray-500" />
                                 <span className="ml-3">Log Out</span>
                             </Link>
@@ -131,4 +130,4 @@ const NDashboard = () => {
     );
 }
 
-export default Dashboard;
+export default NDashboard;
